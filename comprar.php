@@ -1,6 +1,12 @@
 <?php 
 include("includes/BD/catalogoBD.php");
+$arrayCarrito = $_POST["arrayCarrito"]; 
+print_r($arrayCarrito);
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
    <head>

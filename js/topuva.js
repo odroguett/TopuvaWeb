@@ -1,32 +1,67 @@
 var contenido = null;
 
-
-
 function Carrito_class() {
 
+  this.LimpiaCarrito = function()
+  {
+    vCarrito.Precio = null;
+    vCarrito.Producto=null;
+    vCarrito.Cantidad=null;
+  }
 
   this.Comprar = function()
   {
+    $('#myModal2').modal('hide');
     var modalContent = document.createElement('div');
     modalContent.innerHTML = localStorage.contenido;
+    var recorre = modalContent.querySelectorAll('.container_modal');
+    var arrayCarrito = new Array();
+    
 
-    var precio = modalContent.querySelectorAll('.price_modal');
-    //var cantidad =document.getElementsByClassName("cantidadProducto");
+    var iRecorre =1;
+    recorre.forEach(item => {
+      var precio = item.querySelector('.price_modal').innerHTML;
+      var producto= item.querySelector('.textoProducto').innerHTML;
+      var cantidad= item.querySelector('.cantidadProducto').innerHTML;
+      var vCarrito = {
+        Precio: precio,
+        Producto: producto,
+        Cantidad: cantidad
+      };
+      arrayCarrito[iRecorre]= vCarrito;
+      arrayCarrito["precio"] = precio;
+      arrayCarrito["producto"] = producto;
+      arrayCarrito["cantidad"] = cantidad;
+      vCarrito=null;
+      iRecorre = iRecorre + 1;
+      
 
-    for(i=0;i<precio.length;++i)
-    {
-    alert(precio[i].innerHTML);
+    });
+    console.log(JSON.stringify(arrayCarrito));
 
-    }
-    $("#ContenedorPaginas").load('/TopuvaWeb/comprar.php');
-    $('#myModal2').modal('hide');
+    $.ajax({
+      type: "POST",
+      url: '/TopuvaWeb/comprar.php',
+      data: { arrayCarrito: JSON.stringify(arrayCarrito) },
+      //contentType: "application/json; charset=utf-8",
+      //dataType: "json",
+      success: function (data) {
+        if (data)
+        {
+
+          $("#ContenedorPaginas").html(data);
+          
+        }
+      }
+  });
+   
 
   }
 
   this.AgregarSeleccion = function (precio, cantidad, texto) {
 
   
-     debugger;
+    // debugger;
     var total = 0;
     var modalContent = document.createElement('div');
     var modalContentAux = document.createElement('div');
@@ -130,8 +165,6 @@ function Carrito_class() {
 
     total = total - (Number(oCarrito.quitarCaractererNoNumericos(precio.innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(cantidadProducto.innerHTML)));
     $('.totalizador').text(total);
-
-
     event.closest('.container_modal').remove();
 
 
@@ -171,9 +204,6 @@ this.CargaCarrito = function()
 oCarrito = new Carrito_class();
 
 $(document).ready(function () {
-
-
-  
 
 
   $(".btn-valor").click(function () {
@@ -252,12 +282,44 @@ $(document).ready(function () {
 
   });
 
-  $("#btnComprar").click(function () {
 
-    oCarrito.Comprar();
 
-  });
-
+  // Quantity JS
+$('.qtyplus').click(function(){
+  debugger;
   
+  fieldName = $(this).attr('field');
+  // Get its current value
+  //var currentVal = parseInt($('input[name='+fieldName+']').val());
+  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').val();
+  // If is not undefined
+  if (!isNaN(currentVal)) {
+      // Increment
+      $(this).closest('.claseTexto').find('.cantidad').val(Number(currentVal) + 1);
+    //  $('.cantidad').val(Number(currentVal) + 1);
+  } else {
+      // Otherwise put a 0 there
+      $(this).closest('.claseTexto').find('.cantidad').val(1);
+  }
+});
+// This button will decrement the value till 0
+$(".qtyminus").click(function() {
+debugger;
+  // Stop acting like a button1
+  
+  // Get the field name
+  fieldName = $(this).attr('field');
+  // Get its current value
+  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').val();
+  // If it isn't undefined or its greater than 0
+  if (!isNaN(currentVal) && currentVal > 1) {
+      // Decrement one
+      $(this).closest('.claseTexto').find('.cantidad').val(Number(currentVal) -1 );
+  } else {
+      // Otherwise put a 0 there
+      $(this).closest('.claseTexto').find('.cantidad').val(1);
+  }
+});
+
 
 });

@@ -539,7 +539,7 @@ include("includes/BD/catalogoBD.php");
             <div class="modal-footer">
                <h4 class=" text-success"> Total: </h4>
                <h4 class="totalizador text-success"> </h4>
-               <button type="submit" id="btnComprar" class="btn btn-success btn-lg btn-block">Comprar</button>
+               <button type="button" onclick="oCarrito.Comprar()" class="btn btn-success btn-lg btn-block">Comprar</button>
 
             </div>
          </div>

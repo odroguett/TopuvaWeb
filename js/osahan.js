@@ -168,40 +168,4 @@ var Nav = $main_nav.hcOffcanvasNav(defaultOptions);
 })
 (jQuery); // End of use strict
 
-// Quantity JS
-$('.qtyplus').click(function(){
-  debugger;
-  
-  fieldName = $(this).attr('field');
-  // Get its current value
-  //var currentVal = parseInt($('input[name='+fieldName+']').val());
-  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').val();
-  // If is not undefined
-  if (!isNaN(currentVal)) {
-      // Increment
-      $(this).closest('.claseTexto').find('.cantidad').val(Number(currentVal) + 1);
-    //  $('.cantidad').val(Number(currentVal) + 1);
-  } else {
-      // Otherwise put a 0 there
-      $(this).closest('.claseTexto').find('.cantidad').val(1);
-  }
-});
-// This button will decrement the value till 0
-$(".qtyminus").click(function() {
-debugger;
-  // Stop acting like a button1
-  
-  // Get the field name
-  fieldName = $(this).attr('field');
-  // Get its current value
-  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').val();
-  // If it isn't undefined or its greater than 0
-  if (!isNaN(currentVal) && currentVal > 1) {
-      // Decrement one
-      $(this).closest('.claseTexto').find('.cantidad').val(Number(currentVal) -1 );
-  } else {
-      // Otherwise put a 0 there
-      $(this).closest('.claseTexto').find('.cantidad').val(1);
-  }
-});
 

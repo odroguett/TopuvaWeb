@@ -1,7 +1,20 @@
 <?php 
 include("includes/BD/catalogoBD.php");
-$arrayCarrito = $_POST["arrayCarrito"]; 
-print_r($arrayCarrito);
+$arrayCarrito = json_decode($_POST["arrayCarrito"],true); 
+$totalProductos=0;
+$totalPago=0;
+
+foreach($arrayCarrito as $filas => $value)
+{
+   if(isset($value['Producto']))
+   {
+      
+      $totalProductos = $totalProductos + (int)$value['Cantidad'];;
+      $totalPago = $totalPago + (int)$value['Precio'];
+   }
+ 
+}
+
 ?>
 
 
@@ -41,74 +54,50 @@ print_r($arrayCarrito);
                         <div class="card-header bg-white border-0 p-0" id="headingOne">
                            <h2 class="mb-0">
                               <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              <span class="c-number">1</span> Cart (3 items)
+                              <span class="c-number">1</span>  <?php  echo "Total Productos: " .  $totalProductos    ?> 
                               </button>
                            </h2>
                         </div>
                         <!-- body cart items -->
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                            <div class="card-body p-0 border-top">
+                          
                               <div class="osahan-cart">
+                              <?php foreach($arrayCarrito as $filas => $value)
+                            { 
+                              if(isset($value['Producto']))
+                              {
+                               ?>
                                  <div class="cart-items bg-white position-relative border-bottom">
-                                    <a href="product_details.html" class="position-absolute">
-                                    <span class="badge badge-danger m-3">10%</span>
-                                    </a>
+                                   
                                     <div class="d-flex  align-items-center p-3">
                                        <a href="product_details.html"><img src="img/cart/g1.png" class="img-fluid"></a>
                                        <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                          <h5 class="mb-1">Bread</h5>
-                                          <p class="text-muted mb-2"><del class="text-success mr-1">$1.20kg</del> $0.98/kg</p>
+                                          <h5 class="mb-1"><?php if(isset($value['Producto'])) { echo $value['Producto']; } ?></h5>
                                           <div class="d-flex align-items-center">
-                                             <p class="total_price font-weight-bold m-0">$2.82</p>
+                                             <p class="total_price font-weight-bold m-0"><?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?></p>
                                              <form id='myform' class="cart-items-number d-flex ml-auto" method='POST' action='#'>
                                                 <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity' />
-                                                <input type='text' name='quantity' value='1' class='qty form-control' />
+                                                <input type='text' name='quantity' value=' <?php if(isset($value['Cantidad'])) {  echo $value['Cantidad']; } ?> ' class='qty form-control' />
                                                 <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity' />
                                              </form>
                                           </div>
                                        </a>
                                     </div>
                                  </div>
-                                 <div class="cart-items bg-white position-relative border-bottom">
-                                    <div class="d-flex  align-items-center p-3">
-                                       <a href="product_details.html"><img src="img/cart/g2.png" class="img-fluid"></a>
-                                       <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                          <h5 class="mb-1">Spinach</h5>
-                                          <p class="text-muted mb-2"><del class="text-success mr-1">$1.20kg</del> $0.98/kg</p>
-                                          <div class="d-flex align-items-center">
-                                             <p class="total_price font-weight-bold m-0">$3.82</p>
-                                             <form id='myform' class="cart-items-number d-flex ml-auto" method='POST' action='#'>
-                                                <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity' />
-                                                <input type='text' name='quantity' value='1' class='qty form-control' />
-                                                <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity' />
-                                             </form>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
-                                 <div class="cart-items bg-white position-relative border-bottom">
-                                    <div class="d-flex  align-items-center p-3">
-                                       <a href="product_details.html"><img src="img/cart/g3.png" class="img-fluid"></a>
-                                       <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                          <h5 class="mb-1">Chilli</h5>
-                                          <p class="text-muted mb-2"><del class="text-success mr-1">$1.20kg</del> $0.98/kg</p>
-                                          <div class="d-flex align-items-center">
-                                             <p class="total_price font-weight-bold m-0">$2.82</p>
-                                             <form id='myform' class="cart-items-number d-flex ml-auto" method='POST' action='#'>
-                                                <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity' />
-                                                <input type='text' name='quantity' value='1' class='qty form-control' />
-                                                <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity' />
-                                             </form>
-                                          </div>
-                                       </a>
-                                    </div>
-                                 </div>
+                               
+                                 <?php 
+
+                            }; 
+                            }
+                           ?>
+                                 
                                  <div>
                                     <a href="#" class="text-decoration-none btn btn-block p-3" type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
                                        <div class="rounded shadow bg-success d-flex align-items-center p-3 text-white">
                                           <div class="more">
-                                             <h6 class="m-0">Subtotal $8.52</h6>
-                                             <p class="small m-0">Proceed to checkout</p>
+                                             <h6 class="m-0"><?php echo 'SUB TOTAL $ CLP ' . $totalPago?> </h6>
+                                             <p class="small m-0">Procede al pago</p>
                                           </div>
                                           <div class="ml-auto"><i class="icofont-simple-right"></i></div>
                                        </div>
@@ -124,7 +113,7 @@ print_r($arrayCarrito);
                         <div class="card-header bg-white border-0 p-0" id="headingtwo">
                            <h2 class="mb-0">
                               <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0" type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
-                              <span class="c-number">2</span> Order Address <a href="#"  data-toggle="modal" data-target="#exampleModal" class="text-decoration-none text-success ml-auto"> <i class="icofont-plus-circle mr-1"></i>Add New Delivery Address</a>
+                              <span class="c-number">2</span> Direccion de envio <a href="#"  data-toggle="modal" data-target="#exampleModal" class="text-decoration-none text-success ml-auto"> <i class="icofont-plus-circle mr-1"></i>Agregar Dirección</a>
                               </button>
                            </h2>
                         </div>
@@ -152,261 +141,14 @@ print_r($arrayCarrito);
                                           </div>
                                        </label>
                                     </div>
-                                    <div class="custom-control col-lg-6 custom-radio position-relative border-custom-radio">
-                                       <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                       <label class="custom-control-label w-100" for="customRadioInline2">
-                                          <div>
-                                             <div class="p-3 rounded bg-white shadow-sm w-100">
-                                                <div class="d-flex align-items-center mb-2">
-                                                   <p class="mb-0 h6">Work</p>
-                                                   <p class="mb-0 badge badge-light ml-auto"><i class="icofont-check-circled"></i> Select</p>
-                                                </div>
-                                                <p class="small text-muted m-0">Model Town, Ludhiana</p>
-                                                <p class="small text-muted m-0">Punjab 141002, India</p>
-                                                <p class="pt-2 m-0 text-right"><span class="small"><a href="#"  data-toggle="modal" data-target="#exampleModal" class="text-decoration-none text-info">Edit</a></span></p>
-                                             </div>
-                                             <span class="btn btn-light border-top btn-lg btn-block">
-                                             Deliver Here
-                                             </span>
-                                          </div>
-                                       </label>
-                                    </div>
-                                    <a href="#" class="btn btn-success btn-lg btn-block mt-3" type="button" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">Continue</a>
+                                    
+                                    <a href="#" class="btn btn-success btn-lg btn-block mt-3" type="button" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">Continuar</a>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
-                     <!-- cart delivery -->
-                     <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
-                        <!-- delivery header -->
-                        <div class="card-header bg-white border-0 p-0" id="headingthree">
-                           <h2 class="mb-0">
-                              <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0" type="button" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">
-                              <span class="c-number">3</span> Delivery Time
-                              </button>
-                           </h2>
-                        </div>
-                        <!-- body delivery --> 
-                        <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordionExample">
-                           <div class="card-body p-0 border-top">
-                              <div class="osahan-order_address">
-                                 <div class="text-center mb-4 py-4">
-                                    <p class="display-2"><i class="icofont-ui-calendar text-success"></i></p>
-                                    <p class="mb-1">Your Current Slot:</p>
-                                    <h6 class="font-weight-bold text-dark">Tommorow, 6AM - 10AM</h6>
-                                 </div>
-                                 <div class="schedule">
-                                    <ul class="nav nav-tabs justify-content-center nav-fill" id="myTab" role="tablist">
-                                       <li class="nav-item" role="presentation">
-                                          <a class="nav-link active text-dark" id="mon-tab" data-toggle="tab" href="#mon" role="tab" aria-controls="mon"
-                                             aria-selected="true">
-                                             <p class="mb-0 font-weight-bold">MON</p>
-                                             <p class="mb-0">7 Sep</p>
-                                          </a>
-                                       </li>
-                                       <li class="nav-item" role="presentation">
-                                          <a class="nav-link text-dark" id="tue-tab" data-toggle="tab" href="#tue" role="tab" aria-controls="tue"
-                                             aria-selected="false">
-                                             <p class="mb-0 font-weight-bold">TUE</p>
-                                             <p class="mb-0">8 Sep</p>
-                                          </a>
-                                       </li>
-                                       <li class="nav-item" role="presentation">
-                                          <a class="nav-link text-dark" id="wed-tab" data-toggle="tab" href="#wed" role="tab" aria-controls="wed"
-                                             aria-selected="false">
-                                             <p class="mb-0 font-weight-bold">WED</p>
-                                             <p class="mb-0">9 Sep</p>
-                                          </a>
-                                       </li>
-                                       <li class="nav-item" role="presentation">
-                                          <a class="nav-link text-dark" id="thu-tab" data-toggle="tab" href="#thu" role="tab" aria-controls="thu"
-                                             aria-selected="false">
-                                             <p class="mb-0 font-weight-bold">THU</p>
-                                             <p class="mb-0">10 Sep</p>
-                                          </a>
-                                       </li>
-                                       <li class="nav-item" role="presentation">
-                                          <a class="nav-link text-dark" id="fri-tab" data-toggle="tab" href="#fri" role="tab" aria-controls="fri"
-                                             aria-selected="false">
-                                             <p class="mb-0 font-weight-bold">FRI</p>
-                                             <p class="mb-0">11 Sep</p>
-                                          </a>
-                                       </li>
-                                       <li class="nav-item" role="presentation">
-                                          <a class="nav-link text-dark" id="sat-tab" data-toggle="tab" href="#sat" role="tab" aria-controls="sat"
-                                             aria-selected="false">
-                                             <p class="mb-0 font-weight-bold">SAT</p>
-                                             <p class="mb-0">12 Sep</p>
-                                          </a>
-                                       </li>
-                                    </ul>
-                                    <div class="tab-content filter bg-white" id="myTabContent">
-                                       <div class="tab-pane fade show active" id="mon" role="tabpanel" aria-labelledby="mon-tab">
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="mon1" value="mon1" checked>
-                                             <label class="custom-control-label py-3 w-100 px-3" for="mon1">
-                                             <i class="icofont-clock-time mr-2"></i> 6AM - 10AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="mon2" value="mon2">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="mon2">
-                                             <i class="icofont-clock-time mr-2"></i> 4PM - 6AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="mon3" value="mon3">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="mon3">
-                                             <i class="icofont-clock-time mr-2"></i> 6PM - 9PM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="mon4" value="mon4">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="mon4">
-                                             <i class="icofont-clock-time mr-2"></i> 10AM - 1PM
-                                             </label>
-                                          </div>
-                                       </div>
-                                       <div class="tab-pane fade" id="tue" role="tabpanel" aria-labelledby="tue-tab">
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="tue1" value="tue1" checked>
-                                             <label class="custom-control-label py-3 w-100 px-3" for="tue1">
-                                             <i class="icofont-clock-time mr-2"></i> 6AM - 10AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="tue2" value="tue2">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="tue2">
-                                             <i class="icofont-clock-time mr-2"></i> 4PM - 6AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="tue3" value="tue3">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="tue3">
-                                             <i class="icofont-clock-time mr-2"></i> 6PM - 9PM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="tue4" value="tue4">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="tue4">
-                                             <i class="icofont-clock-time mr-2"></i> 10AM - 1PM
-                                             </label>
-                                          </div>
-                                       </div>
-                                       <div class="tab-pane fade" id="wed" role="tabpanel" aria-labelledby="wed-tab">
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="wed1" value="wed1" checked>
-                                             <label class="custom-control-label py-3 w-100 px-3" for="wed1">
-                                             <i class="icofont-clock-time mr-2"></i> 6AM - 10AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="wed2" value="wed2">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="wed2">
-                                             <i class="icofont-clock-time mr-2"></i> 4PM - 6AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="wed3" value="wed3">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="wed3">
-                                             <i class="icofont-clock-time mr-2"></i> 6PM - 9PM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="wed4" value="wed4">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="wed4">
-                                             <i class="icofont-clock-time mr-2"></i> 10AM - 1PM
-                                             </label>
-                                          </div>
-                                       </div>
-                                       <div class="tab-pane fade" id="thu" role="tabpanel" aria-labelledby="thu-tab">
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="thu1" value="thu1" checked>
-                                             <label class="custom-control-label py-3 w-100 px-3" for="thu1">
-                                             <i class="icofont-clock-time mr-2"></i> 6AM - 10AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="thu2" value="thu2">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="thu2">
-                                             <i class="icofont-clock-time mr-2"></i> 4PM - 6AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="thu3" value="thu3">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="thu3">
-                                             <i class="icofont-clock-time mr-2"></i> 6PM - 9PM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="thu4" value="thu4">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="thu4">
-                                             <i class="icofont-clock-time mr-2"></i> 10AM - 1PM
-                                             </label>
-                                          </div>
-                                       </div>
-                                       <div class="tab-pane fade" id="fre" role="tabpanel" aria-labelledby="fre-tab">
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="fri1" value="fri1" checked>
-                                             <label class="custom-control-label py-3 w-100 px-3" for="fri1">
-                                             <i class="icofont-clock-time mr-2"></i> 6AM - 10AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="fri2" value="fri2">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="fri2">
-                                             <i class="icofont-clock-time mr-2"></i> 4PM - 6AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="fri3" value="fri3">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="fri3">
-                                             <i class="icofont-clock-time mr-2"></i> 6PM - 9PM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="fri4" value="fri4">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="fri4">
-                                             <i class="icofont-clock-time mr-2"></i> 10AM - 1PM
-                                             </label>
-                                          </div>
-                                       </div>
-                                       <div class="tab-pane fade" id="sat" role="tabpanel" aria-labelledby="sat-tab">
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="sat1" value="sat1" checked>
-                                             <label class="custom-control-label py-3 w-100 px-3" for="sat1">
-                                             <i class="icofont-clock-time mr-2"></i> 6AM - 10AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="sat2" value="sat2">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="sat2">
-                                             <i class="icofont-clock-time mr-2"></i> 4PM - 6AM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="sat3" value="sat3">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="sat3">
-                                             <i class="icofont-clock-time mr-2"></i> 6PM - 9PM
-                                             </label>
-                                          </div>
-                                          <div class="custom-control border-bottom px-0 custom-radio">
-                                             <input class="custom-control-input" type="radio" name="exampleRadios" id="sat4" value="sat4">
-                                             <label class="custom-control-label py-3 w-100 px-3" for="sat4">
-                                             <i class="icofont-clock-time mr-2"></i> 10AM - 1PM
-                                             </label>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="p-3">
-                                 <a href="#" class="btn btn-success btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="true" aria-controls="collapsefour">Schedule Order</a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                     
                      <!-- cart payment -->
                      <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
                         <!-- payment header -->
@@ -519,24 +261,22 @@ print_r($arrayCarrito);
                         <div class="d-flex align-items-center osahan-cart-item-profile border-bottom bg-white p-3">
                            <img alt="osahan" src="img/starter1.jpg" class="mr-3 rounded-circle img-fluid">
                            <div class="d-flex flex-column">
-                              <h6 class="mb-1 font-weight-bold">Osahan Fresh Store</h6>
-                              <p class="mb-0 small text-muted"><i class="feather-map-pin"></i> 2036 2ND AVE, NEW YORK, NY 10029</p>
+                              <h6 class="mb-1 font-weight-bold">TOPUVA</h6>
+                              <p class="mb-0 small text-muted"><i class="feather-map-pin"></i> Andres Bello 514, Puerto Varas</p>
                            </div>
                         </div>
                         <div>
                            <div class="bg-white p-3 clearfix">
-                              <p class="font-weight-bold small mb-2">Bill Details</p>
-                              <p class="mb-1">Item Total <span class="small text-muted">(3 item)</span> <span class="float-right text-dark">$3140</span></p>
-                              <p class="mb-1">Store Charges <span class="float-right text-dark">$62.8</span></p>
-                              <p class="mb-3">Delivery Fee <span  data-toggle="tooltip" data-placement="top" title="Delivery partner fee - $3" class="text-info ml-1"><i class="icofont-info-circle"></i></span><span class="float-right text-dark">$10</span></p>
-                              <h6 class="mb-0 text-success">Total Discount<span class="float-right text-success">$1884</span></h6>
+                              <p class="mb-1">Total Productos <span class="small text-muted"><?php  echo '(' . $totalProductos . ')' ?> </span> <span class="float-right text-dark"><?php echo '$ CLP ' . $totalPago  ?></span></p>
+                              <p class="mb-3">Costo Envio <span  data-toggle="tooltip" data-placement="top"  class="text-info ml-1"><i class="icofont-info-circle"></i></span><span class="float-right text-dark">$10</span></p>
+                              
                            </div>
                            <div class="p-3 border-top">
-                              <h5 class="mb-0">TO PAY  <span class="float-right text-danger">$1329</span></h5>
+                              <h5 class="mb-0">PAGO  <span class="float-right text-danger"><?php echo $totalPago  ?></span></h5>
                            </div>
                         </div>
                      </div>
-                     <p class="text-success text-center">Your Total Savings on this order $8.52</p>
+                     
                   </div>
                </div>
             </div>

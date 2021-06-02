@@ -24,9 +24,9 @@ function Carrito_class() {
       var producto= item.querySelector('.textoProducto').innerHTML;
       var cantidad= item.querySelector('.cantidadProducto').innerHTML;
       var vCarrito = {
-        Precio: precio,
+        Precio: Number(oCarrito.quitarCaractererNoNumericos(precio)),
         Producto: producto,
-        Cantidad: cantidad
+        Cantidad: Number(oCarrito.quitarCaractererNoNumericos(cantidad))
       };
       arrayCarrito[iRecorre]= vCarrito;
       arrayCarrito["precio"] = precio;

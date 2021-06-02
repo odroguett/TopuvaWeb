@@ -77,16 +77,16 @@ function Carrito_class() {
       ' <div class="row"> ' +
       ' <div class="col-6"> ' +
       ' <div class="row"> ' +
-      ' <h6 class="textoProducto">  ' + texto + ' </h6> ' +
+      ' <h6 class="textoProducto font-weight-light text-dark">  ' + texto + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class="price_modal m-0 text-success"> Precio: ' + precio + '</h6> ' +
+      ' <h6 class="price_modal m-0 font-weight-light text-danger"> Precio: ' + precio + '</h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 text-success"> Cantidad: ' + cantidad + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-danger"> Cantidad: ' + cantidad + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 text-success">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-danger">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
       ' </div> ' +
       ' </div> ' +
       ' <div class="col-6"> ' +
@@ -215,6 +215,9 @@ $(document).ready(function () {
   });
 
 
+  
+
+
   $("#btnLimpiarCompra").click(function () {
 
     localStorage.clear();
@@ -282,7 +285,53 @@ $(document).ready(function () {
 
   });
 
+  $("#btnAgregarDireccion").click(function () {
 
+    $.ajax({
+      type: "POST",
+      url: '/TopuvaWeb/_incorporaDireccion.php',
+     // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
+      //contentType: "application/json; charset=utf-8",
+      //dataType: "json",
+      success: function (data) {
+        if (data)
+        {
+
+          $('#mContent').html(data);
+          $('#modalDireccion').modal('show');
+          
+        }
+      }
+  });
+   
+
+  
+
+
+   
+
+  });
+
+
+  $("#btnContinuarPago").click(function () {
+
+    $.ajax({
+      type: "POST",
+      url: '/TopuvaWeb/_datosPago.php',
+     // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
+      //contentType: "application/json; charset=utf-8",
+      //dataType: "json",
+      success: function (data) {
+        if (data)
+        {
+
+          $('#mContent').html(data);
+          $('#modalDireccion').modal('show');
+          
+        }
+      }
+  });
+});
 
   // Quantity JS
 $('.qtyplus').click(function(){

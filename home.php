@@ -30,13 +30,13 @@ include("includes/BD/catalogoBD.php");
 
 
 <div class="container">
-<br/>
-<br/>
+   <br />
+   <br />
    <div class="row">
 
 
       <div class="col-lg-12 p-4 bg-white rounded shadow-sm">
-         <h4 class="mb-4 profile-title">Nuestra Tienda</h4>
+      <h5 style="text-align: left;" class="text-secondary">Importante</h5>
          <div id="terms_conditions">
             <p class="text-muted">
             </p>
@@ -44,7 +44,24 @@ include("includes/BD/catalogoBD.php");
 
       </div>
    </div>
+</div>
+<div class="container">
+   <br />
+   <br />
+<div class="row">
 
+
+   <div class="col-lg-12 p-4 bg-white rounded shadow-sm">
+   <h5 style="text-align: left;" class="text-secondary">Nuestra Tienda</h5>
+      <div id="terms_conditions">
+         <p class="text-muted">
+         </p>
+      </div>
+
+   </div>
+</div>
+
+</div>
 </div>
 
 

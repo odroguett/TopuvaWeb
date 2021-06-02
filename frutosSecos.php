@@ -30,7 +30,7 @@ include("includes/BD/catalogoBD.php");
 </div>
 <!-- pick today -->
 <div class="d-flex align-items-center mb-3">
-      <h4>Frutos Secos</h4>
+<h3 style="text-align: left;" class="text-dark ">Frutos Secos</h5>
 </div>
 <div class="pick_today">
 
@@ -50,9 +50,9 @@ include("includes/BD/catalogoBD.php");
                   
                   <div class="p-3 claseTexto" >
                      <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                     <h6 class="textoProducto"><?php echo $value['DESCRIPCION'] . ' ' . $value['tamano_unidad']   . '/' .  $value['codigo_unidad']    ?></h6>
+                     <h6 class="textoProducto font-weight-light text-dark"><?php echo $value['DESCRIPCION'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?></h6>
                      <div class="d-flex align-items-center precio">
-                        <h6 class="price m-0 text-success"><?php echo  ' $'  . $value['precio_venta']    ?></h6>
+                        <h6 class="price m-0 font-weight-light text-danger"><?php echo  ' $'  . $value['precio_venta']    ?></h6>
                         <a data-toggle="collapse" href="#collapseExample2" role="button"
                            aria-expanded="false" aria-controls="collapseExample2"
                            class="btn btn-success btn-sm ml-auto">+</a>
@@ -76,7 +76,7 @@ include("includes/BD/catalogoBD.php");
                         </div>
                      </div>
                      <div class="input-group-prepend">
-                        <div class="btn btn-success rounded-right btn-valor"><i class="icofont-shopping-cart"></i></div>
+                        <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i></div>
                         </div>
                   </div>
                   

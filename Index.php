@@ -10,7 +10,7 @@ include("includes/BD/catalogoBD.php");
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta name="description" content="">
    <meta name="author" content="">
-   <link rel="icon" type="image/png" href="img/logo.png">
+   <!--<link rel="icon" type="image/png" href="img/logo.png"> -->
    <title>TOPUVA - Tostaduria Puerto Varas</title>
    <!-- Slick Slider -->
    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
@@ -64,7 +64,7 @@ include("includes/BD/catalogoBD.php");
    <div class="border-bottom p-3 d-none mobile-nav">
       <div class="title d-flex align-items-center">
          <a href="home.html" class="text-decoration-none text-dark d-flex align-items-center">
-            <img class="osahan-logo mr-2" src="img/logo.png">
+           <!-- <img class="osahan-logo mr-2" src="img/logo.png"> -->
             <h4 class="font-weight-bold text-success m-0">TOPUVA</h4>
          </a>
          <p class="ml-auto m-0">
@@ -122,7 +122,7 @@ include("includes/BD/catalogoBD.php");
                <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
                   placeholder="Buscar Productos">
                <div class="input-group-prepend">
-                  <div class="btn btn-success rounded-right"><i class="icofont-search"></i></div>
+                  <div class="btn btn-primary rounded-right"><i class="icofont-search"></i></div>
                </div>
             </div>
          </div>
@@ -169,10 +169,6 @@ include("includes/BD/catalogoBD.php");
                      <a class="dropdown-item" id="ddlNovedades">Novedades</a>
                   </div>
                </li>
-               <li class="nav-item active">
-                  <a class="nav-link text-white pl-0" href="/TopuvaWeb/index.php">PYME <span
-                        class="sr-only">(current)</span></a>
-               </li>
                <a href="/TopuvaWeb/contacto.php" class="text-white  btn  btn-sm">Contacto</a>
 
 
@@ -204,8 +200,8 @@ include("includes/BD/catalogoBD.php");
             
             <div class="py-3 osahan-promos">
                <div class="d-flex align-items-center mb-3">
-                  <h5 class="m-0">Productos Destacados</h5>
-                  <a href="#" id="verMas" class="ml-auto btn btn-outline-success btn-sm">Ver Mas</a>
+                  <h3 style="text-align: center;" class="text-secondary"  ></h5>
+                  <a href="#" id="verMas" class="ml-auto btn   btn-sm">Ver Mas</a>
                </div>
 
 
@@ -250,12 +246,12 @@ include("includes/BD/catalogoBD.php");
                                        <div class="input-group">
                                           <input type="text" placeholder="Email" class="form-control" name="">
                                           <span class="input-group-append">
-                                             <button type="submit" class="btn btn-success"> Suscribete</button>
+                                             <button type="submit" class="btn  btn-primary"> Suscribete</button>
                                           </span>
                                        </div>
                                     </div>
                                     <div class=" col-lg-6">
-                                       <p class="text-sm-left">Siguenos en: </p>
+                                       <p class="text-sm-left text-info">Siguenos en: </p>
                                        <a href="#" class="btn btn-icon btn-light"><i class="icofont-facebook"></i></a>
                                        <a href="#" class="btn btn-icon btn-light"><i class="icofont-twitter"></i></a>
                                        <a href="#" class="btn btn-icon btn-light"><i class="icofont-instagram"></i></a>
@@ -273,10 +269,10 @@ include("includes/BD/catalogoBD.php");
                            <div class=" col-lg-12 p-4 bg-white rounded shadow-sm">
                               <div class="row">
                                  <div class=" col-lg-6">
-                                    <h5>Contactanos</h5>
+                                 <h5 style="text-align: left;" class="text-secondary"  >Contactanos</h5>
                                     <ul>
-                                       <li>topuva@gmail.com</li>
-                                       <li>+569999999</li>
+                                       <li class=" text-info">topuva@gmail.com</li>
+                                       <li class="text-info">+569999999</li>
                                     </ul>
                                  </div>
 
@@ -528,7 +524,7 @@ include("includes/BD/catalogoBD.php");
       <div class="modal-dialog" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title">TU CARRITO</h5>
+               <h5 style= "text-align: center;" class="text-secondary">TU CARRITO</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                </button>
@@ -537,9 +533,9 @@ include("includes/BD/catalogoBD.php");
 
             </div>
             <div class="modal-footer">
-               <h4 class=" text-success"> Total: </h4>
-               <h4 class="totalizador text-success"> </h4>
-               <button type="button" onclick="oCarrito.Comprar()" class="btn btn-success btn-lg btn-block">Comprar</button>
+               <h4  style= "text-align: left;" class=" text-secondary"> Total: </h4>
+               <h4 style= "text-align: left;" class="totalizador text-secondary"> </h4>
+               <button type="button" onclick="oCarrito.Comprar()" class="btn btn-primary  btn-block">Comprar</button>
 
             </div>
          </div>

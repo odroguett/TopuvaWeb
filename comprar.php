@@ -73,9 +73,9 @@ foreach($arrayCarrito as $filas => $value)
                                     <div class="d-flex  align-items-center p-3">
                                        <a href="product_details.html"><img src="img/cart/g1.png" class="img-fluid"></a>
                                        <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
-                                          <h5 class="mb-1"><?php if(isset($value['Producto'])) { echo $value['Producto']; } ?></h5>
+                                          <h6 class="font-weight-light text-dark"><?php if(isset($value['Producto'])) { echo $value['Producto']; } ?></h5>
                                           <div class="d-flex align-items-center">
-                                             <p class="total_price font-weight-bold m-0"><?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?></p>
+                                             <p class="total_price m-0 font-weight-light text-danger"><?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?></p>
                                              <form id='myform' class="cart-items-number d-flex ml-auto" method='POST' action='#'>
                                                 <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity' />
                                                 <input type='text' name='quantity' value=' <?php if(isset($value['Cantidad'])) {  echo $value['Cantidad']; } ?> ' class='qty form-control' />
@@ -112,8 +112,8 @@ foreach($arrayCarrito as $filas => $value)
                         <!-- address header -->
                         <div class="card-header bg-white border-0 p-0" id="headingtwo">
                            <h2 class="mb-0">
-                              <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0" type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
-                              <span class="c-number">2</span> Direccion de envio <a href="#"  data-toggle="modal" data-target="#exampleModal" class="text-decoration-none text-success ml-auto"> <i class="icofont-plus-circle mr-1"></i>Agregar Dirección</a>
+                              <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0" id="btnAgregarDireccion" type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                              <span class="c-number">2</span> Direccion de envio <a href="#"  data-toggle="modal" data-target="#modalDireccion" class="text-decoration-none text-success ml-auto"> <i class="icofont-plus-circle mr-1"></i>Agregar Dirección</a>
                               </button>
                            </h2>
                         </div>
@@ -142,114 +142,9 @@ foreach($arrayCarrito as $filas => $value)
                                        </label>
                                     </div>
                                     
-                                    <a href="#" class="btn btn-success btn-lg btn-block mt-3" type="button" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">Continuar</a>
+                                    <a href="#" id="btnContinuarPago" class="btn btn-success  btn-block" type="button" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">Continuar Pago</a>
                                  </div>
                               </div>
-                           </div>
-                        </div>
-                     </div>
-                     
-                     <!-- cart payment -->
-                     <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
-                        <!-- payment header -->
-                        <div class="card-header bg-white border-0 p-0" id="headingfour">
-                           <h2 class="mb-0">
-                              <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0" type="button" data-toggle="collapse" data-target="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
-                              <span class="c-number">4</span> Payment
-                              </button>
-                           </h2>
-                        </div>
-                        <!-- body payment -->
-                        <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionExample">
-                           <div class="card-body px-3 pb-3 pt-1 border-top">
-                              <div class="schedule">
-                                 <ul class="nav nav-tabs justify-content-center nav-fill" id="myTab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                       <a class="nav-link active text-dark" id="credit-tab" data-toggle="tab" href="#credit" role="tab" aria-controls="credit"
-                                          aria-selected="true">
-                                          <p class="mb-0 font-weight-bold"><i class="icofont-credit-card mr-2"></i> Credit/Debit Card</p>
-                                       </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                       <a class="nav-link text-dark" id="banking-tab" data-toggle="tab" href="#banking" role="tab" aria-controls="banking"
-                                          aria-selected="false">
-                                          <p class="mb-0 font-weight-bold"><i class="icofont-globe mr-2"></i> Net Banking</p>
-                                       </a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                       <a class="nav-link text-dark" id="cash-tab" data-toggle="tab" href="#cash" role="tab" aria-controls="cash"
-                                          aria-selected="false">
-                                          <p class="mb-0 font-weight-bold"><i class="icofont-dollar mr-2"></i> Cash on Delivery</p>
-                                       </a>
-                                    </li>
-                                 </ul>
-                                 <div class="tab-content bg-white" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="credit" role="tabpanel" aria-labelledby="credit-tab">
-                                       <div class="osahan-card-body pt-3">
-                                          <h6 class="m-0">Add new card</h6>
-                                          <p class="small">WE ACCEPT <span class="osahan-card ml-2 font-weight-bold">( Master Card / Visa Card / Rupay )</span></p>
-                                          <form>
-                                             <div class="form-row">
-                                                <div class="col-md-12 form-group">
-                                                   <label class="form-label font-weight-bold small">Card number</label>
-                                                   <div class="input-group">
-                                                      <input placeholder="Card number" type="number" class="form-control">
-                                                      <div class="input-group-append"><button id="button-addon2" type="button" class="btn btn-outline-secondary"><i class="icofont-credit-card"></i></button></div>
-                                                   </div>
-                                                </div>
-                                                <div class="col-md-8 form-group"><label class="form-label font-weight-bold small">Valid through(MM/YY)</label><input placeholder="Enter Valid through(MM/YY)" type="number" class="form-control"></div>
-                                                <div class="col-md-4 form-group"><label class="form-label font-weight-bold small">CVV</label><input placeholder="Enter CVV Number" type="number" class="form-control"></div>
-                                                <div class="col-md-12 form-group"><label class="form-label font-weight-bold small">Name on card</label><input placeholder="Enter Card number" type="text" class="form-control"></div>
-                                                <div class="col-md-12 form-group">
-                                                   <div class="custom-control custom-checkbox">
-                                                      <input type="checkbox" id="custom-checkbox1" class="custom-control-input">
-                                                      <label title="" type="checkbox" for="custom-checkbox1" class="custom-control-label small pt-1">Securely save this card for a faster checkout next time.</label>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                          </form>
-                                       </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="banking" role="tabpanel" aria-labelledby="banking-tab">
-                                       <div class="osahan-card-body pt-3">
-                                          <form>
-                                             <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                                                <label class="btn btn-outline-secondary active">
-                                                <input type="radio" name="options" id="option1" checked=""> HDFC
-                                                </label>
-                                                <label class="btn btn-outline-secondary">
-                                                <input type="radio" name="options" id="option2"> ICICI
-                                                </label>
-                                                <label class="btn btn-outline-secondary">
-                                                <input type="radio" name="options" id="option3"> AXIS
-                                                </label>
-                                             </div>
-                                             <div class="form-row pt-3">
-                                                <div class="col-md-12 form-group">
-                                                   <label class="form-label small font-weight-bold">Select Bank</label><br>
-                                                   <select class="custom-select form-control">
-                                                      <option>Bank</option>
-                                                      <option>KOTAK</option>
-                                                      <option>SBI</option>
-                                                      <option>UCO</option>
-                                                   </select>
-                                                </div>
-                                             </div>
-                                          </form>
-                                       </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="cash" role="tabpanel" aria-labelledby="cash-tab">
-                                       <div class="custom-control custom-checkbox pt-3">
-                                          <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-                                          <label class="custom-control-label" for="customControlAutosizing">
-                                             <b>Cash</b><br>
-                                             <p class="small text-muted m-0">Please keep exact change handy to help us serve you better</p>
-                                          </label>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <a href="checkout.html" class="btn btn-success btn-lg btn-block mt-3" type="button">Continue</a>
                            </div>
                         </div>
                      </div>
@@ -283,56 +178,15 @@ foreach($arrayCarrito as $filas => $value)
          </div>
       </section>
       <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modalDireccion" tabindex="-1" role="dialog" aria-labelledby="modalDireccion" aria-hidden="true">
          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Delivery Address</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
-               </div>
-               <div class="modal-body">
-                  <form class="">
-                     <div class="form-row">
-                        <div class="col-md-12 form-group">
-                           <label class="form-label">Delivery Area</label>
-                           <div class="input-group">
-                              <input placeholder="Delivery Area" type="text" class="form-control">
-                              <div class="input-group-append"><button id="button-addon2" type="button" class="btn btn-outline-secondary"><i class="icofont-pin"></i></button></div>
-                           </div>
-                        </div>
-                        <div class="col-md-12 form-group"><label class="form-label">Complete Address</label><input placeholder="Complete Address e.g. house number, street name, landmark" type="text" class="form-control"></div>
-                        <div class="col-md-12 form-group"><label class="form-label">Delivery Instructions</label><input placeholder="Delivery Instructions e.g. Opposite Gold Souk Mall" type="text" class="form-control"></div>
-                        <div class="mb-0 col-md-12 form-group">
-                           <label class="form-label">Nickname</label>
-                           <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                              <label class="btn btn-outline-secondary active">
-                              <input type="radio" name="options" id="option1" checked> Home
-                              </label>
-                              <label class="btn btn-outline-secondary">
-                              <input type="radio" name="options" id="option2"> Work
-                              </label>
-                              <label class="btn btn-outline-secondary">
-                              <input type="radio" name="options" id="option3"> Other
-                              </label>
-                           </div>
-                        </div>
-                     </div>
-                  </form>
-               </div>
-               <div class="modal-footer p-0 border-0">
-                  <div class="col-6 m-0 p-0">                 
-                     <button type="button" class="btn border-top btn-lg btn-block" data-dismiss="modal">Close</button>
-                  </div>
-                  <div class="col-6 m-0 p-0">     
-                     <button type="button" class="btn btn-success btn-lg btn-block">Save changes</button>
-                  </div>
-               </div>
+            <div class="modal-content" id="mContent">
+              
+               
             </div>
          </div>
       </div>
-      </div>
+      
      
      
       <?php include("includes/footer.php")  ?>

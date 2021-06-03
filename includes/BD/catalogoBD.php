@@ -21,7 +21,7 @@ function obtieneCategorias()
 
 function obtieneProductosDestacados()
 {
-  $sSql="SELECT * FROM PRODUCTOS WHERE DESTACADO=1";
+  $sSql="SELECT * FROM VENTA_PRODUCTOS WHERE DESTACADO=1";
   $lista= $this->ejecutarConsulta($sSql);
   return $lista;
 
@@ -29,23 +29,24 @@ function obtieneProductosDestacados()
 
 function obtienePrecioProductos($sCategoria)
 {
-  $sSql='select  
-           u.codigo_unidad,
-           u.descripcion_unidad,
-           u.tamano_unidad,
-           p.DESCRIPCION,
-           pp.precio_venta
-        from unidades_productos up, 
-           unidades u,
-           productos p,
-           precio_producto pp,
-           categorias c	
-        where 
-           up.ID_PRODUCTO =p.ID_PRODUCTO and 
-           up.id_unidad = u.id_unidad and
-           up.id_producto_unidad = pp.id_producto_unidad and
-           p.id_categoria =  c.id_categoria and c.id_categoria = '. $sCategoria .'
-           ORDER BY up.ID_PRODUCTO_UNIDAD;'; 
+
+$sSql ='select  u.codigo_unidad,
+                u.descripcion_unidad,
+                u.tamano as tamano_unidad,
+                p.descripcion,
+                vp.precio_venta
+        from 
+                unidades u, 
+                productos p,
+                venta_productos vp,
+                categorias c
+        where     
+                vp.ID_PRODUCTO =p.ID_PRODUCTO and 
+                vp.id_unidad = u.id_unidad and
+                p.id_categoria =  c.id_categoria and c.id_categoria = "'.  $sCategoria  .'"
+                order by VP.ID_PRODUCTO';
+
+  
   $lista= $this->ejecutarConsulta($sSql);
   return $lista;
 

@@ -38,7 +38,7 @@ include("includes/BD/catalogoBD.php");
 
    <?php 
            $oCatalogo= new catalogoBD();
-           $Listafilas=$oCatalogo->obtienePrecioProductos('2');
+           $Listafilas=$oCatalogo->obtienePrecioProductos('FS');
            foreach($Listafilas as $filas => $value)
            {
         ?>
@@ -46,11 +46,11 @@ include("includes/BD/catalogoBD.php");
       <div class="col-6 col-md-3 mb-3">
          <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
             <div class="list-card-image">
-               <a onclick="oCarrito.LinkProducto('<?php echo $value['DESCRIPCION']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" href="#" class="text-dark">
+               <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" href="#" class="text-dark">
                   
                   <div class="p-3 claseTexto" >
                      <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                     <h6 class="textoProducto font-weight-light text-dark"><?php echo $value['DESCRIPCION'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?></h6>
+                     <h6 class="textoProducto font-weight-light text-dark"><?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?></h6>
                      <div class="d-flex align-items-center precio">
                         <h6 class="price m-0 font-weight-light text-danger"><?php echo  ' $'  . $value['precio_venta']    ?></h6>
                         <a data-toggle="collapse" href="#collapseExample2" role="button"

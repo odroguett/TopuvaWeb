@@ -213,7 +213,7 @@ include("includes/BD/catalogoBD.php");
     {
    ?>
                   <div class="osahan-slider-item mx-2">
-                     <a href="promo1.php"><img src=" <?php echo $value['NOMBRE_IMAGEN']?>  "
+                     <a href="promo1.php"><img src=" <?php echo $value['IMAGEN']?>  "
                            class="img-fluid mx-auto rounded" alt="Responsive image"></a>
                   </div>
                   <?php 

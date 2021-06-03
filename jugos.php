@@ -30,7 +30,7 @@ include("includes/BD/catalogoBD.php");
 </div>
 <!-- pick today -->
 <div class="d-flex align-items-center mb-3">
-<h3 style="text-align: left;" class="text-dark ">Especias y Condimentos</h5>
+<h3 style="text-align: left;" class="text-dark ">Jugos Naturales</h5>
 </div>
 <div class="pick_today">
 
@@ -38,7 +38,7 @@ include("includes/BD/catalogoBD.php");
 
    <?php 
            $oCatalogo= new catalogoBD();
-           $Listafilas=$oCatalogo->obtienePrecioProductos('EC');
+           $Listafilas=$oCatalogo->obtienePrecioProductos('JU');
            foreach($Listafilas as $filas => $value)
            {
         ?>

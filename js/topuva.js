@@ -286,6 +286,18 @@ $(document).ready(function () {
     $("#ContenedorPaginas").load('/TopuvaWeb/especias.php');
 
   });
+
+
+  $("#ddlJugos").click(function () {
+
+    $("#ContenedorPaginas").load('/TopuvaWeb/jugos.php');
+
+  });
+  $("#ddlHarinas").click(function () {
+
+    $("#ContenedorPaginas").load('/TopuvaWeb/harinas.php');
+
+  });
   $("#ddlNovedades").click(function () {
 
     $("#ContenedorPaginas").load('/TopuvaWeb/novedades.php');

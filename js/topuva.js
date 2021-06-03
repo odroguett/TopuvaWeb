@@ -9,12 +9,28 @@ function Carrito_class() {
     vCarrito.Cantidad=null;
   }
 
-  this.LinkProducto  = function(descripcion,precioVenta,tamanoUnidad,codigoUnidad)
+  this.LinkProducto  = function(descripcion,precioVenta,tamanoUnidad,codigoUnidad,cantidad)
   {
-    debugger;
     
+    cantidad =$('#cantidadProd').val();
 
-    $("#ContenedorPaginas").load('/TopuvaWeb/promo1.php');
+    $.ajax({
+      type: "POST",
+      url: '/TopuvaWeb/promo1.php',
+      data: { descripcion: descripcion,precioVenta:precioVenta,tamanoUnidad: tamanoUnidad,codigoUnidad:codigoUnidad,cantidad:cantidad },
+      //contentType: "application/json; charset=utf-8",
+      //dataType: "json",
+      success: function (data) {
+        if (data)
+        {
+
+          $("#ContenedorPaginas").html(data);
+          
+        }
+      }
+  });
+
+    
 
   }
 

@@ -88,7 +88,7 @@ include("includes/BD/catalogoBD.php");
             <form class="">
                 
                     <div class="col-md-12 form-group">
-                        <button type="button" class="btn btn-success btn-block">Guardar</button>
+                        <button type="button" class="btn btn-primary btn-block">Guardar</button>
                     </div>
                 
 

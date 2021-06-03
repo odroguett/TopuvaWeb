@@ -94,7 +94,7 @@ foreach($arrayCarrito as $filas => $value)
                                  
                                  <div>
                                     <a href="#" class="text-decoration-none btn btn-block p-3" type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
-                                       <div class="rounded shadow bg-success d-flex align-items-center p-3 text-white">
+                                       <div class="rounded shadow bg-info d-flex align-items-center p-3 text-white">
                                           <div class="more">
                                              <h6 class="m-0"><?php echo 'SUB TOTAL $ CLP ' . $totalPago?> </h6>
                                              <p class="small m-0">Procede al pago</p>
@@ -142,7 +142,7 @@ foreach($arrayCarrito as $filas => $value)
                                        </label>
                                     </div>
                                     
-                                    <a href="#" id="btnContinuarPago" class="btn btn-success  btn-block" type="button" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">Continuar Pago</a>
+                                    <a href="#" id="btnContinuarPago" class="btn btn-primary  btn-block" type="button" data-toggle="collapse" data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">Continuar Pago</a>
                                  </div>
                               </div>
                            </div>

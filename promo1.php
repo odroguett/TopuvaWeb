@@ -1,6 +1,14 @@
 <?php 
 include("includes/BD/catalogoBD.php");
+$sDescripcion = $_POST['descripcion']; 
+$vPrecioVenta =$_POST["precioVenta"];
+$tamanoUnidad =$_POST["tamanoUnidad"];
+$sCodigoUnidad =$_POST["codigoUnidad"];
+$cantidad =$_POST["cantidad"];
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,15 +48,15 @@ include("includes/BD/catalogoBD.php");
 
                </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 claseTexto">
 
-               <div class="p-4 bg-white rounded shadow-sm">
+               <div class="p-4 bg-white rounded shadow-sm ">
 
 
-                  <h3 tyle="text-align: left;" class="text-dark">Almendras</h3>
+                  <h3 tyle="text-align: left;" class="text-dark textoProducto"><?php echo $sDescripcion . ' ' . $tamanoUnidad .$sCodigoUnidad ?></h3>
 
                   <p class=" h5 font-weight-light text-dark m-0 d-flex align-items-center">
-                     Precio : <b class="h5 m-0 font-weight-light text-danger">$263.00</b>
+                     Precio Unidad (CLP)  : <b class="h5 m-0 font-weight-light text-danger price"><?php echo   $vPrecioVenta  ?></b>
                   </p>
                   </br>
 
@@ -56,12 +64,12 @@ include("includes/BD/catalogoBD.php");
                      <div class="col-3">
                         <form id="myform" class="cart-items-number d-flex" method="POST" action="#">
                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
-                           <input type="text" name="quantity" value="1" class="qty form-control">
+                           <input type="text" name="quantity" value='<?php echo $cantidad  ?>' class="qty form-control cantidad">
                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
                         </form>
                      </div>
                      <div class="col-9  align-items-right">
-                        <button type="button" class="btn btn-info rounded  btn-block  "> Agregar al
+                        <button type="button" class="btn btn-info rounded  btn-block btn-valor "> Agregar al
                            Carro</button>
                      </div>
                   </div>

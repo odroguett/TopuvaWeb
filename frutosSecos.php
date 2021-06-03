@@ -64,7 +64,7 @@ include("includes/BD/catalogoBD.php");
                                     action='#'>
                                     <input type='button' value='-'
                                        class='qtyminus btn btn-success btn-sm ' field='quantity' />
-                                    <input type='text' name='quantity ' value='1'
+                                    <input id="cantidadProd" type='text' name='quantity ' value='1'
                                        class='qty form-control cantidad ' />
                                     <input type='button' value='+'
                                        class='qtyplus btn btn-success btn-sm ' field='quantity' />

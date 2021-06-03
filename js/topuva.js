@@ -9,6 +9,15 @@ function Carrito_class() {
     vCarrito.Cantidad=null;
   }
 
+  this.LinkProducto  = function(descripcion,precioVenta,tamanoUnidad,codigoUnidad)
+  {
+    debugger;
+    
+
+    $("#ContenedorPaginas").load('/TopuvaWeb/promo1.php');
+
+  }
+
   this.Comprar = function()
   {
     $('#myModal2').modal('hide');
@@ -207,7 +216,8 @@ $(document).ready(function () {
 
 
   $(".btn-valor").click(function () {
-    debugger;  var preVar = $(this).closest('.claseTexto').find('.price').text()
+    debugger;  
+    var preVar = $(this).closest('.claseTexto').find('.price').text()
     var cantidad = $('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
     oCarrito.AgregarSeleccion(preVar, cantidad, texto);
@@ -284,6 +294,14 @@ $(document).ready(function () {
     $("#ContenedorPaginas").load('/TopuvaWeb/verMas.php');
 
   });
+
+  $("#href_Link").click(function(){
+
+    
+    $("#ContenedorPaginas").load('/TopuvaWeb/promo1.php');
+
+  }); 
+
 
   $("#btnAgregarDireccion").click(function () {
 

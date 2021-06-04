@@ -46,7 +46,7 @@ include("includes/BD/catalogoBD.php");
       <div class="col-6 col-md-3 mb-3">
          <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
             <div class="list-card-image">
-               <a onclick="oCarrito.LinkProducto()" href="#" class="text-dark">
+               <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" href="#" class="text-dark">
                   
                   <div class="p-3 claseTexto" >
                      <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
@@ -64,7 +64,7 @@ include("includes/BD/catalogoBD.php");
                                     action='#'>
                                     <input type='button' value='-'
                                        class='qtyminus btn btn-success btn-sm ' field='quantity' />
-                                    <input type='text' name='quantity ' value='1'
+                                    <input type='text' id="cantidadProd" name='quantity ' value='1'
                                        class='qty form-control cantidad ' />
                                     <input type='button' value='+'
                                        class='qtyplus btn btn-success btn-sm ' field='quantity' />

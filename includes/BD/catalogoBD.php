@@ -21,7 +21,23 @@ function obtieneCategorias()
 
 function obtieneProductosDestacados()
 {
-  $sSql="SELECT * FROM VENTA_PRODUCTOS WHERE DESTACADO=1";
+  $sSql='select 
+             u.codigo_unidad,
+             u.descripcion_unidad,
+             u.tamano as tamano_unidad,
+             p.descripcion,
+             vp.precio_venta,
+             vp.imagen
+        from 
+             unidades u, 
+             productos p,
+             venta_productos vp,
+             categorias c
+         where     
+             vp.ID_PRODUCTO =p.ID_PRODUCTO and 
+             vp.id_unidad = u.id_unidad and
+             p.id_categoria =  c.id_categoria and vp.destacado = 1
+             order by VP.ID_PRODUCTO';
   $lista= $this->ejecutarConsulta($sSql);
   return $lista;
 
@@ -51,6 +67,47 @@ $sSql ='select  u.codigo_unidad,
   return $lista;
 
 }
+
+function obtieneDisponibleProductos($sProducto)
+{
+
+$sSql ='select 
+            codigo_unidad , tamano
+        from 
+            unidades u, 
+            venta_productos vp,
+            productos p
+        where 
+            u.id_unidad = vp.id_unidad and
+            p.id_producto = vp.id_producto and
+            p.descripcion= "'.  $sProducto  .'" and  vp.stock > 0';
+  $lista= $this->ejecutarConsulta($sSql);
+  return $lista;
+
+}
+
+function obtieneProductosRelacionados($sProducto)
+{
+
+$sSql ='select  u.codigo_unidad,
+        u.descripcion_unidad,
+        u.tamano as tamano_unidad,
+        p.descripcion,
+        vp.precio_venta
+        from unidades u, 
+        productos p,
+        venta_productos vp,
+        categorias c
+        where     
+        vp.ID_PRODUCTO =p.ID_PRODUCTO and 
+        vp.id_unidad = u.id_unidad and
+        p.id_categoria =  c.id_categoria and p.descripcion="'.  $sProducto  .'"
+        order by vp.ID_PRODUCTO';
+  $lista= $this->ejecutarConsulta($sSql);
+  return $lista;
+
+}
+
 
 
 

@@ -13,6 +13,9 @@ include("includes/BD/catalogoBD.php");
    <!--<link rel="icon" type="image/png" href="img/logo.png"> -->
    <title>TOPUVA - Tostaduria Puerto Varas</title>
    <!-- Slick Slider -->
+
+
+   
    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
    <!-- Icofont Icon-->
@@ -199,10 +202,7 @@ include("includes/BD/catalogoBD.php");
          <div class="col-lg-12">
             
             <div class="py-3 osahan-promos">
-               <div class="d-flex align-items-center mb-3">
-                  <h3 style="text-align: center;" class="text-secondary"  ></h5>
-                  <a href="#" id="verMas" class="ml-auto btn   btn-sm">Ver Mas</a>
-               </div>
+               
 
 
                <div class="promo-slider pb-0 mb-0">
@@ -213,18 +213,23 @@ include("includes/BD/catalogoBD.php");
     {
    ?>
                   <div class="osahan-slider-item mx-2">
-                     <a href="promo1.php"><img src=" <?php echo $value['IMAGEN']?>  "
-                           class="img-fluid mx-auto rounded" alt="Responsive image"></a>
+                     <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>
+                     ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" 
+                     class="text-dark"><img src=" <?php echo $value['imagen']?>  "
+                        class="img-fluid mx-auto rounded" alt="Responsive image"></a>
                   </div>
+                  
                   <?php 
     }
    ?>
+   <input id="cantidadProd" type='text' name='quantity ' value='1' hidden />
                </div>
             </div>
          </div>
       </div>
 
       <div class="container">
+      
          <div class="row">
             <div class="col-lg-12">
                <!-- home page -->

@@ -13,6 +13,11 @@ function Carrito_class() {
   {
     
     cantidad =$('#cantidadProd').val();
+    if(cantidad==null)
+    {
+      cantidad = 1;
+
+    }
 
     $.ajax({
       type: "POST",

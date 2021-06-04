@@ -10,9 +10,7 @@ include("includes/BD/catalogoBD.php");
       <meta name="author" content="">
       <link rel="icon" type="image/png" href="img/logo.png">
       <title>Frutos Secos</title>
-      <!-- Slick Slider -->
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
+     
       <!-- Icofont Icon-->
       <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
       <!-- Bootstrap core CSS -->

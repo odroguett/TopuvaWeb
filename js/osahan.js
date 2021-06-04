@@ -12,7 +12,7 @@ Version: 1.0
 $('[data-toggle="tooltip"]').tooltip();
 
 // Categories Slider
-$('.categories-slider').slick({
+$('.categories-slider').not('.slick-initialized').slick({
   slidesToScroll: 3,
   slidesToShow: 8,
   arrows: true,
@@ -39,7 +39,7 @@ $('.categories-slider').slick({
 });
 
 // Categories Slider
-$('.promo-slider').slick({
+$('.promo-slider').not('.slick-initialized').slick({
   slidesToShow: 3,
   arrows: true,
   dots: true,
@@ -67,7 +67,7 @@ $('.promo-slider').slick({
 });
 
 // Osahan Slider
-$('.osahan-slider').slick({
+$('.osahan-slider').not('.slick-initialized').slick({
   centerMode: false,
   slidesToShow: 1,
   arrows: false,
@@ -75,7 +75,7 @@ $('.osahan-slider').slick({
 });
 
 // Recommend Slider
-$('.recommend-slider2').slick({
+$('.recommend-slider2').not('.slick-initialized').slick({
   infinite: true,
   speed: 300,
   slidesToShow: 1,
@@ -88,7 +88,7 @@ $('.recommend-slider2').slick({
 });
 
 // Recommend Slider
-$('.recommend-slider').slick({
+$('.recommend-slider').not('.slick-initialized').slick({
   infinite: true,
   speed: 300,
   slidesToShow: 1,
@@ -99,8 +99,7 @@ $('.recommend-slider').slick({
 });
 
 // Trending Slider
-$('.trending-slider').slick({
-  centerPadding: '30px',
+$('.trending-slider').not('.slick-initialized').slick({
   slidesToShow: 4,
   arrows: true,
   autoplay: true,

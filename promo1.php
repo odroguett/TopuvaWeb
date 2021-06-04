@@ -1,10 +1,20 @@
 <?php 
 include("includes/BD/catalogoBD.php");
+$oCatalogo= new catalogoBD();
 $sDescripcion = $_POST['descripcion']; 
 $vPrecioVenta =$_POST["precioVenta"];
 $tamanoUnidad =$_POST["tamanoUnidad"];
 $sCodigoUnidad =$_POST["codigoUnidad"];
 $cantidad =$_POST["cantidad"];
+
+
+$Listafilas=$oCatalogo->obtieneDisponibleProductos($sDescripcion);
+$sDiponible= ' ';
+foreach($Listafilas as $filas => $value)
+           {
+
+            $sDiponible = $sDiponible .  $value['tamano'] . ' ' . $value['codigo_unidad'] . ', ';
+           }
 
 
 ?>
@@ -53,10 +63,12 @@ $cantidad =$_POST["cantidad"];
                <div class="p-4 bg-white rounded shadow-sm ">
 
 
-                  <h3 tyle="text-align: left;" class="text-dark textoProducto"><?php echo $sDescripcion . ' ' . $tamanoUnidad .$sCodigoUnidad ?></h3>
+                  <h3 tyle="text-align: left;" class="text-dark textoProducto">
+                     <?php echo $sDescripcion . ' ' . $tamanoUnidad .$sCodigoUnidad ?></h3>
 
                   <p class=" h5 font-weight-light text-dark m-0 d-flex align-items-center">
-                     Precio Unidad (CLP)  : <b class="h5 m-0 font-weight-light text-danger price"><?php echo   $vPrecioVenta  ?></b>
+                     Precio Unidad (CLP) : <b
+                        class="h5 m-0 font-weight-light text-danger price"><?php echo ' ' .   $vPrecioVenta  ?></b>
                   </p>
                   </br>
 
@@ -64,7 +76,8 @@ $cantidad =$_POST["cantidad"];
                      <div class="col-3">
                         <form id="myform" class="cart-items-number d-flex" method="POST" action="#">
                            <input type="button" value="-" class="qtyminus btn btn-success btn-sm" field="quantity">
-                           <input type="text" name="quantity" value='<?php echo $cantidad  ?>' class="qty form-control cantidad">
+                           <input type="text" name="quantity" value='<?php echo $cantidad  ?>'
+                              class="qty form-control cantidad">
                            <input type="button" value="+" class="qtyplus btn btn-success btn-sm" field="quantity">
                         </form>
                      </div>
@@ -73,87 +86,100 @@ $cantidad =$_POST["cantidad"];
                            Carro</button>
                      </div>
                   </div>
+                  </br>
                   <div class="row">
-                     </br>
-                     </br>
-                     <div class="col-6 t">
+                     <div class="col-3">
                         <p class="h6 font-weight-light text-dark">Disponible en:</p>
-                        <p class="text-info m-0">1 kg, 2 kg, 5 kg</p>
+
                      </div>
                   </div>
-
-                  <div class="details">
-                     <div class="pt-3 bg-white">
-                        <p class="font-weight-light text-dark">Finas almendras naturales.........</p>
+                  <div class="row">
+                     <div class="col-9">
+                        <p class="text-info m-0"><?php echo $sDiponible ?></p>
                      </div>
-
                   </div>
                </div>
+
+               <div class="details">
+               <div class="pt-3 bg-white">
+                  <p class="font-weight-light text-dark">Finas almendras naturales.........</p>
+               </div>
+
             </div>
+
+
+
+            </div>
+
+
+
+           
          </div>
-         <h5 style="text-align: left;" class="text-dark">Productos Relacionados</h5>
-         <div class="pick_today">
+      </div>
+      </div>
+      <h5 style="text-align: left;" class="text-secondary">Otras Presentaciones</h5>
+      <div class="pick_today">
 
-            <div class="row">
+         <div class="row">
 
-               <?php 
+            <?php 
            $oCatalogo= new catalogoBD();
-           $Listafilas=$oCatalogo->obtienePrecioProductos('2');
+           $Listafilas=$oCatalogo->obtieneProductosRelacionados($sDescripcion);
            foreach($Listafilas as $filas => $value)
            {
         ?>
 
-               <div class="col-6 col-md-3 mb-3">
-                  <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                     <div class="list-card-image">
-                        <a onclick="oCarrito.LinkProducto()" href="#" class="text-dark">
+            <div class="col-6 col-md-3 mb-3">
+               <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                  <div class="list-card-image">
+                    
 
-                           <div class="p-3 claseTexto">
-                              <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                              <h6 class="textoProducto font-weight-light text-dark">
-                                 <?php echo $value['DESCRIPCION'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
-                              </h6>
-                              <div class="d-flex align-items-center precio">
-                                 <h6 class="price m-0 font-weight-light text-danger">
-                                    <?php echo  ' $'  . $value['precio_venta']    ?></h6>
-                                 <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
-                                    aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
+                        <div class="p-3 claseTexto">
+                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                           <h6 class="textoProducto font-weight-light text-dark">
+                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                           </h6>
+                           <div class="d-flex align-items-center precio">
+                              <h6 class="price m-0 font-weight-light text-danger">
+                                 <?php echo  ' $'  . $value['precio_venta']    ?></h6>
+                              <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                                 aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
 
-                                 <div class="collapse qty_show" id="collapseExample2">
-                                    <div>
-                                       <span class="ml-auto" href="#">
-                                          <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                             <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
-                                                field='quantity' />
-                                             <input type='text' name='quantity ' value='1'
-                                                class='qty form-control cantidad ' />
-                                             <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
-                                                field='quantity' />
-                                          </form>
+                              <div class="collapse qty_show" id="collapseExample2">
+                                 <div>
+                                    <span class="ml-auto" href="#">
+                                       <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
+                                          <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
+                                             field='quantity' />
+                                          <input type='text' name='quantity ' value='1'
+                                             class='qty form-control cantidad ' />
+                                          <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
+                                             field='quantity' />
+                                       </form>
 
-                                       </span>
-                                    </div>
-
+                                    </span>
                                  </div>
-                              </div>
-                              <div class="input-group-prepend">
-                                 <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i>
-                                 </div>
+
                               </div>
                            </div>
+                           <div class="input-group-prepend">
+                              <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i>
+                              </div>
+                           </div>
+                        </div>
 
-                        </a>
+                     
 
 
-                     </div>
                   </div>
                </div>
-               <?php 
+            </div>
+            <?php 
                }
    
       ?>
-            </div>
          </div>
+      </div>
       </div>
    </section>
 

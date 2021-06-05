@@ -356,12 +356,25 @@ $(document).ready(function () {
   });
    
 
-  
-
-
-   
-
   });
+
+  $("#rdDespacho").click(function () {
+    $("#rdRetiro").prop("checked", false);
+   $('#classDespacho').removeAttr('hidden');
+   $('#classRetiro').attr('hidden',true);
+   $('#collapsetwo').collapse('show');
+   $('#collapseOne').collapse();
+});
+
+$("#rdRetiro").click(function () {
+    $("#rdDespacho").prop("checked", false);
+    $('#classRetiro').removeAttr('hidden');
+    $('#classDespacho').attr('hidden',true);
+    $('#collapsetwo').collapse('show');
+    $('#collapseOne').collapse();
+    
+    
+});
 
 
   $("#btnContinuarPago").click(function () {

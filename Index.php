@@ -222,7 +222,7 @@ include("includes/BD/catalogoBD.php");
                   <?php 
     }
    ?>
-   <input id="cantidadProd" type='text' name='quantity ' value='1' hidden />
+   
                </div>
             </div>
          </div>

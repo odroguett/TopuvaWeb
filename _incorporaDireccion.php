@@ -38,17 +38,17 @@ include("includes/BD/catalogoBD.php");
                 <form class="">
                     <div class="row form-group">
                         <div class="col-md-6">
-                            <input placeholder="Nombre" type="text" class="form-control">
+                            <input placeholder="Nombre" type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Apellidos" type="text" class="form-control">
+                            <input placeholder="Apellidos" type="text" class="form-control" required>
                         </div>
 
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Dirección" type="text" class="form-control">
+                            <input placeholder="Dirección" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
@@ -59,10 +59,10 @@ include("includes/BD/catalogoBD.php");
                     <div class="row form-group">
 
                         <div class="col-md-6">
-                            <input placeholder="Ciudad" type="text" class="form-control">
+                            <input placeholder="Ciudad" type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Comuna" type="text" class="form-control">
+                            <input placeholder="Comuna" type="text" class="form-control" required>
                         </div>
                     </div>
 
@@ -75,7 +75,13 @@ include("includes/BD/catalogoBD.php");
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Teléfono" type="text" class="form-control">
+                            <input placeholder="Teléfono" type="text" class="form-control" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <input placeholder="Email" type="email" class="form-control">
                         </div>
 
                     </div>

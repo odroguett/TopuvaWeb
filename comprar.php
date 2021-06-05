@@ -137,13 +137,13 @@ foreach($arrayCarrito as $filas => $value)
                            <div class="p-3 row">
                               <div class="col-md">
                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                    <input class="form-check-input" id="rdDespacho" type="radio" name="inlineRadioOptions"
                                        id="inlineRadio1" value="option1" checked>
                                     <label class="form-check-label" for="inlineRadio1">Despacho</label>
                                  </div>
                                  <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                       id="inlineRadio2" value="option2">
+                                    <input class="form-check-input" id="rdRetiro" type="radio" name="inlineRadioOptions"
+                                       id="inlineRadio2"  value="option2">
                                     <label class="form-check-label" for="inlineRadio2">Retiro</label>
                                  </div>
 
@@ -165,7 +165,7 @@ foreach($arrayCarrito as $filas => $value)
                                     <input type="radio" id="customRadioInline1" name="customRadioInline1"
                                        class="custom-control-input" checked>
                                     <label class="custom-control-label w-100" for="customRadioInline1">
-                                       <div>
+                                       <div id="classDespacho">
                                           <div class="p-3 bg-white rounded shadow-sm w-100">
                                              <div class="d-flex align-items-center mb-2">
                                                 <p class="mb-0 h6">Dirección</p>
@@ -176,6 +176,20 @@ foreach($arrayCarrito as $filas => $value)
                                              <p class="pt-2 m-0 text-right"><span class="small">
                                              <a href="#" id="btnAgregarDireccion" data-toggle="modal" data-target="#exampleModal"
                                                       class="text-decoration-none text-info">Agregar</a></span></p>
+                                          </div>
+                                         
+                                       </div>
+                                       <div hidden id="classRetiro">
+                                          <div class="p-4 bg-white rounded shadow-sm w-200">
+                                             <div class="d-flex align-items-center mb-2">
+                                                <p class="mb-0 h6 font-weight-bold"> Direcciones de Retiro</p>
+                                                
+                                             </div>
+                                             <p class="small text-info m-2 font-weight-bold">Comuna Ñuñoa</p>
+                                             <p class="small text-info m-2 "> Plaza Egaña/ Metro  Linea 4</p>
+                                             <p class="small text-info m-2 font-weight-bold">Comuna La Florida</p>
+                                             <p class="small text-info m-2 "> Rojas Magallanes/ Metro Linea 4</p>
+                                             
                                           </div>
                                          
                                        </div>

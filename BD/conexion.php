@@ -126,10 +126,10 @@ class Conexion
         $error = $this->conn->errorInfo();
  
         if ($error[0] === "00000") {
-            $result->execute();
-            return $result->rowCount() > 0;
+            return true;
         } else {
             throw new Exception($error[2]);
+            return false;
         }
     }
  

@@ -6,7 +6,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <link rel="icon" type="image/png" href="img/logo.png">
-      <title>Novedades</title>
+      <title>Productos Destacados</title>
       <!-- Slick Slider -->
       <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
       <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
@@ -27,7 +27,7 @@
                <div class="col-lg-12">
                   <div class="osahan-listing">
                      <div class="d-flex align-items-center mb-3">
-                        <h4>Novedades</h4>
+                        <h4>Productos Destacados</h4>
                      </div>
                      <div class="row">
                         <div class="col-6 col-md-3 mb-3">
@@ -364,7 +364,7 @@
       </section>
   
      
-      <?php include("includes/footer.php")  ?>
+      <?php include("../includes/footer.php")  ?>
  
    </body>
 </html>

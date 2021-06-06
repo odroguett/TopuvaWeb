@@ -1,5 +1,5 @@
 <?php 
-include("includes/BD/catalogoBD.php");
+include("../BD/catalogoBD.php");
 $oCatalogo= new catalogoBD();
 $sDescripcion = $_POST['descripcion']; 
 $vPrecioVenta =$_POST["precioVenta"];
@@ -186,7 +186,7 @@ foreach($Listafilas as $filas => $value)
    <!-- footer -->
 
 
-   <?php include("includes/footer.php")  ?>
+   <?php include("../includes/footer.php")  ?>
 
 </body>
 

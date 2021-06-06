@@ -23,7 +23,7 @@ function Carrito_class() {
 
     $.ajax({
       type: "POST",
-      url: '/TopuvaWeb/promo1.php',
+      url: '../TopuvaWeb/Vistas/promo1.php',
       data: { descripcion: descripcion,precioVenta:precioVenta,tamanoUnidad: tamanoUnidad,codigoUnidad:codigoUnidad,cantidad:cantidad },
       //contentType: "application/json; charset=utf-8",
       //dataType: "json",
@@ -38,8 +38,9 @@ function Carrito_class() {
   });
 }
 
-  this.IncorporaDespacho= function()
+  this.IncorporaDespacho= function(e)
   {
+    
     debugger;
   var nombre= $('#nombre').val();
   var apellido= $('#apellido').val();
@@ -52,12 +53,14 @@ function Carrito_class() {
   var email= $('#email').val();
   $.ajax({
     type: "POST",
-    url: '/TopuvaWeb/despacho.php',
+    url: '../TopuvaWeb/Negocio/despacho.php',
+    dataType: 'json',
     data: { nombre: nombre,apellido: apellido, direccion:direccion,departamento:departamento,ciudad:ciudad,comuna:comuna,region:region,telefono:telefono,email:email},
     success: function (data) {
       if (data)
       {
-
+        console.log(JSON.stringify(data));
+      alert(data.respuesta);
        
         
       }
@@ -102,7 +105,7 @@ function Carrito_class() {
 
     $.ajax({
       type: "POST",
-      url: '/TopuvaWeb/comprar.php',
+      url: '../TopuvaWeb/Vistas/comprar.php',
       data: { arrayCarrito: JSON.stringify(arrayCarrito) },
       //contentType: "application/json; charset=utf-8",
       //dataType: "json",
@@ -266,9 +269,10 @@ oCarrito = new Carrito_class();
 
 $(document).ready(function () {
 
-
-  $(".btn-valor").click(function () {
-    debugger;  
+ 
+  $(".btn-valor").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     var preVar = $(this).closest('.claseTexto').find('.price').text()
     var cantidad = $('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
@@ -280,7 +284,7 @@ $(document).ready(function () {
   
 
 
-  $("#btnLimpiarCompra").click(function () {
+  $("#btnLimpiarCompra").click(function (e) {
 
     localStorage.clear();
     $('#totalCompra').text("0");
@@ -288,90 +292,115 @@ $(document).ready(function () {
 
   });
 
-  $("#carrito").click(function () {
+  $("#carrito").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
    
     oCarrito.CargaCarrito();
   });
 
 
-  $("#ddlFrutosSecos").click(function () {
+  $("#ddlFrutosSecos").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
 
-    $("#ContenedorPaginas").load('/TopuvaWeb/frutosSecos.php');
-
-  });
-
-  $("#ddlSnackMix").click(function () {
-
-    $("#ContenedorPaginas").load('/TopuvaWeb/snackMix.php');
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/frutosSecos.php');
 
   });
 
-  $("#ddlFrutasDeshidratadas").click(function () {
+  $("#ddlSnackMix").click(function (e) {
 
-    $("#ContenedorPaginas").load('/TopuvaWeb/frutasDeshidratadas.php');
-
-  });
-
-  $("#ddlChocolates").click(function () {
-
-    $("#ContenedorPaginas").load('/TopuvaWeb/chocolates.php');
-
-  });
-  $("#ddlEspecias").click(function () {
-
-    $("#ContenedorPaginas").load('/TopuvaWeb/especias.php');
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/snackMix.php');
 
   });
 
+  $("#ddlFrutasDeshidratadas").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
 
-  $("#ddlJugos").click(function () {
-
-    $("#ContenedorPaginas").load('/TopuvaWeb/jugos.php');
-
-  });
-  $("#ddlHarinas").click(function () {
-
-    $("#ContenedorPaginas").load('/TopuvaWeb/harinas.php');
-
-  });
-  $("#ddlNovedades").click(function () {
-
-    $("#ContenedorPaginas").load('/TopuvaWeb/novedades.php');
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/frutasDeshidratadas.php');
 
   });
 
-  $("#ddlSemillas").click(function () {
+  $("#ddlChocolates").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
 
-    $("#ContenedorPaginas").load('/TopuvaWeb/semillas.php');
-    
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/chocolates.php');
+
+  });
+  $("#ddlEspecias").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/especias.php');
 
   });
 
-  $("#btnContacto").click(function () {
 
-    $("#ContenedorPaginas").load('/TopuvaWeb/contacto.php');
+  $("#ddlJugos").click(function (e) {
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/jugos.php');
+
+  });
+  $("#ddlHarinas").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/harinas.php');
+
+  });
+  $("#ddlNovedades").click(function (e) {
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/novedades.php');
 
   });
 
-  $("#verMas").click(function () {
+  $("#ddlSemillas").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/semillas.php');
 
-    $("#ContenedorPaginas").load('/TopuvaWeb/verMas.php');
 
   });
 
-  $("#href_Link").click(function(){
+  $("#btnContacto").click(function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
 
-    
-    $("#ContenedorPaginas").load('/TopuvaWeb/promo1.php');
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/contacto.php');
+
+  });
+
+  $("#verMas").click(function (e) {
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/verMas.php');
+
+  });
+
+  $("#href_Link").click(function(e){
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/promo1.php');
 
   }); 
 
 
-  $("#btnAgregarDireccion").click(function () {
-
+  $("#btnAgregarDireccion").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
     $.ajax({
       type: "POST",
-      url: '/TopuvaWeb/_incorporaDireccion.php',
+      url: '../TopuvaWeb/Vistas/_incorporaDireccion.php',
      // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
       //contentType: "application/json; charset=utf-8",
       //dataType: "json",
@@ -408,11 +437,13 @@ $("#rdRetiro").click(function () {
 });
 
 
-  $("#btnContinuarPago").click(function () {
+  $("#btnContinuarPago").click(function (e) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
 
     $.ajax({
       type: "POST",
-      url: '/TopuvaWeb/_datosPago.php',
+      url: '../TopuvaWeb/Vistas/_datosPago.php',
      // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
       //contentType: "application/json; charset=utf-8",
       //dataType: "json",
@@ -426,20 +457,24 @@ $("#rdRetiro").click(function () {
         }
       }
   });
+ 
 });
 
 
-$("#btnIngresar").click(function () {
-
+$("#btnIngresar").click(function (e) {
+  e.preventDefault();
+  e.stopImmediatePropagation();
 oCarrito.IncorporaDespacho();
 
 });
 
 
   // Quantity JS
-$('.qtyplus').click(function(){
-  debugger;
+$('.qtyplus').click(function(e){
   
+  e.preventDefault();
+  e.stopImmediatePropagation();
+
   fieldName = $(this).attr('field');
   // Get its current value
   //var currentVal = parseInt($('input[name='+fieldName+']').val());
@@ -455,9 +490,10 @@ $('.qtyplus').click(function(){
   }
 });
 // This button will decrement the value till 0
-$(".qtyminus").click(function() {
-debugger;
-  // Stop acting like a button1
+$(".qtyminus").click(function(e) {
+
+  e.preventDefault();
+  e.stopImmediatePropagation();
   
   // Get the field name
   fieldName = $(this).attr('field');

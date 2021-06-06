@@ -1,5 +1,5 @@
 <?php 
-include("includes/BD/catalogoBD.php");
+include("../BD/catalogoBD.php");
 $arrayCarrito = json_decode($_POST["arrayCarrito"],true); 
 $totalProductos=0;
 $totalPago=0;
@@ -253,7 +253,7 @@ foreach($arrayCarrito as $filas => $value)
 
 
 
-   <?php include("includes/footer.php")  ?>
+   <?php include("../includes/footer.php")  ?>
 
 </body>
 

@@ -1,5 +1,10 @@
 <?php 
-include("includes/BD/catalogoBD.php");
+include("BD/catalogoBD.php");
+
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -551,7 +556,7 @@ include("includes/BD/catalogoBD.php");
 
    <script>
       $(document).ready(function () {
-         $("#ContenedorPaginas").load('/TopuvaWeb/home.php');
+         $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
       });
    </script>
 </body>

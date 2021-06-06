@@ -1,5 +1,5 @@
 <?php 
-include("includes/BD/catalogoBD.php");
+include("../BD/catalogoBD.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +10,7 @@ include("includes/BD/catalogoBD.php");
       <meta name="author" content="">
       <link rel="icon" type="image/png" href="img/logo.png">
       <title>Frutos Secos</title>
-      <!-- Slick Slider -->
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
+     
       <!-- Icofont Icon-->
       <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
       <!-- Bootstrap core CSS -->
@@ -30,7 +28,7 @@ include("includes/BD/catalogoBD.php");
 </div>
 <!-- pick today -->
 <div class="d-flex align-items-center mb-3">
-<h3 style="text-align: left;" class="text-dark ">Snack y Mix</h5>
+<h3 style="text-align: left;" class="text-dark ">Frutos Secos</h5>
 </div>
 <div class="pick_today">
 
@@ -38,7 +36,7 @@ include("includes/BD/catalogoBD.php");
 
    <?php 
            $oCatalogo= new catalogoBD();
-           $Listafilas=$oCatalogo->obtienePrecioProductos('SM');
+           $Listafilas=$oCatalogo->obtienePrecioProductos('FS');
            foreach($Listafilas as $filas => $value)
            {
         ?>
@@ -64,7 +62,7 @@ include("includes/BD/catalogoBD.php");
                                     action='#'>
                                     <input type='button' value='-'
                                        class='qtyminus btn btn-success btn-sm ' field='quantity' />
-                                    <input type='text' id="cantidadProd" name='quantity ' value='1'
+                                    <input id="cantidadProd" type='text' name='quantity ' value='1'
                                        class='qty form-control cantidad ' />
                                     <input type='button' value='+'
                                        class='qtyplus btn btn-success btn-sm ' field='quantity' />
@@ -104,5 +102,5 @@ include("includes/BD/catalogoBD.php");
  
    </body>
 </html>
-<?php include("includes/footer.php")  ?>
+<?php include("../includes/footer.php")  ?>
 

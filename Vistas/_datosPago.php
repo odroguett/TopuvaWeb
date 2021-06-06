@@ -1,5 +1,5 @@
 <?php 
-include("includes/BD/catalogoBD.php");
+include("../BD/catalogoBD.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

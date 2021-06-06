@@ -6,7 +6,7 @@
       <meta name="description" content="">
       <meta name="author" content="">
       <link rel="icon" type="image/png" href="img/logo.png">
-      <title>Ver Mas</title>
+      <title>Novedades</title>
       <!-- Slick Slider -->
       <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
       <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
@@ -27,7 +27,7 @@
                <div class="col-lg-12">
                   <div class="osahan-listing">
                      <div class="d-flex align-items-center mb-3">
-                        <h4>Ver Mas</h4>
+                        <h4>Novedades</h4>
                      </div>
                      <div class="row">
                         <div class="col-6 col-md-3 mb-3">
@@ -344,7 +344,7 @@
                                  <span class="ml-auto" href="#">
                                  <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
                                  <input type='button' value='-' class='qtyminus btn btn-success btn-sm' field='quantity' />
-                                 <input type='text' name='quantity' value='1' class='qty form-control cantidad' />
+                                 <input type='text' name='quantity' value='1' class='qty form-control' />
                                  <input type='button' value='+' class='qtyplus btn btn-success btn-sm' field='quantity' />
                                  </form>   
                                  </span>
@@ -363,7 +363,8 @@
          </div>
       </section>
   
-      <?php include("includes/footer.php")  ?>
+     
+      <?php include("../includes/footer.php")  ?>
  
    </body>
 </html>

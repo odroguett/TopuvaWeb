@@ -1,5 +1,5 @@
 <?php 
-include("includes/BD/catalogoBD.php");
+include("../BD/catalogoBD.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,5 +104,5 @@ include("includes/BD/catalogoBD.php");
  
    </body>
 </html>
-<?php include("includes/footer.php")  ?>
+<?php include("../includes/footer.php")  ?>
 

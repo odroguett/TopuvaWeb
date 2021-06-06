@@ -35,75 +35,69 @@ include("includes/BD/catalogoBD.php");
         <!-- body -->
         <section class="py-4 osahan-main-body">
             <div class="title d-flex align-items-center py-3">
-                <form class="">
+                <form action="" method="" class="">
                     <div class="row form-group">
                         <div class="col-md-6">
-                            <input placeholder="Nombre" type="text" class="form-control" required>
+                            <input placeholder="Nombre" id="nombre" type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Apellidos" type="text" class="form-control" required>
+                            <input placeholder="Apellidos" id="apellido" type="text" class="form-control" required>
                         </div>
 
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Dirección" type="text" class="form-control" required>
+                            <input placeholder="Dirección" id="direccion" type="text" class="form-control" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Departamento" type="text" class="form-control">
+                            <input placeholder="Departamento" id="departamento" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row form-group">
 
                         <div class="col-md-6">
-                            <input placeholder="Ciudad" type="text" class="form-control" required>
+                            <input placeholder="Ciudad" id="ciudad" type="text" class="form-control" required>
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Comuna" type="text" class="form-control" required>
+                            <input placeholder="Comuna" id="comuna" type="text" class="form-control" required>
                         </div>
                     </div>
 
 
                     <div class="row form-group">
                         <div class="col-md-12 ">
-                            <input placeholder="Region" type="text" class="form-control">
+                            <input placeholder="Region" id="region" type="text" class="form-control">
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Teléfono" type="text" class="form-control" required>
+                            <input placeholder="Teléfono" id="telefono" type="text" class="form-control" required>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Email" type="email" class="form-control">
+                            <input placeholder="Email" id="email" type="email" class="form-control">
                         </div>
 
                     </div>
+                   
                 </form>
+                
             </div>
+            <div class="row form-group">
+                <div class="col-md-11">
+                        <button type="button" id="btnIngresar" class="btn btn-primary btn-block">Ingresar</button>
+                    </div>
+                    </div>
         </section>
     </body>
-</div>
-<div class="modal-footer p-0 border-0">
-            <form class="">
-                
-                    <div class="col-md-12 form-group">
-                        <button type="button" class="btn btn-primary btn-block">Guardar</button>
-                    </div>
-                
-
-
-            </form>
-
-    
-    
 </div>
 
 
 </html>
+<?php include("includes/footer.php")  ?>

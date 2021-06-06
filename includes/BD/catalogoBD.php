@@ -112,7 +112,7 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
 {
 
 $sSql ='Insert into despacho (ID_DESPACHO,NOMBRE,APELLIDOS,DIRECCION,DEPARTAMENTO,COMUNA,CIUDAD,REGION,COMENTARIOS,TELEFONO,EMAIL)
-       VALUES("'.$sNombre . '","' . $sApellidos .'","'.$sDireccion .'","'.$sDepartamento'".,"'.$sCiudad.'","'.$sComuna.'","'.$sRegion.'","'.$sTelefono.'","'.$sEmail.'") ';
+       VALUES("'.$sNombre.'","'.$sApellidos .'","'.$sDireccion.'","'.$sDepartamento.'","'.$sCiudad.'","'.$sComuna.'","'.$sRegion.'","'.$sTelefono.'","'.$sEmail.'") ';
        $oConexion = new Conexion();
        $oConexion->conectar();
        $oConexion->execBool($sSql);

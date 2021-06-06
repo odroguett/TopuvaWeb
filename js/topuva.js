@@ -1,5 +1,7 @@
 var contenido = null;
 
+
+
 function Carrito_class() {
 
   this.LimpiaCarrito = function()
@@ -34,9 +36,38 @@ function Carrito_class() {
         }
       }
   });
+}
 
+  this.IncorporaDespacho= function()
+  {
+    debugger;
+  var nombre= $('#nombre').val();
+  var apellido= $('#apellido').val();
+  var direccion= $('#direccion').val();
+  var departamento= $('#departamento').val();
+  var ciudad= $('#ciudad').val();
+  var comuna= $('#comuna').val();
+  var region= $('#region').val();
+  var telefono= $('#telefono').val();
+  var email= $('#email').val();
+  $.ajax({
+    type: "POST",
+    url: '/TopuvaWeb/despacho.php',
+    data: { nombre: nombre,apellido: apellido, direccion:direccion,departamento:departamento,ciudad:ciudad,comuna:comuna,region:region,telefono:telefono,email:email},
+    success: function (data) {
+      if (data)
+      {
+
+       
+        
+      }
+    }
+});
+
+
+
+  
     
-
   }
 
   this.Comprar = function()
@@ -397,6 +428,14 @@ $("#rdRetiro").click(function () {
   });
 });
 
+
+$("#btnIngresar").click(function () {
+
+oCarrito.IncorporaDespacho();
+
+});
+
+
   // Quantity JS
 $('.qtyplus').click(function(){
   debugger;
@@ -433,6 +472,5 @@ debugger;
       $(this).closest('.claseTexto').find('.cantidad').val(1);
   }
 });
-
 
 });

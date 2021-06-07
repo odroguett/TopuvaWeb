@@ -552,6 +552,34 @@ include("BD/catalogoBD.php");
       </div>
    </div>
 
+   <!-- Modal -->
+   <div class="modal fade" id="modalConfirmacion" tabindex="" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="" id="tituloConfirmacion"></h6>
+                </div>
+                <div id="mensajeConfirmacion" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button  id="btnConfirmacionOK" class="btn-primary" type="button">Aceptar </button>
+                              
+                           
+                        </div>
+                        <div class="col-lg-6">
+                            <button  id="btnConfirmacionCANCEL" class="btn-primary" type="button">Cancelar</button>
+                                
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
    <?php include("includes/footer.php")  ?>
    <script src="js/modalMensaje.js"></script>
    <script>

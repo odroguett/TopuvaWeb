@@ -68,6 +68,7 @@ function Carrito_class() {
       $('#comComuna').text( 'Comuna: ' + data.comuna);
       $('#comCiudad').text( 'Ciudad: ' + data.ciudad);
       $('#comRegion').text( 'Region: ' + data.region);
+      $('#comIdCliente').val(data.idDespacho);
       
       
        
@@ -368,6 +369,21 @@ this.ValidarDespacho = function()
 
 
 
+this.EliminarDatosDespacho = function(confirmacion)
+{
+
+  if(confirmacion)
+  {
+
+  let idDespacho=  $('#comIdCliente').val();
+alert(idDespacho);
+
+  }
+
+
+}
+
+
 }
 oCarrito = new Carrito_class();
 
@@ -546,6 +562,16 @@ $("#btnIngresar").click(function (e) {
 });
 
 
+$("#btnEliminarDespacho").click(function (e) {
+  debugger;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  oModal.confirmacion("Confirmación", "¿Desea Eliminar datos para despacho?", oCarrito.EliminarDatosDespacho);
+});
+
+
+
+
   // Quantity JS
 $('.qtyplus').click(function(e){
   
@@ -587,4 +613,5 @@ $(".qtyminus").click(function(e) {
 });
 
 });
+
 

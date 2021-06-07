@@ -21,7 +21,7 @@ if($oRespuesta->bEsValido)
 
     
     $mensaje= array('bEsValido' =>$oRespuesta->bEsValido, 'idcliente' => 0, 'respuesta' =>  $oRespuesta->sMensaje,'direccion' => $oRespuesta->sDireccion,'comuna'=>$oRespuesta->sComuna,
-                    'ciudad'=>$oRespuesta->sCiudad,'region'=>$oRespuesta->sRegion,'telefono'=>$oRespuesta->sTelefono);
+                    'ciudad'=>$oRespuesta->sCiudad,'region'=>$oRespuesta->sRegion,'telefono'=>$oRespuesta->sTelefono, 'idDespacho'=>$oRespuesta->idDespacho);
     echo json_encode($mensaje,JSON_FORCE_OBJECT);
     
     exit();

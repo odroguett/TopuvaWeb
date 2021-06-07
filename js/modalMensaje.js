@@ -58,5 +58,33 @@ function Modal_class() {
         $('#CuerpoModal').html("<p>Estimad@ " + vUsuario + "</p><p class='text-center'>" + mensaje + "</p>");
         $("#MensajePersonalizado").modal("show");
       };
+
+      this.confirmacion = function (titulo, mensaje, callback) {
+       
+
+        callback = oModal.onlyAllowOneCall(callback);
+        $("#tituloConfirmacion").html("<h6 class=text-info'>" + titulo + "</h6>");
+        $("#mensajeConfirmacion").html("<p class='text-semibold text-center'>" + mensaje + "</p>");
+        $("#btnConfirmacionOK").on("click", function () {
+            $("#modalConfirmacion").modal('hide');
+            callback(true);
+        });
+        $("#btnConfirmacionCANCEL").on("click", function () {
+            $("#modalConfirmacion").modal('hide');
+            callback(false);
+        });
+        $("#modalConfirmacion").modal('show');
+    };
+
+      this.onlyAllowOneCall = function (fn) {
+        var hasBeenCalled = false;
+        return function () {
+            if (hasBeenCalled) {
+                return null;
+            }
+            hasBeenCalled = true;
+            return fn.apply(this, arguments);
+        };
+    };
 }
 var oModal = new Modal_class();

@@ -187,7 +187,7 @@ foreach($arrayCarrito as $filas => $value)
                                           </div>
                                           
                                           <div class="col-md-6">
-                                             <a href="#" id="btnModificar" data-toggle="modal"
+                                             <a href="#" id="btnEliminarDespacho" data-toggle="modal"
                                                 data-target="#exampleModal"
                                                 class="text-primary rounded ">Eliminar</a></span></p>
                                           </div>

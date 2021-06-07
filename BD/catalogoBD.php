@@ -185,7 +185,6 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
     $oConexion->execBool($sSql);
     $oConexion->cerrar();
    $this->oRespuesta ->bEsValido =true;
-   $this->oRespuesta ->$dmIdDespacho =$dmIdDespacho;
    $this->oRespuesta ->idDespacho =$dmIdDespacho;
    $this->oRespuesta ->sDireccion =$sDireccion;
    $this->oRespuesta ->sDepartamento =$sDepartamento;

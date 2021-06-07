@@ -1,7 +1,16 @@
 <?php 
 include("conexion.php");
+include("respuesta.php");
 class catalogoBD
 {
+
+ private $oRespuesta;
+
+ public function __construct() {
+  $this->oRespuesta = new RespuestaOtd();
+  
+}
+
     function ejecutarConsulta($sSql)
     {
 
@@ -153,7 +162,8 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
 {
 
   try{
-    
+
+    $oConexion = new Conexion();
     $dmIdDespacho=0;
     $sSql = 'select count(id_despacho) as id from despacho';
     $ArraydmIdDespacho =$this->ejecutarConsultaIndividual($sSql);
@@ -170,16 +180,28 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
     $sSql='';
     $sSql ='Insert into despacho (ID_DESPACHO,NOMBRE,APELLIDOS,DIRECCION,DEPARTAMENTO,COMUNA,CIUDAD,REGION,TELEFONO,EMAIL,ID_CLIENTE)
     VALUES(' . $dmIdDespacho . ',"'.$sNombre.'","'.$sApellidos .'","'.$sDireccion.'","'.$sDepartamento.'","'.$sComuna.'","'.$sCiudad.'","'.$sRegion.'","'.$sTelefono.'","'.$sEmail.'",1) ';
-    $oConexion = new Conexion();
+    
     $oConexion->conectar();
     $oConexion->execBool($sSql);
     $oConexion->cerrar();
-    return true;
+   $this->oRespuesta ->bEsValido =true;
+   $this->oRespuesta ->$dmIdDespacho =$dmIdDespacho;
+   $this->oRespuesta ->idDespacho =$dmIdDespacho;
+   $this->oRespuesta ->sDireccion =$sDireccion;
+   $this->oRespuesta ->sDepartamento =$sDepartamento;
+   $this->oRespuesta ->sComuna =$sComuna;
+   $this->oRespuesta ->sCiudad =$sCiudad;
+   $this->oRespuesta ->sRegion =$sRegion;
+   $this->oRespuesta ->sTelefono =$sTelefono;
+   $this->oRespuesta ->sMensaje ="Datos para el despacho ingresados correctamente";
+    return $this->oRespuesta;
   }
   catch(Exception $e)
   {
     //Aca vamos a incorporar el error al archivo de log.
-    return false;
+    $this->oRespuesta ->bEsValido =false;
+   
+
 
   }
 

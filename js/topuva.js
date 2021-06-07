@@ -57,12 +57,26 @@ function Carrito_class() {
     dataType: 'json',
     data: { nombre: nombre,apellido: apellido, direccion:direccion,departamento:departamento,ciudad:ciudad,comuna:comuna,region:region,telefono:telefono,email:email},
     success: function (data) {
-      if (data)
-      {
-        console.log(JSON.stringify(data));
+      if (data.bEsValido)
+      { 
       alert(data.respuesta);
+      $('#comDireccion').text( 'Dirección: ' + data.direccion);
+      if(data.departamento != null)
+      {
+        $('#comDepartamento').text( 'Depto: ' + data.departamento);
+      }
+      $('#comComuna').text( 'Comuna: ' + data.comuna);
+      $('#comCiudad').text( 'Ciudad: ' + data.ciudad);
+      $('#comRegion').text( 'Region: ' + data.region);
+      
+      
        
         
+      }
+      else
+      {
+alert('Error');
+
       }
     }
 });
@@ -411,6 +425,8 @@ $(document).ready(function () {
           $('#mContent').html(data);
           $('#modalDireccion').modal('show');
           
+        
+          
         }
       }
   });
@@ -465,6 +481,7 @@ $("#btnIngresar").click(function (e) {
   e.preventDefault();
   e.stopImmediatePropagation();
 oCarrito.IncorporaDespacho();
+
 
 });
 

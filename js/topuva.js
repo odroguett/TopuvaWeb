@@ -75,15 +75,11 @@ function Carrito_class() {
       }
       else
       {
-alert('Error');
+        alert('Error');
 
       }
     }
 });
-
-
-
-  
     
   }
 
@@ -277,6 +273,100 @@ this.CargaCarrito = function()
 }
 
 
+this.IngresaDireccion = function()
+{
+  $.ajax({
+    type: "POST",
+    url: '../TopuvaWeb/Vistas/_incorporaDireccion.php',
+   // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
+    //contentType: "application/json; charset=utf-8",
+    //dataType: "json",
+    success: function (data) {
+      if (data)
+      {
+
+        $('#mContent').html(data);
+        $('#modalDireccion').modal('show');
+        
+      }
+    }
+  });
+
+
+}
+
+this.ContinuarPago = function()
+{
+  $.ajax({
+    type: "POST",
+    url: '../TopuvaWeb/Vistas/_datosPago.php',
+   // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
+    //contentType: "application/json; charset=utf-8",
+    //dataType: "json",
+    success: function (data) {
+      if (data)
+      {
+
+        $('#mContent').html(data);
+        $('#modalDireccion').modal('show');
+        
+      }
+    }
+});
+
+
+
+}
+this.ValidarDespacho = function()
+{
+  var bOk = true;
+  var sError;
+  $('#idError').text('');
+  if ($('#nombre').val() === "") 
+  {
+    sError="Falta ingresar nombre.";
+    
+      bOk = false;
+  }
+  if ($('#apellido').val() === "") 
+  {
+    sError="Falta ingresar Apellidos.";
+    
+      bOk = false;
+  }
+  if ($('#direccion').val() === "") 
+  {
+    sError="Falta ingresar dirección.";
+    
+      bOk = false;
+  }
+  if ($('#ciudad').val() === "") 
+  {
+    sError="Falta ingresar Ciudad.";
+    
+      bOk = false;
+  }
+  if ($('#comuna').val() === "") 
+  {
+    sError="Falta ingresar Comuna.";
+    
+      bOk = false;
+  }
+  if ($('#region').val() === "") 
+  {
+    sError="Falta ingresar Región.";
+    
+      bOk = false;
+  }
+
+
+  $('#idError').text(sError);
+  $('#idError').removeAttr('hidden');
+  return bOk;
+
+}
+
+
 
 }
 oCarrito = new Carrito_class();
@@ -412,27 +502,11 @@ $(document).ready(function () {
   $("#btnAgregarDireccion").click(function (e) {
     e.preventDefault();
     e.stopPropagation();
-    $.ajax({
-      type: "POST",
-      url: '../TopuvaWeb/Vistas/_incorporaDireccion.php',
-     // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
-      //contentType: "application/json; charset=utf-8",
-      //dataType: "json",
-      success: function (data) {
-        if (data)
-        {
-
-          $('#mContent').html(data);
-          $('#modalDireccion').modal('show');
-          
-        
-          
-        }
-      }
+    oCarrito.IngresaDireccion();
   });
    
 
-  });
+ 
 
   $("#rdDespacho").click(function () {
     $("#rdRetiro").prop("checked", false);
@@ -456,33 +530,19 @@ $("#rdRetiro").click(function () {
   $("#btnContinuarPago").click(function (e) {
     e.stopPropagation();
     e.stopImmediatePropagation();
-
-    $.ajax({
-      type: "POST",
-      url: '../TopuvaWeb/Vistas/_datosPago.php',
-     // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
-      //contentType: "application/json; charset=utf-8",
-      //dataType: "json",
-      success: function (data) {
-        if (data)
-        {
-
-          $('#mContent').html(data);
-          $('#modalDireccion').modal('show');
-          
-        }
-      }
-  });
- 
+    oCarrito.ContinuarPago();
+   
 });
 
 
 $("#btnIngresar").click(function (e) {
   e.preventDefault();
   e.stopImmediatePropagation();
-oCarrito.IncorporaDespacho();
+  if(oCarrito.ValidarDespacho())
+  {
 
-
+    oCarrito.IncorporaDespacho();
+  }
 });
 
 
@@ -527,3 +587,4 @@ $(".qtyminus").click(function(e) {
 });
 
 });
+

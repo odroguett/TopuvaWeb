@@ -31,7 +31,14 @@ include("../BD/catalogoBD.php");
 </div>
 <div class="modal-body">
 
+
+
     <body class="fixed-bottom-padding">
+        <div class="row">
+            <div class="col-md-6">
+                <label id="idError" type="text" class="text-danger" hidden ></label>
+            </div>
+        </div>
         <!-- body -->
         <section class="py-4 osahan-main-body">
             <div class="title d-flex align-items-center py-3">
@@ -85,15 +92,15 @@ include("../BD/catalogoBD.php");
                         </div>
 
                     </div>
-                   
+
                 </form>
-                
+
             </div>
             <div class="row form-group">
                 <div class="col-md-11">
-                        <button type="button" id="btnIngresar" class="btn btn-primary btn-block">Ingresar</button>
-                    </div>
-                    </div>
+                    <button type="button" id="btnIngresar" class="btn btn-primary btn-block">Ingresar</button>
+                </div>
+            </div>
         </section>
     </body>
 </div>

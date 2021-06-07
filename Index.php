@@ -553,8 +553,9 @@ include("BD/catalogoBD.php");
    </div>
 
    <?php include("includes/footer.php")  ?>
-
+   <script src="js/modalMensaje.js"></script>
    <script>
+    
       $(document).ready(function () {
          $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
       });

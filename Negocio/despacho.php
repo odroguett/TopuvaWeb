@@ -4,6 +4,8 @@ include("../BD/catalogoBD.php");
 
 $oCatalogo= new catalogoBD();
 $oRespuesta = new RespuestaOtd();
+$sModificar= $_POST['modificar']; 
+$idDespacho= $_POST['idDespacho']; 
 $sNombre = $_POST['nombre']; 
 $sApellidos = $_POST['apellido']; 
 $sDireccion = $_POST['direccion']; 
@@ -13,8 +15,19 @@ $sComuna = $_POST['comuna'];
 $sRegion = $_POST['region']; 
 $sTelefono = $_POST['telefono']; 
 $sEmail = $_POST['email']; 
+
 // Acaba vamos a realizar control de limpieza de imput.
-$oRespuesta =$oCatalogo->InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiudad,$sComuna,$sRegion,$sTelefono,$sEmail);
+if($sModificar=="C")
+{
+
+    $oRespuesta =$oCatalogo->InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiudad,$sComuna,$sRegion,$sTelefono,$sEmail);
+}
+else
+{
+    $oRespuesta =$oCatalogo->ActualizaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiudad,$sComuna,$sRegion,$sTelefono,$sEmail,$idDespacho);
+
+}
+
 
 if($oRespuesta->bEsValido)
 {

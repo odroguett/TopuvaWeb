@@ -20,7 +20,7 @@ include("BD/catalogoBD.php");
    <!-- Slick Slider -->
 
 
-   
+
    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
    <!-- Icofont Icon-->
@@ -72,7 +72,7 @@ include("BD/catalogoBD.php");
    <div class="border-bottom p-3 d-none mobile-nav">
       <div class="title d-flex align-items-center">
          <a href="home.html" class="text-decoration-none text-dark d-flex align-items-center">
-           <!-- <img class="osahan-logo mr-2" src="img/logo.png"> -->
+            <!-- <img class="osahan-logo mr-2" src="img/logo.png"> -->
             <h4 class="font-weight-bold text-success m-0">TOPUVA</h4>
          </a>
          <p class="ml-auto m-0">
@@ -200,14 +200,14 @@ include("BD/catalogoBD.php");
 
    </div>
    <div class="row">
-   
+
    </div>
    <div class="container">
       <div class="row">
          <div class="col-lg-12">
-            
+
             <div class="py-3 osahan-promos">
-               
+
 
 
                <div class="promo-slider pb-0 mb-0">
@@ -219,22 +219,22 @@ include("BD/catalogoBD.php");
    ?>
                   <div class="osahan-slider-item mx-2">
                      <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>
-                     ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" 
-                     class="text-dark"><img src=" <?php echo $value['imagen']?>  "
-                        class="img-fluid mx-auto rounded" alt="Responsive image"></a>
+                     ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')"
+                        class="text-dark"><img src=" <?php echo $value['imagen']?>  " class="img-fluid mx-auto rounded"
+                           alt="Responsive image"></a>
                   </div>
-                  
+
                   <?php 
     }
    ?>
-   
+
                </div>
             </div>
          </div>
       </div>
 
       <div class="container">
-      
+
          <div class="row">
             <div class="col-lg-12">
                <!-- home page -->
@@ -242,64 +242,64 @@ include("BD/catalogoBD.php");
                   <!-- body -->
                   <div class="osahan-body" id="ContenedorPaginas">
                      <!-- categories -->
-                     </div>
-
-
                   </div>
-                  <section class="footer-top py-4">
-                     <div class="container">
-                        <section class="footer-top py-4">
-                           <div class="row">
-                              <div class=" col-lg-12 p-4 bg-white rounded shadow-sm">
-                                 <div class="row">
-                                    <div class=" col-lg-6">
-                                       <div class="input-group">
-                                          <input type="text" placeholder="Email" class="form-control" name="">
-                                          <span class="input-group-append">
-                                             <button type="submit" class="btn  btn-primary"> Suscribete</button>
-                                          </span>
-                                       </div>
-                                    </div>
-                                    <div class=" col-lg-6">
-                                       <p class="text-sm-left text-info">Siguenos en: </p>
-                                       <a href="#" class="btn btn-icon btn-light"><i class="icofont-facebook"></i></a>
-                                       <a href="#" class="btn btn-icon btn-light"><i class="icofont-twitter"></i></a>
-                                       <a href="#" class="btn btn-icon btn-light"><i class="icofont-instagram"></i></a>
-                                       <a href="#" class="btn btn-icon btn-light"><i class="icofont-youtube"></i></a>
 
 
-                                    </div>
-
-                                 </div>
-                              </div>
-                        </section>
-
-
+               </div>
+               <section class="footer-top py-4">
+                  <div class="container">
+                     <section class="footer-top py-4">
                         <div class="row">
                            <div class=" col-lg-12 p-4 bg-white rounded shadow-sm">
                               <div class="row">
                                  <div class=" col-lg-6">
-                                 <h5 style="text-align: left;" class="text-secondary"  >Contactanos</h5>
-                                    <ul>
-                                       <li class=" text-info">topuva@gmail.com</li>
-                                       <li class="text-info">+569999999</li>
-                                    </ul>
+                                    <div class="input-group">
+                                       <input type="text" placeholder="Email" class="form-control" name="">
+                                       <span class="input-group-append">
+                                          <button type="submit" class="btn  btn-primary"> Suscribete</button>
+                                       </span>
+                                    </div>
                                  </div>
+                                 <div class=" col-lg-6">
+                                    <p class="text-sm-left text-info">Siguenos en: </p>
+                                    <a href="#" class="btn btn-icon btn-light"><i class="icofont-facebook"></i></a>
+                                    <a href="#" class="btn btn-icon btn-light"><i class="icofont-twitter"></i></a>
+                                    <a href="#" class="btn btn-icon btn-light"><i class="icofont-instagram"></i></a>
+                                    <a href="#" class="btn btn-icon btn-light"><i class="icofont-youtube"></i></a>
 
 
+                                 </div>
 
                               </div>
                            </div>
-                        </div>
-                  </section>
+                     </section>
 
-               </div>
+
+                     <div class="row">
+                        <div class=" col-lg-12 p-4 bg-white rounded shadow-sm">
+                           <div class="row">
+                              <div class=" col-lg-6">
+                                 <h5 style="text-align: left;" class="text-secondary">Contactanos</h5>
+                                 <ul>
+                                    <li class=" text-info">topuva@gmail.com</li>
+                                    <li class="text-info">+569999999</li>
+                                 </ul>
+                              </div>
+
+
+
+                           </div>
+                        </div>
+                     </div>
+               </section>
+
             </div>
          </div>
       </div>
-      </div>
-  
-  
+   </div>
+   </div>
+
+
 
    <nav id="main-nav">
       <ul class="second-nav">
@@ -527,14 +527,14 @@ include("BD/catalogoBD.php");
    </div>
 
 
-   
+
 
    <div class="modal left fade" id="myModal2" tabindex="" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 style= "text-align: center;" class="text-secondary">TU CARRITO</h5>
+               <h5 style="text-align: center;" class="text-secondary">TU CARRITO</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                </button>
@@ -543,8 +543,8 @@ include("BD/catalogoBD.php");
 
             </div>
             <div class="modal-footer">
-               <h4  style= "text-align: left;" class=" text-secondary"> Total: </h4>
-               <h4 style= "text-align: left;" class="totalizador text-secondary"> </h4>
+               <h4 style="text-align: left;" class=" text-secondary"> Total: </h4>
+               <h4 style="text-align: left;" class="totalizador text-secondary"> </h4>
                <button type="button" onclick="oCarrito.Comprar()" class="btn btn-primary  btn-block">Comprar</button>
 
             </div>
@@ -555,39 +555,66 @@ include("BD/catalogoBD.php");
    <!-- Modal -->
    <div class="modal fade" id="modalConfirmacion" tabindex="" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="" id="tituloConfirmacion"></h6>
-                </div>
-                <div id="mensajeConfirmacion" class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <button  id="btnConfirmacionOK" class="btn-primary" type="button">Aceptar </button>
-                              
-                           
-                        </div>
-                        <div class="col-lg-6">
-                            <button  id="btnConfirmacionCANCEL" class="btn-primary" type="button">Cancelar</button>
-                                
-                            
-                        </div>
-                    </div>
-                </div>
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h6 class="" id="tituloConfirmacion"></h6>
             </div>
-        </div>
-    </div>
+            <div id="mensajeConfirmacion" class="modal-body">
+            </div>
+            <div class="modal-footer">
+               <div class="row">
+                  <div class="col-lg-6">
+                     <button id="btnConfirmacionOK" class="btn-primary" type="button">Aceptar </button>
 
-   <?php include("includes/footer.php")  ?>
-   <script src="js/modalMensaje.js"></script>
-   <script>
-    
-      $(document).ready(function () {
-         $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
-      });
-   </script>
+
+                  </div>
+                  <div class="col-lg-6">
+                     <button id="btnConfirmacionCANCEL" class="btn-primary" type="button">Cancelar</button>
+
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+
+
+
+
+
+
+
 </body>
+<div class="modal fade" id="MensajePersonalizado" tabindex="" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true" data-backdrop="false">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h4 class="modal-title" id="TituloModal"></h4>
+            </div>
+            <div class="modal-body" id="CuerpoModal">
+            </div>
+            <div class="modal-footer">
+               <div class="row">
+                  <div class="col-lg-6">
+                     <button data-dismiss="modal" class="btn-primary" type="button" id="btn-cerrarMensaje">Cancelar
+                     </button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 
 </html>
+
+<?php include("includes/footer.php")  ?>
+<script src="js/modalMensaje.js"></script>
+<script>
+   $(document).ready(function () {
+      $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
+   });
+</script>

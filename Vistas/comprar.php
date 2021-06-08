@@ -43,7 +43,7 @@ foreach($arrayCarrito as $filas => $value)
    <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
 
-<input id="comIdCliente" type="text" class="text-info" hidden>
+<input id="comIdDespacho" type="text" class="text-info" hidden >
 
 <body class="fixed-bottom-padding">
 
@@ -285,8 +285,7 @@ foreach($arrayCarrito as $filas => $value)
       </div>
    </section>
    <!-- Modal -->
-   <div class="modal fade" id="modalDireccion" tabindex="-1" role="dialog" aria-labelledby="modalDireccion"
-      aria-hidden="true">
+   <div class="modal fade" id="modalDireccion" tabindex="-1" role="dialog" aria-labelledby="modalDireccion" >
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content" id="mContent">
 
@@ -297,8 +296,10 @@ foreach($arrayCarrito as $filas => $value)
 
 
 
-   <?php include("../includes/footer.php")  ?>
+
 
 </body>
 
 </html>
+
+<?php include("../includes/footer.php")  ?>

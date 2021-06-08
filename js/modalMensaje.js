@@ -17,11 +17,7 @@ function Modal_class() {
     this.MensajePersonalizado = function (titulo, mensaje, TipoAlert) {
         var icono = "";
         var vUsuario = null;
-        try {
-            vUsuario = nombreUsuario;
-        } catch (e) {
-            vUsuario = "";
-        }
+       
       
         switch (TipoAlert) {
             case Constante_alerta:
@@ -54,8 +50,8 @@ function Modal_class() {
                 titulo = titulo;
                 break;
         }
-        $('#TituloModal').html("<button class='btn btn-" + TipoAlert + " btn-circle' disabled style='pointer-events: none;'><i class='" + icono + " icon-3x'></i></button> " + titulo);
-        $('#CuerpoModal').html("<p>Estimad@ " + vUsuario + "</p><p class='text-center'>" + mensaje + "</p>");
+        $('#TituloModal').html("<h6 class=text-info'>" + titulo + "</h6>");
+        $('#CuerpoModal').html("<p class='text-semibold text-center'>" + mensaje + "</p>");
         $("#MensajePersonalizado").modal("show");
       };
 

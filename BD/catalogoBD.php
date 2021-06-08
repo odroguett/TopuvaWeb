@@ -130,6 +130,26 @@ return $lista;
 
 }
 
+
+function obtieneDatosDespacho($idDespacho)
+{
+  try
+  {
+$sSql ='select * from despacho where id_despacho= '. $idDespacho;
+$lista= $this->ejecutarConsulta($sSql);
+return $lista;
+
+
+  }
+
+  catch(Exception $e)
+  {
+    return NULL;
+  }
+
+}
+
+
 function obtieneProductosRelacionados($sProducto)
 {
 
@@ -192,8 +212,75 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
    $this->oRespuesta ->sCiudad =$sCiudad;
    $this->oRespuesta ->sRegion =$sRegion;
    $this->oRespuesta ->sTelefono =$sTelefono;
-   $this->oRespuesta ->sMensaje ="Datos para el despacho ingresados correctamente";
+   $this->oRespuesta ->sMensaje ="Datos para el despacho ingresados correctamente.";
     return $this->oRespuesta;
+  }
+  catch(Exception $e)
+  {
+    //Aca vamos a incorporar el error al archivo de log.
+    $this->oRespuesta ->bEsValido =false;
+    
+
+
+  }
+
+}
+
+function ActualizaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiudad,$sComuna,$sRegion,$sTelefono,$sEmail,$idDespacho)
+{
+
+  try{
+
+    $oConexion = new Conexion();
+    $sSql='';
+    $sSql ='update despacho set NOMBRE =  "'.$sNombre. '", APELLIDOS = "'.$sApellidos .'",DIRECCION = "' .  $sDireccion.'",
+           COMUNA ="' .  $sComuna.'", CIUDAD ="'.$sCiudad.'",REGION ="'.$sRegion.'",DEPARTAMENTO = "'.$sDepartamento.'",
+           TELEFONO="'.$sTelefono.'",EMAIL="'.$sEmail.'"
+           WHERE ID_DESPACHO = ' . $idDespacho . '';
+    
+    
+    $oConexion->conectar();
+    $oConexion->execBool($sSql);
+    $oConexion->cerrar();
+  $this->oRespuesta ->bEsValido =true;
+   $this->oRespuesta ->idDespacho =$idDespacho;
+   $this->oRespuesta ->sDireccion =$sDireccion;
+   $this->oRespuesta ->sDepartamento =$sDepartamento;
+   $this->oRespuesta ->sComuna =$sComuna;
+   $this->oRespuesta ->sCiudad =$sCiudad;
+   $this->oRespuesta ->sRegion =$sRegion;
+   $this->oRespuesta ->sTelefono =$sTelefono;
+   $this->oRespuesta ->bEsValido =true;
+   $this->oRespuesta ->sMensaje ="Actualización de datos para despacho correcta.";
+    return $this->oRespuesta;
+  }
+  catch(Exception $e)
+  {
+    //Aca vamos a incorporar el error al archivo de log.
+    $this->oRespuesta ->bEsValido =false;
+    
+
+
+  }
+
+
+
+
+}
+
+function eliminaDespacho($idDespacho)
+{
+  try{
+    $oConexion = new Conexion();
+    $sSql='';
+    $sSql = 'delete from despacho where id_despacho =' . $idDespacho;
+    $oConexion->conectar();
+    $oConexion->execBool($sSql);
+    $oConexion->cerrar();
+    $this->oRespuesta ->bEsValido =true;
+    $this->oRespuesta ->sMensaje ="Información de despacho eliminada correctamente.";
+    return $this->oRespuesta;
+
   }
   catch(Exception $e)
   {
@@ -203,8 +290,6 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
 
 
   }
-
-
 
 
 }

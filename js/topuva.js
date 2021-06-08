@@ -38,10 +38,22 @@ function Carrito_class() {
   });
 }
 
-  this.IncorporaDespacho= function(e)
+  this.IncorporaDespacho= function()
   {
     
-    debugger;
+  let modificar= ''; 
+  debugger;
+  if( $('#comIdDespacho').val() != "")
+  {
+
+    modificar= 'M';  
+  }
+  else
+  {
+    modificar= 'C';  
+
+  }
+  var idDespacho=$('#comIdDespacho').val();
   var nombre= $('#nombre').val();
   var apellido= $('#apellido').val();
   var direccion= $('#direccion').val();
@@ -55,11 +67,14 @@ function Carrito_class() {
     type: "POST",
     url: '../TopuvaWeb/Negocio/despacho.php',
     dataType: 'json',
-    data: { nombre: nombre,apellido: apellido, direccion:direccion,departamento:departamento,ciudad:ciudad,comuna:comuna,region:region,telefono:telefono,email:email},
+    data: {modificar:modificar,idDespacho:idDespacho, nombre: nombre,apellido: apellido, direccion:direccion,departamento:departamento,ciudad:ciudad,comuna:comuna,region:region,telefono:telefono,email:email},
     success: function (data) {
       if (data.bEsValido)
       { 
-      alert(data.respuesta);
+
+     
+      oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
+      
       $('#comDireccion').text( 'Dirección: ' + data.direccion);
       if(data.departamento != null)
       {
@@ -68,7 +83,8 @@ function Carrito_class() {
       $('#comComuna').text( 'Comuna: ' + data.comuna);
       $('#comCiudad').text( 'Ciudad: ' + data.ciudad);
       $('#comRegion').text( 'Region: ' + data.region);
-      $('#comIdCliente').val(data.idDespacho);
+      $('#comIdDespacho').val(data.idDespacho);
+      $('#botonCerrarDespacho').click();
       
       
        
@@ -276,12 +292,13 @@ this.CargaCarrito = function()
 
 this.IngresaDireccion = function()
 {
+var idDespacho = $('#comIdDespacho').val();
+
   $.ajax({
     type: "POST",
     url: '../TopuvaWeb/Vistas/_incorporaDireccion.php',
-   // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
-    //contentType: "application/json; charset=utf-8",
-    //dataType: "json",
+     data: { idDespacho:idDespacho },
+     //dataType: "json",
     success: function (data) {
       if (data)
       {
@@ -375,8 +392,37 @@ this.EliminarDatosDespacho = function(confirmacion)
   if(confirmacion)
   {
 
-  let idDespacho=  $('#comIdCliente').val();
-alert(idDespacho);
+  let idDespacho=  $('#comIdDespacho').val();
+  if(idDespacho !== 0)
+  {
+    $.ajax({
+      type: "POST",
+      url: '../TopuvaWeb/Negocio/eliminarDatosDespacho.php',
+      dataType: 'json',
+      data: { idDespacho: idDespacho},
+      success: function (data) {
+        if (data.bEsValido)
+        { 
+        
+        $('#comDireccion').text( '' );
+        $('#comDepartamento').text( '' );
+        $('#comComuna').text( '' );
+        $('#comCiudad').text( '' );
+        $('#comRegion').text( '' );
+        $('#comIdCliente').val('');
+        oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
+        }
+  
+  
+        else
+        {
+          alert('Error');
+  
+        }
+      }
+  });
+  }
+  
 
   }
 
@@ -517,7 +563,7 @@ $(document).ready(function () {
 
   $("#btnAgregarDireccion").click(function (e) {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopImmediatePropagation();
     oCarrito.IngresaDireccion();
   });
    
@@ -544,7 +590,7 @@ $("#rdRetiro").click(function () {
 
 
   $("#btnContinuarPago").click(function (e) {
-    e.stopPropagation();
+    e.preventDefault();
     e.stopImmediatePropagation();
     oCarrito.ContinuarPago();
    
@@ -553,12 +599,13 @@ $("#rdRetiro").click(function () {
 
 $("#btnIngresar").click(function (e) {
   e.preventDefault();
-  e.stopImmediatePropagation();
+ 
   if(oCarrito.ValidarDespacho())
   {
 
     oCarrito.IncorporaDespacho();
   }
+  e.stopImmediatePropagation();
 });
 
 
@@ -566,7 +613,17 @@ $("#btnEliminarDespacho").click(function (e) {
   debugger;
   e.preventDefault();
   e.stopImmediatePropagation();
-  oModal.confirmacion("Confirmación", "¿Desea Eliminar datos para despacho?", oCarrito.EliminarDatosDespacho);
+  if($('#comIdDespacho').val() !=="" )
+  {
+
+    oModal.confirmacion("Confirmación", "¿Desea Eliminar datos para despacho?", oCarrito.EliminarDatosDespacho);
+  }
+  else
+  {
+    oModal.MensajePersonalizado('Exito', "No existe información de despacho para eliminar", Constante_informacion);
+
+  }
+  
 });
 
 

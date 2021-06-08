@@ -564,6 +564,7 @@ $(document).ready(function () {
   $("#btnAgregarDireccion").click(function (e) {
     e.preventDefault();
     e.stopImmediatePropagation();
+    //oModal.MensajePersonalizado('Atención', 'El costo de despacho se incluirá al momento de ingresar el pago', Constante_alerta);
     oCarrito.IngresaDireccion();
   });
    

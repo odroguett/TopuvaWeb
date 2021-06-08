@@ -82,8 +82,8 @@ foreach($arrayCarrito as $filas => $value)
                               <div class="cart-items bg-white position-relative border-bottom">
 
                                  <div class="d-flex  align-items-center p-3">
-                                    <a href="product_details.html"><img src="img/cart/g1.png" class="img-fluid"></a>
-                                    <a href="product_details.html" class="ml-3 text-dark text-decoration-none w-100">
+                                    <a href="#"><img src="img/cart/g1.png" class="img-fluid"></a>
+                                    <a href="#" class="ml-3 text-dark text-decoration-none w-100">
                                        <h6 class="font-weight-light text-dark">
                                           <?php if(isset($value['Producto'])) { echo $value['Producto']; } ?></h5>
                                           <div class="d-flex align-items-center">
@@ -93,12 +93,12 @@ foreach($arrayCarrito as $filas => $value)
                                              <form id='myform' class="cart-items-number d-flex ml-auto" method='POST'
                                                 action='#'>
                                                 <input type='button' value='-' class='qtyminus btn btn-success btn-sm'
-                                                   field='quantity' />
+                                                   field='quantity' disabled />
                                                 <input type='text' name='quantity'
                                                    value=' <?php if(isset($value['Cantidad'])) {  echo $value['Cantidad']; } ?> '
-                                                   class='qty form-control' />
+                                                   class='qty form-control' readonly />
                                                 <input type='button' value='+' class='qtyplus btn btn-success btn-sm'
-                                                   field='quantity' />
+                                                   field='quantity' disabled />
                                              </form>
                                           </div>
                                     </a>
@@ -265,15 +265,13 @@ foreach($arrayCarrito as $filas => $value)
                <div>
                   <div class="bg-white p-3 clearfix">
                      <p class="mb-1">Total Productos <span
-                           class="small text-muted"><?php  echo '(' . $totalProductos . ')' ?> </span> <span
-                           class="float-right text-dark"><?php echo '$ CLP ' . $totalPago  ?></span></p>
-                     <p class="mb-3">Costo Envio <span data-toggle="tooltip" data-placement="top"
-                           class="text-info ml-1"><i class="icofont-info-circle"></i></span><span
-                           class="float-right text-dark">$10</span></p>
+                           class="small text-muted"><?php  echo '(' . $totalProductos . ')' ?> </span> </p>
+                     <p class="mb-3 text-info">Importante: Costo Envio corresponde a 4.000 CLP, por compras menores a 40.000. <span data-toggle="tooltip" data-placement="top"
+                           class="text-info ml-1"><i class="icofont-info-circle"></i></span></p>
 
                   </div>
                   <div class="p-3 border-top">
-                     <h5 class="mb-0">PAGO <span class="float-right text-danger"><?php echo $totalPago  ?></span>
+                     <h6 class="mb-0">PAGO <span class="float-right text-info"><?php echo $totalPago  ?> </span>
                      </h5>
                   </div>
                </div>

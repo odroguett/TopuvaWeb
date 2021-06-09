@@ -80,11 +80,19 @@ function Carrito_class() {
       {
         $('#comDepartamento').text( 'Depto: ' + data.departamento);
       }
-      $('#comComuna').text( 'Comuna: ' + data.comuna);
-      $('#comCiudad').text( 'Ciudad: ' + data.ciudad);
-      $('#comRegion').text( 'Region: ' + data.region);
+      $('#comComuna').text(data.comuna);
+      $('#comCiudad').text(data.ciudad);
+      $('#comRegion').text(data.region);
       $('#comIdDespacho').val(data.idDespacho);
       $('#botonCerrarDespacho').click();
+
+
+      localStorage.setItem('direccion',data.direccion);
+      localStorage.setItem('departamento',data.departamento);
+      localStorage.setItem('comuna',data.comuna);
+      localStorage.setItem('ciudad',data.ciudad);
+      localStorage.setItem('region',data.region);
+      localStorage.setItem('idDespacho',data.idDespacho);
       
       
        
@@ -104,10 +112,15 @@ function Carrito_class() {
   {
     $('#myModal2').modal('hide');
     var modalContent = document.createElement('div');
-    modalContent.innerHTML = localStorage.contenido;
+    modalContent.innerHTML = localStorage.getItem('Carrito');
     var recorre = modalContent.querySelectorAll('.container_modal');
     var arrayCarrito = new Array();
-    
+    var direccion = localStorage.getItem('direccion');
+    var departamento= localStorage.getItem('departamento');
+    var comuna= localStorage.getItem('comuna');
+    var ciudad= localStorage.getItem('ciudad');
+    var region= localStorage.getItem('region');
+    var idDespacho= localStorage.getItem('idDespacho');
 
     var iRecorre =1;
     recorre.forEach(item => {
@@ -133,7 +146,7 @@ function Carrito_class() {
     $.ajax({
       type: "POST",
       url: '../TopuvaWeb/Vistas/comprar.php',
-      data: { arrayCarrito: JSON.stringify(arrayCarrito) },
+      data: { arrayCarrito: JSON.stringify(arrayCarrito),direccion:direccion,comuna:comuna,ciudad:ciudad,region:region,departamento:departamento,idDespacho:idDespacho },
       //contentType: "application/json; charset=utf-8",
       //dataType: "json",
       success: function (data) {
@@ -141,6 +154,7 @@ function Carrito_class() {
         {
 
           $("#ContenedorPaginas").html(data);
+          
           
         }
       }
@@ -156,7 +170,7 @@ function Carrito_class() {
     var total = 0;
     var modalContent = document.createElement('div');
     var modalContentAux = document.createElement('div');
-    modalContent.innerHTML = localStorage.contenido;
+    modalContent.innerHTML = localStorage.getItem('Carrito');
 
     
 
@@ -219,7 +233,9 @@ function Carrito_class() {
     }
     modalContentAux.innerHTML = modalContentAux.innerHTML + contenido;
 
-    localStorage.contenido = modalContentAux.innerHTML;
+    //localStorage.contenido = modalContentAux.innerHTML;
+    localStorage.setItem('Carrito', modalContentAux.innerHTML);
+
     $('.modal-body').html(modalContentAux);
     $('#myModal2').modal('show');
 
@@ -238,7 +254,9 @@ function Carrito_class() {
     var precio = valorProducto.querySelector('.price_modal');
     var cantidadProducto = valorProducto.querySelector('.cantidadProducto');
     var texto = valorProducto.querySelector('.textoProducto')
-    modalContent.innerHTML = localStorage.contenido;
+    //modalContent.innerHTML = localStorage.contenido;
+
+    modalContent.innerHTML = localStorage.getItem('Carrito');
     var recorre = modalContent.querySelectorAll('.container_modal')
     recorre.forEach(item => {
       var textoProducto = item.querySelector('.textoProducto');
@@ -252,7 +270,8 @@ function Carrito_class() {
 
     });
 
-    localStorage.contenido = modalContentAux.innerHTML;
+    //localStorage.contenido = modalContentAux.innerHTML;
+    localStorage.setItem('Carrito',modalContentAux.innerHTML);
 
     total = total - (Number(oCarrito.quitarCaractererNoNumericos(precio.innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(cantidadProducto.innerHTML)));
     $('.totalizador').text(total);
@@ -275,7 +294,8 @@ this.CargaCarrito = function()
   var cantidadTotal = 0;
   debugger;
   var modalContentAux = document.createElement('div');
-  modalContentAux.innerHTML =modalContentAux.innerHTML + localStorage.contenido;
+  //modalContentAux.innerHTML =modalContentAux.innerHTML + localStorage.contenido;
+  modalContentAux.innerHTML =modalContentAux.innerHTML + localStorage.getItem('Carrito');
   var recorre = modalContentAux.querySelectorAll('.container_modal');
   recorre.forEach(item => {
      precioTotal = precioTotal + Number(oCarrito.quitarCaractererNoNumericos(item.querySelector('.price_modal').innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(item.querySelector('.cantidadProducto').innerHTML));
@@ -409,7 +429,13 @@ this.EliminarDatosDespacho = function(confirmacion)
         $('#comComuna').text( '' );
         $('#comCiudad').text( '' );
         $('#comRegion').text( '' );
-        $('#comIdCliente').val('');
+        $('#comIdDespacho').val('');
+        localStorage.removeItem('direccion');
+        localStorage.removeItem('departamento');
+        localStorage.removeItem('comuna');
+        localStorage.removeItem('ciudad');
+        localStorage.removeItem('region');
+        localStorage.removeItem('idDespacho');
         oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
         }
   

@@ -1,6 +1,12 @@
 <?php 
 include("../BD/catalogoBD.php");
 $arrayCarrito = json_decode($_POST["arrayCarrito"],true); 
+$comuna =$_POST["comuna"];
+$ciudad = $_POST["ciudad"];
+$region =$_POST["region"];
+$departamento = $_POST["departamento"];
+$direccion = $_POST["direccion"];
+$idDespacho = $_POST["idDespacho"];
 $totalProductos=0;
 $totalPago=0;
 
@@ -43,7 +49,7 @@ foreach($arrayCarrito as $filas => $value)
    <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
 
-<input id="comIdDespacho" type="text" class="text-info" hidden >
+<input id="comIdDespacho" type="text" class="text-info" value="<?php echo $idDespacho; ?>"   hidden >
 
 <body class="fixed-bottom-padding">
 
@@ -194,28 +200,28 @@ foreach($arrayCarrito as $filas => $value)
                                        </div>
                                        <div class="row ">
                                           <div class="col-md-12">
-                                             <label id="comDireccion" type="text" class="text-info font-weight-bold">
+                                             <label id="comDireccion" type="text" class="text-info font-weight-bold"><?php echo $direccion ?> </label>
                                           </div>
 
                                        </div>
                                        <div class="row ">
 
                                           <div class="col-md-6">
-                                             <label id="comComuna" type="text" class="text-info font-weight-bold"> </label>
+                                             <label id="comComuna" type="text" class="text-info font-weight-bold"><?php echo $comuna ?> </label>
                                           </div>
                                           <div class="col-md-6">
-                                             <label id="comCiudad" type="text" class="text-info font-weight-bold"> </label>
+                                             <label id="comCiudad" type="text" class="text-info font-weight-bold"><?php echo $ciudad ?>  </label>
                                           </div>
 
                                        </div>
                                        <div class="row ">
 
                                           <div class="col-md-9">
-                                             <label id="comRegion" type="text" class="text-info font-weight-bold"> </label>
+                                             <label id="comRegion" type="text" class="text-info font-weight-bold"><?php echo $region ?>  </label>
                                           </div>
 
                                           <div class="col-md-3">
-                                             <label id="comDepartamento" type="text" class="text-info font-weight-bold"></label>
+                                             <label id="comDepartamento" type="text" class="text-info font-weight-bold"><?php echo $departamento ?> </label>
                                           </div>
                                        </div>
 

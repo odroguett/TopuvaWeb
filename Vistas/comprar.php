@@ -51,6 +51,7 @@ foreach($arrayCarrito as $filas => $value)
 
 <input id="comIdDespacho" type="text" class="text-info" value="<?php echo $idDespacho; ?>"   hidden >
 
+
 <body class="fixed-bottom-padding">
 
 
@@ -70,7 +71,7 @@ foreach($arrayCarrito as $filas => $value)
                               class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0"
                               type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                               aria-controls="collapseOne">
-                              <span class="c-number">1</span> <?php  echo "Total Productos: " .  $totalProductos    ?>
+                              <span id="totalProductosPago" class="c-number">1</span> <?php  echo "Total Productos: " .  $totalProductos    ?>
                            </button>
                         </h2>
                      </div>
@@ -85,7 +86,8 @@ foreach($arrayCarrito as $filas => $value)
                               if(isset($value['Producto']))
                               {
                                ?>
-                              <div class="cart-items bg-white position-relative border-bottom">
+                              <div class="cart-items bg-white position-relative border-bottom comprar">
+                              <input id="codigoProducto" type="text" class="text-info codigo-producto" value="<?php echo trim($value['CodigoProducto']); ?>" hidden >
 
                                  <div class="d-flex  align-items-center p-3">
                                     <a href="#"><img src="img/cart/g1.png" class="img-fluid"></a>
@@ -102,7 +104,7 @@ foreach($arrayCarrito as $filas => $value)
                                                    field='quantity' disabled />
                                                 <input type='text' name='quantity'
                                                    value=' <?php if(isset($value['Cantidad'])) {  echo $value['Cantidad']; } ?> '
-                                                   class='qty form-control' readonly />
+                                                   class='qty form-control cantidad' readonly />
                                                 <input type='button' value='+' class='qtyplus btn btn-success btn-sm'
                                                    field='quantity' disabled />
                                              </form>
@@ -123,7 +125,7 @@ foreach($arrayCarrito as $filas => $value)
                                     aria-controls="collapsetwo">
                                     <div class="rounded shadow bg-info d-flex align-items-center p-3 text-white">
                                        <div class="more">
-                                          <h6 class="m-0"><?php echo 'SUB TOTAL $ CLP ' . $totalPago?> </h6>
+                                          <h6  class="m-0"><?php echo 'SUB TOTAL $ CLP ' . $totalPago?> </h6>
                                           <p class="small m-0">Selecciona Medio de envio</p>
                                        </div>
                                        <div class="ml-auto"><i class="icofont-simple-right"></i></div>
@@ -277,7 +279,7 @@ foreach($arrayCarrito as $filas => $value)
 
                   </div>
                   <div class="p-3 border-top">
-                     <h6 class="mb-0">PAGO <span class="float-right text-info"><?php echo $totalPago  ?> </span>
+                     <h6  class="mb-0">PAGO <span id="totalPago" class="float-right text-info"><?php echo $totalPago  ?> </span>
                      </h5>
                   </div>
                </div>

@@ -1,5 +1,14 @@
 <?php 
 include("../BD/catalogoBD.php");
+$arrayPago = json_decode($_POST["arrayPago"],true); 
+$idDespacho = json_decode($_POST["idDespacho"],true); 
+$totalProductosPago = json_decode($_POST["totalProductosPago"],true); 
+$totalPago = json_decode($_POST["totalPago"],true); 
+$idTipoPago =1;
+$oCatalogo= new catalogoBD();
+$oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalPago);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

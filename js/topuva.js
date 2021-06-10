@@ -110,6 +110,7 @@ function Carrito_class() {
 
   this.Comprar = function()
   {
+    debugger;
     $('#myModal2').modal('hide');
     var modalContent = document.createElement('div');
     modalContent.innerHTML = localStorage.getItem('Carrito');
@@ -130,15 +131,19 @@ if(modalContent.innerHTML != "")
     var precio = item.querySelector('.price_modal').innerHTML;
     var producto= item.querySelector('.textoProducto').innerHTML;
     var cantidad= item.querySelector('.cantidadProducto').innerHTML;
+    var codigoProducto= item.querySelector('.codigoProducto').innerHTML;
+
     var vCarrito = {
       Precio: Number(oCarrito.quitarCaractererNoNumericos(precio)),
       Producto: producto,
-      Cantidad: Number(oCarrito.quitarCaractererNoNumericos(cantidad))
+      Cantidad: Number(oCarrito.quitarCaractererNoNumericos(cantidad)),
+      CodigoProducto: codigoProducto
     };
     arrayCarrito[iRecorre]= vCarrito;
     arrayCarrito["precio"] = precio;
     arrayCarrito["producto"] = producto;
     arrayCarrito["cantidad"] = cantidad;
+    arrayCarrito["codigoProducto"] = codigoProducto;
     vCarrito=null;
     iRecorre = iRecorre + 1;
     
@@ -175,7 +180,7 @@ else
 
   }
 
-  this.AgregarSeleccion = function (precio, cantidad, texto) {
+  this.AgregarSeleccion = function (precio, cantidad, texto,codigoProducto) {
 
   
     // debugger;
@@ -190,6 +195,7 @@ else
     var recorre = modalContent.querySelectorAll('.container_modal');
 
     contenido = '<div class="container container_modal"> ' +
+      ' <h6 class="codigoProducto font-weight-light text-dark" hidden>  ' + codigoProducto + ' </h6> ' +
       ' <div class="col-12 "> ' +
       ' <div class="row"> ' +
       ' <div class="col-6"> ' +
@@ -348,15 +354,32 @@ var idDespacho = $('#comIdDespacho').val();
 this.ContinuarPago = function()
 {
   debugger;
-  let idDespacho= localStorage.getItem('idDespacho');
+  var arrayPago = new Array();
+  let idDespacho= $('#comIdDespacho').val();
+  let totalProductosPago = $('#totalProductosPago').text();
+  let totalPago =$('#totalPago').text();
   if(idDespacho !=null && idDespacho != "" )
   {
+    var recorre =  document.querySelectorAll(".comprar");
+    var iRecorre =0;
+    recorre.forEach(item => {
+      var cantidad = item.querySelector('.cantidad');
+      var codigo= item.querySelector('.codigo-producto');
+      var vPAgo = {
+        Cantidad: cantidad,
+        CodigoProducto: codigo
+      };
+      arrayPago[iRecorre]= vPAgo;
+      iRecorre = iRecorre + 1;
+      
+  
+    });
     $.ajax({
       type: "POST",
       url: '../TopuvaWeb/Vistas/_datosPago.php',
-     // data: { arrayCarrito: JSON.stringify(arrayCarrito) },
+      data: { arrayPago: JSON.stringify(arrayPago),idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago },
       //contentType: "application/json; charset=utf-8",
-      //dataType: "json",
+      dataType: "json",
       success: function (data) {
         if (data)
         {
@@ -492,10 +515,12 @@ $(document).ready(function () {
   $(".btn-valor").click(function (e) {
     e.preventDefault();
     e.stopPropagation();
+    debugger;
     var preVar = $(this).closest('.claseTexto').find('.price').text()
     var cantidad = $('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
-    oCarrito.AgregarSeleccion(preVar, cantidad, texto);
+    var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val()
+    oCarrito.AgregarSeleccion(preVar, cantidad, texto,codigoProducto);
 
   });
 

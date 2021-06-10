@@ -48,7 +48,8 @@ function obtieneProductosDestacados()
     u.tamano as tamano_unidad,
     p.descripcion,
     vp.precio_venta,
-    vp.imagen
+    vp.imagen,
+    vp.codigo_precio_producto
 from 
     unidades u, 
     productos p,
@@ -78,7 +79,8 @@ function obtienePrecioProductos($sCategoria)
     u.descripcion_unidad,
     u.tamano as tamano_unidad,
     p.descripcion,
-    vp.precio_venta
+    vp.precio_venta,
+    vp.codigo_precio_producto
 from 
     unidades u, 
     productos p,
@@ -294,6 +296,31 @@ function eliminaDespacho($idDespacho)
 
 }
 
+function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalPago)
+{
+
+  $oConexion = new Conexion();
+  $dmIdDetalle=0;
+  $sSql = 'select count(id_detalle) as id from carrito';
+  $ArraydmIdDespacho =$this->ejecutarConsultaIndividual($sSql);
+  $dmIdDetalle= $ArraydmIdDespacho["id"];
+  if($dmIdDetalle ==0)
+  {
+
+    $dmIdDetalle = 1;
+  }
+  else
+  {
+    $dmIdDetalle = $dmIdDetalle  + 1;
+  }
+  $sSql='';
+  $sSql ='Insert into carrito (ID_DETALLE,TOTAL_PRODUCTOS,TOTAL_VENTA,ID_TIPO_PAGO,ID_DESPACHO)
+    VALUES(' . $dmIdDetalle . ',"'.$totalProductosPago.'","'.$totalPago .'","'.$idTipoPago.'","'.$idDespacho.'") ';
+  $oConexion->conectar();
+  $oConexion->execBool($sSql);
+  $oConexion->cerrar();
+
+}
 
 
 }

@@ -49,6 +49,7 @@ include("../BD/catalogoBD.php");
                <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" href="#" class="text-dark">
                   
                   <div class="p-3 claseTexto" >
+                  <input  type="text" class="text-info codigo-precio-producto" value="<?php echo $value['codigo_precio_producto']; ?>"   hidden >
                      <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
                      <h6 class="textoProducto font-weight-light text-dark"><?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?></h6>
                      <div class="d-flex align-items-center precio">
@@ -86,6 +87,7 @@ include("../BD/catalogoBD.php");
             </div>
          </div>
       </div>
+      
       <?php 
                }
    

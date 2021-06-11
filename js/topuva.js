@@ -356,8 +356,9 @@ this.ContinuarPago = function()
   debugger;
   var arrayPago = new Array();
   let idDespacho= $('#comIdDespacho').val();
-  let totalProductosPago = $('#totalProductosPago').text();
+  let totalProductosPago = $('#totalProductosPago').val();
   let totalPago =$('#totalPago').text();
+  let tipoPago=1;
   if(idDespacho !=null && idDespacho != "" )
   {
     var recorre =  document.querySelectorAll(".comprar");
@@ -365,9 +366,11 @@ this.ContinuarPago = function()
     recorre.forEach(item => {
       var cantidad = item.querySelector('.cantidad');
       var codigo= item.querySelector('.codigo-producto');
+      var pago = item.querySelector('.codigo-producto');
       var vPAgo = {
-        Cantidad: cantidad,
-        CodigoProducto: codigo
+        Cantidad: cantidad.value,
+        CodigoProducto: codigo.value
+        
       };
       arrayPago[iRecorre]= vPAgo;
       iRecorre = iRecorre + 1;
@@ -379,13 +382,15 @@ this.ContinuarPago = function()
       url: '../TopuvaWeb/Vistas/_datosPago.php',
       data: { arrayPago: JSON.stringify(arrayPago),idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago },
       //contentType: "application/json; charset=utf-8",
-      dataType: "json",
+     // dataType: "json",
       success: function (data) {
         if (data)
         {
-  
+
+       //  localStorage.removeItem('Carrito');
           $('#mContent').html(data);
           $('#modalDireccion').modal('show');
+         
           
         }
       }
@@ -502,6 +507,29 @@ this.EliminarDatosDespacho = function(confirmacion)
 
   }
 
+
+}
+
+this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
+{
+
+  $.ajax({
+    type: "POST",
+    url: '../TopuvaWeb/Negocio/pago.php',
+    data: { arrayPago: arrayPago,idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago },
+    //contentType: "application/json; charset=utf-8",
+   // dataType: "json",
+    success: function (data) {
+      if (data)
+      {
+
+       localStorage.removeItem('Carrito');
+        $('#modalDireccion').modal('hide');
+       
+        
+      }
+    }
+});
 
 }
 

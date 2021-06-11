@@ -1,14 +1,23 @@
 <?php 
+
 include("../BD/catalogoBD.php");
-$arrayPago = json_decode($_POST["arrayPago"],true); 
+$arrayPago = $_POST["arrayPago"]; 
 $idDespacho = json_decode($_POST["idDespacho"],true); 
 $totalProductosPago = json_decode($_POST["totalProductosPago"],true); 
 $totalPago = json_decode($_POST["totalPago"],true); 
 $idTipoPago =1;
-$oCatalogo= new catalogoBD();
-$oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalPago);
+$totalConDespacho =0;
+$costoEnvio = 4000;
+if($totalPago < 40000)
+{
+    $totalConDespacho = $totalPago + $costoEnvio;
 
+}
+else
+{
+    $totalConDespacho = $totalPago; 
 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,48 +41,185 @@ $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$to
     <!-- Sidebar CSS -->
     <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
+
+
+
 <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Transferencia Electronica</h5>
+    <h5 class="modal-title" id="exampleModalLabel">Finalizar Pedido</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="modal-body">
 
-    <body class="fixed-bottom-padding">
-        <!-- body -->
-        <section class="py-4 osahan-main-body">
-            <div class="title d-flex align-items-center py-3">
-                <form class="">
-                    <h6 class="mb-1 font-weight-bold">Cuenta Corriente</h6>
-                    <p class="h6 mb-1 font-weight-normal"><i class="feather-map-pin"></i> 99987745</p>
-                    <h6 class="mb-1 font-weight-bold">Banco </h6>
-                    <p class="h6  mb-0  font-weight-normal"><i class="feather-map-pin"></i> Santander</p>
-                    <h6 class="mb-1 font-weight-bold">Rut </h6>
-                    <p class="h6  mb-0  font-weight-normal"><i class="feather-map-pin"></i> 9999999-9</p>
-                    <h6 class="h6  mb-1 font-weight-bold">Nombre </h6>
-                    <p class="h6  mb-0  font-weight-normal"><i class="feather-map-pin"></i> Pepito los palotes</p>
-                    <h6 class="mb-1 font-weight-bold">Correo </h6>
-                    <p class="h6  mb-0  font-weight-normal"><i class="feather-map-pin"></i> prueba@gmail.com</p>
-                </form>
-            </div>
-        </section>
-    </body>
-</div>
-<div class="modal-footer p-0 border-0">
-    <form class="">
+    <div class="">
 
-        <div class="col-md-12 form-group">
-            <button type="button" class="btn btn-primary btn-block">Finalizar</button>
+        <!-- address header -->
+        <div class="row form-inline">
+            <div class="col-lg-12 ">
+                <p class="pt-2 m-0 text-right"><span class="small">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <a href="#" id="btnAgregarDireccion" data-toggle="modal" data-target="#exampleModal"
+                                    class=" text-primary   ">Borrar Carrito</a>
+                    </span></p>
+            </div>
+            <div class="col-lg-12">
+                <div id="classDespacho">
+                    <div class="p-3 bg-white rounded shadow-sm w-100">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="row">
+                                <p class="mb-0 h6">Compra</p>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <p class=""><?php echo 'Total productos: ' . $totalProductosPago ?> </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <p class=""><?php echo 'Subtotal: ' . $totalPago . " CLP" ?> </p>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <p class=""> <?php  echo "Cargo Despacho: " .  $costoEnvio . " CLP"   ?> </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <p class=""> <?php echo "Total a Pago:" . $totalConDespacho . " CLP"   ?> </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
 
 
 
-    </form>
+        <!-- body address -->
+        <div class="row">
+            <div class=" col-lg-12  ">
+                <div id="classDespacho">
+                    <div class="p-3 bg-white rounded shadow-sm w-100">
+                        <div class="d-flex align-items-center mb-2">
+                            <div class="row">
+                                <p class="mb-0 h6">Seleccionar Medio de Pago</p>
+                            </div>
+                            <br>
+                        </div>
+                        
+                            <div class="row">
+                                
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="rdDespacho" type="radio"
+                                            name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                                        <label class="form-check-label" for="inlineRadio1">Transferencia</label>
+                                    </div>
+                                
+                                
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" id="rdRetiro" type="radio"
+                                            name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <label class="form-check-label" for="inlineRadio2">Pago a momento de
+                                            entrega</label>
+                                    </div>
+                                
 
 
 
-</div>
+                            </div>
+                        <br>
+                        <div class="row">
+                            <div id="idTransferencia">
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <p class="">Teléfono: 9999999 </p>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <p class="">Banco: Santander </p>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <p class="">Rut: 99999999-9 </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <p class="">Nombre: Pepito Los palotes </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+
+                                        <p class="">correo: Pepito@gmail.com </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="idPagoDomicilio" hidden>
+                                <div class="row">
+                                    <div class="col-lg-6">
+
+                                        <p class="">Pago Domicilio </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                    <br>
+                </div>
+
+            </div>
+
+
+
+
+           
+
+        </div>
+        <div class="row float-right">
+                <div class="col-md-12">
+                    <button type="button" id="btnFinalizarPago" class="btn btn-primary btn-block" onclick='oCarrito.FinalizarPago(  <?php  echo $arrayPago  ?>  , <?php echo $idDespacho ?> ,  <?php echo $totalProductosPago ?> , <?php echo $totalPago ?>   )' >Solicitar Pedido</button>
+                </div>
+            </div>
+
+
+    </div>
+
+
+
 
 
 </html>
+
+<?php include("../includes/footer.php")  ?>

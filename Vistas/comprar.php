@@ -50,6 +50,7 @@ foreach($arrayCarrito as $filas => $value)
 </head>
 
 <input id="comIdDespacho" type="text" class="text-info" value="<?php echo $idDespacho; ?>"   hidden >
+<input id="totalProductosPago" type="text" class="text-info" value="<?php echo $totalProductos; ?>"  hidden  >
 
 
 <body class="fixed-bottom-padding">
@@ -71,7 +72,7 @@ foreach($arrayCarrito as $filas => $value)
                               class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0"
                               type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                               aria-controls="collapseOne">
-                              <span id="totalProductosPago" class="c-number">1</span> <?php  echo "Total Productos: " .  $totalProductos    ?>
+                              <span id="" class="c-number">1</span> <?php  echo "Total Productos: " .  $totalProductos    ?>
                            </button>
                         </h2>
                      </div>
@@ -140,7 +141,7 @@ foreach($arrayCarrito as $filas => $value)
                   <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
                      <!-- address header -->
                      <div class="card-header bg-white border-0 p-0" id="headingtwo">
-                        <h2>
+                        
                            <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg  m-0"
                               type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true"
                               aria-controls="collapsetwo">
@@ -163,7 +164,7 @@ foreach($arrayCarrito as $filas => $value)
                            </div>
 
                      </div>
-                     </h2>
+                     
 
                      <!-- body address -->
                      <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo"

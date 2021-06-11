@@ -200,8 +200,8 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
       $dmIdDespacho = $dmIdDespacho  + 1;
     }
     $sSql='';
-    $sSql ='Insert into despacho (ID_DESPACHO,NOMBRE,APELLIDOS,DIRECCION,DEPARTAMENTO,COMUNA,CIUDAD,REGION,TELEFONO,EMAIL,ID_CLIENTE)
-    VALUES(' . $dmIdDespacho . ',"'.$sNombre.'","'.$sApellidos .'","'.$sDireccion.'","'.$sDepartamento.'","'.$sComuna.'","'.$sCiudad.'","'.$sRegion.'","'.$sTelefono.'","'.$sEmail.'",1) ';
+    $sSql ='Insert into despacho (ID_DESPACHO,NOMBRE,APELLIDOS,DIRECCION,DEPARTAMENTO,COMUNA,CIUDAD,REGION,TELEFONO,EMAIL,ID_CLIENTE,ID_TIPO_DESPACHO)
+    VALUES(' . $dmIdDespacho . ',"'.$sNombre.'","'.$sApellidos .'","'.$sDireccion.'","'.$sDepartamento.'","'.$sComuna.'","'.$sCiudad.'","'.$sRegion.'","'.$sTelefono.'","'.$sEmail.'",1,1) ';
     
     $oConexion->conectar();
     $oConexion->execBool($sSql);
@@ -319,9 +319,40 @@ function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$total
   $oConexion->conectar();
   $oConexion->execBool($sSql);
   $oConexion->cerrar();
+  return $dmIdDetalle;
+
+}
+function InsertarDetallePago($dmIdDetalle ,$cantidadProducto,$Montoventa,$codigoProducto)
+{
+
+  $oConexion = new Conexion();
+  $Montoventa = $cantidadProducto * $Montoventa;
+  $sSql='';
+  $sSql ='Insert into detalle_ventas (ID_DETALLE,CANTIDAD,VENTA,CODIGO_PRECIO_PRODUCTO)
+    VALUES(' . $dmIdDetalle . ',"'.$cantidadProducto.'","'.$Montoventa .'","'.$codigoProducto.'") ';
+  $oConexion->conectar();
+  $oConexion->execBool($sSql);
+  $oConexion->cerrar();
 
 }
 
+function obtieneDatosVentaProducto($sCodigoProducto)
+{
+
+  try{
+  
+    $sSql ='select * from venta_productos v
+           where codigo_precio_producto ="'.  $sCodigoProducto  .'"';
+
+           $lista= $this->ejecutarConsulta($sSql);
+           return $lista;
+  }
+  catch(Exception $e)
+  {
+    return NULL;
+  }
+
+}
 
 }
 

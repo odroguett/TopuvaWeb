@@ -512,19 +512,35 @@ this.EliminarDatosDespacho = function(confirmacion)
 
 this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
 {
+  debugger;
 
   $.ajax({
     type: "POST",
     url: '../TopuvaWeb/Negocio/pago.php',
     data: { arrayPago: arrayPago,idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago },
     //contentType: "application/json; charset=utf-8",
-   // dataType: "json",
+    dataType: "json",
     success: function (data) {
       if (data)
       {
+        if(data.bEsValido)
+        {
+          $('#modalDireccion').modal('hide');
+          localStorage.removeItem('Carrito');
+          oModal.MensajePersonalizado('Información', data.sMensaje, Constante_informacion);
 
-       localStorage.removeItem('Carrito');
-        $('#modalDireccion').modal('hide');
+          $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
+        }
+        else
+        {
+          $('#modalDireccion').modal('hide');
+          oModal.MensajePersonalizado('Información', data.sMensaje, Constante_informacion);
+
+        }
+
+        
+        
+
        
         
       }

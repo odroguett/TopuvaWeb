@@ -175,7 +175,29 @@ function obtieneProductosRelacionados($sProducto)
   }
   catch(Exception $e)
   {
+
+
     return NULL;
+  }
+
+}
+
+function obtieneParametros()
+{
+  try
+  {
+ $sSql ='select * from parametros';
+ $lista= $this->ejecutarConsulta($sSql);
+ return $lista;
+  }
+
+  catch(Exception $e)
+  {
+    //Aca vamos a incorporar el error al archivo de log.
+   return null;
+    
+
+
   }
 
 }
@@ -265,10 +287,52 @@ function ActualizaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiu
 
   }
 
+  function RebajaStock($codigoProducto)
+  {
+    try{
+    
+   $oConexion = new Conexion();
+   $sSql = 'update venta_productos set STOCK = STOCK - '. $codigoProducto . ' 
+           WHERE CODIGO_PRECIO_PRODUCTO = "'. $codigoProducto  . '"' ;
+           $oConexion->conectar();
+           $oConexion->execBool($sSql);
+           $oConexion->cerrar();
+    return true;
+    }
+    catch(Exception $e)
+  {
+    //Aca vamos a incorporar el error al archivo de log.
+    return false;
+    
 
 
-
+  }
+  
+  }
+  
 }
+function RevisaStock($codigoProducto)
+  {
+    try{
+    
+   
+   $sSql = 'select STOCK from  venta_productos 
+            WHERE CODIGO_PRECIO_PRODUCTO = "'. $codigoProducto  . '"' ;
+  $Array =$this->ejecutarConsultaIndividual($sSql);
+  $dmStock= $Array["STOCK"];
+   return $dmStock;
+  return true;
+    }
+    catch(Exception $e)
+  {
+    //Aca vamos a incorporar el error al archivo de log.
+    return false;
+    
+
+
+  }
+  
+  }
 
 function eliminaDespacho($idDespacho)
 {
@@ -341,8 +405,11 @@ function obtieneDatosVentaProducto($sCodigoProducto)
 
   try{
   
-    $sSql ='select * from venta_productos v
-           where codigo_precio_producto ="'.  $sCodigoProducto  .'"';
+    $sSql ='select vp.*,p.descripcion,u.codigo_unidad, u.tamano
+           from venta_productos vp, productos p , unidades u
+           where vp.id_producto = p.id_producto and 
+           u.id_unidad = vp.id_unidad and
+           vp.codigo_precio_producto =  "'. $sCodigoProducto . '"';
 
            $lista= $this->ejecutarConsulta($sSql);
            return $lista;

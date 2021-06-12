@@ -7,33 +7,85 @@ $totalProductosPago = json_decode($_POST["totalProductosPago"],true);
 $totalPago = json_decode($_POST["totalPago"],true); 
 $idTipoPago =1;
 $oCatalogo= new catalogoBD();
-
+$oRespuesta = new RespuestaOtd();
 $totalConDespacho =0;
-$costoEnvio = 4000;
-if($totalPago < 40000)
+$sNombreProducto;
+if(ValidaPago($arrayPago,$sNombreProducto))
 {
-    $totalConDespacho = $totalPago + $costoEnvio;
+    $parametros =$oCatalogo->obtieneParametros();
+    foreach($parametros as $filas => $value)
+    { 
+        $costoEnvio =   $value['COSTO_ENVIO'];
+        $topeCostoEnvio =   $value['TOPE_COSTO_ENVIO'];
+      
+    }
+    if($totalPago < $topeCostoEnvio)
+    {
+        $totalConDespacho = $totalPago + $costoEnvio;
+    
+    }
+    else
+    {
+        $totalConDespacho = $totalPago; 
+    
+    }
+    $idDetalle= $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalConDespacho);
+    $totalConDespacho =0;
+    
+    foreach($arrayPago as $filas => $value)
+    { 
+          
+        $cantidadProducto=  $value['Cantidad'] ;
+        $codigoProducto=  $value['CodigoProducto'];
+        $datosVentaProducto=  $oCatalogo->obtieneDatosVentaProducto($codigoProducto);
+        foreach($datosVentaProducto as $filasProducto => $valueProducto)
+        {
+            $precioVenta= $valueProducto['PRECIO_VENTA'];
+        }
+        $oCatalogo->InsertarDetallePago($idDetalle,$cantidadProducto,$precioVenta,$codigoProducto);
+    }
+    $oRespuesta->bEsValido=true;
+    $oRespuesta->sMensaje= " Pedido procesado con exito, nos pondremos en contacto con usted, gracias por confiar en nosotros. " ;
 
 }
 else
 {
-    $totalConDespacho = $totalPago; 
+    $oRespuesta->bEsValido=false;
+    $oRespuesta->sMensaje= "Stock no disponible para producto: " .  $sNombreProducto ;
 
 }
-$idDetalle= $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalConDespacho);
-$totalConDespacho =0;
-$costoEnvio = 4000;
+
+$mensaje= array('bEsValido' =>$oRespuesta->bEsValido, 'sMensaje'=>$oRespuesta->sMensaje);
+          echo json_encode($mensaje,JSON_FORCE_OBJECT);
+exit();
+
+
+
+
+
+function ValidaPago($arrayPago,&$sNombreProducto)
+{
+$bOK = true;
+$oCatalogo= new catalogoBD();
 foreach($arrayPago as $filas => $value)
 { 
-      
-    $cantidadProducto=  $value['Cantidad'] ;
     $codigoProducto=  $value['CodigoProducto'];
     $datosVentaProducto=  $oCatalogo->obtieneDatosVentaProducto($codigoProducto);
     foreach($datosVentaProducto as $filasProducto => $valueProducto)
     {
-        $precioVenta= $valueProducto['PRECIO_VENTA'];
+        $stock = $valueProducto['STOCK'];
+        $sNombreProducto = $valueProducto['descripcion'] . ' ' . $valueProducto['tamano'] . $valueProducto['codigo_unidad'] ;
+
+        if($stock ==0)
+        {
+
+            $bOK =false;
+        }
     }
-    $oCatalogo->InsertarDetallePago($idDetalle,$cantidadProducto,$precioVenta,$codigoProducto);
+    
+}
+
+return $bOK ;
 }
 
 ?>

@@ -534,7 +534,8 @@ this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
         else
         {
           $('#modalDireccion').modal('hide');
-          oModal.MensajePersonalizado('Información', data.sMensaje, Constante_informacion);
+          oModal.MensajePersonalizadoCallBack('Información', data.sMensaje, Constante_informacion, oCarrito.CargaCarrito);
+         
 
         }
 
@@ -709,6 +710,21 @@ $("#rdRetiro").click(function () {
     $('#collapseOne').collapse();
     
     
+});
+
+$("#rdTransferencia").click(function () {
+  $("#rdEntrega").prop("checked", false);
+ $('#idTransferencia').removeAttr('hidden');
+ $('#idPagoDomicilio').attr('hidden',true);
+ 
+});
+
+$("#rdEntrega").click(function () {
+  $("#rdTransferencia").prop("checked", false);
+  $('#idPagoDomicilio').removeAttr('hidden');
+  $('#idTransferencia').attr('hidden',true);
+  
+  
 });
 
 

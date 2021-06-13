@@ -60,7 +60,7 @@ else
                 <p class="pt-2 m-0 text-right"><span class="small">
                         <div class="row form-group">
                             <div class="col-md-6">
-                                <a href="#" id="btnAgregarDireccion" data-toggle="modal" data-target="#exampleModal"
+                                <a href="#" id="btnBorrarCarrito" data-toggle="modal" data-target="#exampleModal"
                                     class=" text-primary   ">Borrar Carrito</a>
                     </span></p>
             </div>
@@ -126,17 +126,17 @@ else
                         
                             <div class="row">
                                 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" id="rdDespacho" type="radio"
+                                    <div class="form-check form-check-inlinev class-transferencia">
+                                        <input class="form-check-input" id="rdTransferencia" type="radio"
                                             name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
                                         <label class="form-check-label" for="inlineRadio1">Transferencia</label>
                                     </div>
                                 
                                 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" id="rdRetiro" type="radio"
+                                    <div class="form-check form-check-inline class-entrega " >
+                                        <input class="form-check-input" id="rdEntrega" type="radio"
                                             name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                        <label class="form-check-label" for="inlineRadio2">Pago a momento de
+                                        <label class="form-check-label" for="inlineRadio2"  >Pago a momento de
                                             entrega</label>
                                     </div>
                                 
@@ -184,9 +184,13 @@ else
                             </div>
                             <div id="idPagoDomicilio" hidden>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
 
-                                        <p class="">Pago Domicilio </p>
+                                        <p class="">El cobro se efectuará </p>
+                                        <p class="">Al momento de la entrega</p>
+                                        <p class="">del producto</p>
+                                        <p class=""> </p>
+                                        <p class=""></p>
                                     </div>
                                 </div>
                             </div>

@@ -550,6 +550,22 @@ this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
 
 }
 
+this.BorrarCarritoCompras = function(confirmacion)
+{
+  if(confirmacion)
+  {
+    $('#modalDireccion').modal('hide');
+    localStorage.removeItem('Carrito');
+    $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
+  }
+  
+  
+}
+
+
+
+
+
 
 }
 oCarrito = new Carrito_class();
@@ -765,6 +781,18 @@ $("#btnEliminarDespacho").click(function (e) {
   }
   
 });
+
+$("#btnBorrarCarrito").click(function (e) {
+  debugger;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  
+    oModal.confirmacion("Confirmación", "¿Desea borrar productos en carrito de compras?", oCarrito.BorrarCarritoCompras);
+
+  
+  
+});
+
 
 
 

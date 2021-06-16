@@ -794,7 +794,44 @@ $("#btnBorrarCarrito").click(function (e) {
 });
 
 
+$('#qtySubir').click(function(e){
+  debugger
+  e.preventDefault();
+  e.stopImmediatePropagation();
 
+  fieldName = $(this).attr('field');
+  // Get its current value
+  //var currentVal = parseInt($('input[name='+fieldName+']').val());
+  var currentVal =  $('#cantidadProd').val();
+  // If is not undefined
+  if (!isNaN(currentVal)) {
+      // Increment
+      $('#cantidadProd').val(Number(currentVal) + 1);
+    //  $('.cantidad').val(Number(currentVal) + 1);
+  } else {
+      // Otherwise put a 0 there
+      $('#cantidadProd').val(1) ;
+  }
+});
+$("#qtyBajar").click(function(e) {
+debugger
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  
+  // Get the field name
+  fieldName = $(this).attr('field');
+  // Get its current value
+  var currentVal =  $('#cantidadProd').val();
+  // If is not undefined
+  if (!isNaN(currentVal) && currentVal > 1) {
+      // Increment
+      $('#cantidadProd').val(Number(currentVal) - 1);
+    //  $('.cantidad').val(Number(currentVal) + 1);
+  } else {
+      // Otherwise put a 0 there
+      $('#cantidadProd').val(1) ;
+  }
+});
 
 
   // Quantity JS

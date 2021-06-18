@@ -53,7 +53,7 @@ include("../BD/catalogoBD.php");
                      <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
                      <h6 class="textoProducto font-weight-light text-dark"><?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?></h6>
                      <div class="d-flex align-items-center precio">
-                        <h6 class="price m-0 font-weight-light text-danger"><?php echo  ' $'  . $value['precio_venta']    ?></h6>
+                        <h6 class="price m-0 font-weight-light text-primary"><?php echo  ' $'  . $value['precio_venta']    ?></h6>
                         <a data-toggle="collapse" href="#collapseExample2" role="button"
                            aria-expanded="false" aria-controls="collapseExample2"
                            class="btn btn-success btn-sm ml-auto">+</a>

@@ -60,126 +60,126 @@ foreach($arrayCarrito as $filas => $value)
 
    <section class="py-4 osahan-main-body">
 
-      
-         
-            
-   <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
-                  <div class="accordion" id="accordionExample">
-                     <!-- cart items -->
-                     <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden">
-                        <!-- cart header -->
-                        <div class="card-header bg-white border-0 p-0" id="headingOne">
-                           <h2 class="mb-0">
-                              <button
-                                 class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0"
-                                 type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                 aria-controls="collapseOne">
-                                 <span id="" class="c-number">1</span>
-                                 <?php  echo "Total Productos: " .  $totalProductos    ?>
-                              </button>
-                           </h2>
-                        </div>
-                        <!-- body cart items -->
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                           data-parent="#accordionExample">
-                           <div class="card-body p-0 border-top">
 
-                              <div class="osahan-cart">
-                                 <?php foreach($arrayCarrito as $filas => $value)
+
+
+      <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
+         <div class="accordion" id="accordionExample">
+            <!-- cart items -->
+            <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden">
+               <!-- cart header -->
+               <div class="card-header bg-white border-0 p-0" id="headingOne">
+                  <h2 class="mb-0">
+                     <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0"
+                        type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                        aria-controls="collapseOne">
+                        <span id="" class="c-number">1</span>
+                        <?php  echo "Total Productos: " .  $totalProductos    ?>
+                     </button>
+                  </h2>
+               </div>
+               <!-- body cart items -->
+               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body p-0 border-top">
+
+                     <div class="osahan-cart">
+                        <?php foreach($arrayCarrito as $filas => $value)
                             { 
                               if(isset($value['Producto']))
                               {
                                ?>
-                                 <div class="cart-items bg-white position-relative border-bottom comprar">
-                                    <input id="codigoProducto" type="text" class="text-info codigo-producto"
-                                       value="<?php echo trim($value['CodigoProducto']); ?>" hidden>
+                        <div class="cart-items bg-white position-relative border-bottom comprar">
+                           <input id="codigoProducto" type="text" class="text-info codigo-producto"
+                              value="<?php echo trim($value['CodigoProducto']); ?>" hidden>
 
-                                    <div class="form-inline">
+                           <div class="form-inline">
 
-                                       <div class="col-md-3">
-                                          <div class="d-flex  align-items-center p-3">
-                                             <a href="#"><img src="img/cart/g1.png" class="img-fluid"></a>
-                                             <a href="#" class="ml-3 text-dark text-decoration-none w-100">
-                                                <h6 class="font-weight-light text-dark">
-                                                   <?php if(isset($value['Producto'])) { echo $value['Producto']; } ?>
-                                                   </h5>
-                                                   <div class="d-flex align-items-center">
-                                                      <p class="total_price m-0 font-weight-light text-danger">
-                                                         <?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?>
-                                                      </p>
-
-                                                   </div>
-
-                                             </a>
+                              <div class="col-md-5">
+                                 <div class="d-flex  align-items-center p-3">
+                                    <a href="#"><img src="img/cart/g1.png" class="img-fluid"></a>
+                                    <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                       <h6 class="font-weight-light text-dark">
+                                          <?php if(isset($value['Producto'])) { echo $value['Producto']; } ?>
+                                          </h5>
+                                          <div class="d-flex align-items-center">
+                                             <p class="total_price m-0 font-weight-light text-primary">
+                                                <?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?>
+                                             </p>
 
                                           </div>
-                                       </div>
-                                       <div class="col-md-1 clase-cantidad">
-                                          <span class="ml-auto" href="#">
-                                             <form id='myform' class="cart-items-number d-flex" method='POST'
-                                                action='#'>
-                                                <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
-                                                   field='quantity' id="qtyBajar" />
-                                                <input type='text' id="cantidadProd" name='quantity ' value='1'
-                                                   class='qty form-control cantidad ' />
-                                                <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
-                                                   field='quantity' id="qtySubir" />
-                                             </form>
 
-                                          </span>
-                                       </div>
-                                       
-
-
-                                    </div>
+                                    </a>
 
                                  </div>
                               </div>
+                              <div class="col-md-1 clase-cantidad">
+                                 <span class="ml-auto" href="#">
+                                    <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
+                                       <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
+                                          field='quantity' id="qtyBajar" />
+                                       <input type='text' id="cantidadProd" name='quantity ' value='1'
+                                          class='qty form-control cantidad ' />
+                                       <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
+                                          field='quantity' id="qtySubir" />
+                                    </form>
+
+                                 </span>
+                              </div>
+                              <div class="col-md-1 clase-cantidad">
+                              <button type="button" class="btn btn-danger btn-eliminar" id="eliminarProducto">X</button>
+                              </div>
+                              
+
+
+                           </div>
+
+                        </div>
+                     </div>
 
 
 
-                              <?php 
+                     <?php 
 
                             }; 
                             }
                            ?>
 
-                              <div>
-                                 <a href="#" class="text-decoration-none btn btn-block p-3" type="button"
-                                    data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true"
-                                    aria-controls="collapsetwo">
-                                    <div class="rounded shadow bg-info d-flex align-items-center p-3 text-white">
-                                   
-                                       <div class="more">
-                                      
-                                          <h6 class="text-left" ><?php echo 'SUB TOTAL CLP ' . $totalPago?> </h6>
-                                          
-                                          
-                                          <h6  class="text-left">Costo por despacho se agrega al finalizar la compra.</h6>
-                                          <h6  class="text-left">Selecciona medio de entrega.</h6>
-                                       </div>
-                                       <div class="ml-auto"><i class="icofont-simple-right"></i></div>
-                                    </div>
-                                 </a>
+                     <div>
+                        <a href="#" class="text-decoration-none btn btn-block p-3" type="button" data-toggle="collapse"
+                           data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
+                           <div class="rounded shadow bg-info d-flex align-items-center p-3 text-white">
+
+                              <div class="more">
+
+                                 <h6 class="text-left"><?php echo 'SUB TOTAL  ' . $totalPago . ' CLP' ?> </h6>
+
+
+                                 <h7 class="text-left">Costo por despacho se agrega al finalizar la compra.</h7>
+                                
                               </div>
+                              
+                              <div class="ml-auto"><i class="icofont-simple-right"></i></div>
                            </div>
-                        </div>
+                        </a>
                      </div>
                   </div>
-
                </div>
-             
-            
+            </div>
+         </div>
 
-
-         
-
-
-         <!-- cart address -->
+      </div>
 
 
 
-      
+
+
+
+
+      <!-- cart address -->
+
+
+
+
 
 
       <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
@@ -238,7 +238,7 @@ foreach($arrayCarrito as $filas => $value)
 
                               <div class="col-md-6">
                                  <a href="#" id="btnEliminarDespacho" data-toggle="modal" data-target="#exampleModal"
-                                    class="text-primary rounded ">Eliminar</a></span>
+                                    class="text-danger rounded ">Eliminar</a></span>
                                  </p>
                               </div>
                            </div>

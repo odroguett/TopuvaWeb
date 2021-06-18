@@ -203,13 +203,13 @@ else
       ' <h6 class="textoProducto font-weight-light text-dark">  ' + texto + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class="price_modal m-0 font-weight-light text-danger"> Precio: ' + precio + '</h6> ' +
+      ' <h6 class="price_modal m-0 font-weight-light text-primary"> Precio: ' + precio + '</h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-danger"> Cantidad: ' + cantidad + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-primary"> Cantidad: ' + cantidad + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-danger">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-primary">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
       ' </div> ' +
       ' </div> ' +
       ' <div class="col-6"> ' +

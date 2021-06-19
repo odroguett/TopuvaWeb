@@ -3,6 +3,7 @@
 include("../BD/catalogoBD.php");
 include("../Negocio/EnvioMail.php");
 
+ob_start();
 
 $arrayPago = $_POST["arrayPago"]; 
 $idDespacho = json_decode($_POST["idDespacho"],true); 
@@ -11,7 +12,7 @@ $totalPago = json_decode($_POST["totalPago"],true);
 $idTipoPago =1;
 $oCatalogo= new catalogoBD();
 $oRespuesta = new RespuestaOtd();
-$oMail = new envioMail();
+
 $totalConDespacho =0;
 $sNombreProducto;
 if(ValidaPago($arrayPago,$sNombreProducto))
@@ -48,21 +49,38 @@ if(ValidaPago($arrayPago,$sNombreProducto))
         }
         $oCatalogo->InsertarDetallePago($idDetalle,$cantidadProducto,$precioVenta,$codigoProducto);
     }
-    $oMail->EnviarCorreo($idDespacho);
-    $oRespuesta->bEsValido=true;
-    $oRespuesta->sMensaje= " Pedido procesado con exito, nos pondremos en contacto con usted, gracias por confiar en nosotros. " ;
+  
+    if(EnviarCorreoPago($idDespacho))
+    {
+        $oRespuesta->bEsValido=true;
+        $oRespuesta->sMensaje= " Pedido procesado con exito, nos pondremos en contacto con usted, gracias por confiar en nosotros. " ;
+    }
+    else
+    {
+        $oRespuesta->bEsValido=false;
+        $oRespuesta->sMensaje= " Problemas al procesar pedido. Nos contactaremos a la brevedad con usted. " ;
+
+    }
+
+    
 
 }
 else
 {
+    
     $oRespuesta->bEsValido=false;
     $oRespuesta->sMensaje= "Stock no disponible para producto: " .  $sNombreProducto ;
 
 }
+ob_end_clean();
 
-$mensaje= array('bEsValido' =>$oRespuesta->bEsValido, 'sMensaje'=>$oRespuesta->sMensaje);
-          echo json_encode($mensaje,JSON_FORCE_OBJECT);
+$mensaje= array('bEsValido' => $oRespuesta->bEsValido, 'respuesta' => $oRespuesta->sMensaje);
+
+echo json_encode($mensaje,JSON_FORCE_OBJECT);
 exit();
+
+
+
 
 
 
@@ -91,6 +109,58 @@ foreach($arrayPago as $filas => $value)
 }
 
 return $bOK ;
+}
+
+function EnviarCorreoPago($idDespacho)
+{
+try{
+    $oMail = new envioMail();
+    $oCatalogo= new catalogoBD();
+    $sNombre="";
+    $sApellido="";
+    $sDireccion="";
+    $sDepartamento="";
+    $sComuna="";
+    $sCiudad="";
+    $sRegion="";
+    $sTelefono="";
+    $sDestinarioEmail="";
+    $sDestinario="";
+    $sAsunto="";
+    
+    
+    if($idDespacho !="")
+{
+    $Listafilas=$oCatalogo->obtieneDatosDespacho($idDespacho);
+    foreach($Listafilas as $filas => $value)
+{
+   $sNombre = $value['NOMBRE'];
+   $sApellido = $value['APELLIDOS'];
+   $sDireccion = $value['DIRECCION'];
+   $sDepartamento = $value['DEPARTAMENTO'];
+   $sComuna = $value['COMUNA'];
+   $sCiudad = $value['CIUDAD'];
+   $sRegion = $value['REGION'];
+   $sTelefono = $value['TELEFONO'];
+   $sDestinarioEmail = $value['EMAIL'];   
+
+
+}
+
+$sAsunto = " Su pedido con codigo " . $idDespacho . " recepcionado";
+$sCuerpo = "Estimado: $sNombre \n";
+$sCuerpo .=" Hemos recibido su pedido \n ";
+$sCuerpo .=" Nos podremos en contacto con usted \n ";
+$oMail->EnviarCorreo($sAsunto,$sCuerpo,$sDestinarioEmail);
+    return true;
+}
+}
+catch(Exception $e)
+  {
+    return false;
+  }
+
+
 }
 
 ?>

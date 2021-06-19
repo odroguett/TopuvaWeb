@@ -536,14 +536,14 @@ this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
         {
           $('#modalDireccion').modal('hide');
           localStorage.removeItem('Carrito');
-          oModal.MensajePersonalizado('Información', data.sMensaje, Constante_informacion);
+          oModal.MensajePersonalizado('Información', data.respuesta, Constante_informacion);
 
           $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
         }
         else
         {
           $('#modalDireccion').modal('hide');
-          oModal.MensajePersonalizadoCallBack('Información', data.sMensaje, Constante_informacion, oCarrito.CargaCarrito);
+          oModal.MensajePersonalizadoCallBack('Información', data.respuesta, Constante_informacion, oCarrito.CargaCarrito);
          
 
         }

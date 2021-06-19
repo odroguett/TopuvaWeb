@@ -49,7 +49,7 @@ foreach($arrayCarrito as $filas => $value)
    <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
 
-<input id="comIdDespacho" type="text" class="text-info" value="<?php echo $idDespacho; ?>" hidden>
+<input id="comIdDespacho" type="text" class="text-info" value="<?php echo $idDespacho; ?>" hidden >
 <input id="totalProductosPago" type="text" class="text-info" value="<?php echo $totalProductos; ?>" hidden>
 
 
@@ -79,7 +79,8 @@ foreach($arrayCarrito as $filas => $value)
                   </h2>
                </div>
                <!-- body cart items -->
-               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+               <div id="collapseOne" class="collapse show  total-principal " aria-labelledby="headingOne"
+                  data-parent="#accordionExample">
                   <div class="card-body p-0 border-top">
 
                      <div class="osahan-cart">
@@ -92,43 +93,41 @@ foreach($arrayCarrito as $filas => $value)
                            <input id="codigoProducto" type="text" class="text-info codigo-producto"
                               value="<?php echo trim($value['CodigoProducto']); ?>" hidden>
 
-                           <div class="form-inline">
+                           <div class="form-inline precio_total">
 
                               <div class="col-md-5">
                                  <div class="d-flex  align-items-center p-3">
                                     <a href="#"><img src="img/cart/g1.png" class="img-fluid"></a>
-                                    <a href="#" class="ml-3 text-dark text-decoration-none w-100">
+                                    <a href="#" class="ml-3 text-dark text-decoration-none w-100 ">
                                        <h6 class="font-weight-light text-dark">
                                           <?php if(isset($value['Producto'])) { echo $value['Producto']; } ?>
-                                          </h5>
-                                          <div class="d-flex align-items-center">
-                                             <p class="total_price m-0 font-weight-light text-primary">
-                                                <?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?>
-                                             </p>
+                                       </h6>
+                                       <div class="d-flex align-items-center   ">
+                                          <p class=" m-0 font-weight-light text-primary mostrar-precio ">
+                                             <?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?>
+                                          </p>
 
-                                          </div>
+                                       </div>
 
                                     </a>
 
                                  </div>
                               </div>
                               <div class="col-md-1 clase-cantidad">
+                                 <input type="text" class="precio-total" value="<?php echo $value['Precio']; ?>" hidden>
                                  <span class="ml-auto" href="#">
                                     <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                       <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
-                                          field='quantity' id="qtyBajar" />
-                                       <input type='text' id="cantidadProd" name='quantity ' value='1'
+                                       <input type='button' value='-' class='qtyminus qtyBajar btn btn-success btn-sm '
+                                          field='quantity' />
+                                       <input type='text' name='quantity ' value='1'
                                           class='qty form-control cantidad ' />
-                                       <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
-                                          field='quantity' id="qtySubir" />
+                                       <input type='button' value='+' class='qtyplus qtySubir btn btn-success btn-sm '
+                                          field='quantity' />
                                     </form>
 
                                  </span>
                               </div>
-                              <div class="col-md-1 clase-cantidad">
-                              <button type="button" class="btn btn-danger btn-eliminar" id="eliminarProducto">X</button>
-                              </div>
-                              
+                           
 
 
                            </div>
@@ -151,13 +150,18 @@ foreach($arrayCarrito as $filas => $value)
 
                               <div class="more">
 
-                                 <h6 class="text-left"><?php echo 'SUB TOTAL  ' . $totalPago . ' CLP' ?> </h6>
+                                 <div class="form-inline">
+                                    <h6 class="text-left"> SUB TOTAL  CLP:    </h6>
+                                    <h6 id="subTotal" class="text-left"><?php echo '&nbsp' .    $totalPago   ?>
+                                    </h6>
+
+                                 </div>
 
 
                                  <h7 class="text-left">Costo por despacho se agrega al finalizar la compra.</h7>
-                                
+
                               </div>
-                              
+
                               <div class="ml-auto"><i class="icofont-simple-right"></i></div>
                            </div>
                         </a>

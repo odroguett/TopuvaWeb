@@ -160,6 +160,7 @@ if(modalContent.innerHTML != "")
     success: function (data) {
       if (data)
       {
+        
 
         $("#ContenedorPaginas").html(data);
         
@@ -561,7 +562,17 @@ this.BorrarCarritoCompras = function(confirmacion)
   
   
 }
+this.MontoTotalCompra= function()
+{
+  var recorre = document.querySelectorAll('.mostrar-precio');
+  var total =0;
+  recorre.forEach(item => {
+  
+  total = total + Number(oCarrito.quitarCaractererNoNumericos(item.innerHTML));
+  });
+  $('#subTotal').text( ' '   + total);
 
+}
 
 
 
@@ -793,27 +804,54 @@ $("#btnBorrarCarrito").click(function (e) {
   
 });
 
-
-$('#qtySubir').click(function(e){
-  debugger
+$(".btn-eliminar-producto").click(function (e) {
+  debugger;
   e.preventDefault();
   e.stopImmediatePropagation();
+  var precioTotal = $(this).closest('.precio_total').find('.mostrar-precio').text();
+$(this).closest('.precio_total').find('.mostrar-precio').text('');
+$(this).closest('.clase-cantidad').find('.cantidad').val(Number(0));
+oModal.MensajePersonalizado('Alerta', "Se elimino compra de producto.", Constante_informacion);
+oCarrito.MontoTotalCompra();
+  
+  
+   
+
+  
+  
+});
+
+
+
+
+$('.qtySubir').click(function(e){
+  debugger
+  e.preventDefault();
+
 
   fieldName = $(this).attr('field');
+  precio = $(this).closest('.clase-cantidad').find('.precio-total').val()
   // Get its current value
   //var currentVal = parseInt($('input[name='+fieldName+']').val());
-  var currentVal =  $('#cantidadProd').val();
+  var currentVal = $(this).closest('.clase-cantidad').find('.cantidad').val()
   // If is not undefined
   if (!isNaN(currentVal)) {
       // Increment
-      $('#cantidadProd').val(Number(currentVal) + 1);
-    //  $('.cantidad').val(Number(currentVal) + 1);
+      $(this).closest('.clase-cantidad').find('.cantidad').val(Number(currentVal) +1 );
+      precio= precio * (Number(currentVal) + 1);
+     $(this).closest('.precio_total').find('.mostrar-precio').text( '$ ' + precio);
+     
   } else {
-      // Otherwise put a 0 there
-      $('#cantidadProd').val(1) ;
+      
+    
+    $(this).closest('.precio_total').find('.mostrar-precio').text( '$ ' + precio);
+      
   }
+oCarrito.MontoTotalCompra();
+  
+  e.stopImmediatePropagation();
 });
-$("#qtyBajar").click(function(e) {
+$(".qtyBajar").click(function(e) {
 debugger
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -821,16 +859,26 @@ debugger
   // Get the field name
   fieldName = $(this).attr('field');
   // Get its current value
-  var currentVal =  $('#cantidadProd').val();
+  var currentVal = $(this).closest('.clase-cantidad').find('.cantidad').val()
+  precio = $(this).closest('.clase-cantidad').find('.precio-total').val()
+  precioTotal =oCarrito.quitarCaractererNoNumericos($(this).closest('.precio_total').find('.mostrar-precio').text());
   // If is not undefined
-  if (!isNaN(currentVal) && currentVal > 1) {
+  if (!isNaN(currentVal) && currentVal >= 1) {
       // Increment
-      $('#cantidadProd').val(Number(currentVal) - 1);
+      // Increment
+      $(this).closest('.clase-cantidad').find('.cantidad').val(Number(currentVal) -1 );
+      
+      
+     $(this).closest('.precio_total').find('.mostrar-precio').text( '$ ' + (precioTotal - precio).toString());
     //  $('.cantidad').val(Number(currentVal) + 1);
-  } else {
-      // Otherwise put a 0 there
-      $('#cantidadProd').val(1) ;
+  } 
+  else if (currentVal ==0)
+  {
+    
+    $(this).closest('.precio_total').find('.mostrar-precio').text( '$ ');
+    //$(this).closest('.precio_total').find('.mostrar-precio').text( '$ ' +  precioTotal);
   }
+  oCarrito.MontoTotalCompra();
 });
 
 
@@ -863,7 +911,7 @@ $(".qtyminus").click(function(e) {
   // Get the field name
   fieldName = $(this).attr('field');
   // Get its current value
-  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').val();
+  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').text();
   // If it isn't undefined or its greater than 0
   if (!isNaN(currentVal) && currentVal > 1) {
       // Decrement one

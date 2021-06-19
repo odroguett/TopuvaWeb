@@ -49,7 +49,7 @@ class envioMail
 
 
 }
-$sDestinarioEmail ="alesaldivia@gmail.com";
+
 $sAsunto = " Su pedido con código " . $idDespacho . " recepcionado";
 $sCuerpo = "Estimado: $sNombre \n";
 $sCuerpo .=" Hemos recibido su pedido \n ";

@@ -122,7 +122,7 @@ if($idDespacho !="")
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Email" id="email" type="email" class="form-control" value="<?php  echo $sEmail ?>">
+                            <input placeholder="Email" id="email" type="email" class="form-control" required value="<?php  echo $sEmail ?>">
                         </div>
 
                     </div>

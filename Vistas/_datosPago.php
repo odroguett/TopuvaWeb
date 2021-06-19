@@ -205,11 +205,6 @@ else
 
             </div>
 
-
-
-
-           
-
         </div>
         <div class="row float-right">
                 <div class="col-md-12">

@@ -358,7 +358,8 @@ this.ContinuarPago = function()
   var arrayPago = new Array();
   let idDespacho= $('#comIdDespacho').val();
   let totalProductosPago = $('#totalProductosPago').val();
-  let totalPago =$('#totalPago').text();
+  //let totalPago =$('#totalPago').text();
+  let totalPago = Number(oCarrito.quitarCaractererNoNumericos($('#subTotal').text()));
   let tipoPago=1;
   if(idDespacho !=null && idDespacho != "" )
   {
@@ -449,6 +450,13 @@ this.ValidarDespacho = function()
   if ($('#region').val() === "") 
   {
     sError="Falta ingresar Región.";
+    
+      bOk = false;
+  }
+
+  if ($('#email').val() === "") 
+  {
+    sError="Correo es obligatorio para coordinar despacho.";
     
       bOk = false;
   }
@@ -758,7 +766,17 @@ $("#rdEntrega").click(function () {
   $("#btnContinuarPago").click(function (e) {
     
     e.preventDefault();
+    let subTotal = Number(oCarrito.quitarCaractererNoNumericos($('#subTotal').text()));
+    if(subTotal !=0)
+    {
     oCarrito.ContinuarPago();
+    }
+    else
+    {
+      oModal.MensajePersonalizado('Advertencia', "Total de productos no puede ser cero.", Constante_informacion);
+
+    }
+
     e.stopImmediatePropagation();
    
 });

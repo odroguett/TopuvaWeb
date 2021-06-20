@@ -1,3 +1,6 @@
+
+
+
 <?php 
 
 include("../BD/catalogoBD.php");
@@ -16,12 +19,14 @@ if(isset($sPatron))
             </button>
        </div>
        <div class='modal-body'>
-            <table class='responsive-table table table-hover table-bordered'>
+            <table class='responsive-table table table-hover table-bordered' id='tablaBuscar' style='width:100%;' >
             <thead>
               <tr>
+                
                  <th class='bg-info'>Producto</th>
                  <th class='bg-info'>Unidad</th>
                  <th class='bg-info'>precio</th>
+                 <th>Codigo</th>
               </tr>
             </thead><br>
        <tbody>";
@@ -29,10 +34,12 @@ if(isset($sPatron))
         
         foreach($Listafilas as $filas => $value)
         {
-            echo "<tr>
+        echo "<tr>
+        
 		<td class='text-info'>".$value['descripcion']."</td>	
         <td class='text-info'> ".$value['tamano']. " " . $value['codigo_unidad']. "</td>
         <td class='text-info'>$ ".$value['precio_venta']."</td>
+        <td  >".$value['codigo_precio_producto']."</td>	
 		</tr>";
         
         }
@@ -43,10 +50,44 @@ if(isset($sPatron))
     
 }
 
-
+include("../includes/footer.php");
 
 
 
 
 
 ?>
+
+<script>
+   $(document).ready(function() {
+  $("#tablaBuscar").DataTable({
+  
+    "language":
+    {
+        "url": "js/Spanish.json.js" ,
+                
+    },
+    'columns' : [
+        null,
+        null,
+        null,
+        //hide the fourth column
+        {'visible' : false,"width": "0px" }
+    ],
+    "responsive": true,
+    "lengthChange": true,
+    "ordering": false,
+    "info": false,
+    "lengthChange": true,
+   
+    
+});
+
+var table = $('#tablaBuscar').DataTable();
+
+$('#tablaBuscar tbody').on('click', 'tr', function () {
+        var data = table.row( this ).data();
+        alert( 'You clicked on '+data[3]+'\'s row' );
+    } );
+});
+</script>

@@ -624,3 +624,4 @@ include("BD/catalogoBD.php");
       $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
    });
 </script>
+

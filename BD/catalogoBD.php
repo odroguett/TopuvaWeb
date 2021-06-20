@@ -428,7 +428,7 @@ function buscador($sPatron)
   try{
   
     $sSql ="select vp.codigo_precio_producto,vp.precio_venta,p.descripcion,VP.IMAGEN ,
-            u.codigo_unidad,u.descripcion_unidad, u.tamano
+            u.codigo_unidad,u.descripcion_unidad, u.tamano,vp.stock
             from venta_productos vp, productos p, unidades u
             where 
               vp.id_unidad = u.id_unidad and

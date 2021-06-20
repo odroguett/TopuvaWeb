@@ -1,5 +1,6 @@
 
 <script src="vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="vendor/jquery/dataTables.js"></script>
  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
  <!-- slick Slider JS-->
  <script type="text/javascript" src="vendor/slick/slick.min.js"></script>

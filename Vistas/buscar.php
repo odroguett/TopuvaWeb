@@ -27,6 +27,8 @@ if(isset($sPatron))
                  <th class='bg-info'>Unidad</th>
                  <th class='bg-info'>precio</th>
                  <th>Codigo</th>
+                 <th>Tamano</th>
+                 <th>codigo_unidad</th>
               </tr>
             </thead><br>
        <tbody>";
@@ -39,7 +41,9 @@ if(isset($sPatron))
 		<td class='text-info'>".$value['descripcion']."</td>	
         <td class='text-info'> ".$value['tamano']. " " . $value['codigo_unidad']. "</td>
         <td class='text-info'>$ ".$value['precio_venta']."</td>
-        <td  >".$value['codigo_precio_producto']."</td>	
+        <td>".$value['codigo_precio_producto']."</td>	
+        <td>".$value['tamano']."</td>	
+        <td>".$value['codigo_unidad']."</td>	
 		</tr>";
         
         }
@@ -72,6 +76,8 @@ include("../includes/footer.php");
         null,
         null,
         //hide the fourth column
+        {'visible' : false,"width": "0px" },
+        {'visible' : false,"width": "0px" },
         {'visible' : false,"width": "0px" }
     ],
     "responsive": true,
@@ -87,7 +93,9 @@ var table = $('#tablaBuscar').DataTable();
 
 $('#tablaBuscar tbody').on('click', 'tr', function () {
         var data = table.row( this ).data();
-        alert( 'You clicked on '+data[3]+'\'s row' );
+        oCarrito.LinkProducto(data[0], data[2],data[4],data[5],1,"");
+        $("#botonCerrarDespacho").click();
+                        
     } );
 });
 </script>

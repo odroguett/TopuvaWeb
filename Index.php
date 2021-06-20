@@ -84,16 +84,7 @@ include("BD/catalogoBD.php");
          </p>
          <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a>
       </div>
-      <a href="search.html" class="text-decoration-none">
-         <div class="input-group mt-3 rounded shadow-sm overflow-hidden bg-white">
-            <div class="input-group-prepend">
-               <button class="border-0 btn btn-outline-secondary text-success bg-white"><i
-                     class="icofont-search"></i></button>
-            </div>
-            <input type="text" class="shadow-none border-0 form-control pl-0" placeholder="Buscar Productos.."
-               aria-label="" aria-describedby="basic-addon1">
-         </div>
-      </a>
+
    </div>
 
 
@@ -127,13 +118,14 @@ include("BD/catalogoBD.php");
             </div>
             <!-- search  -->
             <div class="input-group mr-sm-2 col-lg-12">
-               <input type="text" class="form-control" id="inlineFormInputGroupUsername2"
-                  placeholder="Buscar Productos">
+               <input type="text" class="form-control" id="idPatronBusqueda" placeholder="Buscar Productos">
                <div class="input-group-prepend">
-                  <div class="btn btn-primary rounded-right"><i class="icofont-search"></i></div>
+                  <div id="btnBuscarProductos" class="btn btn-primary rounded-right"><i class="icofont-search"></i>
+                  </div>
                </div>
             </div>
          </div>
+
          <div class="ml-auto d-flex align-items-center">
             <!-- Dark mode -->
 
@@ -144,6 +136,7 @@ include("BD/catalogoBD.php");
                <i class="icofont-shopping-cart"></i>
             </a>
          </div>
+
       </nav>
       <!-- Menu bar -->
       <div class="bg-info">
@@ -589,25 +582,38 @@ include("BD/catalogoBD.php");
 
 </body>
 <div class="modal fade" id="MensajePersonalizado" tabindex="" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true" data-backdrop="false">
-      <div class="modal-dialog">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h4 class="modal-title" id="TituloModal"></h4>
-            </div>
-            <div class="modal-body" id="CuerpoModal">
-            </div>
-            <div class="modal-footer">
-               <div class="row">
-                  <div class="col-lg-6">
-                     <button data-dismiss="modal" class="btn-primary" type="button" id="btn-cerrarMensaje">Cancelar
-                     </button>
-                  </div>
+   aria-hidden="true" data-backdrop="false">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" id="TituloModal"></h4>
+         </div>
+         <div class="modal-body" id="CuerpoModal">
+         </div>
+         <div class="modal-footer">
+            <div class="row">
+               <div class="col-lg-6">
+                  <button data-dismiss="modal" class="btn-primary" type="button" id="btn-cerrarMensaje">Cancelar
+                  </button>
                </div>
             </div>
          </div>
       </div>
    </div>
+</div>
+
+<div class="modal fade" id="modalBusqueda" tabindex="-1" role="dialog" aria-labelledby="modalBusqueda">
+
+   <div class="modal-dialog modal-dialog-centered">
+      
+      <div class="modal-content" id="mContent">
+      </div>
+   </div>
+
+</div>
+
+
+
 
 </html>
 

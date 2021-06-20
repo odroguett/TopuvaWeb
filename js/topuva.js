@@ -581,7 +581,31 @@ this.MontoTotalCompra= function()
   $('#subTotal').text( ' '   + total);
 
 }
+this.BuscarProductos = function()
+{
+var sPatron = $('#idPatronBusqueda').val();
+if(sPatron !="")
+{
+  $.ajax({
+    type: "POST",
+    url: '../TopuvaWeb/Vistas/buscar.php',
+    data: { sPatron: sPatron },
+    success: function (data) {
+      if (data)
+      {
+        $('#mContent').html(data);
+        $('#modalBusqueda').modal('show');
+        
+      }
+    }
+});
 
+}
+
+  
+
+
+}
 
 
 
@@ -836,6 +860,14 @@ oCarrito.MontoTotalCompra();
    
 
   
+  
+});
+
+$("#btnBuscarProductos").click(function (e) {
+  debugger;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  oCarrito.BuscarProductos();
   
 });
 

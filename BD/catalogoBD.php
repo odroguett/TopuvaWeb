@@ -421,6 +421,32 @@ function obtieneDatosVentaProducto($sCodigoProducto)
 
 }
 
+
+function buscador($sPatron)
+{
+
+  try{
+  
+    $sSql ="select vp.codigo_precio_producto,vp.precio_venta,p.descripcion,VP.IMAGEN ,
+            u.codigo_unidad,u.descripcion_unidad, u.tamano
+            from venta_productos vp, productos p, unidades u
+            where 
+              vp.id_unidad = u.id_unidad and
+              vp.id_producto= p.id_producto 
+              and (p.descripcion like '%".$sPatron."%' or 
+              u.tamano like '%".$sPatron."%' or
+              u.codigo_unidad like'%".$sPatron."%')
+              order by DESCRIPCION,tamano asc";
+           $lista= $this->ejecutarConsulta($sSql);
+           return $lista;
+  }
+  catch(Exception $e)
+  {
+    return NULL;
+  }
+
+}
+
 }
 
 

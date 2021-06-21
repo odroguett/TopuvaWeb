@@ -42,7 +42,7 @@ include("../BD/catalogoBD.php");
         ?>
 
       <div class="col-6 col-md-3 mb-3">
-         <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+         <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm">
             <div class="list-card-image">
                <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" href="#" class="text-dark">
                   

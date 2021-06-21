@@ -73,7 +73,7 @@ include("BD/catalogoBD.php");
          </a>
          <p class="ml-auto m-0">
             <a href="listing.html"
-               class="text-decoration-none bg-white p-1 rounded shadow-sm d-flex align-items-center">
+               class="text-decoration-none bg-light p-1 rounded shadow-sm d-flex align-items-center">
                <i class="text-dark icofont-sale-discount"></i>
                <span class="badge badge-danger p-1 ml-1 small">50%</span>
             </a>
@@ -85,8 +85,8 @@ include("BD/catalogoBD.php");
 
 
    <!-- Nav bar -->
-   <div class="bg-white shadow-sm osahan-main-nav">
-      <nav class="navbar navbar-expand-lg navbar-light bg-white osahan-header py-0 container">
+   <div class="bg-light shadow-sm osahan-main-nav">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-header py-0 container">
          <a class="navbar-brand mr-0" href="home.html"><img class="img-fluid logo-img " src="img/logo.png"></a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -231,7 +231,7 @@ include("BD/catalogoBD.php");
                   <div class="container">
                      <section class="footer-top py-4">
                         <div class="row">
-                           <div class=" col-lg-12 p-4 bg-white rounded shadow-sm">
+                           <div class=" col-lg-12 p-4 bg-light rounded shadow-sm">
                               <div class="row">
                                  <div class=" col-lg-6">
                                     <div class="input-group">
@@ -253,7 +253,7 @@ include("BD/catalogoBD.php");
 
 
                      <div class="row">
-                        <div class=" col-lg-12 p-4 bg-white rounded shadow-sm">
+                        <div class=" col-lg-12 p-4 bg-light rounded shadow-sm">
                            <div class="row">
                               <div class=" col-lg-6">
                                  <h5 style="text-align: left;" class="text-secondary">Contactanos</h5>
@@ -280,7 +280,7 @@ include("BD/catalogoBD.php");
 
   
    <!-- footer -->
-   <footer class="section-footer border-top bg-white">
+   <footer class="section-footer border-top bg-light">
       <section class="footer-top py-4">
          <div class="container">
 

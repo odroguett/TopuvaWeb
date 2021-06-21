@@ -60,7 +60,7 @@ foreach($Listafilas as $filas => $value)
             </div>
             <div class="col-lg-6 claseTexto">
 
-               <div class="p-4 bg-white rounded shadow-sm ">
+               <div class="p-4 bg-light rounded shadow-sm ">
 
 
                   <h3 tyle="text-align: left;" class="text-dark textoProducto">
@@ -101,7 +101,7 @@ foreach($Listafilas as $filas => $value)
                </div>
 
                <div class="details">
-               <div class="pt-3 bg-white">
+               <div class="pt-3 bg-light">
                   <p class="font-weight-light text-dark">Finas almendras naturales.........</p>
                </div>
 
@@ -130,7 +130,7 @@ foreach($Listafilas as $filas => $value)
         ?>
 
             <div class="col-6 col-md-3 mb-3">
-               <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+               <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm">
                   <div class="list-card-image">
                     
 

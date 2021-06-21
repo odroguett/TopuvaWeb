@@ -39,7 +39,7 @@
    <section class="py-4 osahan-main-body">
       <div class="container">
          <div class="row">
-            <div class="col-lg-12 p-4 bg-white rounded shadow-sm">
+            <div class="col-lg-12 p-4 bg-light rounded shadow-sm">
                <div style="text-align: center;">
                   <meta charset="utf-8">
                </div>
@@ -71,7 +71,7 @@
       <div class="container">
          <div class="row">
 
-            <div class="col-lg-12 p-4 bg-white rounded shadow-sm">
+            <div class="col-lg-12 p-4 bg-light rounded shadow-sm">
 
                <div id="edit_profile">
                   <div class="p-0">

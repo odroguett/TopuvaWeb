@@ -329,7 +329,7 @@
                            </div>
                         </div>
                         <div class="col-6 col-md-3 mb-3">
-                           <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
+                           <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm">
                               <div class="list-card-image">
                                  <a href="product_details.html" class="text-dark">
                                     <div class="member-plan position-absolute"><span class="badge m-3 badge-success">10%</span></div>

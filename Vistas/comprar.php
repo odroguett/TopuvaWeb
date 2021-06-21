@@ -68,9 +68,9 @@ foreach($arrayCarrito as $filas => $value)
             <!-- cart items -->
             <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden">
                <!-- cart header -->
-               <div class="card-header bg-white border-0 p-0" id="headingOne">
+               <div class="card-header bg-light border-0 p-0" id="headingOne">
                   <h2 class="mb-0" >
-                     <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0"
+                     <button class="btn d-flex align-items-center bg-light btn-block text-left btn-lg h5 px-3 py-4 m-0"
                         type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                         aria-controls="collapseOne">
                         <span class="c-number">1</span>
@@ -94,7 +94,7 @@ foreach($arrayCarrito as $filas => $value)
                               if(isset($value['Producto']))
                               {
                                ?>
-                        <div class="cart-items bg-white position-relative border-bottom comprar">
+                        <div class="cart-items bg-light position-relative border-bottom comprar">
                            <input id="codigoProducto" type="text" class="text-info codigo-producto"
                               value="<?php echo trim($value['CodigoProducto']); ?>" hidden>
 
@@ -193,9 +193,9 @@ foreach($arrayCarrito as $filas => $value)
 
       <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden mt-3">
          <!-- address header -->
-         <div class="card-header bg-white border-0 p-0" id="headingtwo">
+         <div class="card-header bg-light border-0 p-0" id="headingtwo">
 
-            <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg  m-0" type="button"
+            <button class="btn d-flex align-items-center bg-light btn-block text-left btn-lg  m-0" type="button"
                data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
                <span class="c-number">2</span> Medio de Entrega
             </button>
@@ -229,7 +229,7 @@ foreach($arrayCarrito as $filas => $value)
                            class="custom-control-input" checked>
                         <label class="custom-control-label w-100" for="customRadioInline1">
                            <div id="classDespacho">
-                              <div class="p-3 bg-white rounded shadow-sm w-100">
+                              <div class="p-3 bg-light rounded shadow-sm w-100">
                                  <div class="d-flex align-items-center mb-2">
                                     <p class="mb-0 h6">Dirección</p>
 
@@ -288,7 +288,7 @@ foreach($arrayCarrito as $filas => $value)
 
                   </div>
                   <div hidden id="classRetiro">
-                     <div class="p-4 bg-white rounded shadow-sm w-200">
+                     <div class="p-4 bg-light rounded shadow-sm w-200">
                         <div class="d-flex align-items-center mb-2">
                            <p class="mb-0 h6 font-weight-bold"> Direcciones de Retiro</p>
 

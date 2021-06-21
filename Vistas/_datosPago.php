@@ -57,17 +57,17 @@ else
         <!-- address header -->
         <div class="row form-inline">
             <div class="col-lg-12 ">
-                <p class="pt-2 m-0 text-right"><span class="small">
+                <p class="pt-2 m-0 text-left"><span class="small">
                         <div class="row form-group">
                             <div class="col-md-6">
                                 <a href="#" id="btnBorrarCarrito" data-toggle="modal" data-target="#exampleModal"
-                                    class=" text-primary ">Borrar Carrito</a>
+                                    class=" text-right text-primary ">Borrar Carrito</a>
                     </span></p>
             </div>
             <hr />
             <div class="col-lg-12">
                 <div id="classDespacho">
-                    <div class="p-3 bg-white rounded shadow-sm w-100">
+                    <div class="p-3 bg-light rounded shadow-sm w-100">
                         <div class="d-flex align-items-center mb-2">
                             <div class="row">
                                 <p class="mb-0 h5 text-secondary ">Detalle Compra</p>
@@ -76,28 +76,28 @@ else
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark">Total Productos </h6>
-                                <h6 class="text-dark"><?php echo " : " .  $totalProductosPago  ?> </h6>
+                                <h6 class="font-weight-light" >Total Productos </h6>
+                                <h6 class="font-weight-light"><?php echo " : " .  $totalProductosPago  ?> </h6>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark">Subtotal </h6>
-                                <h6 class="text-dark"><?php echo ' : ' . $totalPago . " (CLP)" ?> </h6>
+                                <h6 class="font-weight-light">Subtotal </h6>
+                                <h6 class="font-weight-light"><?php echo ' : ' . $totalPago . " (CLP)" ?> </h6>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark"> Cargo Despacho </h6>
-                                <h6 class="text-dark"><?php  echo ": " .  $costoEnvio . " (CLP)"   ?> </h6>
+                                <h6 class="font-weight-light"> Cargo Despacho </h6>
+                                <h6 class="font-weight-light"><?php  echo ": " .  $costoEnvio . " (CLP)"   ?> </h6>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark">Total a Pago </h6>
-                                <h6 class="text-dark"><?php echo " : " . $totalConDespacho . " (CLP)"   ?> </h6>
+                                <h6 class="font-weight-light">Total a Pago </h6>
+                                <h6 class="font-weight-light"><?php echo " : " . $totalConDespacho . " (CLP)"   ?> </h6>
                             </div>
                         </div>
 
@@ -113,30 +113,31 @@ else
 
 
         <!-- body address -->
-        <div class="row">
-            <div class=" col-lg-12  ">
-                <div id="classDespacho">
-                    <div class="p-3 bg-white rounded shadow-sm w-100">
+        <div class="row ">
+            <div class=" col-lg-12   ">
+                <div id="classDespacho"  >
+                    <div class="p-3  rounded bg-light shadow-sm w-100">
                         <div class="d-flex align-items-center mb-2">
                             <div class="row">
-                                <p class="mb-0 h5 text-secondary">Seleccionar Medio de Pago</p>
+                                <p class="mb-0 h5 text-dark">Seleccionar Medio de Pago</p>
                             </div>
                             <br>
                         </div>
 
                         <div class="row">
+                        
 
                             <div class="form-check form-check-inlinev class-transferencia">
                                 <input class="form-check-input" id="rdTransferencia" type="radio"
                                     name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                <label class="form-check-label h6" for="inlineRadio1">Transferencia</label>
+                                <label class="form-check-label h6 text-dark font-weight-light" for="inlineRadio1">Transferencia</label>
                             </div>
 
 
                             <div class="form-check form-check-inline class-entrega ">
                                 <input class="form-check-input" id="rdEntrega" type="radio" name="inlineRadioOptions"
                                     id="inlineRadio2" value="option2">
-                                <label class="form-check-label h6" for="inlineRadio2">Pago a momento de
+                                <label class="form-check-label h6 text-dark font-weight-light" for="inlineRadio2">Pago a momento de
                                     entrega</label>
                             </div>
 
@@ -149,21 +150,21 @@ else
                             <div id="idTransferencia">
                                 <div class="row">
                                     <div class="form-group">
-                                        <h6 class="text-dark">Telefono: 999999999 </h6>
+                                        <h6 class="text-dark font-weight-light">Telefono: 999999999 </h6>
 
                                     </div>
 
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <h6 class="text-dark">Banco: Santander </h6>
+                                        <h6 class="text-dark font-weight-light">Banco: Santander </h6>
 
                                     </div>
 
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <h6 class="text-dark">Rut: 99999999-9 </h6>
+                                        <h6 class="text-dark font-weight-light">Rut: 99999999-9 </h6>
 
                                     </div>
 
@@ -171,14 +172,14 @@ else
 
                                 <div class="row">
                                     <div class="form-group">
-                                        <h6 class="text-dark">Nombre: Pepito paga doble </h6>
+                                        <h6 class="text-dark font-weight-light">Nombre: Pepito paga doble </h6>
 
                                     </div>
 
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <h6 class="text-dark">Correo: Pepito@gmail.com </h6>
+                                        <h6 class="text-dark font-weight-light">Correo: Pepito@gmail.com </h6>
 
                                     </div>
 

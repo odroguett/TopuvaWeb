@@ -225,6 +225,7 @@ else
 
       ' </div> ' +
       ' </div> ' +
+      
       ' </div> ';
 
     recorre.forEach(item => {
@@ -237,7 +238,7 @@ else
       if (textoProducto.innerHTML.trim() === texto.trim()) {
 
       } else {
-        modalContentAux.innerHTML = modalContentAux.innerHTML + '<div class="container container_modal"> ' + item.innerHTML;
+        modalContentAux.innerHTML = modalContentAux.innerHTML + '</hr><div class="container container_modal bg-light "> ' + item.innerHTML;
         total = total + (Number(oCarrito.quitarCaractererNoNumericos(precioTotal.innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(cantidadTotal.innerHTML)));
       }
 

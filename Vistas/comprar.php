@@ -199,9 +199,9 @@ foreach($arrayCarrito as $filas => $value)
                data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
                <span class="c-number">2</span> Medio de Entrega
             </button>
-            <div class="p-3 row">
-               <div class="col-md">
-                  <div class="form-check form-check-inline">
+            <div class="p-3 row  bg-light">
+               <div class="col-md bg-light">
+                  <div class="form-check bg-light  form-check-inline">
                      <input class="form-check-input" id="rdDespacho" type="radio" name="inlineRadioOptions"
                         id="inlineRadio1" value="option1" checked>
                      <label class="form-check-label" for="inlineRadio1">Despacho</label>
@@ -221,7 +221,7 @@ foreach($arrayCarrito as $filas => $value)
          <!-- body address -->
          <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordionExample">
 
-            <div class="card-body p-0 border-top">
+            <div class="card-body p-0 border-top bg-light">
                <div class="osahan-order_address">
                   <div class="p-3 row">
                      <div class="custom-control col-lg-6 custom-radio mb-3 position-relative border-custom-radio">

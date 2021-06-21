@@ -323,12 +323,12 @@ include("BD/catalogoBD.php");
       aria-hidden="true">
       <div class="modal-dialog">
          <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-light">
                <h6 class="" id="tituloConfirmacion"></h6>
             </div>
-            <div id="mensajeConfirmacion" class="modal-body">
+            <div id="mensajeConfirmacion" class="modal-body bg-light">
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer bg-light">
                <div class="row">
                   <div class="col-lg-6">
                      <button id="btnConfirmacionOK" class="btn-primary" type="button">Aceptar </button>
@@ -358,10 +358,10 @@ include("BD/catalogoBD.php");
    aria-hidden="true" data-backdrop="false">
    <div class="modal-dialog">
       <div class="modal-content">
-         <div class="modal-header">
+         <div class="modal-header bg-light">
             <h4 class="modal-title" id="TituloModal"></h4>
          </div>
-         <div class="modal-body" id="CuerpoModal">
+         <div class="modal-body bg-light" id="CuerpoModal">
          </div>
          <div class="modal-footer">
             <div class="row">

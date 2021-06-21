@@ -12,13 +12,13 @@ if(isset($sPatron))
     if(isset($Listafilas))
     {  echo    
          "
-        <div class='modal-header'>
+        <div class='modal-header bg-light'>
             <h6 class='modal-title text-secondary' id='exampleModalLabel'>Resultados de busqueda</h6>
             <button type='button' id='botonCerrarDespacho' class='close' data-dismiss='modal' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
             </button>
        </div>
-       <div class='modal-body'>
+       <div class='modal-body bg-light'>
             <table class='responsive-table table table-hover table-bordered' id='tablaBuscar' style='width:100%;' >
             <thead>
               <tr>

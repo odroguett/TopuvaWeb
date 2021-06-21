@@ -174,7 +174,7 @@ if(modalContent.innerHTML != "")
 else
 {
 
-  oModal.MensajePersonalizado('Exito', "No exiten productos en el carrito", Constante_informacion);
+  oModal.MensajePersonalizado('Error', "No existen productos en el carrito", Constante_informacion);
   $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
 }
     
@@ -195,7 +195,7 @@ else
 
     var recorre = modalContent.querySelectorAll('.container_modal');
 
-    contenido = '<div class="container container_modal"> ' +
+    contenido = '<div class="container container_modal bg-light"> ' +
       ' <h6 class="codigoProducto font-weight-light text-dark" hidden>  ' + codigoProducto + ' </h6> ' +
       ' <div class="col-12 "> ' +
       ' <div class="row"> ' +

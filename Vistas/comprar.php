@@ -15,8 +15,8 @@ foreach($arrayCarrito as $filas => $value)
    if(isset($value['Producto']))
    {
       
-      $totalProductos = $totalProductos + (int)$value['Cantidad'];;
-      $totalPago = $totalPago + (int)$value['Precio'];
+      $totalProductos = $totalProductos + (int)$value['Cantidad'];
+      $totalPago = ($totalPago + (int)$value['Precio'] * (int)$value['Cantidad'] );
    }
  
 }
@@ -69,12 +69,17 @@ foreach($arrayCarrito as $filas => $value)
             <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden">
                <!-- cart header -->
                <div class="card-header bg-white border-0 p-0" id="headingOne">
-                  <h2 class="mb-0">
+                  <h2 class="mb-0" >
                      <button class="btn d-flex align-items-center bg-white btn-block text-left btn-lg h5 px-3 py-4 m-0"
                         type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                         aria-controls="collapseOne">
-                        <span id="" class="c-number">1</span>
-                        <?php  echo "Total Productos: " .  $totalProductos    ?>
+                        <span class="c-number">1</span>
+                        <div class="form-group">
+                        <span>Total Productos</span>
+                        <span id="totalProductos"><?php  echo  $totalProductos    ?></span>
+                        </div>
+                        
+                        
                      </button>
                   </h2>
                </div>
@@ -104,7 +109,7 @@ foreach($arrayCarrito as $filas => $value)
                                        </h6>
                                        <div class="d-flex align-items-center   ">
                                           <p class=" m-0 font-weight-light text-primary mostrar-precio ">
-                                             <?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio']; } ?>
+                                             <?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio'] *  $value['Cantidad']; } ?>
                                           </p>
 
                                        </div>
@@ -114,12 +119,12 @@ foreach($arrayCarrito as $filas => $value)
                                  </div>
                               </div>
                               <div class="col-md-1 clase-cantidad">
-                                 <input type="text" class="precio-total" value="<?php echo $value['Precio']; ?>" hidden>
+                                 <input type="text" class="precio-total" value="<?php echo $value['Precio'] ; ?>" hidden>
                                  <span class="ml-auto" href="#">
                                     <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
                                        <input type='button' value='-' class='qtyminus qtyBajar btn btn-success btn-sm '
                                           field='quantity' />
-                                       <input type='text' name='quantity ' value='1'
+                                       <input type='text' name='quantity ' value=' <?php if(isset($value['Cantidad'])) { echo $value['Cantidad']; } ?>'
                                           class='qty form-control cantidad ' />
                                        <input type='button' value='+' class='qtyplus qtySubir btn btn-success btn-sm '
                                           field='quantity' />
@@ -236,13 +241,13 @@ foreach($arrayCarrito as $filas => $value)
                                           <div class="col-md-6">
                                              <a href="#" id="btnAgregarDireccion" data-toggle="modal"
                                                 data-target="#exampleModal"
-                                                class=" text-primary   ">Agregar/Modificar</a>
+                                                class=" text-primary">Agregar/Modificar</a>
                                     </span></p>
                               </div>
 
                               <div class="col-md-6">
                                  <a href="#" id="btnEliminarDespacho" data-toggle="modal" data-target="#exampleModal"
-                                    class="text-danger rounded ">Eliminar</a></span>
+                                    class="text-primary rounded ">Eliminar</a></span>
                                  </p>
                               </div>
                            </div>

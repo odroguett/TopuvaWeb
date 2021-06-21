@@ -577,13 +577,24 @@ this.BorrarCarritoCompras = function(confirmacion)
 }
 this.MontoTotalCompra= function()
 {
+  debugger
   var recorre = document.querySelectorAll('.mostrar-precio');
   var total =0;
+  cantidad =0
   recorre.forEach(item => {
   
   total = total + Number(oCarrito.quitarCaractererNoNumericos(item.innerHTML));
   });
-  $('#subTotal').text( ' '   + total);
+  
+
+  recorreCantidad = document.querySelectorAll('.cantidad');
+  recorreCantidad.forEach(item => {
+  
+    cantidad = cantidad + Number(oCarrito.quitarCaractererNoNumericos(item.value));
+    });
+    $('#subTotal').text( ' '   + total);
+    $('#totalProductos').text( ' '   + cantidad);
+    
 
 }
 this.BuscarProductos = function()

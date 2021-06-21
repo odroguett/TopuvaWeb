@@ -23,12 +23,12 @@ if(isset($sPatron))
             <thead>
               <tr>
                 
-                 <th class='bg-info'>Producto</th>
-                 <th class='bg-info'>Unidad</th>
-                 <th class='bg-info'>precio</th>
-                 <th>Codigo</th>
-                 <th>Tamano</th>
-                 <th>codigo_unidad</th>
+                 <th class='bg-info text-white'>Producto</th>
+                 <th class='bg-info text-white'>Unidad</th>
+                 <th class='bg-info text-white'>precio</th>
+                 <th class='text-white'>Codigo</th>
+                 <th class='text-ligth'>Tamano</th>
+                 <th class='text-ligth'>codigo_unidad</th>
               </tr>
             </thead><br>
        <tbody>";
@@ -38,9 +38,9 @@ if(isset($sPatron))
         {
         echo "<tr>
         
-		<td class='text-info'>".$value['descripcion']."</td>	
-        <td class='text-info'> ".$value['tamano']. " " . $value['codigo_unidad']. "</td>
-        <td class='text-info'>$ ".$value['precio_venta']."</td>
+		<td class='text-ligth'>".$value['descripcion']."</td>	
+        <td class='text-ligth'> ".$value['tamano']. " " . $value['codigo_unidad']. "</td>
+        <td class='text-ligth'>$ ".$value['precio_venta']."</td>
         <td>".$value['codigo_precio_producto']."</td>	
         <td>".$value['tamano']."</td>	
         <td>".$value['codigo_unidad']."</td>	

@@ -82,7 +82,7 @@ foreach($Listafilas as $filas => $value)
                         </form>
                      </div>
                      <div class="col-9  align-items-right">
-                        <button type="button" class="btn btn-info rounded  btn-block btn-valor "> Agregar al
+                        <button type="button" id="btnAgregarCarro" class="btn btn-info rounded  btn-block  "> Agregar al
                            Carro</button>
                      </div>
                   </div>
@@ -140,7 +140,7 @@ foreach($Listafilas as $filas => $value)
                               <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                            </h6>
                            <div class="d-flex align-items-center precio">
-                              <h6 class="price m-0 font-weight-light text-danger">
+                              <h6 class="price m-0 font-weight-light text-info">
                                  <?php echo  ' $'  . $value['precio_venta']    ?></h6>
                               <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
                                  aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>

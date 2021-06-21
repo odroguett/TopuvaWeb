@@ -234,7 +234,7 @@ else
 
 
 
-      if (textoProducto.innerHTML.trim() === texto) {
+      if (textoProducto.innerHTML.trim() === texto.trim()) {
 
       } else {
         modalContentAux.innerHTML = modalContentAux.innerHTML + '<div class="container container_modal"> ' + item.innerHTML;
@@ -313,8 +313,13 @@ this.CargaCarrito = function()
   var cantidadTotal = 0;
   debugger;
   var modalContentAux = document.createElement('div');
-  //modalContentAux.innerHTML =modalContentAux.innerHTML + localStorage.contenido;
+  
   modalContentAux.innerHTML =modalContentAux.innerHTML + localStorage.getItem('Carrito');
+  if(modalContentAux.innerHTML=="null")
+  {
+
+    modalContentAux.innerHTML="";
+  }
   var recorre = modalContentAux.querySelectorAll('.container_modal');
   recorre.forEach(item => {
      precioTotal = precioTotal + Number(oCarrito.quitarCaractererNoNumericos(item.querySelector('.price_modal').innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(item.querySelector('.cantidadProducto').innerHTML));
@@ -617,6 +622,19 @@ $(document).ready(function () {
 
  
   $(".btn-valor").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    debugger;
+    var preVar = $(this).closest('.claseTexto').find('.price').text()
+    var cantidad = $('.cantidad').val();
+    var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
+    var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val()
+    oCarrito.AgregarSeleccion(preVar, cantidad, texto,codigoProducto);
+
+  });
+
+
+  $("#btnAgregarCarro").click(function (e) {
     e.preventDefault();
     e.stopPropagation();
     debugger;

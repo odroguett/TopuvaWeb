@@ -1,8 +1,8 @@
 <?php 
 
-include("../BD/catalogoBD.php");
-include("../Negocio/EnvioMail.php");
-
+require_once("../BD/catalogoBD.php");
+require_once("../Negocio/EnvioMail.php");
+require_once("../Negocio/comprobantePagoMail.php");
 
 ob_start();
 
@@ -156,12 +156,13 @@ try{
 
 
 }
-
+$oComprobantePago = new ComprobantePagoMail();
+$comprobantePDF = $oComprobantePago->GeneraComprobantePago($idDespacho);
 $sAsunto = " Su pedido con codigo " . $idDespacho . " recepcionado";
 $sCuerpo = "Estimado: $sNombre \n";
 $sCuerpo .=" Hemos recibido su pedido \n ";
 $sCuerpo .=" Nos podremos en contacto con usted \n ";
-$oMail->EnviarCorreo($sAsunto,$sCuerpo,$sDestinarioEmail);
+$oMail->EnviarCorreo($sAsunto,$sCuerpo,$sDestinarioEmail,$comprobantePDF);
     return true;
 }
 }

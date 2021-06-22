@@ -1,12 +1,9 @@
 <?php
-include("../FPDF/fpdf.php");
-include("../BD/catalogoBD.php");
+require_once("../FPDF/fpdf.php");
+require_once("../BD/catalogoBD.php");
 $idDespacho= $_GET["idDespacho"];
 class Comprobante extends FPDF
 {
-
-   
-    
 
 // Cabecera de página
 function Header()
@@ -120,11 +117,11 @@ function Header()
     $pdf->SetFont('Arial','B',11);
     $pdf->Cell(40,10,utf8_decode('Detalle Compra.'));
     $pdf->SetY(120);
-    $pdf->SetX(30);
+    $pdf->SetX(10);
     $pdf->SetTextColor(255,255,255);
     $pdf->SetFillColor(55,140,244);
     $pdf->SetDrawColor(25,25,12);
-    $pdf->Cell(60,6,'Producto',0,0,'C',true);
+    $pdf->Cell(90,6,'Producto',0,0,'C',true);
     $pdf->Cell(60,6,'Cantidad',0,0,'C',true);
     $pdf->Cell(40,6,'Total',0,0,'C',true);
     $pdf->SetTextColor(39,39,39);
@@ -132,15 +129,13 @@ function Header()
     foreach($ListaDetalle as $filas => $value)
     {
         $pdf->Ln();
-        $pdf->SetX(30);
-        $pdf->Cell(60,6,$value['nombre_producto'] . ' '.  $value['tamano']. ' ' . $value['descripcion_unidad'] ,1,0,'C',false);
+        $pdf->SetX(10);
+        $pdf->Cell(90,6,$value['nombre_producto'] . ' '.  $value['tamano']. ' ' . $value['descripcion_unidad'] ,1,0,'C',false);
         $pdf->Cell(60,6,$value['cantidad'],1,0,'C',false);
         $pdf->Cell(40,6,$value['venta'],1,0,'C',false);
     }
     
-    
-    
-    $pdf->Output('D','ComprobantePago.pdf');
+    $pdf->Output('D','ComprobantePago'. $idDespacho .'.pdf');
 
 
   

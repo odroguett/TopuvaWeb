@@ -1,5 +1,5 @@
 <?php 
-include("../Negocio/EnvioMail.php");
+require_once("../Negocio/EnvioMail.php");
 ob_start();
 $mail= $_POST['mail'];
 $nombre= $_POST['nombre'];
@@ -11,7 +11,7 @@ $sAsunto = " Contacto de  " . $nombre ;
 $sCuerpo = "Correo ingresado en contacto:" .  $mail . " \n";
 $sCuerpo .=$mensaje;
 $sDestinarioEmail = "odroguett@gmail.com";
-if($oMail->EnviarCorreo($sAsunto,$sCuerpo,$sDestinarioEmail))
+if($oMail->EnviarCorreo($sAsunto,$sCuerpo,$sDestinarioEmail,""))
 {
 
 }

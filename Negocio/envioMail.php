@@ -1,9 +1,9 @@
 <?php 
-include("../phpMailer/PHPMailer.php");
-include("../phpMailer/Exception.php");
-include("../phpMailer/OAuth.php");
-include("../phpMailer/POP3.php");
-include("../phpMailer/SMTP.php");
+require_once("../phpMailer/PHPMailer.php");
+require_once("../phpMailer/Exception.php");
+require_once("../phpMailer/OAuth.php");
+require_once("../phpMailer/POP3.php");
+require_once("../phpMailer/SMTP.php");
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -14,10 +14,11 @@ use PHPMailer\PHPMailer\SMTP;
 
 class envioMail
 {
-   function EnviarCorreo($sAsunto,$sCuerpo,$sDestinarioEmail)
+   function EnviarCorreo($sAsunto,$sCuerpo,$sDestinarioEmail,$sAdjunto)
    {
     
 $mail = new PHPMailer(true);
+
 
 try {
     //Server settings
@@ -39,7 +40,12 @@ try {
     //$mail->addBCC('bcc@example.com');
 
     //Attachments
-    //$mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    if($sAdjunto !="")
+    {
+        $mail->addStringAttachment($sAdjunto,'ComprobantePago.pdf',$encoding = 'base64', $type = 'application/pdf');         //Add attachments
+
+    }
+    
     //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
 
     //Content

@@ -447,6 +447,61 @@ function buscador($sPatron)
 
 }
 
+function obtieneCabeceraDespacho($idDespacho)
+{
+  try
+  {
+$sSql ='select 
+            d.ID_DESPACHO, d.nombre,d.APELLIDOS, c.TOTAL_PRODUCTOS,c.TOTAL_VENTA,
+            c.ID_TIPO_PAGO, tp.descripcion as descripcion_tipo_pago,
+            td.DESCRIPCION as descripcion_tipo_despacho
+        from 
+            despacho d, carrito c,tipo_pago tp,tipo_Despacho td
+        where 
+            d.id_despacho = c.id_despacho and
+            c.ID_TIPO_PAGO = tp.id_tipo_pago and
+            d.id_TIPO_DESPACHO= td.ID_TIPO_DESPACHO and
+            d.id_despacho =  '. $idDespacho;
+$lista= $this->ejecutarConsulta($sSql);
+return $lista;
+
+
+  }
+
+  catch(Exception $e)
+  {
+    return NULL;
+  }
+
+}
+
+function obtieneDetalleDespacho($idDespacho)
+{
+  try
+  {
+$sSql ='select cantidad,venta, v.codigo_precio_producto,
+        p.descripcion as nombre_producto, u.descripcion_unidad, u.tamano
+        from carrito c, detalle_ventas v, 
+        venta_productos vp, productos p, unidades u
+        where 
+        c.id_detalle = v.id_detalle and 
+        v.codigo_precio_producto = vp.codigo_precio_producto and
+        vp.id_producto = p.id_producto and
+        vp.id_unidad = u.id_unidad and
+        c.id_Despacho ='. $idDespacho;
+$lista= $this->ejecutarConsulta($sSql);
+return $lista;
+
+
+  }
+
+  catch(Exception $e)
+  {
+    return NULL;
+  }
+
+}
+
 }
 
 

@@ -543,7 +543,8 @@ this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
           $('#modalDireccion').modal('hide');
           localStorage.removeItem('Carrito');
           oModal.MensajePersonalizado('Información', data.respuesta, Constante_informacion);
-
+          window.location.replace("/TopuvaWeb/Negocio/documentosPDF.php?idDespacho=" + idDespacho);
+          
           $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
         }
         else
@@ -553,15 +554,13 @@ this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
          
 
         }
-
-        
-        
-
-       
         
       }
+      
+
     }
 });
+
 
 }
 

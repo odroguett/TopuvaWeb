@@ -3,6 +3,7 @@
 include("../BD/catalogoBD.php");
 include("../Negocio/EnvioMail.php");
 
+
 ob_start();
 
 $arrayPago = $_POST["arrayPago"]; 
@@ -15,6 +16,7 @@ $oRespuesta = new RespuestaOtd();
 
 $totalConDespacho =0;
 $sNombreProducto;
+
 if(ValidaPago($arrayPago,$sNombreProducto))
 {
     $parametros =$oCatalogo->obtieneParametros();
@@ -72,6 +74,7 @@ else
     $oRespuesta->sMensaje= "Stock no disponible para producto: " .  $sNombreProducto ;
 
 }
+
 ob_end_clean();
 
 $mensaje= array('bEsValido' => $oRespuesta->bEsValido, 'respuesta' => $oRespuesta->sMensaje);
@@ -110,6 +113,13 @@ foreach($arrayPago as $filas => $value)
 
 return $bOK ;
 }
+
+//function GenerarPDF($idDespacho)
+//{
+ //   $oComprobante = new GeneraComprobante();
+  //  $oComprobante->generaComprobantePago($idDespacho);
+
+//}
 
 function EnviarCorreoPago($idDespacho)
 {

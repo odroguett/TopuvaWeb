@@ -1,6 +1,6 @@
 <?php 
 
-include("../BD/catalogoBD.php");
+require_once("../BD/catalogoBD.php");
 $arrayPago = $_POST["arrayPago"]; 
 $idDespacho = json_decode($_POST["idDespacho"],true); 
 $totalProductosPago = json_decode($_POST["totalProductosPago"],true); 

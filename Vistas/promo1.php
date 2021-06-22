@@ -1,5 +1,5 @@
 <?php 
-include("../BD/catalogoBD.php");
+require_once("../BD/catalogoBD.php");
 $oCatalogo= new catalogoBD();
 $sDescripcion = $_POST['descripcion']; 
 $vPrecioVenta =$_POST["precioVenta"];

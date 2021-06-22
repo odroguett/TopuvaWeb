@@ -1,5 +1,5 @@
 <?php 
-include("BD/catalogoBD.php");
+require_once("BD/catalogoBD.php");
 
 ?>
 

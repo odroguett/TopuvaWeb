@@ -1,5 +1,5 @@
 <?php 
-include("../BD/catalogoBD.php");
+require_once("../BD/catalogoBD.php");
 $arrayCarrito = json_decode($_POST["arrayCarrito"],true); 
 $comuna =$_POST["comuna"];
 $ciudad = $_POST["ciudad"];

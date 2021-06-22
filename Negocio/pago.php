@@ -54,6 +54,7 @@ if(ValidaPago($arrayPago,$sNombreProducto))
   
     if(EnviarCorreoPago($idDespacho))
     {
+        
         $oRespuesta->bEsValido=true;
         $oRespuesta->sMensaje= " Pedido procesado con exito, nos pondremos en contacto con usted, gracias por confiar en nosotros. " ;
     }
@@ -127,15 +128,7 @@ try{
     $oMail = new envioMail();
     $oCatalogo= new catalogoBD();
     $sNombre="";
-    $sApellido="";
-    $sDireccion="";
-    $sDepartamento="";
-    $sComuna="";
-    $sCiudad="";
-    $sRegion="";
-    $sTelefono="";
     $sDestinarioEmail="";
-    $sDestinario="";
     $sAsunto="";
     
     
@@ -145,13 +138,6 @@ try{
     foreach($Listafilas as $filas => $value)
 {
    $sNombre = $value['NOMBRE'];
-   $sApellido = $value['APELLIDOS'];
-   $sDireccion = $value['DIRECCION'];
-   $sDepartamento = $value['DEPARTAMENTO'];
-   $sComuna = $value['COMUNA'];
-   $sCiudad = $value['CIUDAD'];
-   $sRegion = $value['REGION'];
-   $sTelefono = $value['TELEFONO'];
    $sDestinarioEmail = $value['EMAIL'];   
 
 

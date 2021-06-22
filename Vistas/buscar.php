@@ -3,7 +3,7 @@
 
 <?php 
 
-include("../BD/catalogoBD.php");
+require_once("../BD/catalogoBD.php");
 $oCatalogo= new catalogoBD();
 $sPatron = $_POST['sPatron'];
 if(isset($sPatron))

@@ -1,6 +1,6 @@
 <?php 
 
-include("../BD/catalogoBD.php");
+require_once("../BD/catalogoBD.php");
 
 $oCatalogo= new catalogoBD();
 $oRespuesta = new RespuestaOtd();

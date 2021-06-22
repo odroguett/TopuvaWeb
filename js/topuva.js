@@ -898,11 +898,22 @@ oCarrito.MontoTotalCompra();
 });
 
 $("#btnBuscarProductos").click(function (e) {
-  debugger;
+  
   e.preventDefault();
   e.stopImmediatePropagation();
   oCarrito.BuscarProductos();
   
+});
+$("#idPatronBusqueda").keypress(function(e)
+{
+  
+  var code = (e.keyCode ? e.keyCode : e.which);
+  if(code==13){
+    oCarrito.BuscarProductos(); 
+  }
+  e.stopImmediatePropagation();
+  
+
 });
 
 

@@ -1,39 +1,34 @@
 <?php 
-include("conexion.php");
-include("respuesta.php");
+require_once("conexion.php");
+require_once("respuesta.php");
 class catalogoBD
 {
-
+ private $oConexion;
  private $oRespuesta;
-
+ 
  public function __construct() {
   $this->oRespuesta = new RespuestaOtd();
+  $this->oConexion = new Conexion();
   
 }
 
-    function ejecutarConsulta($sSql)
+    public function ejecutarConsultaParametros($sSql,$arrayConsulta)
     {
 
-      $oConexion = new Conexion();
-      $oConexion->conectar();
-      $lista= $oConexion->traerDatos($sSql);
-      $oConexion->cerrar();
+      $lista =$this->oConexion->ejecutarConsulta($sSql,$arrayConsulta);
       return $lista;
     }
 
     function ejecutarConsultaIndividual($sSql)
     {
 
-      $oConexion = new Conexion();
-      $oConexion->conectar();
-      $lista= $oConexion->traerDatosIndividuales($sSql);
-      $oConexion->cerrar();
+      $lista= $this->oConexion->ejecutarConsultaIndividual($sSql);
       return $lista;
     }
 function obtieneCategorias()
 {
   $sSql="select * from categorias";
-  $lista= $this->ejecutarConsulta($sSql);
+  $lista= $this->ejecutarConsultaIndividual($sSql);
   return $lista;
 
 }
@@ -60,7 +55,7 @@ where
     vp.id_unidad = u.id_unidad and
     p.id_categoria =  c.id_categoria and vp.destacado = 1
     order by VP.ID_PRODUCTO';
-$lista= $this->ejecutarConsulta($sSql);
+$lista= $this->ejecutarConsultaIndividual($sSql);
 return $lista;
   }
   catch(Exception $e)
@@ -89,11 +84,14 @@ from
 where     
     vp.ID_PRODUCTO =p.ID_PRODUCTO and 
     vp.id_unidad = u.id_unidad and
-    p.id_categoria =  c.id_categoria and c.id_categoria = "'.  $sCategoria  .'"
+    p.id_categoria =  c.id_categoria and c.id_categoria = :categoria 
     order by VP.ID_PRODUCTO';
+    $arrConsulta =array( ':categoria' =>   $sCategoria ) ;
+    $lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
+    
+    
 
 
-$lista= $this->ejecutarConsulta($sSql);
 return $lista;
 
   }
@@ -118,9 +116,10 @@ from
 where 
     u.id_unidad = vp.id_unidad and
     p.id_producto = vp.id_producto and
-    p.descripcion= "'.  $sProducto  .'" and  vp.stock > 0';
-$lista= $this->ejecutarConsulta($sSql);
-return $lista;
+    p.descripcion= :producto and  vp.stock > 0';
+    $arrConsulta =array( ':producto' =>   $sProducto ) ;
+    $lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
+    return $lista;
 
 
   }
@@ -137,8 +136,10 @@ function obtieneDatosDespacho($idDespacho)
 {
   try
   {
-$sSql ='select * from despacho where id_despacho= '. $idDespacho;
-$lista= $this->ejecutarConsulta($sSql);
+$sSql ='select * from despacho where id_despacho= :despacho ';
+$arrConsulta =array( ':despacho' =>   $idDespacho ) ;
+$lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
+
 return $lista;
 
 
@@ -168,9 +169,10 @@ function obtieneProductosRelacionados($sProducto)
     where     
     vp.ID_PRODUCTO =p.ID_PRODUCTO and 
     vp.id_unidad = u.id_unidad and
-    p.id_categoria =  c.id_categoria and p.descripcion="'.  $sProducto  .'"
+    p.id_categoria =  c.id_categoria and p.descripcion= :producto 
     order by vp.ID_PRODUCTO';
-    $lista= $this->ejecutarConsulta($sSql);
+    $arrConsulta =array( ':producto' =>   $sProducto ) ;
+    $lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
     return $lista;
   }
   catch(Exception $e)
@@ -187,7 +189,7 @@ function obtieneParametros()
   try
   {
  $sSql ='select * from parametros';
- $lista= $this->ejecutarConsulta($sSql);
+ $lista= $this->ejecutarConsultaIndividual($sSql);
  return $lista;
   }
 
@@ -211,7 +213,11 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
     $dmIdDespacho=0;
     $sSql = 'select count(id_despacho) as id from despacho';
     $ArraydmIdDespacho =$this->ejecutarConsultaIndividual($sSql);
-    $dmIdDespacho= $ArraydmIdDespacho["id"];
+    foreach($ArraydmIdDespacho as $filas => $value)
+           {
+            $dmIdDespacho= $value['id'];
+           }
+    
     if($dmIdDespacho ==0)
     {
 
@@ -316,9 +322,10 @@ function RevisaStock($codigoProducto)
     try{
     
    
-   $sSql = 'select STOCK from  venta_productos 
-            WHERE CODIGO_PRECIO_PRODUCTO = "'. $codigoProducto  . '"' ;
-  $Array =$this->ejecutarConsultaIndividual($sSql);
+  $sSql = 'select STOCK from  venta_productos 
+            WHERE CODIGO_PRECIO_PRODUCTO = :codigoProducto';
+  $arrConsulta =array( ':codigoProducto' =>   $codigoProducto );
+  $Array= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
   $dmStock= $Array["STOCK"];
    return $dmStock;
   return true;
@@ -367,7 +374,10 @@ function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$total
   $dmIdDetalle=0;
   $sSql = 'select count(id_detalle) as id from carrito';
   $ArraydmIdDespacho =$this->ejecutarConsultaIndividual($sSql);
-  $dmIdDetalle= $ArraydmIdDespacho["id"];
+  foreach($ArraydmIdDespacho as $filas => $value)
+  {
+   $dmIdDetalle= $value['id'];
+  }
   if($dmIdDetalle ==0)
   {
 
@@ -409,9 +419,10 @@ function obtieneDatosVentaProducto($sCodigoProducto)
            from venta_productos vp, productos p , unidades u
            where vp.id_producto = p.id_producto and 
            u.id_unidad = vp.id_unidad and
-           vp.codigo_precio_producto =  "'. $sCodigoProducto . '"';
-
-           $lista= $this->ejecutarConsulta($sSql);
+           vp.codigo_precio_producto = :codigoProducto';
+           $arrConsulta =array( ':codigoProducto' =>   $sCodigoProducto );
+           $lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
+          
            return $lista;
   }
   catch(Exception $e)
@@ -433,13 +444,14 @@ function buscador($sPatron)
             where 
               vp.id_unidad = u.id_unidad and
               vp.id_producto= p.id_producto 
-              and (p.descripcion like '%".$sPatron."%' or 
-              u.tamano like '%".$sPatron."%' or
-              u.codigo_unidad like'%".$sPatron."%')
+              and (p.descripcion like  :patron1 or 
+              u.tamano like  :patron2  or
+              u.codigo_unidad like :patron3 )
               order by DESCRIPCION,tamano asc";
-           $lista= $this->ejecutarConsulta($sSql);
-           return $lista;
-  }
+              $arrConsulta =array( ':patron1' =>   '%'.$sPatron .'%', ':patron2' =>  '%'. $sPatron.'%',':patron3' =>  '%'. $sPatron.'%' );
+              $lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
+              return $lista;
+  } 
   catch(Exception $e)
   {
     return NULL;
@@ -461,8 +473,9 @@ $sSql ='select
             d.id_despacho = c.id_despacho and
             c.ID_TIPO_PAGO = tp.id_tipo_pago and
             d.id_TIPO_DESPACHO= td.ID_TIPO_DESPACHO and
-            d.id_despacho =  '. $idDespacho;
-$lista= $this->ejecutarConsulta($sSql);
+            d.id_despacho = :idDespacho';
+            $arrConsulta =array( ':idDespacho' =>  $idDespacho );
+            $lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
 return $lista;
 
 
@@ -488,8 +501,9 @@ $sSql ='select cantidad,venta, v.codigo_precio_producto,
         v.codigo_precio_producto = vp.codigo_precio_producto and
         vp.id_producto = p.id_producto and
         vp.id_unidad = u.id_unidad and
-        c.id_Despacho ='. $idDespacho;
-$lista= $this->ejecutarConsulta($sSql);
+        c.id_Despacho = :idDespacho ';
+        $arrConsulta =array( ':idDespacho' =>  $idDespacho );
+        $lista= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
 return $lista;
 
 

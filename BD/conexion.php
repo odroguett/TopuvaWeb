@@ -16,6 +16,8 @@ class Conexion
         $this->db = 'topuva';
         $this->host = 'localhost';
     }
+
+    //Funcion para conectar a base de datos.
    function conectar()
     {
 
@@ -27,9 +29,11 @@ class Conexion
                 PDO::MYSQL_ATTR_FOUND_ROWS => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             );
-          $this->conn= new PDO('mysql:host=localhost;dbname=topuva', $this->sUsuario, $this->sPassword, $opciones);    
+          $this->conn= new PDO('mysql:host=localhost;dbname=topuva', $this->sUsuario, $this->sPassword, $opciones);   
+          //Permite trabajar con UTF 8 
+          $this->conn->exec("SET CHARACTER SET utf8");
         }
-        catch(PDOExepction $e)
+        catch(PDOException $e)
         {
         print "Error de conexion: " . $e->getMessage() . "<br/>";
         
@@ -37,24 +41,87 @@ class Conexion
 
     }
 
+  
+    function ejecutarConsulta($sql,$array)
+    {
+        try
+        {
+            $this->conectar();
+            $data = array();
+            $result = $this->conn->prepare($sql);
+            $result->execute($array);
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                array_push($data, $row);
+            }
+            return($data);
+        }
+        catch(Exception $e)
+        {
+            return null;
+            $e->getMessage();
+
+        }
+
+
+    }
+
+    function ejecutarConsultaIndividual($sql)
+    {
+        try
+        {
+            $this->conectar();
+            $data = array();
+            $result = $this->conn->prepare($sql);
+            $result->execute();
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                array_push($data, $row);
+            }
+            return($data);
+        }
+        catch(Exception $e)
+        {
+            return null;
+            $e->getMessage();
+
+        }
+
+
+    }
+
     function traerDatos($sql)
     {
+        try
+        {
+            $this->conectar();
+            
  
-        $data = array();
-        $result = $this->conn->query($sql);
- 
-        $error = $this->conn->errorInfo();
-        if ($error[0] === "00000") {
-            $result->execute();
-            if ($result->rowCount() > 0) {
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                    array_push($data, $row);
+           $data = array();
+            $result = $this->conn->query($sql);
+     
+            $error = $this->conn->errorInfo();
+            if ($error[0] === "00000") {
+                $result->execute();
+                if ($result->rowCount() > 0) {
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                        array_push($data, $row);
+                    }
                 }
+            } else {
+                throw new Exception($error[2]);
+                $this->cerrar();
             }
-        } else {
-            throw new Exception($error[2]);
+            $this->cerrar();
+            return $data;
         }
-        return $data;
+
+        catch(Exception $e)
+        {
+            return null;
+            $e->getMessage();
+
+        }
+      
+       
     }
     function numeroFilas($sql)
     {
@@ -105,19 +172,7 @@ class Conexion
         return null;
     }
 
-    function ejecutarConsulta($sql)
-    {
- 
-        $result = $this->conn->query($sql);
-        $error = $this->conn->errorInfo();
- 
-        if ($error[0] === "00000") {
-            $result->execute();
-            return $result->rowCount() > 0;
-        } else {
-            throw new Exception($error[2]);
-        }
-    }
+   
 
     function execBool($sql)
     {

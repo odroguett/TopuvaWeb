@@ -16,6 +16,7 @@ $sRegion = $_POST['region'];
 $sTelefono = $_POST['telefono']; 
 $sEmail = $_POST['email']; 
 
+
 // Acaba vamos a realizar control de limpieza de imput.
 if($sModificar=="C")
 {

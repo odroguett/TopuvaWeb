@@ -8,9 +8,10 @@ ob_start();
 
 $arrayPago = $_POST["arrayPago"]; 
 $idDespacho = json_decode($_POST["idDespacho"],true); 
+$idTipoDespacho = json_decode($_POST["tipoDespacho"],true); 
 $totalProductosPago = json_decode($_POST["totalProductosPago"],true); 
 $totalPago = json_decode($_POST["totalPago"],true); 
-$idTipoPago =1;
+$idTipoPago =json_decode($_POST["tipoPago"],true); 
 $oCatalogo= new catalogoBD();
 $oRespuesta = new RespuestaOtd();
 
@@ -38,6 +39,7 @@ if(ValidaPago($arrayPago,$sNombreProducto))
     }
     $idDetalle= $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalConDespacho);
     $totalConDespacho =0;
+    $oCatalogo->ActualizaTipoDespacho($idDespacho,$idTipoDespacho);
     
     foreach($arrayPago as $filas => $value)
     { 

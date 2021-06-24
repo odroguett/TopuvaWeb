@@ -88,41 +88,7 @@ class Conexion
 
     }
 
-    function traerDatos($sql)
-    {
-        try
-        {
-            $this->conectar();
-            
- 
-           $data = array();
-            $result = $this->conn->query($sql);
-     
-            $error = $this->conn->errorInfo();
-            if ($error[0] === "00000") {
-                $result->execute();
-                if ($result->rowCount() > 0) {
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                        array_push($data, $row);
-                    }
-                }
-            } else {
-                throw new Exception($error[2]);
-                $this->cerrar();
-            }
-            $this->cerrar();
-            return $data;
-        }
-
-        catch(Exception $e)
-        {
-            return null;
-            $e->getMessage();
-
-        }
-      
-       
-    }
+  
     function numeroFilas($sql)
     {
         $result = $this->conn->query($sql);
@@ -136,57 +102,27 @@ class Conexion
         }
     }
 
-    function traerDatosIndividuales($sql)
-    {
- 
-        $result = $this->conn->query($sql);
- 
-        $error = $this->conn->errorInfo();
- 
-        if ($error[0] === "00000") {
-            $result->execute();
-            if ($result->rowCount() > 0) {
-                return $result->fetch(PDO::FETCH_ASSOC);
-            }
-        } else {
-            throw new Exception($error[2]);
-        }
-        return null;
-    }
+   
 
-    function traerPropiedadesIndividuales($sql, $prop)
+   function execBool($sql,$array)
+   {
+    try
     {
- 
-        $result = $this->conn->query($sql);
-        $error = $this->conn->errorInfo();
- 
-        if ($error[0] === "00000") {
-            $result->execute();
-            if ($result->rowCount() > 0) {
-                $data = $result->fetch(PDO::FETCH_ASSOC);
-                return $data[$prop];
-            }
-        } else {
-            throw new Exception($error[2]);
-        }
-        return null;
+    $this->conectar();
+    $result = $this->conn->prepare($sql);
+    $result->execute($array);
+    return true;
     }
+    catch(Exception $e)
+    {
+        return false;
+        $e->getMessage();
+
+    }
+   }
 
    
 
-    function execBool($sql)
-    {
- 
-        $result = $this->conn->exec($sql);
-        $error = $this->conn->errorInfo();
- 
-        if ($error[0] === "00000") {
-            return true;
-        } else {
-            throw new Exception($error[2]);
-            return false;
-        }
-    }
  
 
     function cerrar()
@@ -197,24 +133,5 @@ class Conexion
 
 }
 
-
-
-
-
-
-
-
-//$conn= mysqli_connect(
- //   'localhost',
-  //  'root',
-  //  'Topuva.12345',
-  //  'topuva'
-//);
-//if(isset($conn))
-//{
-
-  //  echo 'Conectados';
-
-//};
 
 ?>

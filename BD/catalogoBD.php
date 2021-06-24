@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+use JetBrains\PhpStorm\Internal\ReturnTypeContract;
+
 require_once("conexion.php");
 require_once("respuesta.php");
 class catalogoBD
@@ -24,6 +27,11 @@ class catalogoBD
 
       $lista= $this->oConexion->ejecutarConsultaIndividual($sSql);
       return $lista;
+    }
+    function execBool($sSql,$arrayInsert)
+    {
+     return $this->oConexion->execBool($sSql,$arrayInsert);
+
     }
 function obtieneCategorias()
 {
@@ -229,21 +237,37 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
     }
     $sSql='';
     $sSql ='Insert into despacho (ID_DESPACHO,NOMBRE,APELLIDOS,DIRECCION,DEPARTAMENTO,COMUNA,CIUDAD,REGION,TELEFONO,EMAIL,ID_CLIENTE,ID_TIPO_DESPACHO)
-    VALUES(' . $dmIdDespacho . ',"'.$sNombre.'","'.$sApellidos .'","'.$sDireccion.'","'.$sDepartamento.'","'.$sComuna.'","'.$sCiudad.'","'.$sRegion.'","'.$sTelefono.'","'.$sEmail.'",1,1) ';
+    VALUES(:idDespacho,:nombre,:apellidos,:direccion,:departamento,:comuna,:ciudad,:region,:telefono,:email,:idCliente,:idTipoDespacho) ';
+    $arrConsulta =array( ':idDespacho' =>   $dmIdDespacho ,':nombre' => $sNombre,
+                         ':apellidos' => $sApellidos,':direccion' => $sDireccion,
+                         ':departamento' => $sDepartamento,':comuna' => $sComuna,
+                         ':ciudad' => $sCiudad, ':region' => $sRegion,
+                         ':telefono' => $sTelefono, ':email' => $sEmail,
+                         ':idCliente' => '1',':idTipoDespacho' => 1);
+    if($this->execBool($sSql, $arrConsulta))
+    {
+      $this->oRespuesta ->bEsValido =true;
+      $this->oRespuesta ->idDespacho =$dmIdDespacho;
+      $this->oRespuesta ->sDireccion =$sDireccion;
+      $this->oRespuesta ->sDepartamento =$sDepartamento;
+      $this->oRespuesta ->sComuna =$sComuna;
+      $this->oRespuesta ->sCiudad =$sCiudad;
+      $this->oRespuesta ->sRegion =$sRegion;
+      $this->oRespuesta ->sTelefono =$sTelefono;
+      $this->oRespuesta ->sMensaje ="Datos para el despacho ingresados correctamente.";
+       return $this->oRespuesta;
+
+    }
+    else
+    {
+      $this->oRespuesta ->bEsValido =false;
+      $this->oRespuesta ->sMensaje ="Error al insertar registros para despacho.";
+       return $this->oRespuesta;
+
+    }
     
-    $oConexion->conectar();
-    $oConexion->execBool($sSql);
-    $oConexion->cerrar();
-   $this->oRespuesta ->bEsValido =true;
-   $this->oRespuesta ->idDespacho =$dmIdDespacho;
-   $this->oRespuesta ->sDireccion =$sDireccion;
-   $this->oRespuesta ->sDepartamento =$sDepartamento;
-   $this->oRespuesta ->sComuna =$sComuna;
-   $this->oRespuesta ->sCiudad =$sCiudad;
-   $this->oRespuesta ->sRegion =$sRegion;
-   $this->oRespuesta ->sTelefono =$sTelefono;
-   $this->oRespuesta ->sMensaje ="Datos para el despacho ingresados correctamente.";
-    return $this->oRespuesta;
+    
+  
   }
   catch(Exception $e)
   {
@@ -260,29 +284,39 @@ function ActualizaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiu
 {
 
   try{
-
-    $oConexion = new Conexion();
     $sSql='';
-    $sSql ='update despacho set NOMBRE =  "'.$sNombre. '", APELLIDOS = "'.$sApellidos .'",DIRECCION = "' .  $sDireccion.'",
-           COMUNA ="' .  $sComuna.'", CIUDAD ="'.$sCiudad.'",REGION ="'.$sRegion.'",DEPARTAMENTO = "'.$sDepartamento.'",
-           TELEFONO="'.$sTelefono.'",EMAIL="'.$sEmail.'"
-           WHERE ID_DESPACHO = ' . $idDespacho . '';
-    
-    
-    $oConexion->conectar();
-    $oConexion->execBool($sSql);
-    $oConexion->cerrar();
+    $sSql ='update despacho set NOMBRE =  :nombre, APELLIDOS = :apellidos,DIRECCION = :direccion,
+           COMUNA =:comuna, CIUDAD =:ciudad,REGION =:region,DEPARTAMENTO = :departamento,
+           TELEFONO=:telefono,EMAIL=:email
+           WHERE ID_DESPACHO =:idDespacho';
+    $arrConsulta =array( ':idDespacho' =>   $idDespacho ,':nombre' => $sNombre,
+           ':apellidos' => $sApellidos,':direccion' => $sDireccion,
+           ':departamento' => $sDepartamento,':comuna' => $sComuna,
+           ':ciudad' => $sCiudad, ':region' => $sRegion,
+           ':telefono' => $sTelefono, ':email' => $sEmail);
+           
+ if($this->execBool($sSql, $arrConsulta))
+ {
+
   $this->oRespuesta ->bEsValido =true;
-   $this->oRespuesta ->idDespacho =$idDespacho;
-   $this->oRespuesta ->sDireccion =$sDireccion;
-   $this->oRespuesta ->sDepartamento =$sDepartamento;
-   $this->oRespuesta ->sComuna =$sComuna;
-   $this->oRespuesta ->sCiudad =$sCiudad;
-   $this->oRespuesta ->sRegion =$sRegion;
-   $this->oRespuesta ->sTelefono =$sTelefono;
-   $this->oRespuesta ->bEsValido =true;
-   $this->oRespuesta ->sMensaje ="Actualización de datos para despacho correcta.";
-    return $this->oRespuesta;
+  $this->oRespuesta ->idDespacho =$idDespacho;
+  $this->oRespuesta ->sDireccion =$sDireccion;
+  $this->oRespuesta ->sDepartamento =$sDepartamento;
+  $this->oRespuesta ->sComuna =$sComuna;
+  $this->oRespuesta ->sCiudad =$sCiudad;
+  $this->oRespuesta ->sRegion =$sRegion;
+  $this->oRespuesta ->sTelefono =$sTelefono;
+  $this->oRespuesta ->sMensaje ="Actualización de datos para despacho correcta.";
+   
+ }
+
+ else
+ {
+
+  $this->oRespuesta ->bEsValido =false;
+  $this->oRespuesta ->sMensaje ="Error al actualizar datos del despacho.";
+ }
+ return $this->oRespuesta;
   }
   catch(Exception $e)
   {
@@ -293,30 +327,58 @@ function ActualizaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiu
 
   }
 
-  function RebajaStock($codigoProducto)
+  
+  
+}
+
+function RebajaStock($codigoProducto,$cantidad)
   {
     try{
     
    $oConexion = new Conexion();
-   $sSql = 'update venta_productos set STOCK = STOCK - '. $codigoProducto . ' 
-           WHERE CODIGO_PRECIO_PRODUCTO = "'. $codigoProducto  . '"' ;
-           $oConexion->conectar();
-           $oConexion->execBool($sSql);
-           $oConexion->cerrar();
-    return true;
+   $sSql = 'update venta_productos set STOCK = STOCK - :cantidad
+           WHERE CODIGO_PRECIO_PRODUCTO =:codigoProducto';
+    $arrConsulta =array( ':cantidad' =>  $cantidad, ':codigoProducto' =>  $codigoProducto );
+    
+    if( $this->execBool($sSql, $arrConsulta))
+    {
+
+      return true;
+    }
+    else
+    {
+      return false;
+
+    }
+    
     }
     catch(Exception $e)
   {
     //Aca vamos a incorporar el error al archivo de log.
     return false;
     
-
-
   }
   
   }
-  
-}
+  function ActualizaTipoDespacho($idDespacho,$tipoDespacho)
+  {
+$sSql = 'update despacho set id_tipo_despacho = :tipoDespacho
+        where id_Despacho = :idDespacho';
+        $arrConsulta =array( ':idDespacho' =>  $idDespacho, ':tipoDespacho' =>  $tipoDespacho);
+    
+        if( $this->execBool($sSql, $arrConsulta))
+        {
+    
+          return true;
+        }
+        else
+        {
+          return false;
+    
+        }
+
+  }
+
 function RevisaStock($codigoProducto)
   {
     try{
@@ -346,12 +408,21 @@ function eliminaDespacho($idDespacho)
   try{
     $oConexion = new Conexion();
     $sSql='';
-    $sSql = 'delete from despacho where id_despacho =' . $idDespacho;
-    $oConexion->conectar();
-    $oConexion->execBool($sSql);
-    $oConexion->cerrar();
-    $this->oRespuesta ->bEsValido =true;
-    $this->oRespuesta ->sMensaje ="Información de despacho eliminada correctamente.";
+    $sSql = 'delete from despacho where id_despacho = :idDespacho';
+    $arrConsulta =array( ':idDespacho' =>  $idDespacho);
+    
+    if( $this->execBool($sSql, $arrConsulta))
+    {
+      $this->oRespuesta ->bEsValido =true;
+      $this->oRespuesta ->sMensaje ="Información de despacho eliminada correctamente.";
+    }
+    else
+    {
+      $this->oRespuesta ->bEsValido =false;
+      $this->oRespuesta ->sMensaje ="Despacho eliminado con errores";
+
+    }
+    
     return $this->oRespuesta;
 
   }
@@ -370,7 +441,7 @@ function eliminaDespacho($idDespacho)
 function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalPago)
 {
 
-  $oConexion = new Conexion();
+  
   $dmIdDetalle=0;
   $sSql = 'select count(id_detalle) as id from carrito';
   $ArraydmIdDespacho =$this->ejecutarConsultaIndividual($sSql);
@@ -389,25 +460,42 @@ function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$total
   }
   $sSql='';
   $sSql ='Insert into carrito (ID_DETALLE,TOTAL_PRODUCTOS,TOTAL_VENTA,ID_TIPO_PAGO,ID_DESPACHO)
-    VALUES(' . $dmIdDetalle . ',"'.$totalProductosPago.'","'.$totalPago .'","'.$idTipoPago.'","'.$idDespacho.'") ';
-  $oConexion->conectar();
-  $oConexion->execBool($sSql);
-  $oConexion->cerrar();
+    VALUES( :dmIdDetalle ,:totalProductosPago,:totalPago,:idTipoPago,:idDespacho)';
+   
+    $arrConsulta =array( ':dmIdDetalle' =>   $dmIdDetalle ,':totalProductosPago' => $totalProductosPago, 
+                       ':totalPago' =>$totalPago,':idTipoPago' => $idTipoPago,
+                      ':idDespacho'=> $idDespacho);
+if($this->execBool($sSql, $arrConsulta))
+{
+
   return $dmIdDetalle;
 
+}
+else
+{
+return 0;
+
+}
 }
 function InsertarDetallePago($dmIdDetalle ,$cantidadProducto,$Montoventa,$codigoProducto)
 {
 
-  $oConexion = new Conexion();
   $Montoventa = $cantidadProducto * $Montoventa;
-  $sSql='';
+  $this->RebajaStock($codigoProducto,$cantidadProducto);
   $sSql ='Insert into detalle_ventas (ID_DETALLE,CANTIDAD,VENTA,CODIGO_PRECIO_PRODUCTO)
-    VALUES(' . $dmIdDetalle . ',"'.$cantidadProducto.'","'.$Montoventa .'","'.$codigoProducto.'") ';
-  $oConexion->conectar();
-  $oConexion->execBool($sSql);
-  $oConexion->cerrar();
+    VALUES(:dmIdDetalle,:cantidadProducto,:montoVenta,:codigoProducto) ';
+    $arrConsulta =array( ':dmIdDetalle' =>   $dmIdDetalle ,':cantidadProducto' => $cantidadProducto, 
+                         ':montoVenta' =>$Montoventa,':codigoProducto' => $codigoProducto);
+                         
+if($this->execBool($sSql, $arrConsulta))
+{
+ return true;
+}
+else
+{
+  return false;
 
+}
 }
 
 function obtieneDatosVentaProducto($sCodigoProducto)
@@ -463,7 +551,7 @@ function obtieneCabeceraDespacho($idDespacho)
 {
   try
   {
-$sSql ='select 
+        $sSql ='select 
             d.ID_DESPACHO, d.nombre,d.APELLIDOS, c.TOTAL_PRODUCTOS,c.TOTAL_VENTA,
             c.ID_TIPO_PAGO, tp.descripcion as descripcion_tipo_pago,
             td.DESCRIPCION as descripcion_tipo_despacho
@@ -515,11 +603,7 @@ return $lista;
   }
 
 }
-
 }
-
-
-
 
 
 

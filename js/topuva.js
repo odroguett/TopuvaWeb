@@ -53,21 +53,24 @@ function Carrito_class() {
     modificar= 'C';  
 
   }
-  var idDespacho=$('#comIdDespacho').val();
-  var nombre= $('#nombre').val();
-  var apellido= $('#apellido').val();
-  var direccion= $('#direccion').val();
-  var departamento= $('#departamento').val();
-  var ciudad= $('#ciudad').val();
-  var comuna= $('#comuna').val();
-  var region= $('#region').val();
-  var telefono= $('#telefono').val();
-  var email= $('#email').val();
+  let idDespacho=$('#comIdDespacho').val();
+  let nombre= $('#nombre').val();
+  let apellido= $('#apellido').val();
+  let direccion= $('#direccion').val();
+  let departamento= $('#departamento').val();
+  let ciudad= $('#ciudad').val();
+  let comuna= $('#comuna').val();
+  let region= $('#region').val();
+  let telefono= $('#telefono').val();
+  let email= $('#email').val();
+  let cliente= $('#email').val();
+  let tipoDespacho= $('#tipoDespacho').val();
   $.ajax({
     type: "POST",
     url: '../TopuvaWeb/Negocio/despacho.php',
     dataType: 'json',
-    data: {modificar:modificar,idDespacho:idDespacho, nombre: nombre,apellido: apellido, direccion:direccion,departamento:departamento,ciudad:ciudad,comuna:comuna,region:region,telefono:telefono,email:email},
+    data: {modificar:modificar,idDespacho:idDespacho, nombre: nombre,apellido: apellido, direccion:direccion,departamento:departamento,
+           ciudad:ciudad,comuna:comuna,region:region,telefono:telefono,email:email},
     success: function (data) {
       if (data.bEsValido)
       { 
@@ -364,9 +367,15 @@ this.ContinuarPago = function()
   var arrayPago = new Array();
   let idDespacho= $('#comIdDespacho').val();
   let totalProductosPago = $('#totalProductosPago').val();
-  //let totalPago =$('#totalPago').text();
+  let tipoDespacho=1;
+  if($('#rdDespacho').is(':checked'))
+  {
+    tipoDespacho=2;
+  }
+ 
+  
   let totalPago = Number(oCarrito.quitarCaractererNoNumericos($('#subTotal').text()));
-  let tipoPago=1;
+  //let tipoPago=1;
   if(idDespacho !=null && idDespacho != "" )
   {
     var recorre =  document.querySelectorAll(".comprar");
@@ -388,7 +397,7 @@ this.ContinuarPago = function()
     $.ajax({
       type: "POST",
       url: '../TopuvaWeb/Vistas/_datosPago.php',
-      data: { arrayPago: JSON.stringify(arrayPago),idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago },
+      data: { arrayPago: JSON.stringify(arrayPago),idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago,tipoDespacho:tipoDespacho },
       //contentType: "application/json; charset=utf-8",
      // dataType: "json",
       success: function (data) {
@@ -525,14 +534,25 @@ this.EliminarDatosDespacho = function(confirmacion)
 
 }
 
-this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago)
+this.FinalizarPago= function(arrayPago,idDespacho,totalProductosPago,totalPago,tipoDespacho)
 {
   debugger;
+  let tipoPago ="";
+  if($('#rdTransferencia').is(':checked'))
+  {
+
+    tipoPago ="1";
+  }
+  else
+  {
+    tipoPago ="2";
+
+  }
 
   $.ajax({
     type: "POST",
     url: '../TopuvaWeb/Negocio/pago.php',
-    data: { arrayPago: arrayPago,idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago },
+    data: { arrayPago: arrayPago,idDespacho:idDespacho,totalProductosPago:totalProductosPago,totalPago:totalPago,tipoDespacho:tipoDespacho,tipoPago:tipoPago },
     //contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (data) {

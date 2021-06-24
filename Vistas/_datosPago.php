@@ -3,6 +3,7 @@
 require_once("../BD/catalogoBD.php");
 $arrayPago = $_POST["arrayPago"]; 
 $idDespacho = json_decode($_POST["idDespacho"],true); 
+$idTipoDespacho = json_decode($_POST["tipoDespacho"],true); 
 $totalProductosPago = json_decode($_POST["totalProductosPago"],true); 
 $totalPago = json_decode($_POST["totalPago"],true); 
 $idTipoPago =1;
@@ -222,7 +223,7 @@ else
         <div class="row float-right">
             <div class="col-md-12">
                 <button type="button" id="btnFinalizarPago" class="btn btn-primary btn-block"
-                    onclick='oCarrito.FinalizarPago(  <?php  echo $arrayPago  ?>  , <?php echo $idDespacho ?> ,  <?php echo $totalProductosPago ?> , <?php echo $totalPago ?>   )'>Solicitar
+                    onclick='oCarrito.FinalizarPago(  <?php  echo $arrayPago  ?>  , <?php echo $idDespacho ?> ,  <?php echo $totalProductosPago ?> , <?php echo $totalPago ?>,<?php echo $idTipoDespacho ?>   )'>Solicitar
                     Pedido</button>
             </div>
         </div>

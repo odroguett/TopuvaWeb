@@ -135,15 +135,15 @@ else
 
                             <div class="form-check form-check-inlinev class-transferencia">
                                 <input class="form-check-input" id="rdTransferencia" type="radio"
-                                    name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+                                    name="rdTransferencia"  value="option1" checked>
                                 <label class="form-check-label h6 text-dark font-weight-light"
                                     for="inlineRadio1">Transferencia</label>
                             </div>
 
 
                             <div class="form-check form-check-inline class-entrega ">
-                                <input class="form-check-input" id="rdEntrega" type="radio" name="inlineRadioOptions"
-                                    id="inlineRadio2" value="option2">
+                                <input class="form-check-input" id="rdEntrega" type="radio" name="rdEntrega"
+                                     value="option2">
                                 <label class="form-check-label h6 text-dark font-weight-light" for="inlineRadio2">Pago a
                                     momento de
                                     entrega</label>

@@ -363,7 +363,7 @@ require_once("BD/catalogoBD.php");
          </div>
          <div class="modal-body bg-light" id="CuerpoModal">
          </div>
-         <div class="modal-footer">
+         <div class="modal-footer bg-light">
             <div class="row">
                <div class="col-lg-6">
                   <button data-dismiss="modal" class="btn-primary" type="button" id="btn-cerrarMensaje">Cancelar

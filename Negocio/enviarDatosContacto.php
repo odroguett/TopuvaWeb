@@ -1,9 +1,9 @@
 <?php 
 require_once("../Negocio/EnvioMail.php");
 ob_start();
-$mail= $_POST['mail'];
-$nombre= $_POST['nombre'];
-$mensaje= $_POST['mensaje'];
+$mail=filter_var($_POST['mail'],FILTER_SANITIZE_EMAIL);
+$nombre= filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);
+$mensaje= filter_var($_POST['mensaje'],FILTER_SANITIZE_STRING);
 try{
     $oMail = new envioMail();
     

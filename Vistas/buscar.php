@@ -6,6 +6,9 @@
 require_once("../BD/catalogoBD.php");
 $oCatalogo= new catalogoBD();
 $sPatron = $_POST['sPatron'];
+//Sanitizamos el patron de busqueda//
+$sPatron = filter_var($sPatron, FILTER_SANITIZE_STRING);
+
 if(isset($sPatron))
 {
     $Listafilas=$oCatalogo->buscador($sPatron);

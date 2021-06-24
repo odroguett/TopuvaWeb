@@ -4,18 +4,17 @@ require_once("../BD/catalogoBD.php");
 
 $oCatalogo= new catalogoBD();
 $oRespuesta = new RespuestaOtd();
-$sModificar= $_POST['modificar']; 
-$idDespacho= $_POST['idDespacho']; 
-$sNombre = $_POST['nombre']; 
-$sApellidos = $_POST['apellido']; 
-$sDireccion = $_POST['direccion']; 
-$sDepartamento = $_POST['departamento']; 
-$sCiudad = $_POST['ciudad']; 
-$sComuna = $_POST['comuna']; 
-$sRegion = $_POST['region']; 
-$sTelefono = $_POST['telefono']; 
-$sEmail = $_POST['email']; 
-
+$sModificar= filter_var($_POST['modificar'], FILTER_SANITIZE_STRING); 
+$idDespacho= filter_var($_POST['idDespacho'],FILTER_SANITIZE_NUMBER_INT); 
+$sNombre = filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);  
+$sApellidos = filter_var($_POST['apellido'],FILTER_SANITIZE_STRING); 
+$sDireccion = filter_var($_POST['direccion'],FILTER_SANITIZE_STRING); 
+$sDepartamento = filter_var($_POST['departamento'],FILTER_SANITIZE_STRING); 
+$sCiudad = filter_var($_POST['ciudad'],FILTER_SANITIZE_STRING); 
+$sComuna = filter_var($_POST['comuna'],FILTER_SANITIZE_STRING); 
+$sRegion = filter_var($_POST['region'],FILTER_SANITIZE_STRING);
+$sTelefono =  filter_var($_POST['telefono'],FILTER_SANITIZE_STRING);
+$sEmail = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
 
 // Acaba vamos a realizar control de limpieza de imput.
 if($sModificar=="C")

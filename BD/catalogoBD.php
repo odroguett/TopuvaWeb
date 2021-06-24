@@ -254,6 +254,7 @@ function InsertaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiuda
       $this->oRespuesta ->sCiudad =$sCiudad;
       $this->oRespuesta ->sRegion =$sRegion;
       $this->oRespuesta ->sTelefono =$sTelefono;
+      $this->oRespuesta ->sEmail =$sEmail;
       $this->oRespuesta ->sMensaje ="Datos para el despacho ingresados correctamente.";
        return $this->oRespuesta;
 
@@ -306,6 +307,7 @@ function ActualizaDespacho($sNombre,$sApellidos,$sDireccion,$sDepartamento,$sCiu
   $this->oRespuesta ->sCiudad =$sCiudad;
   $this->oRespuesta ->sRegion =$sRegion;
   $this->oRespuesta ->sTelefono =$sTelefono;
+  $this->oRespuesta ->sEmail =$sEmail;
   $this->oRespuesta ->sMensaje ="Actualización de datos para despacho correcta.";
    
  }

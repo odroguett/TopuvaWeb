@@ -12,6 +12,7 @@ class RespuestaOtd
     public $sCiudad;
     public $sRegion;
     public $sTelefono;
+    public $sEmail;
 
 
 

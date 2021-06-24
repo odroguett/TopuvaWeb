@@ -49,7 +49,7 @@ foreach($arrayCarrito as $filas => $value)
    <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
 
-<input id="comIdDespacho" type="text" class="text-info" value="<?php echo $idDespacho; ?>" hidden >
+<input id="comIdDespacho" type="text" class="text-info" value="<?php echo $idDespacho; ?>" hidden>
 <input id="totalProductosPago" type="text" class="text-info" value="<?php echo $totalProductos; ?>" hidden>
 
 
@@ -69,17 +69,17 @@ foreach($arrayCarrito as $filas => $value)
             <div class="card border-0 osahan-accor rounded shadow-sm overflow-hidden">
                <!-- cart header -->
                <div class="card-header bg-light border-0 p-0" id="headingOne">
-                  <h2 class="mb-0" >
+                  <h2 class="mb-0">
                      <button class="btn d-flex align-items-center bg-light btn-block text-left btn-lg h5 px-3 py-4 m-0"
                         type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                         aria-controls="collapseOne">
                         <span class="c-number">1</span>
                         <div class="form-group">
-                        <span>Total Productos</span>
-                        <span id="totalProductos"><?php  echo  $totalProductos    ?></span>
+                           <span>Total Productos</span>
+                           <span id="totalProductos"><?php  echo  $totalProductos    ?></span>
                         </div>
-                        
-                        
+
+
                      </button>
                   </h2>
                </div>
@@ -119,12 +119,14 @@ foreach($arrayCarrito as $filas => $value)
                                  </div>
                               </div>
                               <div class="col-md-1 clase-cantidad">
-                                 <input type="text" class="precio-total" value="<?php echo $value['Precio'] ; ?>" hidden>
+                                 <input type="text" class="precio-total" value="<?php echo $value['Precio'] ; ?>"
+                                    hidden>
                                  <span class="ml-auto" href="#">
                                     <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
                                        <input type='button' value='-' class='qtyminus qtyBajar btn btn-success btn-sm '
                                           field='quantity' />
-                                       <input type='text' name='quantity ' value=' <?php if(isset($value['Cantidad'])) { echo $value['Cantidad']; } ?>'
+                                       <input type='text' name='quantity '
+                                          value=' <?php if(isset($value['Cantidad'])) { echo $value['Cantidad']; } ?>'
                                           class='qty form-control cantidad ' />
                                        <input type='button' value='+' class='qtyplus qtySubir btn btn-success btn-sm '
                                           field='quantity' />
@@ -132,7 +134,7 @@ foreach($arrayCarrito as $filas => $value)
 
                                  </span>
                               </div>
-                           
+
 
 
                            </div>
@@ -156,7 +158,7 @@ foreach($arrayCarrito as $filas => $value)
                               <div class="more">
 
                                  <div class="form-inline">
-                                    <h6 class="text-left"> SUB TOTAL  CLP:    </h6>
+                                    <h6 class="text-left"> SUB TOTAL CLP: </h6>
                                     <h6 id="subTotal" class="text-left"><?php echo '&nbsp' .    $totalPago   ?>
                                     </h6>
 
@@ -229,87 +231,89 @@ foreach($arrayCarrito as $filas => $value)
                            class="custom-control-input" checked>
                         <label class="custom-control-label w-100" for="customRadioInline1">
                            <div id="classDespacho">
-                              <div class="p-3 bg-light rounded shadow-sm w-100">
-                                 <div class="d-flex align-items-center mb-2">
-                                    <p class="mb-0 h6">Dirección</p>
+                              <div class="p-3 bg-light rounded  ">
+                                 <div class="row form-group">
+                                    <div class="col-md-6">
+                                       <a href="#" id="btnAgregarDireccion" data-toggle="modal"
+                                          data-target="#exampleModal" class=" text-primary">Agregar/Modificar</a>
+                                       </span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                       <a href="#" id="btnEliminarDespacho" data-toggle="modal"
+                                          data-target="#exampleModal" class="text-primary rounded ">Eliminar</a></span>
+                                    </div>
+                                 </div>
+                                 <div class="d-flex align-items-center  mb-2 ">
+                                    <p class="mb-0 h6">Datos para despacho</p>
 
                                  </div>
-                                 <p class="small text-muted m-0"></p>
-                                 <p class="small text-muted m-0"></p>
-                                 <p class="pt-2 m-0 text-right"><span class="small">
-                                       <div class="row form-group">
-                                          <div class="col-md-6">
-                                             <a href="#" id="btnAgregarDireccion" data-toggle="modal"
-                                                data-target="#exampleModal"
-                                                class=" text-primary">Agregar/Modificar</a>
-                                    </span></p>
+
+                                
+
+                                 <div class="row small text-info m-2 font-weight-bold ">
+                                    <div class="col-md-12">
+                                       <label id="comDireccion" type="text"
+                                          class="text-info font-weight-bold"><?php echo $direccion ?> </label>
+                                    </div>
+
+                                 </div>
+                                 <div class="row  small text-info m-2 font-weight-bold">
+
+                                    <div class="col-md-6">
+                                       <label id="comComuna" type="text"
+                                          class="text-info font-weight-bold"><?php echo $comuna ?> </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <label id="comCiudad" type="text"
+                                          class="text-info font-weight-bold"><?php echo $ciudad ?> </label>
+                                    </div>
+
+                                 </div>
+                                 <div class="row small text-info m-2 font-weight-bold ">
+
+                                    <div class="col-md-9">
+                                       <label id="comRegion" type="text"
+                                          class="text-info font-weight-bold"><?php echo $region ?> </label>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                       <label id="comDepartamento" type="text"
+                                          class="text-info font-weight-bold"><?php echo $departamento ?> </label>
+                                    </div>
+                                 </div>
+
+                                 
+                                 <div hidden id="classRetiro">
+                                    
+                                       <div class="d-flex align-items-center mb-2">
+                                          <p class="mb-0 h6 font-weight-bold"> Direcciones de Retiro</p>
+
+                                       </div>
+                                       <p class="small text-info m-2 font-weight-bold">Comuna Ñuñoa</p>
+                                       <p class="small text-info m-2 "> Plaza Egaña/ Metro Linea 4</p>
+                                       <p class="small text-info m-2 font-weight-bold">Comuna La Florida</p>
+                                       <p class="small text-info m-2 "> Rojas Magallanes/ Metro Linea 4</p>
+
+                                    
+
+                                 </div>
+
+
                               </div>
 
-                              <div class="col-md-6">
-                                 <a href="#" id="btnEliminarDespacho" data-toggle="modal" data-target="#exampleModal"
-                                    class="text-primary rounded ">Eliminar</a></span>
-                                 </p>
-                              </div>
                            </div>
-                           <div class="row ">
-                              <div class="col-md-12">
-                                 <label id="comDireccion" type="text"
-                                    class="text-info font-weight-bold"><?php echo $direccion ?> </label>
-                              </div>
 
-                           </div>
-                           <div class="row ">
-
-                              <div class="col-md-6">
-                                 <label id="comComuna" type="text"
-                                    class="text-info font-weight-bold"><?php echo $comuna ?> </label>
-                              </div>
-                              <div class="col-md-6">
-                                 <label id="comCiudad" type="text"
-                                    class="text-info font-weight-bold"><?php echo $ciudad ?> </label>
-                              </div>
-
-                           </div>
-                           <div class="row ">
-
-                              <div class="col-md-9">
-                                 <label id="comRegion" type="text"
-                                    class="text-info font-weight-bold"><?php echo $region ?> </label>
-                              </div>
-
-                              <div class="col-md-3">
-                                 <label id="comDepartamento" type="text"
-                                    class="text-info font-weight-bold"><?php echo $departamento ?> </label>
-                              </div>
-                           </div>
-
-
+                        </label>
                      </div>
 
+
+                     <a href="#" id="btnContinuarPago" class="btn btn-primary  btn-block" type="button"
+                        data-toggle="collapse" data-target="#collapsethree" aria-expanded="true"
+                        aria-controls="collapsethree">Continuar Pago</a>
                   </div>
-                  <div hidden id="classRetiro">
-                     <div class="p-4 bg-light rounded shadow-sm w-200">
-                        <div class="d-flex align-items-center mb-2">
-                           <p class="mb-0 h6 font-weight-bold"> Direcciones de Retiro</p>
-
-                        </div>
-                        <p class="small text-info m-2 font-weight-bold">Comuna Ñuñoa</p>
-                        <p class="small text-info m-2 "> Plaza Egaña/ Metro Linea 4</p>
-                        <p class="small text-info m-2 font-weight-bold">Comuna La Florida</p>
-                        <p class="small text-info m-2 "> Rojas Magallanes/ Metro Linea 4</p>
-
-                     </div>
-
-                  </div>
-                  </label>
                </div>
-
-
-               <a href="#" id="btnContinuarPago" class="btn btn-primary  btn-block" type="button" data-toggle="collapse"
-                  data-target="#collapsethree" aria-expanded="true" aria-controls="collapsethree">Continuar Pago</a>
             </div>
-         </div>
-      </div>
 
 
 

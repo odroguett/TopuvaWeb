@@ -662,7 +662,7 @@ $(document).ready(function () {
     e.stopPropagation();
     debugger;
     var preVar = $(this).closest('.claseTexto').find('.price').text()
-    var cantidad = $('.cantidad').val();
+    var cantidad = $(this).closest('.claseTexto').find('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
     var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val()
     oCarrito.AgregarSeleccion(preVar, cantidad, texto,codigoProducto);
@@ -811,16 +811,16 @@ $(document).ready(function () {
     $("#rdRetiro").prop("checked", false);
    $('#classDespacho').removeAttr('hidden');
    $('#classRetiro').attr('hidden',true);
-   $('#collapsetwo').collapse('show');
-   $('#collapseOne').collapse();
+ //  $('#collapsetwo').collapse('show');
+  // $('#collapseOne').collapse();
 });
 
 $("#rdRetiro").click(function () {
-    $("#rdDespacho").prop("checked", false);
+   // $("#rdDespacho").prop("checked", false);
     $('#classRetiro').removeAttr('hidden');
-    $('#classDespacho').attr('hidden',true);
-    $('#collapsetwo').collapse('show');
-    $('#collapseOne').collapse();
+   // $('#classDespacho').attr('hidden',true);
+  //  $('#collapsetwo').collapse('show');
+  //  $('#collapseOne').collapse();
     
     
 });
@@ -1026,7 +1026,7 @@ $(".qtyminus").click(function(e) {
   // Get the field name
   fieldName = $(this).attr('field');
   // Get its current value
-  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').text();
+  var currentVal =  $(this).closest('.claseTexto').find('.cantidad').val();
   // If it isn't undefined or its greater than 0
   if (!isNaN(currentVal) && currentVal > 1) {
       // Decrement one

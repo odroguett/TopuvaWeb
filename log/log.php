@@ -22,12 +22,10 @@ public function crearArchivo($nombreArchivo)
         }
 
     }
-    catch(Exception $e)
+    catch(Error $e)
     {
 
     }
-
-    
 
 }
 
@@ -39,17 +37,20 @@ public function cerrarArchivo()
 
 }
 
-public function EscribeLog($tipoInformacion,$error,$traza)
+public function EscribeLog($tipoInformacion,$error,$codigo,$linea)
 {
-
+   
     try
     {
-       if( $this->crearArchivo("../log/LogConsultas.txt"))
+       if( $this->crearArchivo("../log/LogErrores.txt"))
        {
+
+
+
         $dt = new DateTime('today');
         $date = $dt->format('m/d/Y');
-        fwrite($this->archivo,  $date . $tipoInformacion . ' ' . $error . "\r\n"  );
-       // fwrite($this->archivo, $tipoInformacion . ' ' . $error . "\r\n" );
+        fwrite($this->archivo,  $date  . ' Informacion ' . $tipoInformacion .  ' Mensaje:::: ' . 
+               $error . ' Codigo Exepcion:::: ' . $codigo . '  Linea Error:::: ' . $linea  . "\r\n"  );
         fflush($this->archivo);
         $this->cerrarArchivo();
 
@@ -64,7 +65,7 @@ public function EscribeLog($tipoInformacion,$error,$traza)
 
     }
 
-    catch(Exception $e)
+    catch(Error $e)
     {
 
         $this->cerrarArchivo();

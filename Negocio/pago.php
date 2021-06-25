@@ -3,90 +3,111 @@
 require_once("../BD/catalogoBD.php");
 require_once("../Negocio/EnvioMail.php");
 require_once("../Negocio/comprobantePagoMail.php");
+require_once("../log/log.php");
 
-ob_start();
+try{
 
-$arrayPago = $_POST["arrayPago"]; 
-$idDespacho = json_decode($_POST["idDespacho"],true); 
-$idTipoDespacho = json_decode($_POST["tipoDespacho"],true); 
-$totalProductosPago = json_decode($_POST["totalProductosPago"],true); 
-$totalPago = json_decode($_POST["totalPago"],true); 
-$idTipoPago =json_decode($_POST["tipoPago"],true); 
-$oCatalogo= new catalogoBD();
-$oRespuesta = new RespuestaOtd();
-
-$totalConDespacho =0;
-$sNombreProducto;
-
-if(ValidaPago($arrayPago,$sNombreProducto))
-{
-    $parametros =$oCatalogo->obtieneParametros();
-    foreach($parametros as $filas => $value)
-    { 
-        $costoEnvio =   $value['COSTO_ENVIO'];
-        $topeCostoEnvio =   $value['TOPE_COSTO_ENVIO'];
-      
-    }
-    if($totalPago < $topeCostoEnvio)
+    try
     {
-        $totalConDespacho = $totalPago + $costoEnvio;
-    
-    }
-    else
-    {
-        $totalConDespacho = $totalPago; 
-    
-    }
-    $idDetalle= $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalConDespacho);
-    $totalConDespacho =0;
-    $oCatalogo->ActualizaTipoDespacho($idDespacho,$idTipoDespacho);
-    
-    foreach($arrayPago as $filas => $value)
-    { 
-          
-        $cantidadProducto=  $value['Cantidad'] ;
-        $codigoProducto=  $value['CodigoProducto'];
-        $datosVentaProducto=  $oCatalogo->obtieneDatosVentaProducto($codigoProducto);
-        foreach($datosVentaProducto as $filasProducto => $valueProducto)
-        {
-            $precioVenta= $valueProducto['PRECIO_VENTA'];
-        }
-        $oCatalogo->InsertarDetallePago($idDetalle,$cantidadProducto,$precioVenta,$codigoProducto);
-    }
-  
-    if(EnviarCorreoPago($idDespacho))
-    {
+        ob_start();
+        $oLog = new Log();
+        $arrayPago = $_POST["arrayPago"]; 
+        $idDespacho = json_decode($_POST["idDespacho"],true); 
+        $idTipoDespacho = json_decode($_POST["tipoDespacho"],true); 
+        $totalProductosPago = json_decode($_POST["totalProductosPago"],true); 
+        $totalPago = json_decode($_POST["totalPago"],true); 
+        $idTipoPago =json_decode($_POST["tipoPago"],true); 
+        $oCatalogo= new catalogoBD();
+        $oRespuesta = new RespuestaOtd();
         
-        $oRespuesta->bEsValido=true;
-        $oRespuesta->sMensaje= " Pedido procesado con exito, nos pondremos en contacto con usted, gracias por confiar en nosotros. " ;
+        $totalConDespacho =0;
+        $sNombreProducto;
+        
+        if(ValidaPago($arrayPago,$sNombreProducto))
+        {
+            $parametros =$oCatalogo->obtieneParametros();
+            foreach($parametros as $filas => $value)
+            { 
+                $costoEnvio =   $value['COSTO_ENVIO'];
+                $topeCostoEnvio =   $value['TOPE_COSTO_ENVIO'];
+              
+            }
+            if($totalPago < $topeCostoEnvio)
+            {
+                $totalConDespacho = $totalPago + $costoEnvio;
+            
+            }
+            else
+            {
+                $totalConDespacho = $totalPago; 
+            
+            }
+            $idDetalle= $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalConDespacho);
+            $totalConDespacho =0;
+            $oCatalogo->ActualizaTipoDespacho($idDespacho,$idTipoDespacho);
+            
+            foreach($arrayPago as $filas => $value)
+            { 
+                  
+                $cantidadProducto=  $value['Cantidad'] ;
+                $codigoProducto=  $value['CodigoProducto'];
+                $datosVentaProducto=  $oCatalogo->obtieneDatosVentaProducto($codigoProducto);
+                foreach($datosVentaProducto as $filasProducto => $valueProducto)
+                {
+                    $precioVenta= $valueProducto['PRECIO_VENTA'];
+                }
+                $oCatalogo->InsertarDetallePago($idDetalle,$cantidadProducto,$precioVenta,$codigoProducto);
+            }
+          
+            if(EnviarCorreoPago($idDespacho))
+            {
+                
+                $oRespuesta->bEsValido=true;
+                $oRespuesta->sMensaje= " Pedido procesado con exito, nos pondremos en contacto con usted, gracias por confiar en nosotros. " ;
+            }
+            else
+            {
+                $oRespuesta->bEsValido=false;
+                $oRespuesta->sMensaje= " Problemas al procesar pedido. Nos contactaremos a la brevedad con usted. " ;
+        
+            }
+        
+            
+        
+        }
+        else
+        {
+            
+            $oRespuesta->bEsValido=false;
+            $oRespuesta->sMensaje= "Stock no disponible para producto: " .  $sNombreProducto ;
+        
+        }
+        
+        ob_end_clean();
+        
+        $mensaje= array('bEsValido' => $oRespuesta->bEsValido, 'respuesta' => $oRespuesta->sMensaje);
+        
+        echo json_encode($mensaje,JSON_FORCE_OBJECT);
+        exit();
+    
+    
     }
-    else
+    catch(Error $e)
     {
         $oRespuesta->bEsValido=false;
-        $oRespuesta->sMensaje= " Problemas al procesar pedido. Nos contactaremos a la brevedad con usted. " ;
-
+        $oRespuesta->sMensaje= "Error al finalizar despacho. " .  $sNombreProducto ;
+        $oLog->EscribeLog("ERROR",$e->getMessage(),$e->getCode(),$e->getLine());
+        exit();
     }
-
-    
-
 }
-else
+catch(Exception $e)
 {
-    
+
     $oRespuesta->bEsValido=false;
-    $oRespuesta->sMensaje= "Stock no disponible para producto: " .  $sNombreProducto ;
-
+    $oRespuesta->sMensaje= "Error al finalizar despacho. " .  $sNombreProducto ;
+    $oLog->EscribeLog("ERROR",$e->getMessage(),$e->getCode(),$e->getLine());
+    exit();
 }
-
-ob_end_clean();
-
-$mensaje= array('bEsValido' => $oRespuesta->bEsValido, 'respuesta' => $oRespuesta->sMensaje);
-
-echo json_encode($mensaje,JSON_FORCE_OBJECT);
-exit();
-
-
-
 
 
 

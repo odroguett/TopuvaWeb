@@ -48,8 +48,8 @@ public function EscribeLog($tipoInformacion,$error,$traza)
        {
         $dt = new DateTime('today');
         $date = $dt->format('m/d/Y');
-        fwrite($this->archivo,  $date .  "\r\n" . PHP_EOL);
-        fwrite($this->archivo, $tipoInformacion . ' ' . $error . ' ' .  PHP_EOL);
+        fwrite($this->archivo,  $date . $tipoInformacion . ' ' . $error . "\r\n"  );
+       // fwrite($this->archivo, $tipoInformacion . ' ' . $error . "\r\n" );
         fflush($this->archivo);
         $this->cerrarArchivo();
 

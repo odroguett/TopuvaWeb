@@ -43,7 +43,7 @@ if(isset($sPatron))
         
 		<td class='text-ligth'>".$value['descripcion']."</td>	
         <td class='text-ligth'> ".$value['tamano']. " " . $value['codigo_unidad']. "</td>
-        <td class='text-ligth'> " . number_format($value['precio_venta'],0,',','.') . "</td>
+        <td class='text-ligth'> " . $value['precio_venta'] . "</td>
         <td>".$value['codigo_precio_producto']."</td>	
         <td>".$value['tamano']."</td>	
         <td>".$value['codigo_unidad']."</td>	

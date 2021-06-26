@@ -86,7 +86,7 @@ foreach($Listafilas as $filas => $value)
 
                   <p class=" h6 font-weight-light text-dark m-0 d-flex align-items-center">
                      Precio Unidad (CLP) : <b
-                        class="h6 m-0 font-weight-light text-info price"><?php echo ' ' .  $vPrecioVenta   ?></b>
+                        class="h6 m-0 font-weight-light text-info price"><?php echo ' ' .  number_format($vPrecioVenta,0,',','.')   ?></b>
                   </p>
                   </br>
                   <?php 

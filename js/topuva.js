@@ -426,7 +426,7 @@ debugger;
     } else {
 
       oModal.MensajePersonalizado('Alerta', "Debe ingresar dirección antes de finalizar compra!!", Constante_informacion);
-
+      $("#loader").hide();
     }
 
 
@@ -628,9 +628,10 @@ debugger;
         },
         success: function (data) {
           if (data) {
+            $("#loader").hide();
             $('#mContent').html(data);
             $('#modalBusqueda').modal('show');
-            $("#loader").hide();
+           
           }
         }
       });

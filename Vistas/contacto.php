@@ -100,7 +100,7 @@
                            </div>
 
                            <div class="col-lg-4">
-                              <input type="submit" class="btn btn-primary"
+                              <input type="submit" class="btn btn-info"
                                  style="position: absolute;top: 80%;" value="enviar" >
                            </div>
 

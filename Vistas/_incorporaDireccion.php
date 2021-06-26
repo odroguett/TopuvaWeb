@@ -132,7 +132,7 @@ if($idDespacho !="")
             </div>
             <div class="row form-group">
                 <div class="col-md-11">
-                    <button type="button" id="btnIngresar" class="btn btn-primary btn-block">Ingresar</button>
+                    <button type="button" id="btnIngresar" class="btn btn-info btn-block">Ingresar</button>
                 </div>
             </div>
         </section>

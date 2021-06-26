@@ -108,8 +108,8 @@ foreach($arrayCarrito as $filas => $value)
                                           <?php if(isset($value['Producto'])) { echo $value['Producto']; } ?>
                                        </h6>
                                        <div class="d-flex align-items-center   ">
-                                          <p class=" m-0 font-weight-light text-primary mostrar-precio ">
-                                             <?php if(isset($value['Precio'])) {echo '$ ' .  $value['Precio'] *  $value['Cantidad']; } ?>
+                                          <p class=" m-0 font-weight-light text-info mostrar-precio ">
+                                             <?php if(isset($value['Precio'])) {echo '$ ' .  number_format($value['Precio'] *  $value['Cantidad'],0,',','.')  ; } ?>
                                           </p>
 
                                        </div>
@@ -159,7 +159,7 @@ foreach($arrayCarrito as $filas => $value)
 
                                  <div class="form-inline">
                                     <h6 class="text-left"> SUB TOTAL CLP: </h6>
-                                    <h6 id="subTotal" class="text-left"><?php echo '&nbsp' .    $totalPago   ?>
+                                    <h6 id="subTotal" class="text-left"><?php echo '&nbsp' .  number_format($totalPago,0,',','.')    ?>
                                     </h6>
 
                                  </div>
@@ -308,7 +308,7 @@ foreach($arrayCarrito as $filas => $value)
                      </div>
 
 
-                     <a href="#" id="btnContinuarPago" class="btn btn-primary  btn-block" type="button"
+                     <a href="#" id="btnContinuarPago" class="btn btn-info  btn-block" type="button"
                         data-toggle="collapse" data-target="#collapsethree" aria-expanded="true"
                         aria-controls="collapsethree">Continuar Pago</a>
                   </div>

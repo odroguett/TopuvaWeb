@@ -30,7 +30,7 @@ require_once("../BD/catalogoBD.php");
 </div>
 <!-- pick today -->
 <div class="d-flex align-items-center mb-3">
-<h3 style="text-align: left;" class="text-dark ">Especias y Condimentos</h5>
+<h5 style="text-align: left;" class="text-dark ">Especias y Condimentos</h5>
 </div>
 <div class="pick_today">
 
@@ -64,8 +64,8 @@ require_once("../BD/catalogoBD.php");
                               <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                            </h6>
                            <div class="d-flex align-items-center precio">
-                              <h6 class="price m-0 font-weight-light text-primary">
-                                 <?php echo  ' $'  . $value['precio_venta']    ?></h6>
+                              <h6 class="price m-0 font-weight-light text-info">
+                                 <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
 
 
                               <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
@@ -123,8 +123,8 @@ require_once("../BD/catalogoBD.php");
                                        <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                                     </h6>
                                     <div class="d-flex align-items-center precio">
-                                       <h6 class="price m-0 font-weight-light text-primary">
-                                          <?php echo  ' $'  . $value['precio_venta']    ?></h6>
+                                       <h6 class="price m-0 font-weight-light text-info">
+                                          <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')   ?></h6>
 
 
                                        <a data-toggle="collapse" href="#collapseExample2" role="button"

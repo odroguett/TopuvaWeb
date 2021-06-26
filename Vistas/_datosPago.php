@@ -56,11 +56,11 @@ else
     <div class="">
 
         <!-- address header -->
-        <div class="row form-inline">
+        <div class="row ">
 
 
 
-            <div class="col-md-12">
+            <div class="col-md-12 text-right">
                 <a href="#" id="btnBorrarCarrito" data-toggle="modal" data-target="#exampleModal"
                     class="text-right text-primary ">Borrar Carrito</a>
             </div>
@@ -72,38 +72,40 @@ else
                     <div class="p-3 bg-light rounded shadow-sm w-100">
                         <div class="d-flex align-items-center mb-2">
                             <div class="row">
-                                <p class="mb-0 h5 text-dark ">Detalle Compra</p>
+                                <p class="mb-0 h6 text-dark font-weight-bold ">Detalle Compra</p>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark font-weight-light">Total Productos </h6>
-                                <h6 class="text-dark font-weight-light"><?php echo " : " .  $totalProductosPago  ?>
-                                </h6>
+                                <h7 class="text-dark font-weight-light">Total Productos : </h7>
+                                <h7 class="text-info font-weight-bold"><?php echo  ' ' . $totalProductosPago  ?>
+                                </h7>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark font-weight-light">Subtotal </h6>
-                                <h6 class="text-dark font-weight-light"><?php echo ' : ' . $totalPago . " (CLP)" ?>
-                                </h6>
+                                <h7 class="text-dark font-weight-light">Subtotal : </h7>
+                                <h7 class="text-info font-weight-bold">
+                                    <?php echo ' ' . number_format($totalPago,0,',','.')  . " (CLP)" ?>
+                                </h7>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark font-weight-light">Cargo Despacho </h6>
-                                <h6 class="text-dark font-weight-light"><?php  echo ": " .  $costoEnvio . " (CLP)"   ?>
-                                </h6>
+                                <h7 class="text-dark font-weight-light">Cargo Despacho : </h7>
+                                <h7 class="text-info font-weight-bold">
+                                    <?php  echo  ' ' .  number_format($costoEnvio,0,',','.')   . " (CLP)"   ?>
+                                </h7>
 
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h6 class="text-dark font-weight-light">Total a Pago </h6>
-                                <h6 class="text-dark font-weight-light">
-                                    <?php echo " : " . $totalConDespacho . " (CLP)"   ?> </h6>
+                                <h7 class="text-dark font-weight-light">Total a Pago : </h7>
+                                <h7 class="text-info font-weight-bold">
+                                    <?php echo ' ' .  number_format($totalConDespacho,0,',','.') . " (CLP)"   ?> </h7>
                             </div>
                         </div>
 
@@ -125,7 +127,7 @@ else
                     <div class="p-3  rounded bg-light shadow-sm w-100">
                         <div class="d-flex align-items-center mb-2">
                             <div class="row">
-                                <p class="mb-0 h5 text-dark">Seleccionar Medio de Pago</p>
+                                <p class="mb-0 h6 text-dark font-weight-bold">Seleccionar Medio de Pago</p>
                             </div>
                             <br>
                         </div>
@@ -134,19 +136,18 @@ else
 
 
                             <div class="form-check form-check-inlinev class-transferencia">
-                                <input class="form-check-input" id="rdTransferencia" type="radio"
-                                    name="rdTransferencia"  value="option1" checked>
-                                <label class="form-check-label h6 text-dark font-weight-light"
+                                <input class="form-check-input" id="rdTransferencia" type="radio" name="rdTransferencia"
+                                    value="option1" checked>
+                                <label class="form-check-label h7 text-dark font-weight-light"
                                     for="inlineRadio1">Transferencia</label>
                             </div>
 
 
-                            <div class="form-check form-check-inline class-entrega ">
+                            <div class="form-check form-check-inline class-transferencia ">
                                 <input class="form-check-input" id="rdEntrega" type="radio" name="rdEntrega"
-                                     value="option2">
-                                <label class="form-check-label h6 text-dark font-weight-light" for="inlineRadio2">Pago a
-                                    momento de
-                                    entrega</label>
+                                    value="option2">
+                                <label class="form-check-label h7 text-dark font-weight-light text-right"
+                                    for="inlineRadio2"> Pago a momento de entrega</label>
                             </div>
 
 
@@ -157,82 +158,90 @@ else
                         <div class="">
                             <div id="idTransferencia">
                                 <div class="row">
-
-                                    <h6 class="text-dark font-weight-light">Telefono: 999999999 </h6>
-
-
-
-                                </div>
-                                <div class="row">
-
-                                    <h6 class="text-dark font-weight-light">Banco: Santander </h6>
-
-
-
-                                </div>
-                                <div class="row">
-
-                                    <h6 class="text-dark font-weight-light">Rut: 99999999-9 </h6>
-
-
-
-                                </div>
-
-                                <div class="row">
-
-                                    <h6 class="text-dark font-weight-light">Nombre: Pepito paga doble </h6>
-
-
-
-                                </div>
-                                <div class="row">
-
-                                    <h6 class="text-dark font-weight-light">Correo: Pepito@gmail.com </h6>
-
-
-
-                                </div>
-
-
-                            </div>
-
-                            <div id="idPagoDomicilio" hidden>
-                                <div class="row">
-                                    <div class="col-lg-12">
-
-                                        <p class="">El cobro se efectuará </p>
-                                        <p class="">Al momento de la entrega</p>
-                                        <p class="">del producto</p>
-                                        <p class=""> </p>
-                                        <p class=""></p>
+                                    <div class="form-group">
+                                        <h7 class="text-dark font-weight-light">Telefono : </h7>
+                                        <h7 class="text-info font-weight-bold"> 999999999
+                                        </h7>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <h7 class="text-dark font-weight-light">Banco : </h7>
+                                        <h7 class="text-info font-weight-bold"> Santander
+                                        </h7>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <h7 class="text-dark font-weight-light">RUT : </h7>
+                                        <h7 class="text-info font-weight-bold"> 99999999-9
+                                        </h7>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <h7 class="text-dark font-weight-light">Nombre : </h7>
+                                        <h7 class="text-info font-weight-bold"> Pepito paga doble
+                                        </h7>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <h7 class="text-dark font-weight-light">Correo : </h7>
+                                        <h7 class="text-info font-weight-bold"> Pepito@gmail.com
+                                        </h7>
+                                    </div>
+                                </div>
+
                             </div>
+
+
+
 
                         </div>
 
+                        <div id="idPagoDomicilio" hidden>
+                            <div class="row">
+                                <div class="col-lg-12">
 
+                                    <p class="">El cobro se efectuará </p>
+                                    <p class="">Al momento de la entrega</p>
+                                    <p class="">del producto</p>
+                                    <p class=""> </p>
+                                    <p class=""></p>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
-                    <br>
+
+
+
                 </div>
-
+                <br>
             </div>
 
         </div>
-        <div class="row float-right">
-            <div class="col-md-12">
-                <button type="button" id="btnFinalizarPago" class="btn btn-primary btn-block"
-                    onclick='oCarrito.FinalizarPago(  <?php  echo $arrayPago  ?>  , <?php echo $idDespacho ?> ,  <?php echo $totalProductosPago ?> , <?php echo $totalPago ?>,<?php echo $idTipoDespacho ?>   )'>Solicitar
-                    Pedido</button>
-            </div>
+
+    </div>
+    <div class="row float-right">
+        <div class="col-md-12">
+            <button type="button" id="btnFinalizarPago" class="btn btn-info btn-block"
+                onclick='oCarrito.FinalizarPago(  <?php  echo $arrayPago  ?>  , <?php echo $idDespacho ?> ,  <?php echo $totalProductosPago ?> , <?php echo $totalPago ?>,<?php echo $idTipoDespacho ?>   )'>Solicitar
+                Pedido</button>
         </div>
-
-
     </div>
 
 
+</div>
 
+
+<div id="loader" style="display:none">
+    <button class="btn" disabled id="set-btn" style="padding-top:20%">
+        <i class="psi-gear fa-spin" style="font-size:50px;color:#000000"></i>
+    </button>
+</div>
 
 
 </html>

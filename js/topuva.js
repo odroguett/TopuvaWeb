@@ -216,13 +216,13 @@ debugger;
       ' <h6 class="textoProducto font-weight-light text-dark">  ' + texto + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class="price_modal m-0 font-weight-light text-primary"> Precio: ' + precio + '</h6> ' +
+      ' <h6 class="price_modal m-0 font-weight-light text-info"> Precio: ' + precio + '</h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-primary"> Cantidad: ' + cantidad + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-info"> Cantidad: ' + cantidad + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-primary">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-info">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
       ' </div> ' +
       ' </div> ' +
       ' <div class="col-6"> ' +
@@ -370,6 +370,7 @@ debugger;
 
   this.ContinuarPago = function () {
     debugger;
+    $("#loader").show();
     var arrayPago = new Array();
     let idDespacho = $('#comIdDespacho').val();
     let totalProductosPago = $('#totalProductosPago').val();
@@ -412,7 +413,7 @@ debugger;
         // dataType: "json",
         success: function (data) {
           if (data) {
-
+            $("#loader").hide();
             //  localStorage.removeItem('Carrito');
             $('#mContent').html(data);
             $('#modalDireccion').modal('show');
@@ -485,7 +486,7 @@ debugger;
 
 
   this.EliminarDatosDespacho = function (confirmacion) {
-
+    $("#loader").show();
     if (confirmacion) {
 
       let idDespacho = $('#comIdDespacho').val();
@@ -513,8 +514,9 @@ debugger;
               localStorage.removeItem('region');
               localStorage.removeItem('idDespacho');
               oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
+              $("#loader").hide();
             } else {
-              
+              $("#loader").hide();
               oModal.MensajePersonalizado('Error', data.respuesta, Constante_exito);
             }
           }
@@ -529,6 +531,8 @@ debugger;
 
   this.FinalizarPago = function (arrayPago, idDespacho, totalProductosPago, totalPago, tipoDespacho) {
     debugger;
+
+    $("#loader").show();
     let tipoPago = "";
     if ($('#rdTransferencia').is(':checked')) {
 
@@ -568,7 +572,7 @@ debugger;
           } else {
             $('#modalDireccion').modal('hide');
             oModal.MensajePersonalizadoCallBack('Información', data.respuesta, Constante_informacion, oCarrito.CargaCarrito);
-
+            $("#loader").hide();
 
           }
 
@@ -612,8 +616,10 @@ debugger;
 
   }
   this.BuscarProductos = function () {
+    
     var sPatron = $('#idPatronBusqueda').val();
     if (sPatron != "") {
+      $("#loader").show();
       $.ajax({
         type: "POST",
         url: '../TopuvaWeb/Vistas/buscar.php',
@@ -624,14 +630,14 @@ debugger;
           if (data) {
             $('#mContent').html(data);
             $('#modalBusqueda').modal('show');
-
+            $("#loader").hide();
           }
         }
       });
 
     }
 
-
+    
 
 
   }

@@ -65,69 +65,30 @@ require_once("BD/catalogoBD.php");
 
 <body class="fixed-bottom-padding">
 
-   <div class="border-bottom p-3 d-none mobile-nav">
-      <div class="title d-flex align-items-center">
-         <a href="home.html" class="text-decoration-none text-dark d-flex align-items-center">
-            <!-- <img class="osahan-logo mr-2" src="img/logo.png"> -->
-            <h4 class="font-weight-bold text-success m-0">TOPUVA</h4>
-         </a>
-         <p class="ml-auto m-0">
-            <a href="listing.html"
-               class="text-decoration-none bg-light p-1 rounded shadow-sm d-flex align-items-center">
-               <i class="text-dark icofont-sale-discount"></i>
-               <span class="badge badge-danger p-1 ml-1 small">50%</span>
-            </a>
-         </p>
-         <a class="toggle ml-3" href="#"><i class="icofont-navigation-menu"></i></a>
-      </div>
-
-   </div>
+  
 
 
    <!-- Nav bar -->
-   <div class="bg-light shadow-sm osahan-main-nav">
+   <div class="bg-light shadow-sm ">
       <nav class="navbar navbar-expand-lg navbar-light bg-light osahan-header py-0 container">
-         <a class="navbar-brand mr-0" href="home.html"><img class="img-fluid logo-img " src="img/logo.png"></a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
+         <img class="img-fluid logo-img " src="img/logo.png">
+        
          <div class="ml-3 d-flex align-items-center">
             <div class="dropdown mr-3">
 
-               <div class="dropdown-menu osahan-select-loaction p-3" aria-labelledby="navbarDropdown">
-                  <span>Select your city to start shopping</span>
-                  <form class="form-inline my-2">
-                     <!-- <input class="form-control form-control-lg mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                           <button class="btn btn-outline-success btn-block" type="submit">Search</button> -->
-                     <div class="input-group p-0 col-lg-12">
-                        <input type="text" class="form-control form-control-sm" id="inlineFormInputGroupUsername2"
-                           placeholder="Search Location">
-                        <div class="input-group-prepend">
-                           <div class="btn btn-success rounded-right btn-sm"><i class="icofont-location-arrow"></i>
-                              Detect</div>
-                        </div>
-                     </div>
-                  </form>
-
-               </div>
             </div>
             <!-- search  -->
             <div class="input-group mr-sm-2 col-lg-12">
                <input type="text" class="form-control" id="idPatronBusqueda" placeholder="Buscar Productos">
                <div class="input-group-prepend">
-                  <div id="btnBuscarProductos" class="btn btn-primary rounded-right"><i class="icofont-search"></i>
+                  <div id="btnBuscarProductos" class="btn btn-info rounded-right"><i class="icofont-search"></i>
                   </div>
                </div>
             </div>
          </div>
 
          <div class="ml-auto d-flex align-items-center">
-            <!-- Dark mode -->
-
-            <!-- End Dark mode -->
-
-            <!-- cart -->
+          
             <a href="#" id="carrito" class="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
                <i class="icofont-shopping-cart"></i>
             </a>
@@ -149,12 +110,17 @@ require_once("BD/catalogoBD.php");
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item" id="ddlSemillas">Semillas</a>
+                     <div class="dropdown-divider"></div>
                      <a class="dropdown-item" id="ddlSnackMix">Snack y Mix</a>
+                     <div class="dropdown-divider"></div>
                      <a class="dropdown-item" id="ddlFrutosSecos">Frutos Secos</a>
                      <div class="dropdown-divider"></div>
                      <a class="dropdown-item" id="ddlFrutasDeshidratadas">Frutas Deshidratadas</a>
+                     <div class="dropdown-divider"></div>
                      <a class="dropdown-item" id="ddlChocolates">Chocolates</a>
+                     <div class="dropdown-divider"></div>
                      <a class="dropdown-item" id="ddlEspecias">Especias y Condimentos</a>
+                     <div class="dropdown-divider"></div>
                   </div>
                </li>
                <!--  <li class="nav-item dropdown">
@@ -237,7 +203,7 @@ require_once("BD/catalogoBD.php");
                                     <div class="input-group">
                                        <input type="text" placeholder="Email" class="form-control" name="">
                                        <span class="input-group-append">
-                                          <button type="submit" class="btn  btn-primary"> Suscribete</button>
+                                          <button type="submit" class="btn  btn-info"> Suscribete</button>
                                        </span>
                                     </div>
                                  </div>
@@ -311,7 +277,7 @@ require_once("BD/catalogoBD.php");
             <div class="modal-footer">
                <h4 style="text-align: left;" class=" text-secondary"> Total: </h4>
                <h4 style="text-align: left;" class="totalizador text-secondary"> </h4>
-               <button type="button" onclick="oCarrito.Comprar()" class="btn btn-primary  btn-block">Comprar</button>
+               <button type="button" onclick="oCarrito.Comprar()" class="btn btn-info  btn-block">Comprar</button>
 
             </div>
          </div>
@@ -385,7 +351,11 @@ require_once("BD/catalogoBD.php");
 
 </div>
 
-
+<div id="loader" style="display:none">
+        <button class="btn" disabled id="set-btn" style="padding-top:20%">
+            <i class="psi-gear fa-spin" style="font-size:50px;color:#000000"></i>
+        </button>
+    </div>
 
 
 </html>

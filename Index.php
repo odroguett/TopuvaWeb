@@ -63,7 +63,7 @@ require_once("BD/catalogoBD.php");
    </style>
 </head>
 
-<body class="fixed-bottom-padding">
+<body class="fixed-bottom-padding bg-light">
 
   
 
@@ -246,7 +246,7 @@ require_once("BD/catalogoBD.php");
 
   
    <!-- footer -->
-   <footer class="section-footer border-top bg-light">
+   <footer class="section-footer border-top bg-info">
       <section class="footer-top py-4">
          <div class="container">
 

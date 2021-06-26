@@ -10,9 +10,11 @@ function Carrito_class() {
     vCarrito.Cantidad = null;
   }
 
-  this.LinkProducto = function (descripcion, precioVenta, tamanoUnidad, codigoUnidad, cantidad) {
-
-    cantidad = $('#cantidadProd').val();
+  this.LinkProducto = function (descripcion, precioVenta, tamanoUnidad, codigoUnidad,stock) {
+debugger;
+    var cantidad = $('#cantidadProd').val();
+    //stock = $('#stockProd').val();
+    
     if (cantidad == null) {
       cantidad = 1;
 
@@ -26,7 +28,9 @@ function Carrito_class() {
         precioVenta: precioVenta,
         tamanoUnidad: tamanoUnidad,
         codigoUnidad: codigoUnidad,
-        cantidad: cantidad
+        cantidad: cantidad,
+         stock: stock
+
       },
       //contentType: "application/json; charset=utf-8",
       //dataType: "json",

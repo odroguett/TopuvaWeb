@@ -117,7 +117,7 @@ function obtieneDisponibleProductos($sProducto)
   try
   {
     $sSql ='select 
-    codigo_unidad , tamano
+    codigo_unidad , tamano,stock
 from 
     unidades u, 
     venta_productos vp,
@@ -170,7 +170,8 @@ function obtieneProductosRelacionados($sProducto)
     u.descripcion_unidad,
     u.tamano as tamano_unidad,
     p.descripcion,
-    vp.precio_venta
+    vp.precio_venta,
+    vp.stock
     from unidades u, 
     productos p,
     venta_productos vp,
@@ -178,6 +179,7 @@ function obtieneProductosRelacionados($sProducto)
     where     
     vp.ID_PRODUCTO =p.ID_PRODUCTO and 
     vp.id_unidad = u.id_unidad and
+    vp.stock > 0 and 
     p.id_categoria =  c.id_categoria and p.descripcion= :producto 
     order by vp.ID_PRODUCTO';
     $arrConsulta =array( ':producto' =>   $sProducto ) ;

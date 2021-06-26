@@ -83,7 +83,8 @@ function obtienePrecioProductos($sCategoria)
     u.tamano as tamano_unidad,
     p.descripcion,
     vp.precio_venta,
-    vp.codigo_precio_producto
+    vp.codigo_precio_producto,
+    vp.stock
 from 
     unidades u, 
     productos p,

@@ -42,57 +42,131 @@ require_once("../BD/catalogoBD.php");
            foreach($Listafilas as $filas => $value)
            {
         ?>
+    <?php 
+                           if ($value['stock'] ==0)
+                           {     
+                           ?>
+            <div class="col-6 col-md-3 mb-3">
+               <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm" >
+                  <div class="list-card-image"  >
+                     <a disabled onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')"
+                        href="#" class="text-dark" >
 
-      <div class="col-6 col-md-3 mb-3">
-         <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm">
-            <div class="list-card-image">
-               <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')" href="#" class="text-dark">
-                  
-                  <div class="p-3 claseTexto" >
-                  <input  type="text" class="text-info codigo-precio-producto" value="<?php echo $value['codigo_precio_producto']; ?>"   hidden >
-                     <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                     <h6 class="textoProducto font-weight-light text-dark"><?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?></h6>
-                     <div class="d-flex align-items-center precio">
-                        <h6 class="price m-0 font-weight-light text-primary"><?php echo  ' $'  . $value['precio_venta']    ?></h6>
-                        <a data-toggle="collapse" href="#collapseExample2" role="button"
-                           aria-expanded="false" aria-controls="collapseExample2"
-                           class="btn btn-success btn-sm ml-auto">+</a>
-                           
-                        <div class="collapse qty_show" id="collapseExample2">
-                           <div>
-                              <span class="ml-auto" href="#">
-                                 <form id='myform' class="cart-items-number d-flex" method='POST'
-                                    action='#'>
-                                    <input type='button' value='-'
-                                       class='qtyminus btn btn-success btn-sm ' field='quantity' />
-                                    <input type='text' id="cantidadProd" name='quantity ' value='1'
-                                       class='qty form-control cantidad ' />
-                                    <input type='button' value='+'
-                                       class='qtyplus btn btn-success btn-sm ' field='quantity' />
-                                 </form>
-                                
-                              </span>
+                        <div class="p-3 claseTexto" disabled>
+                           <input type="text" class="text-info stock" value="<?php echo $value['stock']; ?>" hidden>
+                           <input type="text" class="text-info codigo-precio-producto"
+                              value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
+                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+
+
+                           <h6 class="textoProducto font-weight-light text-dark">
+                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                           </h6>
+                           <div class="d-flex align-items-center precio">
+                              <h6 class="price m-0 font-weight-light text-primary">
+                                 <?php echo  ' $'  . $value['precio_venta']    ?></h6>
+                          
+                              
+                                 <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                                 aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto" >+</a>
+
+                              <div class="collapse qty_show" id="collapseExample2"  >
+                                 <div>
+                                    <span class="ml-auto" href="#" disabled>
+                                       <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
+                                          <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
+                                             field='quantity' disabled />
+                                          <input type='text' id="cantidadProd" name='quantity ' value='1'
+                                             class='qty form-control cantidad '  />
+                                          <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
+                                             field='quantity' disabled />
+                                       </form>
+
+                                    </span>
+                                 </div>
+
+                              </div>
+                           </div>
+                           <div class="input-group-prepend " hidden>
+                              <div class=" btn btn-icon btn-light btn-valor" hidden><i class="icofont-shopping-cart" hidden></i></div>
+                           </div>
+                           <div class="row">
+                           <div class="col-md-12 ">
+                           <h6 class="txtStock font-weight-light text-danger">
+                                 <?php echo 'Producto no disponible'    ?> </h6>
+                           </div>
                            </div>
                            
+
+                              <?php 
+
+                           }
+                           else{
+                              ?>
+                                <div class="col-6 col-md-3 mb-3">
+               <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm" >
+                  <div class="list-card-image" >
+                     <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')"
+                        href="#" class="text-dark">
+
+                        <div class="p-3 claseTexto">
+                           <input type="text" class="text-info stock" value="<?php echo $value['stock']; ?>" hidden>
+                           <input type="text" class="text-info codigo-precio-producto"
+                              value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
+                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+
+
+                           <h6 class="textoProducto font-weight-light text-dark">
+                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                           </h6>
+                           <div class="d-flex align-items-center precio">
+                              <h6 class="price m-0 font-weight-light text-primary">
+                                 <?php echo  ' $'  . $value['precio_venta']    ?></h6>
+                          
+
+                              <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                                 aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
+
+                              <div class="collapse qty_show" id="collapseExample2">
+                                 <div>
+                                    <span class="ml-auto" href="#">
+                                       <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
+                                          <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
+                                             field='quantity' />
+                                          <input type='text' id="cantidadProd" name='quantity ' value='1'
+                                             class='qty form-control cantidad ' />
+                                          <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
+                                             field='quantity' />
+                                       </form>
+
+                                    </span>
+                                 </div>
+
+                              </div>
+                           </div>
+                           <div class="input-group-prepend">
+                              <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i></div>
+                           </div>
+                           <?php 
+                           }   
+                              ?>
+
+
+
+
                         </div>
-                     </div>
-                     <div class="input-group-prepend">
-                        <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i></div>
-                        </div>
+
+                     </a>
+
+
                   </div>
-                  
-               </a>
-               
-               
+               </div>
             </div>
-         </div>
-      </div>
-      <?php 
+
+            <?php 
                }
    
       ?>
-      </div>
-
    
 	
 </div>

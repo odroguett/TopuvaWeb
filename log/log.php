@@ -75,9 +75,38 @@ public function EscribeLog($tipoInformacion,$error,$codigo,$linea)
     
 }
 
-public function EscribeLogBaseDatos()
+public function EscribeLogBaseDatos($tipoInformacion,$error,$codigo,$linea,$sSql)
 {
+    try
+    {
+       if( $this->crearArchivo("../log/LogBaseDatos.txt"))
+       {
 
+
+
+        $dt = new DateTime('today');
+        $date = $dt->format('m/d/Y');
+        fwrite($this->archivo,  $date  . ' Informacion ' . $tipoInformacion .  ' Mensaje:::: ' . 
+               $error . ' Codigo Exepcion:::: ' . $codigo . '  Linea Error:::: ' . $linea  . ' SQL:::: ' . $sSql . "\r\n"  );
+        fflush($this->archivo);
+        $this->cerrarArchivo();
+
+       }
+       else
+       {
+        $this->cerrarArchivo();
+
+       }
+
+        
+
+    }
+
+    catch(Error $e)
+    {
+
+        $this->cerrarArchivo();
+    }
 
 }
 

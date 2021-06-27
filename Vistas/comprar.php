@@ -1,5 +1,7 @@
 <?php 
-require_once("../BD/catalogoBD.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
+require_once(BD . "catalogoBD.php");
+require_once(COMPARTIDA . "parametros.php");
 $arrayCarrito = json_decode($_POST["arrayCarrito"],true); 
 $comuna =$_POST["comuna"];
 $ciudad = $_POST["ciudad"];
@@ -245,41 +247,41 @@ foreach($arrayCarrito as $filas => $value)
                                     </div>
                                  </div>
                                  <div class="d-flex align-items-center  mb-2 ">
-                                    <p class="mb-0 h6">Datos para despacho</p>
+                                    <p class="mb-0 text-dark h6">Datos para despacho</p>
 
                                  </div>
 
                                 
 
-                                 <div class="row small text-info m-2 font-weight-bold ">
+                                 <div class="row small  m-2  ">
                                     <div class="col-md-12">
                                        <label id="comDireccion" type="text"
-                                          class="text-info font-weight-bold"><?php echo $direccion ?> </label>
+                                          class=" font-weight-ligth"><?php echo $direccion ?> </label>
                                     </div>
 
                                  </div>
-                                 <div class="row  small text-info m-2 font-weight-bold">
+                                 <div class="row  small  m-2 ">
 
                                     <div class="col-md-6">
                                        <label id="comComuna" type="text"
-                                          class="text-info font-weight-bold"><?php echo $comuna ?> </label>
+                                          class=" font-weight-ligth"><?php echo $comuna ?> </label>
                                     </div>
                                     <div class="col-md-6">
                                        <label id="comCiudad" type="text"
-                                          class="text-info font-weight-bold"><?php echo $ciudad ?> </label>
+                                          class=" font-weight-ligth"><?php echo $ciudad ?> </label>
                                     </div>
 
                                  </div>
-                                 <div class="row small text-info m-2 font-weight-bold ">
+                                 <div class="row small  m-2  ">
 
                                     <div class="col-md-9">
                                        <label id="comRegion" type="text"
-                                          class="text-info font-weight-bold"><?php echo $region ?> </label>
+                                          class=" font-weight-ligth"><?php echo $region ?> </label>
                                     </div>
 
                                     <div class="col-md-3">
                                        <label id="comDepartamento" type="text"
-                                          class="text-info font-weight-bold"><?php echo $departamento ?> </label>
+                                          class="font-weight-ligth"><?php echo "Depto :" . $departamento ?> </label>
                                     </div>
                                  </div>
 
@@ -290,10 +292,10 @@ foreach($arrayCarrito as $filas => $value)
                                           <p class="mb-0 h6 font-weight-bold"> Direcciones de Retiro</p>
 
                                        </div>
-                                       <p class="small text-info m-2 font-weight-bold">Comuna Ñuñoa</p>
-                                       <p class="small text-info m-2 "> Plaza Egaña/ Metro Linea 4</p>
-                                       <p class="small text-info m-2 font-weight-bold">Comuna La Florida</p>
-                                       <p class="small text-info m-2 "> Rojas Magallanes/ Metro Linea 4</p>
+                                       <p class="small  m-2 font-weight-light">Comuna Ñuñoa</p>
+                                       <p class="small  m-2 "> Plaza Egaña/ Metro Linea 4</p>
+                                       <p class="small  m-2 font-weight-light">Comuna La Florida</p>
+                                       <p class="small  m-2 "> Rojas Magallanes/ Metro Linea 4</p>
 
                                     
 

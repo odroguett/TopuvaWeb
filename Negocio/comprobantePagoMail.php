@@ -1,7 +1,8 @@
 <?php
 require_once("../FPDF/fpdf.php");
-require_once("../BD/catalogoBD.php");
-
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
+require_once(BD . "catalogoBD.php");
+require_once(COMPARTIDA . "parametros.php");
 class Comprobante extends FPDF
 {
 

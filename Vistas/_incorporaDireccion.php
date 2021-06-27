@@ -1,6 +1,8 @@
 <?php 
 
-require_once("../BD/catalogoBD.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
+require_once(BD . "catalogoBD.php");
+require_once(COMPARTIDA . "parametros.php");
 $oCatalogo= new catalogoBD();
 $idDespacho = $_POST['idDespacho']; 
 $sNombre="";
@@ -57,9 +59,9 @@ if($idDespacho !="")
     <!-- Sidebar CSS -->
     <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
-<div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Datos del Pedido</h5>
-    <button type="button" id="botonCerrarDespacho" class="close" data-dismiss="modal" aria-label="Close">
+<div class="modal-header bg-info">
+    <h5 class="modal-title text-white" id="exampleModalLabel">Datos del Pedido</h5>
+    <button type="button" id="botonCerrarDespacho" class="close text-white" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
@@ -79,50 +81,51 @@ if($idDespacho !="")
                 <form action="" method="" class="">
                     <div class="row form-group">
                         <div class="col-md-6">
-                            <input placeholder="Nombre" id="nombre" type="text" class="form-control" required value="<?php  echo $sNombre ?>" > </inpuit>
+                            <input placeholder="Nombre" id="nombre" type="text" class="form-control input-personalizado" required value="<?php  echo $sNombre ?>" > </inpuit> </span>
+                            
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Apellidos" id="apellido" type="text" class="form-control" required value="<?php  echo $sApellido ?>">
+                            <input placeholder="Apellidos" id="apellido" type="text" class="form-control input-personalizado" required value="<?php  echo $sApellido ?>">
                         </div>
 
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Dirección" id="direccion" type="text" class="form-control" required value="<?php  echo $sDireccion ?>">
+                            <input placeholder="Dirección" id="direccion" type="text" class="form-control input-personalizado" required value="<?php  echo $sDireccion ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Departamento" id="departamento" type="text" class="form-control" value="<?php  echo $sDepartamento ?>">
+                            <input placeholder="Departamento" id="departamento" type="text" class="form-control input-personalizado" value="<?php  echo $sDepartamento ?>">
                         </div>
                     </div>
                     <div class="row form-group">
 
                         <div class="col-md-6">
-                            <input placeholder="Ciudad" id="ciudad" type="text" class="form-control" required value="<?php  echo $sCiudad ?>">
+                            <input placeholder="Ciudad" id="ciudad" type="text" class="form-control input-personalizado" required value="<?php  echo $sCiudad ?>">
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Comuna" id="comuna" type="text" class="form-control" required value="<?php  echo $sComuna ?>">
+                            <input placeholder="Comuna" id="comuna" type="text" class="form-control input-personalizado" required value="<?php  echo $sComuna ?>">
                         </div>
                     </div>
 
 
                     <div class="row form-group">
                         <div class="col-md-12 ">
-                            <input placeholder="Region" id="region" type="text" class="form-control" value="<?php  echo $sRegion ?>">
+                            <input placeholder="Region" id="region" type="text" class="form-control input-personalizado" value="<?php  echo $sRegion ?>">
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Teléfono" id="telefono" type="text" class="form-control" required value="<?php  echo $sTelefono ?>">
+                            <input placeholder="Teléfono" id="telefono" type="text" class="form-control input-personalizado" required value="<?php  echo $sTelefono ?>">
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Email" id="email" type="email" class="form-control" required value="<?php  echo $sEmail ?>">
+                            <input placeholder="Email" id="email" type="email" class="form-control input-personalizado" required value="<?php  echo $sEmail ?>">
                         </div>
 
                     </div>
@@ -138,7 +141,10 @@ if($idDespacho !="")
         </section>
     </body>
 </div>
+<div class="modal-footer bg-info">
+<div class="col-lg-6 marco-inferior"></div>
 
+</div>
 
 </html>
 <?php include("../includes/footer.php")  ?>

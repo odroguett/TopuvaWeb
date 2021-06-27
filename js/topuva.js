@@ -591,6 +591,7 @@ debugger;
       localStorage.removeItem('Carrito');
       $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
     }
+    $("#loader").hide();
 
 
   }

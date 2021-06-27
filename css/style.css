@@ -430,8 +430,8 @@ a.selected {
 /* Cart Page */
 span.c-number {
 	width: 32px;
-	border: 1px solid #28a744;
-	color: #28a744;
+	border: 1px solid #5c316d;
+	color: #5c316d;
 	height: 32px;
 	border-radius: 50px;
 	display: flex;
@@ -562,8 +562,8 @@ span.c-number {
 }
 
 .border-custom-radio .custom-control-input:checked~.custom-control-label::before {
-	border-color: #28a744;
-	border: 2px solid #28a744;
+	border-color:#5c316d;
+	border: 1px solid #5c316d;
 }
 
 .list-card-image .price {
@@ -1097,7 +1097,7 @@ label {
 
 /* accordian card border */
 .osahan-accor {
-	border-bottom: 2px solid #fbbf3b !important;
+	border-bottom: 1px solid  #5c316d!important;
 }
 
 /* custom-tabs */
@@ -1282,4 +1282,38 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
   @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
+  }
+
+  .text-dark {
+    color: #5c316d!important;
+	
+}
+
+.text-info {
+	color: #172dca!important;
+}
+
+.text-secondary {
+    color: #1d7dd2!important;
+}
+
+.input-personalizado
+{
+	outline: 0;
+	border-width: 0 0 1px;
+	border-color: #5c316d
+
+}
+
+
+.marco-inferior {
+	border: 2px;
+	height: 30px;
+	width: 200px;
+  }
+
+  .marco-inferior-1 {
+	border: 2px;
+	height: 20px;
+	width: 200px;
   }

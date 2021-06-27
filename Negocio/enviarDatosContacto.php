@@ -1,6 +1,12 @@
 <?php 
-require_once("../Negocio/EnvioMail.php");
-require_once("../log/log.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
+require_once(BD . "catalogoBD.php");
+require_once(LOG . "log.php");
+require_once(COMPARTIDA . "parametros.php");
+require_once(NEGOCIO . "EnvioMail.php");
+
+//En esta seccion colocaremos las clases Singleton//
+//Parametros::getInstance()->cargaParametros();
 ob_start();
 $mail=filter_var($_POST['mail'],FILTER_SANITIZE_EMAIL);
 $nombre= filter_var($_POST['nombre'],FILTER_SANITIZE_STRING);

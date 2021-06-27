@@ -1,6 +1,8 @@
 <?php 
 
-require_once("../BD/catalogoBD.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
+require_once(BD . "catalogoBD.php");
+require_once(COMPARTIDA . "parametros.php");
 $arrayPago = $_POST["arrayPago"]; 
 $idDespacho = json_decode($_POST["idDespacho"],true); 
 $idTipoDespacho = json_decode($_POST["tipoDespacho"],true); 
@@ -45,9 +47,9 @@ else
 
 
 
-<div class="modal-header">
-    <h5 class="modal-title text-secondary" id="exampleModalLabel">Finalizar Pedido</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<div class="modal-header bg-info">
+    <h5 class="modal-title text-white" id="exampleModalLabel">Finalizar Pedido</h5>
+    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
@@ -72,30 +74,30 @@ else
                     <div class="p-3 bg-light rounded shadow-sm w-100">
                         <div class="d-flex align-items-center mb-2">
                             <div class="row">
-                                <p class="mb-0 h6 text-dark font-weight-bold ">Detalle Compra</p>
+                                <p class="mb-0 h6  font-weight-bold ">Detalle Compra</p>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h7 class="text-dark font-weight-light">Total Productos : </h7>
-                                <h7 class="text-info font-weight-bold"><?php echo  ' ' . $totalProductosPago  ?>
+                                <h7 class=" font-weight-light">Total Productos : </h7>
+                                <h7 class=" font-weight-light"><?php echo  ' ' . $totalProductosPago  ?>
                                 </h7>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-group">
-                                <h7 class="text-dark font-weight-light">Subtotal : </h7>
-                                <h7 class="text-info font-weight-bold">
+                                <h7 class=" font-weight-light">Subtotal : </h7>
+                                <h7 class=" font-weight-light">
                                     <?php echo ' ' . number_format($totalPago,0,',','.')  . " (CLP)" ?>
                                 </h7>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h7 class="text-dark font-weight-light">Cargo Despacho : </h7>
-                                <h7 class="text-info font-weight-bold">
+                                <h7 class=" font-weight-light">Cargo Despacho : </h7>
+                                <h7 class=" font-weight-light">
                                     <?php  echo  ' ' .  number_format($costoEnvio,0,',','.')   . " (CLP)"   ?>
                                 </h7>
 
@@ -103,8 +105,8 @@ else
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <h7 class="text-dark font-weight-light">Total a Pago : </h7>
-                                <h7 class="text-info font-weight-bold">
+                                <h7 class=" font-weight-light">Total a Pago : </h7>
+                                <h7 class=" font-weight-light">
                                     <?php echo ' ' .  number_format($totalConDespacho,0,',','.') . " (CLP)"   ?> </h7>
                             </div>
                         </div>
@@ -127,7 +129,7 @@ else
                     <div class="p-3  rounded bg-light shadow-sm w-100">
                         <div class="d-flex align-items-center mb-2">
                             <div class="row">
-                                <p class="mb-0 h6 text-dark font-weight-bold">Seleccionar Medio de Pago</p>
+                                <p class="mb-0 h6  font-weight-bold">Seleccionar Medio de Pago</p>
                             </div>
                             <br>
                         </div>
@@ -138,7 +140,7 @@ else
                             <div class="form-check form-check-inlinev class-transferencia">
                                 <input class="form-check-input" id="rdTransferencia" type="radio" name="rdTransferencia"
                                     value="option1" checked>
-                                <label class="form-check-label h7 text-dark font-weight-light"
+                                <label class="form-check-label h7  font-weight-light"
                                     for="inlineRadio1">Transferencia</label>
                             </div>
 
@@ -146,7 +148,7 @@ else
                             <div class="form-check form-check-inline class-transferencia ">
                                 <input class="form-check-input" id="rdEntrega" type="radio" name="rdEntrega"
                                     value="option2">
-                                <label class="form-check-label h7 text-dark font-weight-light text-right"
+                                <label class="form-check-label h7  font-weight-light text-right"
                                     for="inlineRadio2"> Pago a momento de entrega</label>
                             </div>
 
@@ -159,37 +161,37 @@ else
                             <div id="idTransferencia">
                                 <div class="row">
                                     <div class="form-group">
-                                        <h7 class="text-dark font-weight-light">Telefono : </h7>
-                                        <h7 class="text-info font-weight-bold"> 999999999
+                                        <h7 class=" font-weight-light">Telefono : </h7>
+                                        <h7 class=" font-weight-light"> 999999999
                                         </h7>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <h7 class="text-dark font-weight-light">Banco : </h7>
-                                        <h7 class="text-info font-weight-bold"> Santander
+                                        <h7 class=" font-weight-light">Banco : </h7>
+                                        <h7 class=" font-weight-light"> Santander
                                         </h7>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <h7 class="text-dark font-weight-light">RUT : </h7>
-                                        <h7 class="text-info font-weight-bold"> 99999999-9
+                                        <h7 class=" font-weight-light">RUT : </h7>
+                                        <h7 class=" font-weight-light"> 99999999-9
                                         </h7>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group">
-                                        <h7 class="text-dark font-weight-light">Nombre : </h7>
-                                        <h7 class="text-info font-weight-bold"> Pepito paga doble
+                                        <h7 class=" font-weight-light">Nombre : </h7>
+                                        <h7 class=" font-weight-light"> Pepito paga doble
                                         </h7>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group">
-                                        <h7 class="text-dark font-weight-light">Correo : </h7>
-                                        <h7 class="text-info font-weight-bold"> Pepito@gmail.com
+                                        <h7 class=" font-weight-light">Correo : </h7>
+                                        <h7 class=" font-weight-light"> Pepito@gmail.com
                                         </h7>
                                     </div>
                                 </div>
@@ -236,6 +238,10 @@ else
 
 </div>
 
+<div class="modal-footer bg-info">
+<div class="col-lg-6 marco-inferior-1"></div>
+
+</div>
 
 <div id="loader" style="display:none">
     <button class="btn" disabled id="set-btn" style="padding-top:20%">

@@ -1,9 +1,11 @@
 <?php 
 
-require_once("../BD/catalogoBD.php");
-require_once("../Negocio/EnvioMail.php");
-require_once("../Negocio/comprobantePagoMail.php");
-require_once("../log/log.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
+require_once(BD . "catalogoBD.php");
+require_once(LOG . "log.php");
+require_once(COMPARTIDA . "parametros.php");
+require_once(NEGOCIO . "EnvioMail.php");
+require_once(NEGOCIO . "comprobantePagoMail.php");
 
 try{
 

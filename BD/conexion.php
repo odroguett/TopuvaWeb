@@ -11,10 +11,18 @@ class Conexion
     private $conn;
 
     public function __construct() {
-        $this->sUsuario = 'root';
-        $this->sPassword = 'Topuva.12345';
-        $this->db = 'topuva';
-        $this->host = 'localhost';
+        //Instrucción sirve para leer archivo INI//
+        $root = $_SERVER['DOCUMENT_ROOT'];
+        $arrayIni= parse_ini_file($root . '/TopuvaWeb/Ini/app.ini',true);
+        foreach($arrayIni as $filas => $value)
+        {
+            $this->sUsuario = $value['usuario'];
+            $this->sPassword = $value['clave'];
+            $this->db = $value['baseDatos'];
+            $this->host = $value['host'];
+
+        }
+        
     }
 
     //Funcion para conectar a base de datos.

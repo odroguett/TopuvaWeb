@@ -1,16 +1,15 @@
 <?php 
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
 require_once("../phpMailer/PHPMailer.php");
 require_once("../phpMailer/Exception.php");
 require_once("../phpMailer/OAuth.php");
 require_once("../phpMailer/POP3.php");
 require_once("../phpMailer/SMTP.php");
 require_once("../log/log.php");
-
+require_once(COMPARTIDA . "parametros.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
-
-
 
 class envioMail
 {
@@ -20,23 +19,23 @@ class envioMail
     try{
         $mail = new PHPMailer(true);
         $oLog = new Log();
-
+        $parametros = Parametros::getInstance();
 
         try {
             //Server settings
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->Host       = $parametros->smtp;                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'emporiodys@gmail.com';                     //SMTP username
-            $mail->Password   = 'Dys.2012';                               //SMTP password
+            $mail->Username   = $parametros->usuarioCorreo;                     //SMTP username
+            $mail->Password   = $parametros->contrasenaCorreo;                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            $mail->Port       = 587;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->Port       = $parametros->puertoCorreo;                                    //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
         
             //Recipients
-            $mail->setFrom('emporiodys@gmail.com', 'Topuva');
+            $mail->setFrom($parametros->usuarioCorreo, 'Topuva');
             $mail->addAddress($sDestinarioEmail, 'Estimada(o)');     //Add a recipient
-            $mail->addAddress('emporiodys@gmail.com');               //Name is optional
+            $mail->addAddress($parametros->usuarioCorreo);               //Name is optional
             //$mail->addReplyTo('info@example.com', 'Information');
             //$mail->addCC('cc@example.com');
             //$mail->addBCC('bcc@example.com');

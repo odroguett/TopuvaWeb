@@ -8,3 +8,5 @@
 06/26/2021 Informacion ERROR Mensaje:::: Division by zero Codigo Exepcion:::: 0  Linea Error:::: 14
 06/26/2021 Informacion ERROR Mensaje:::: Call to a member function getMessage() on null Codigo Exepcion:::: 0  Linea Error:::: 24
 06/26/2021 Informacion ERROR Mensaje:::: Call to a member function getMessage() on null Codigo Exepcion:::: 0  Linea Error:::: 24
+06/27/2021 Informacion ERROR Mensaje:::: SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting Codigo Exepcion:::: 2  Linea Error:::: 1961
+06/27/2021 Informacion ERROR Mensaje:::: Invalid address:  (to): ODRO Codigo Exepcion:::: 0  Linea Error:::: 1092

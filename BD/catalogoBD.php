@@ -608,7 +608,32 @@ return $lista;
   }
 
 }
+
+function cargaParametros()
+{
+  try
+  {
+        $sSql ='select * from parametros ';
+        $lista= $this->ejecutarConsultaIndividual($sSql);
+        return $lista;
+
+
+  }
+
+  catch(Exception $e)
+  {
+        return NULL;
+  }
+
 }
+
+}
+
+
+
+
+
+
 
 
 

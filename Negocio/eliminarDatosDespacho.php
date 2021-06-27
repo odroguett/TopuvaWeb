@@ -1,6 +1,9 @@
 <?php 
 require_once("../BD/catalogoBD.php");
-require_once("../log/log.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/TopuvaWeb/rutas.php');
+require_once(BD . "catalogoBD.php");
+require_once(LOG . "log.php");
+require_once(COMPARTIDA . "parametros.php");
 $oCatalogo= new catalogoBD();
 $oRespuesta = new RespuestaOtd();
 $oLog = new Log();

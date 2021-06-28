@@ -256,7 +256,7 @@ $parametros = Parametros::getInstance();
             <div class="modal-footer">
                <h4 style="text-align: left;" class=" text-kumel-titulo"> Total: </h4>
                <h4 style="text-align: left;" class="totalizador text-kumel-bold"> </h4>
-               <button type="button" onclick="oCarrito.Comprar()" class="btn btn-kumel  btn-block">Comprar</button>
+               <button type="button" onclick="oCarrito.Comprar()" class="btn btn-kumel-1 btn-block">Comprar</button>
 
             </div>
          </div>

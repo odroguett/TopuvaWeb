@@ -116,7 +116,7 @@
                            </div>
 
                            <div class="col-lg-4">
-                              <input type="submit" class="btn btn-kumel" style="position: absolute;top: 80%;"
+                              <input type="submit" class="btn btn-kumel-1" style="position: absolute;top: 80%;"
                                  value="enviar">
                            </div>
 

@@ -648,7 +648,7 @@ $sSql ='select  sum(cantidad) as cantidad_producto,
                 vp.stock,vp.imagen,p.descripcion,
                 u.codigo_unidad,tamano_unidad,u.descripcion_unidad
         order by cantidad_producto desc
-        LIMIT 0,10';
+        LIMIT 0,12';
         $lista= $this->ejecutarConsultaIndividual($sSql);
 return $lista;
 

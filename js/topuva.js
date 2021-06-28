@@ -213,16 +213,16 @@ debugger;
       ' <div class="row"> ' +
       ' <div class="col-6"> ' +
       ' <div class="row"> ' +
-      ' <h6 class="textoProducto font-weight-light text-dark">  ' + texto + ' </h6> ' +
+      ' <h6 class="textoProducto font-weight-light text-kumel-bold">  ' + texto + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class="price_modal m-0 font-weight-light text-info"> Precio: ' + precio + '</h6> ' +
+      ' <h6 class="price_modal m-0 font-weight-light text-kumel-texto-1"> Precio: ' + precio + '</h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-info"> Cantidad: ' + cantidad + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-kumel-texto-1"> Cantidad: ' + cantidad + ' </h6> ' +
       ' </div> ' +
       ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-info">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
+      ' <h6 class=" cantidadProducto m-0 font-weight-light text-kumel-texto-1">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
       ' </div> ' +
       ' </div> ' +
       ' <div class="col-6"> ' +

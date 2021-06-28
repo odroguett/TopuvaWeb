@@ -59,8 +59,8 @@ if($idDespacho !="")
     <!-- Sidebar CSS -->
     <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
-<div class="modal-header bg-info">
-    <h5 class="modal-title text-white" id="exampleModalLabel">Datos del Pedido</h5>
+<div class="modal-header bg-kumel">
+    <h5 class="modal-title text-kumel-texto" id="exampleModalLabel">Datos del Pedido</h5>
     <button type="button" id="botonCerrarDespacho" class="close text-white" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -135,16 +135,13 @@ if($idDespacho !="")
             </div>
             <div class="row form-group">
                 <div class="col-md-11">
-                    <button type="button" id="btnIngresar" class="btn btn-info btn-block">Ingresar</button>
+                    <button type="button" id="btnIngresar" class="btn btn-kumel-1 btn-block">Ingresar</button>
                 </div>
             </div>
         </section>
     </body>
 </div>
-<div class="modal-footer bg-info">
-<div class="col-lg-6 marco-inferior"></div>
 
-</div>
 
 </html>
 <?php include("../includes/footer.php")  ?>

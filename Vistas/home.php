@@ -240,17 +240,14 @@ require_once("../BD/catalogoBD.php");
                }
       ?>
 
-
-
-
-
-
-
    </section>
 </div>
+<div class="col-lg-12">
+      <hr></span>
 
+   </div>
 
-<div class="container" style="max-width: 100%;">
+<div class="container" style="max-width: 70%;">
 
    <h5 style="text-align: left;" class="text-kumel-titulo font-weight-light ">Comunas de despacho</h5>
    <div class="col-lg-12  bg-light">

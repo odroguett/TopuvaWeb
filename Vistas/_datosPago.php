@@ -47,8 +47,8 @@ else
 
 
 
-<div class="modal-header bg-info">
-    <h5 class="modal-title text-white" id="exampleModalLabel">Finalizar Pedido</h5>
+<div class="modal-header bg-kumel">
+    <h5 class="modal-title text-kumel-texto" id="exampleModalLabel">Finalizar Pedido</h5>
     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -229,7 +229,7 @@ else
     </div>
     <div class="row float-right">
         <div class="col-md-12">
-            <button type="button" id="btnFinalizarPago" class="btn btn-info btn-block"
+            <button type="button" id="btnFinalizarPago" class="btn btn-kumel-1 btn-block"
                 onclick='oCarrito.FinalizarPago(  <?php  echo $arrayPago  ?>  , <?php echo $idDespacho ?> ,  <?php echo $totalProductosPago ?> , <?php echo $totalPago ?>,<?php echo $idTipoDespacho ?>   )'>Solicitar
                 Pedido</button>
         </div>
@@ -238,10 +238,7 @@ else
 
 </div>
 
-<div class="modal-footer bg-info">
-<div class="col-lg-6 marco-inferior-1"></div>
 
-</div>
 
 <div id="loader" style="display:none">
     <button class="btn" disabled id="set-btn" style="padding-top:20%">

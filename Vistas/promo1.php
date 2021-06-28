@@ -127,7 +127,7 @@ foreach($Listafilas as $filas => $value)
                {
                ?>
                         <div class="col-9  align-items-right">
-                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel rounded  btn-block  "
+                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel-1 rounded  btn-block  "
                               disabled> Agregar al
                               Carro</button>
                         </div>
@@ -137,7 +137,7 @@ foreach($Listafilas as $filas => $value)
                {
                      ?>
                         <div class="col-9  align-items-right">
-                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel rounded  btn-block  "
+                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel-1 rounded  btn-block  "
                               > Agregar al
                               Carro</button>
                         </div>

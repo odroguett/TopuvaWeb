@@ -430,8 +430,8 @@ a.selected {
 /* Cart Page */
 span.c-number {
 	width: 32px;
-	border: 1px solid #5c316d;
-	color: #5c316d;
+	border: 1px solid #ad8455;
+	color: #ad8455;
 	height: 32px;
 	border-radius: 50px;
 	display: flex;
@@ -562,8 +562,8 @@ span.c-number {
 }
 
 .border-custom-radio .custom-control-input:checked~.custom-control-label::before {
-	border-color:#5c316d;
-	border: 1px solid #5c316d;
+	border-color:#ad8455;
+	border: 1px solid #ad8455;
 }
 
 .list-card-image .price {
@@ -774,15 +774,15 @@ label {
 
 .bg-info {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#17a2b8+0,1a68ce+100 */
-	background: #17a2b8;
+	background: #ad8455;
  /* Old browsers */
-	background: -moz-linear-gradient(-45deg,  #17a2b8 0%, #1a68ce 100%);
+	background: -moz-linear-gradient(-45deg,  #fbdb9b 0%, #ad8455 100%);
  /* FF3.6-15 */
-	background: -webkit-linear-gradient(-45deg,  #17a2b8 0%,#1a68ce 100%);
+	background: -webkit-linear-gradient(-45deg,  #fbdb9b 0%,#ad8455 100%);
  /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(135deg,  #17a2b8 0%,#1a68ce 100%);
+	background: linear-gradient(135deg,  #fbdb9b 0%,#ad8455 100%);
  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#17a2b8', endColorstr='#1a68ce',GradientType=1 );
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbdb9b', endColorstr='#ad8455',GradientType=1 );
  /* IE6-9 fallback on horizontal gradient */
 	;
 }
@@ -1098,7 +1098,7 @@ label {
 
 /* accordian card border */
 .osahan-accor {
-	border-bottom: 1px solid  #5c316d!important;
+	border-bottom: 1px solid  #ad8455!important;
 }
 
 /* custom-tabs */
@@ -1302,7 +1302,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 {
 	outline: 0;
 	border-width: 0 0 1px;
-	border-color: #5c316d
+	border-color: #ad8455
 
 }
 
@@ -1320,7 +1320,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
   }
 
   .bg-kumel {
-	background-color: #ad8455;
+	background-color: #422505;
 
 }
 
@@ -1380,3 +1380,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 	color: #fbdb9b;
 	background-color: #ad8455;
 }
+
+.btn-kumel-1 {
+	color: #553d22;
+	background-color: #f1efeb;
+	border-color: #553d22;
+}
+
+
+.page-item.active .page-link {
+    background-color: #382713 !important;
+    
+}
+.page-link {
+    color: #fbdb9b !important;
+}
+  
+  

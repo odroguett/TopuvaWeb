@@ -71,7 +71,7 @@ foreach($Listafilas as $filas => $value)
                <div class="p-4 bg-light rounded shadow-sm ">
 
 
-                  <h5 tyle="text-align: left;" class="text-dark textoProducto">
+                  <h5 tyle="text-align: left;" class="text-kumel-titulo textoProducto">
                      <?php echo $sDescripcion . ' ' . $tamanoUnidad .$sCodigoUnidad ?></h5>
                   <?php 
                if($stock==0)
@@ -86,9 +86,9 @@ foreach($Listafilas as $filas => $value)
                   <?php 
                } ?>
 
-                  <p class=" h6 font-weight-light text-dark m-0 d-flex align-items-center">
+                  <p class=" h6 text-kumel-titulo m-0 d-flex align-items-center">
                      Precio Unidad (CLP) : <b
-                        class="h6 m-0 font-weight-light text-info price"><?php echo ' ' .  number_format($vPrecioVenta,0,',','.')   ?></b>
+                        class="h6 m-0 text-kumel-bold price"><?php echo ' ' .  number_format($vPrecioVenta,0,',','.')   ?></b>
                   </p>
                   </br>
                   <?php 
@@ -127,7 +127,7 @@ foreach($Listafilas as $filas => $value)
                {
                ?>
                         <div class="col-9  align-items-right">
-                           <button type="button" id="btnAgregarCarro" class="btn btn-info rounded  btn-block  "
+                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel rounded  btn-block  "
                               disabled> Agregar al
                               Carro</button>
                         </div>
@@ -137,7 +137,7 @@ foreach($Listafilas as $filas => $value)
                {
                      ?>
                         <div class="col-9  align-items-right">
-                           <button type="button" id="btnAgregarCarro" class="btn btn-info rounded  btn-block  "
+                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel rounded  btn-block  "
                               > Agregar al
                               Carro</button>
                         </div>
@@ -150,13 +150,13 @@ foreach($Listafilas as $filas => $value)
                      </br>
                      <div class="row divider">
                         <div class="col-3">
-                           <p class="h6 font-weight-light text-dark">Disponible en:</p>
+                           <p class="h6 text-kumel-titulo">Disponible en:</p>
 
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-9">
-                           <p class="text-info m-0"><?php echo $sDiponible ?></p>
+                           <p class="text-kumel-texto-1"><?php echo $sDiponible ?></p>
                         </div>
                      </div>
                   </div>
@@ -164,7 +164,7 @@ foreach($Listafilas as $filas => $value)
 
                   <div class="details">
                      <div class="pt-3 bg-light">
-                        <p class="font-weight-light text-dark">Finas almendras naturales.........</p>
+                        <p class="text-kumel-texto-1">Finas almendras naturales.........</p>
                      </div>
 
                   </div>
@@ -179,7 +179,7 @@ foreach($Listafilas as $filas => $value)
             </div>
          </div>
       </div>
-      <h5 style="text-align: left;" class="text-secondary font-weight-bold ">Productos Similares</h5>
+      <h5 style="text-align: left;" class="text-kumel-titulo ">Productos Similares</h5>
       <div class="pick_today">
 
          <div class="row">
@@ -202,11 +202,11 @@ foreach($Listafilas as $filas => $value)
 
                      <div class="p-3 claseTexto">
                         <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                        <h6 class="textoProducto font-weight-light text-dark">
+                        <h6 class="textoProducto text-kumel-titulo">
                            <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                         </h6>
                         <div class="d-flex align-items-center precio">
-                           <h6 class="price m-0 font-weight-light text-info">
+                           <h6 class="price m-0 text-kumel-bold">
                               <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')      ?></h6>
                            <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
                               aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
@@ -248,11 +248,11 @@ foreach($Listafilas as $filas => $value)
 
                      <div class="p-3 claseTexto">
                         <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                        <h6 class="textoProducto font-weight-light text-dark">
+                        <h6 class="textoProducto text-kumel-titulo">
                            <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                         </h6>
                         <div class="d-flex align-items-center precio">
-                           <h6 class="price m-0 font-weight-light text-info">
+                           <h6 class="price m-0 text-kumel-bold">
                               <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')   ?></h6>
                            <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
                               aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>

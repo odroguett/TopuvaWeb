@@ -20,55 +20,71 @@
    <!-- Sidebar CSS -->
    <link href="../vendor/sidebar/demo.css" rel="stylesheet">
 </head>
-<div class="bg-info">
-   <div class="container menu-bar d-flex align-items-left">
-      <ul class="list-unstyled form-inline mb-0">
-         <li class="nav-item active">
-            <a class="nav-link text-white pl-0" href="/TopuvaWeb/index.php">Home <span
-                  class="sr-only">(current)</span></a>
-         </li>
-      </ul>
-
-   </div>
-</div>
-
-<body class="fixed-bottom-padding">
 
 
+<body class="fixed-bottom-padding bg-light">
+   <div class="row">
+      <div class=" col-lg-12 ">
+         <div class="form-inline ">
 
-   <section class="py-4 osahan-main-body">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-12 p-4 bg-light rounded shadow-sm">
-               <div style="text-align: center;">
-                  <meta charset="utf-8">
+            <div class="col-md-7 bg-ligth">
+               <div class="bg-ligth form-inline">
+                  <img class="img-fluid logo-img  " src="../img/logo.png">
+                  <div class="col-md-3 bg-ligth ">
+                     <div class="bg-ligth">
+                        <h5 class="text-kumel-titulo text-kumel-titulo-fuente ">Productos naturales</h5>
+                     </div>
+                  </div>
+                  
                </div>
-               <h3 style="text-align: center;"><em>Ponte en contacto con nosotros</em></h3>
-               <div style="text-align: center;">Llámanos&nbsp;o escríbenos un WhatsApp al<span>&nbsp;</span><a
-                     href="tel:+56999999">+56999999</a>
+            </div>
+            <div class="col-md-4">
+               <div class="form-inline ">
+               <ul class="list-unstyled form-inline mb-0 border-right border-left">
+                     <li class="nav-item active">
+                        <a class="nav-link text-kumel-bold pl-0" href="/TopuvaWeb/index.php"> <i class="icofont-circled-left"></i>
+                        Home
+                     </a>
+                     </li>
+                  </ul>
+                  <div class=" border-right ">
+                     <a href="#" class="btn btn-icon btn-light"> <i class="icofont-facebook"></i></a>
+                     <a href="#" class="btn btn-icon btn-light "><i class="icofont-instagram"></i></a>
+                  </div>
+                  <input type="text" class="form-control idPatronBusqueda" id="idPatronBusqueda"
+                     placeholder="Buscar Productos">
+                  <div class="input-group-prepend border-right  ">
+                     <div id="btnBuscarProductos" class="btn btn-light rounded-right"><i class="icofont-search"></i>
+                     </div>
+                  </div>
+
+                  <a href="#" id="carrito"
+                     class="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
+                     <i class="icofont-shopping-cart"></i>
+                  </a>
                </div>
-               <div style="text-align: center;">Escríbenos a<span>&nbsp;<a
-                        href="mailto:hola@mercadosilvestre.cl">topuva@gmail.com</a></span>
-               </div>
-               <div style="text-align: center;"><span></span></div>
-               <div style="text-align: center;"><span></span></div>
-               <div style="text-align: center;"></div>
-               <p>&nbsp;</p>
-               <div style="text-align: center;"></div>
-               <div style="text-align: center;"></div>
-               <div style="text-align: center;">Horario de atención por Whatsapp: Lunes a Jueves: 9:30 am a 17:45 pm.
-                  Viernes: 9:30 am a 15:00 hrs.</div>
-               <p>&nbsp;</p>
-               <div style="text-align: center;"></div>
-               <div style="text-align: center;"></div>
-               <div style="text-align: center;">Si prefieres escríbenos&nbsp;en el siguiente formulario:</div>
 
             </div>
+
+         </div>
+      </div>
+   </div>
+
+   <div class="col-lg-12">
+      <hr></span>
+
+   </div>
+
+   <section class="py-4 osahan-main-body">
+      <div class="container" style="max-width: 60%; ">
+         <div class="row ">
+         <img src="../img/Kummel.jpg"  class="img-contacto  bg-Kumel" alt="Responsive image">
          </div>
       </div>
    </section>
+   
    <section class="py-4 osahan-main-body">
-      <div class="container">
+      <div class="container ">
          <div class="row">
 
             <div class="col-lg-12 p-4 bg-light rounded shadow-sm">
@@ -79,14 +95,14 @@
 
                         <div class="form-group row ">
                            <div class="col-lg-6">
-                              <label for="exampleInputName1">Tu nombre</label>
+                              <label class="text-kumel-titulo" for="exampleInputName1">Tu nombre</label>
                               <input type="text" placeholder="Ingresa tu nombre" class="form-control"
-                                 id="exampleInputName1" name="nombre"  required>
+                                 id="exampleInputName1" name="nombre" required>
                            </div>
                            <div class="col-lg-6">
-                              <label for="exampleInputEmail1">Correo</label>
-                              <input type="email" placeholder="Correo" class="form-control" id="exampleInputEmail1" name="mail"
-                                 aria-describedby="emailHelp" required>
+                              <label class="text-kumel-titulo" for="exampleInputEmail1">Correo</label>
+                              <input type="email" placeholder="Correo" class="form-control" id="exampleInputEmail1"
+                                 name="mail" aria-describedby="emailHelp" required>
                            </div>
 
 
@@ -94,14 +110,14 @@
                         </div>
 
                         <div class="form-group row">
-                           <div class="col-lg-8">
-                              <textarea rows="10" cols="100" id="ContactFormMessage" name="mensaje"
-                                 placeholder="Mensaje" required></textarea>
+                           <div class="col-lg-7">
+                              <textarea class="text-kumel-titulo" rows="10" cols="100" id="ContactFormMessage"
+                                 name="mensaje" placeholder="Mensaje" required></textarea>
                            </div>
 
                            <div class="col-lg-4">
-                              <input type="submit" class="btn btn-info"
-                                 style="position: absolute;top: 80%;" value="enviar" >
+                              <input type="submit" class="btn btn-kumel" style="position: absolute;top: 80%;"
+                                 value="enviar">
                            </div>
 
 
@@ -119,5 +135,30 @@
 
 
 </body>
+<!-- footer -->
+<footer class="section-footer border bg-kumel">
+   <br />
+   <div class="form-inline">
+
+      <div class="col-md-1 offset-md-1"></div>
+      <div class="row  " style="height: 200px">
+
+
+         <div class=" col-lg-6">
+            <h5 style="text-align: left;" class="text-kumel-texto">Contactanos</h5>
+            <ul>
+               <li class="text-kumel-texto ">topuva@gmail.com</li>
+               <li class="text-kumel-texto">+569999999</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+
+
+
+
+
+
+</footer>
 
 </html>

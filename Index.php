@@ -162,40 +162,11 @@ $parametros = Parametros::getInstance();
 
 
 
-   <div class="container" style="max-width: 100%;">
-      <div class="row">
-         <div class="col-lg-12">
-
-            <div class="py-3 osahan-promos">
-
-
-
-               <div class="promo-slider pb-0 mb-0">
-                  <?php 
-                        $oCatalogo= new catalogoBD();
-                        $Listafilas=$oCatalogo->obtieneProductosDestacados();
-                         foreach($Listafilas as $filas => $value)
-                          {
-   ?>
-                  <div class="osahan-slider-item bg-Kumel">
-                     <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>
-                     ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')"
-                        class="text-dark bg-Kumel"><img src=" <?php echo $value['imagen']?>  "
-                           class="img-destacado  bg-Kumel" alt="Responsive image"></a>
-                  </div>
-
-                  <?php 
-    }
-   ?>
-
-               </div>
-            </div>
-         </div>
-      </div>
+  
       
       <div class="col-lg-12">
          <hr></span>
-         <div class="container" style="max-width: 70%;">
+         <div class="container" style="max-width: 100%;">
 
             <div class="row">
                <div class="col-lg-12">

@@ -576,7 +576,7 @@ span.c-number {
 	background: #fff;
 	height: 33px;
 	border-radius: 50px !important;
-	color: #141418;
+	color: #ad8455;
 	font-size: 17px;
 	box-shadow: 0px 0px 3px #dedede;
 	line-height: 0px;
@@ -1323,6 +1323,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 	background-color: #ad8455;
 
 }
+
+.bg-kumel-1 {
+	background-color: #fbdb9b;
+
+}
 .text-kumel-titulo {
 	color: #141418!important;
 	font-weight: 100;
@@ -1340,6 +1345,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 	font-weight: 100;
 }
 
+.text-kumel-texto-1 {
+	color: #ad8455!important;
+	font-weight: 100;
+}
+
  .img-despacho {
 	width: 1250px;
 	height: 600px;
@@ -1354,6 +1364,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 	min-width:300px;
 	padding: 7px;
 	border-radius: 6px;
+}
+
+.img-contacto {
+	width: 1100px;
+	height: 700px;
+	min-width: 92px;
+	padding: 7px;
+	border-radius: 6px;
+	
+	
 }
 
 .btn-kumel {

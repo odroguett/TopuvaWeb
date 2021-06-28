@@ -443,12 +443,12 @@ function eliminaDespacho($idDespacho)
 
 }
 
-function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalPago)
+function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalPago,$fechaVenta)
 {
 
   
   $dmIdDetalle=0;
-  $sSql = 'select count(id_detalle) as id from carrito';
+  $sSql = 'select count(id_detalle) as id from ventas';
   $ArraydmIdDespacho =$this->ejecutarConsultaIndividual($sSql);
   foreach($ArraydmIdDespacho as $filas => $value)
   {
@@ -464,12 +464,12 @@ function InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$total
     $dmIdDetalle = $dmIdDetalle  + 1;
   }
   $sSql='';
-  $sSql ='Insert into carrito (ID_DETALLE,TOTAL_PRODUCTOS,TOTAL_VENTA,ID_TIPO_PAGO,ID_DESPACHO)
-    VALUES( :dmIdDetalle ,:totalProductosPago,:totalPago,:idTipoPago,:idDespacho)';
+  $sSql ='Insert into ventas (ID_DETALLE,TOTAL_PRODUCTOS,TOTAL_VENTA,ID_TIPO_PAGO,ID_DESPACHO,FECHA_VENTA)
+    VALUES( :dmIdDetalle ,:totalProductosPago,:totalPago,:idTipoPago,:idDespacho,:fechaVenta)';
    
     $arrConsulta =array( ':dmIdDetalle' =>   $dmIdDetalle ,':totalProductosPago' => $totalProductosPago, 
                        ':totalPago' =>$totalPago,':idTipoPago' => $idTipoPago,
-                      ':idDespacho'=> $idDespacho);
+                      ':idDespacho'=> $idDespacho,':fechaVenta' => $fechaVenta);
 if($this->execBool($sSql, $arrConsulta))
 {
 
@@ -557,14 +557,14 @@ function obtieneCabeceraDespacho($idDespacho)
   try
   {
         $sSql ='select 
-            d.ID_DESPACHO, d.nombre,d.APELLIDOS, c.TOTAL_PRODUCTOS,c.TOTAL_VENTA,
-            c.ID_TIPO_PAGO, tp.descripcion as descripcion_tipo_pago,
+            d.ID_DESPACHO, d.nombre,d.APELLIDOS, v.TOTAL_PRODUCTOS,v.TOTAL_VENTA,
+            v.ID_TIPO_PAGO, tp.descripcion as descripcion_tipo_pago,
             td.DESCRIPCION as descripcion_tipo_despacho
         from 
-            despacho d, carrito c,tipo_pago tp,tipo_Despacho td
+            despacho d, ventas v,tipo_pago tp,tipo_Despacho td
         where 
-            d.id_despacho = c.id_despacho and
-            c.ID_TIPO_PAGO = tp.id_tipo_pago and
+            d.id_despacho = v.id_despacho and
+            v.ID_TIPO_PAGO = tp.id_tipo_pago and
             d.id_TIPO_DESPACHO= td.ID_TIPO_DESPACHO and
             d.id_despacho = :idDespacho';
             $arrConsulta =array( ':idDespacho' =>  $idDespacho );
@@ -587,7 +587,7 @@ function obtieneDetalleDespacho($idDespacho)
   {
 $sSql ='select cantidad,venta, v.codigo_precio_producto,
         p.descripcion as nombre_producto, u.descripcion_unidad, u.tamano
-        from carrito c, detalle_ventas v, 
+        from ventas c, detalle_ventas v, 
         venta_productos vp, productos p, unidades u
         where 
         c.id_detalle = v.id_detalle and 
@@ -626,6 +626,42 @@ function cargaParametros()
   }
 
 }
+
+function obtieneTopVentas()
+{
+  try
+  {
+$sSql ='select  sum(cantidad) as cantidad_producto,
+                vp.precio_venta, dv.codigo_precio_producto,
+                vp.stock,vp.imagen,p.descripcion,
+                u.codigo_unidad,u.tamano as tamano_unidad,u.descripcion_unidad
+        from 
+                ventas v inner join detalle_ventas dv
+                on v.id_detalle=dv.id_Detalle
+        inner join venta_productos vp
+                on dv.codigo_precio_producto = vp.codigo_precio_producto
+        inner join productos p
+                on vp.id_producto = p.id_producto
+        inner join unidades u
+                on vp.id_unidad = u.id_unidad
+        group by  dv.codigo_precio_producto,vp.precio_venta,
+                vp.stock,vp.imagen,p.descripcion,
+                u.codigo_unidad,tamano_unidad,u.descripcion_unidad
+        order by cantidad_producto desc
+        LIMIT 0,10';
+        $lista= $this->ejecutarConsultaIndividual($sSql);
+return $lista;
+
+
+  }
+
+  catch(Exception $e)
+  {
+    return NULL;
+  }
+
+}
+
 
 }
 

@@ -24,6 +24,7 @@ try{
         
         $totalConDespacho =0;
         $sNombreProducto;
+        $fechaVenta;
         
         if(ValidaPago($arrayPago,$sNombreProducto))
         {
@@ -44,7 +45,8 @@ try{
                 $totalConDespacho = $totalPago; 
             
             }
-            $idDetalle= $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalConDespacho);
+            $fechaVenta = date('Y-m-d');
+            $idDetalle= $oCatalogo->InsertarCabeceraPago($idDespacho,$totalProductosPago,$idTipoPago,$totalConDespacho, $fechaVenta);
             $totalConDespacho =0;
             $oCatalogo->ActualizaTipoDespacho($idDespacho,$idTipoDespacho);
             

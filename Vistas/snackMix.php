@@ -5,40 +5,42 @@ require_once(COMPARTIDA . "parametros.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" type="image/png" href="img/logo.png">
-      <title>Frutos Secos</title>
-      <!-- Slick Slider -->
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
-      <!-- Icofont Icon-->
-      <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
-      <!-- Bootstrap core CSS -->
-      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom styles for this template -->
-      <link href="css/style.css" rel="stylesheet">
-      <!-- Sidebar CSS -->
-      <link href="vendor/sidebar/demo.css" rel="stylesheet">
-   </head>
-   <body class="fixed-bottom-padding">
-      <!-- body -->
-      <section class="py-4 osahan-main-body">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" type="image/png" href="img/logo.png">
+   <title>Frutos Secos</title>
+   <!-- Slick Slider -->
+   <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
+   <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+   <!-- Icofont Icon-->
+   <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
+   <!-- Bootstrap core CSS -->
+   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="css/style.css" rel="stylesheet">
+   <!-- Sidebar CSS -->
+   <link href="vendor/sidebar/demo.css" rel="stylesheet">
+</head>
+
+<body class="fixed-bottom-padding">
+   <!-- body -->
+   <section class="py-4 osahan-main-body">
       <div class="title d-flex align-items-center py-3">
-   
-</div>
-<!-- pick today -->
-<div class="d-flex align-items-center mb-3">
-<h5 style="text-align: left;" class="text-dark ">Snack y Mix</h5>
-</div>
-<div class="pick_today">
 
-   <div class="row">
+      </div>
+      <!-- pick today -->
+      <div class="d-flex align-items-center mb-3">
+         <h5 style="text-align: left;" class="text-kumel-titulo">Snack y Mix</h5>
+      </div>
+      <div class="pick_today">
 
-   <?php 
+         <div class="row">
+
+            <?php 
            $oCatalogo= new catalogoBD();
            $Listafilas=$oCatalogo->obtienePrecioProductos('SM');
            foreach($Listafilas as $filas => $value)
@@ -62,11 +64,11 @@ require_once(COMPARTIDA . "parametros.php");
                            <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
 
 
-                           <h6 class="textoProducto font-weight-light text-dark">
+                           <h6 class="textoProducto text-kumel-titulo">
                               <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                            </h6>
                            <div class="d-flex align-items-center precio">
-                              <h6 class="price m-0 font-weight-light text-info">
+                              <h6 class="price m-0 text-kumel-bold">
                                  <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
 
 
@@ -121,11 +123,11 @@ require_once(COMPARTIDA . "parametros.php");
                                     <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
 
 
-                                    <h6 class="textoProducto font-weight-light text-dark">
+                                    <h6 class="textoProducto text-kumel-titulo">
                                        <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                                     </h6>
                                     <div class="d-flex align-items-center precio">
-                                       <h6 class="price m-0 font-weight-light text-info">
+                                       <h6 class="price m-0 text-kumel-bold">
                                           <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
 
 
@@ -175,19 +177,19 @@ require_once(COMPARTIDA . "parametros.php");
                   <?php 
                }
       ?>
-      </div>
-
-   
-	
-</div>
+               </div>
 
 
-      </section>
-  
-     
-     
- 
-   </body>
+
+            </div>
+
+
+   </section>
+
+
+
+
+</body>
+
 </html>
 <?php include("../includes/footer.php")  ?>
-

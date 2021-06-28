@@ -489,8 +489,8 @@ span.c-number {
 }
 
 .cart-items .img-fluid {
-	width: 92px;
-	height: 92px;
+	width: 100px;
+	height: 100px;
 	object-fit: scale-down;
 	min-width: 92px;
 	padding: 7px;
@@ -504,7 +504,7 @@ span.c-number {
 	height: 30px;
 	border: none !important;
 	background: transparent;
-	color: #17a2b8;
+	color: #ad8455;
 }
 
 .cart-items-number .btn {
@@ -512,7 +512,7 @@ span.c-number {
 	background: #fff;
 	height: 28px;
 	border-radius: 50px !important;
-	color: #17a2b8;
+	color: #ad8455;
 	font-size: 17px;
 	box-shadow: 0px 0px 3px #dedede;
 	line-height: 18px;
@@ -526,7 +526,7 @@ span.c-number {
 }
 
 .cart-items-number .btn:hover, .cart-items-number .btn:focus {
-	background: #17a2b8;
+	background: #ad8455;
 	color: #ffffff;
 }
 
@@ -576,7 +576,7 @@ span.c-number {
 	background: #fff;
 	height: 33px;
 	border-radius: 50px !important;
-	color: #17a2b8;
+	color: #141418;
 	font-size: 17px;
 	box-shadow: 0px 0px 3px #dedede;
 	line-height: 0px;
@@ -588,7 +588,7 @@ span.c-number {
 }
 
 .list-card-image a.btn:hover, .list-card-image a.btn:focus {
-	background: #17a2b8;
+	background: #fbdb9b;
 	color: #ffffff;
 }
 
@@ -614,7 +614,7 @@ span.c-number {
 /* Bootstrap custom */
 
 .dropdown-item.active, .dropdown-item:active {
-    background-color: #17a2b8;
+    background-color: #fbdb9b!important;
 }
 
 .btn-success:not(:disabled):not(.disabled).active, .btn-success:not(:disabled):not(.disabled):active, .show>.btn-success.dropdown-toggle {
@@ -1079,7 +1079,8 @@ label {
 
 /* logo-size */
 .logo-img {
-	height: 47px !important;
+	height: 80px !important;
+	width: 80px !important;
 }
 
 .search-size {
@@ -1256,7 +1257,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 #loader {
 	border: 16px solid #f3f3f3;
 	border-radius: 50%;
-	border-top: 16px solid #3498db;
+	border-top: 16px solid #fbdb9b;
 	width: 120px;
 	height: 120px;
 	-webkit-animation: spin 2s linear infinite; /* Safari */
@@ -1317,3 +1318,45 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb543b', end
 	height: 20px;
 	width: 200px;
   }
+
+  .bg-kumel {
+	background-color: #ad8455;
+
+}
+.text-kumel-titulo {
+	color: #141418!important;
+	font-weight: 100;
+}
+
+
+.text-kumel-bold {
+	color: #141418!important;
+	font-weight: 600;
+}
+
+
+.text-kumel-texto {
+	color: #fbdb9b!important;
+	font-weight: 100;
+}
+
+ .img-despacho {
+	width: 1250px;
+	height: 600px;
+	min-width: 92px;
+	padding: 7px;
+	border-radius: 6px;
+}
+
+.img-destacado {
+	max-width: 100%;
+	object-fit: scale-down;
+	min-width:300px;
+	padding: 7px;
+	border-radius: 6px;
+}
+
+.btn-kumel {
+	color: #fbdb9b;
+	background-color: #ad8455;
+}

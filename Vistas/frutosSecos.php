@@ -30,7 +30,7 @@ require_once(COMPARTIDA . "parametros.php");
 </div>
 <!-- pick today -->
 <div class="d-flex align-items-center mb-3">
-<h5 style="text-align: left;" class="text-dark ">Frutos Secos</h5>
+<h5 style="text-align: left;" class="text-kumel-titulo">Frutos Secos</h5>
 </div>
 <div class="pick_today">
 
@@ -60,11 +60,11 @@ require_once(COMPARTIDA . "parametros.php");
                            <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
 
 
-                           <h6 class="textoProducto font-weight-light text-dark">
+                           <h6 class="textoProducto text-kumel-titulo">
                               <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                            </h6>
                            <div class="d-flex align-items-center precio">
-                              <h6 class="price m-0 font-weight-light text-info">
+                              <h6 class="price m-0 text-kumel-bold">
                                  <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')   ?></h6>
 
 
@@ -119,11 +119,11 @@ require_once(COMPARTIDA . "parametros.php");
                                     <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
 
 
-                                    <h6 class="textoProducto font-weight-light text-dark">
+                                    <h6 class="textoProducto text-kumel-titulo">
                                        <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                                     </h6>
                                     <div class="d-flex align-items-center precio">
-                                       <h6 class="price m-0 font-weight-light text-info">
+                                       <h6 class="price m-0 text-kumel-bold">
                                           <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
 
 

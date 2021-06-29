@@ -52,7 +52,8 @@ function obtieneProductosDestacados()
     p.descripcion,
     vp.precio_venta,
     vp.imagen,
-    vp.codigo_precio_producto
+    vp.codigo_precio_producto,
+    vp.stock
 from 
     unidades u, 
     productos p,

@@ -81,7 +81,7 @@ require_once("../BD/catalogoBD.php");
    ?>
                <div class="osahan-slider-item bg-Kumel">
                   <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>
-                     ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>')"
+                     ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>')"
                      class="text-dark bg-Kumel"><img src=" <?php echo $value['imagen']?>  "
                         class="img-destacado  bg-Kumel" alt="Responsive image"></a>
                </div>

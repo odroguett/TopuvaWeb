@@ -72,7 +72,7 @@ $parametros = Parametros::getInstance();
       <div class=" col-lg-12 ">
          <div class="form-inline ">
 
-            <div class="col-md-6 bg-ligth">
+            <div class="col-md-8 bg-ligth">
                <div class="bg-ligth form-inline">
                   <img class="img-fluid logo-img  " src="img/logo.png">
                   <div class="col-md-4 bg-ligth ">

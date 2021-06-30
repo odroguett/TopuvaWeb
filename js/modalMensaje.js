@@ -14,7 +14,7 @@ const Constante_icono_exito = "fa fa-check";
 
 function Modal_class() {
 
-    this.NotificacionAlertify = function(mensaje,tipo)
+    this.NotificacionAlertify = function (mensaje,tipo)
     {
         alertify.set('notifier','position', 'top-right');
         if(tipo=="warning")

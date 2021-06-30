@@ -1034,7 +1034,7 @@ debugger;
        if(Number(currentVal) >= tope)
        {
         $(this).closest('.claseTexto').find('.cantidad').val(tope);
-        oModal.NotificacionAlertify("Stock maximo de productos.","warning")
+        oModal.NotificacionAlertify("Stock maximo de productos seleccionados.","warning")
        // oModal.MensajePersonalizadoResponse('Error', , Constante_exito);
         
        }

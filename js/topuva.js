@@ -31,8 +31,7 @@ debugger;
     //var cantidad = $('#cantidadProd').val();
     if(cantidad >= stock || stock <=0)
     {
-      oModal.MensajePersonalizado('Error', "No existe stock para productos seleccionados.", Constante_exito);
-
+      oModal.NotificacionAlertify("No existe stock para productos seleccionados.","error");
     }
 
     else
@@ -214,7 +213,7 @@ debugger;
 
     } else {
 
-      oModal.MensajePersonalizado('Error', "No existen productos en el carrito", Constante_informacion);
+      oModal.NotificacionAlertify("No existen productos en el carrito.","warning");
       $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
     }
 
@@ -1035,7 +1034,9 @@ debugger;
        if(Number(currentVal) >= tope)
        {
         $(this).closest('.claseTexto').find('.cantidad').val(tope);
-        oModal.MensajePersonalizadoResponse('Error', "Stock maximo de productos", Constante_exito);
+        oModal.NotificacionAlertify("Stock maximo de productos.","warning")
+       // oModal.MensajePersonalizadoResponse('Error', , Constante_exito);
+        
        }
        else
        {

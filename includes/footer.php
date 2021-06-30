@@ -1,5 +1,9 @@
 
 <script src="vendor/jquery/jquery.min.js"></script>
+
+
+
+
 <script type="text/javascript" src="vendor/jquery/dataTables.js"></script>
  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
  <!-- slick Slider JS-->
@@ -9,4 +13,5 @@
  <!-- Custom scripts for all pages-->
  <script src="js/osahan.js"></script>
  <script src="js/topuva.js"></script>
+ <script src="js/alertify.js"></script>
 

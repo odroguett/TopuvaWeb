@@ -14,59 +14,29 @@ const Constante_icono_exito = "fa fa-check";
 
 function Modal_class() {
 
-    class ObjetoMensaje {
-        constructor(response) {
-            this.titulo = response.Respuesta !== undefined ? response.Respuesta.EsValido ? "Éxito" : "Advertencia" : response.EsValido ? "Éxito" : "Advertencia";
-            this.constante = response.Respuesta !== undefined ? response.Respuesta.EsValido ? Constante_exito : Constante_alerta : response.EsValido ? Constante_exito : Constante_alerta;
-            if (response.Respuesta !== null) {
-    
-                if (response.Respuesta.Excepcion !== null) {
-                    this.titulo = "Error";
-                    this.constante = Constante_error;
-                }
-            }
-            else {
-    
-                if (response.Excepcion !== null) {
-                    this.titulo = "Error";
-                    this.constante = Constante_error;
-                }
-            }
-    
-            this.mensaje = response.Respuesta !== undefined ? response.Respuesta.Mensaje : response.Mensaje;
-            this.valido = response.Respuesta !== undefined ? response.Respuesta.EsValido : response.EsValido;
+    this.NotificacionAlertify = function(mensaje,tipo)
+    {
+        alertify.set('notifier','position', 'top-right');
+        if(tipo=="warning")
+        {
+            alertify.warning(mensaje);
+
         }
+        if(tipo=="error")
+        {
+            alertify.error();(mensaje);
+
+        }
+        if(tipo=="success")
+        {
+            alertify.console.success();(mensaje);
+            
+        }
+        
+
     }
 
-    this.MensajePersonalizadoResponse = function (ObjetoMensaje) {
-        var icono = "";
-        var vUsuario = null;
-        try {
-            vUsuario = nombreUsuario;
-        } catch (e) {
-            vUsuario = "";
-        }
-
-        switch (ObjetoMensaje.constante) {
-            case Constante_alerta:
-                icono = Constante_icono_alerta;
-                break;
-            case Constante_error:
-                icono = Constante_icono_error;
-                break;
-            case Constante_exito:
-                icono = Constante_icono_exito;
-                break;
-            case Constante_informacion:
-                icono = Constante_icono_info;
-                break;
-        }
-        $('#TituloModal').html("<button class='btn btn-" + ObjetoMensaje.constante + " btn-circle' disabled style='pointer-events: none;'><i class='" + icono + " icon-3x'></i></button> " + ObjetoMensaje.titulo);
-        $('#CuerpoModal').html("<p>Estimad@ " + vUsuario + "</p><p class='text-semibold text-center'>" + ObjetoMensaje.mensaje + "</p>");
-        $("#MensajePersonalizado").modal("show");
-    };
-
-
+    
     this.MensajePersonalizado = function (titulo, mensaje, TipoAlert) {
         var icono = "";
         var vUsuario = null;

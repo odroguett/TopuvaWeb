@@ -72,28 +72,33 @@ $parametros = Parametros::getInstance();
       <div class=" col-lg-12 ">
          <div class="form-inline ">
 
-            <div class="col-md-8 bg-ligth">
+            <div class="col-md-7 bg-ligth">
                <div class="bg-ligth form-inline">
                   <img class="img-fluid logo-img  " src="img/logo.png">
-                  <div class="col-md-4 bg-ligth ">
+                  <div class="col-md-3 bg-ligth ">
                      <div class="bg-ligth">
                         <h5 class="text-kumel-titulo text-kumel-titulo-fuente ">Productos naturales</h5>
                      </div>
                   </div>
+                  
                </div>
             </div>
-
-
-
             <div class="col-md-4">
                <div class="form-inline ">
+               <ul class="list-unstyled form-inline mb-0 border-right border-left">
+                     <li class="nav-item active">
+                        <a class="nav-link text-kumel-bold pl-0" href="/TopuvaWeb/index.php"> <i class="icofont-circled-left"></i>
+                        Home
+                     </a>
+                     </li>
+                  </ul>
                   <div class=" border-right ">
                      <a href="#" class="btn btn-icon btn-light"> <i class="icofont-facebook"></i></a>
                      <a href="#" class="btn btn-icon btn-light "><i class="icofont-instagram"></i></a>
                   </div>
                   <input type="text" class="form-control idPatronBusqueda" id="idPatronBusqueda"
                      placeholder="Buscar Productos">
-                  <div class="input-group-prepend border-right ">
+                  <div class="input-group-prepend border-right  ">
                      <div id="btnBuscarProductos" class="btn btn-light rounded-right"><i class="icofont-search"></i>
                      </div>
                   </div>
@@ -105,10 +110,10 @@ $parametros = Parametros::getInstance();
                </div>
 
             </div>
+
          </div>
       </div>
    </div>
-
    <div class="col-lg-12">
       <hr></span>
 

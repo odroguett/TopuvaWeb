@@ -63,8 +63,9 @@ else
 
 
             <div class="col-md-12 text-right">
-                <a href="#" id="btnBorrarCarrito" data-toggle="modal" data-target="#exampleModal"
-                    class="text-right text-primary ">Borrar Carrito</a>
+            <button type="button" id="btnBorrarCarrito" class="text-primary border-0 btn-white" style="background-color:transparent"  >Borrar Carrito</button>
+
+                
             </div>
 
 

@@ -12,109 +12,135 @@ function Carrito_class() {
 
   this.LinkProducto = function (descripcion, precioVenta, tamanoUnidad, codigoUnidad,stock) {
 debugger;
-    var cantidad = $('#cantidadProd').val();
-    //stock = $('#stockProd').val();
-    
-    if (cantidad == null) {
-      cantidad = 1;
 
+   var recorre =  document.querySelectorAll('.claseTexto')
+   var cantidad=1;
+   var encontrado =false;
+   recorre.forEach(item => {
+    var textoProducto = item.querySelector('.textoProducto').innerHTML;
+    var cantidadProducto = item.querySelector('.cantidad').value;
+    if(textoProducto.trim() == (descripcion + ' ' + tamanoUnidad  +  codigoUnidad).trim() && encontrado==false)
+    {
+
+      cantidad = Number(cantidadProducto);
+      encontrado=true;
+      
     }
 
-    $.ajax({
-      type: "POST",
-      url: '../TopuvaWeb/Vistas/promo1.php',
-      data: {
-        descripcion: descripcion,
-        precioVenta: precioVenta,
-        tamanoUnidad: tamanoUnidad,
-        codigoUnidad: codigoUnidad,
-        cantidad: cantidad,
-         stock: stock
-
-      },
-      //contentType: "application/json; charset=utf-8",
-      //dataType: "json",
-      success: function (data) {
-        if (data) {
-
-          $("#ContenedorPaginas").html(data);
-
-        }
-      }
     });
-  }
-
-  this.IncorporaDespacho = function () {
-
-    let modificar = '';
-    debugger;
-    if ($('#comIdDespacho').val() != "") {
-
-      modificar = 'M';
-    } else {
-      modificar = 'C';
+    //var cantidad = $('#cantidadProd').val();
+    if(cantidad >= stock || stock <=0)
+    {
+      oModal.MensajePersonalizado('Error', "No existe stock para productos seleccionados.", Constante_exito);
 
     }
-    let idDespacho = $('#comIdDespacho').val();
-    let nombre = $('#nombre').val();
-    let apellido = $('#apellido').val();
-    let direccion = $('#direccion').val();
-    let departamento = $('#departamento').val();
-    let ciudad = $('#ciudad').val();
-    let comuna = $('#comuna').val();
-    let region = $('#region').val();
-    let telefono = $('#telefono').val();
-    let email = $('#email').val();
-    let cliente = $('#email').val();
-    let tipoDespacho = $('#tipoDespacho').val();
-    $.ajax({
-      type: "POST",
-      url: '../TopuvaWeb/Negocio/despacho.php',
-      dataType: 'json',
-      data: {
-        modificar: modificar,
-        idDespacho: idDespacho,
-        nombre: nombre,
-        apellido: apellido,
-        direccion: direccion,
-        departamento: departamento,
-        ciudad: ciudad,
-        comuna: comuna,
-        region: region,
-        telefono: telefono,
-        email: email
-      },
-      success: function (data) {
-        if (data.bEsValido) {
 
-
-          oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
-
-          $('#comDireccion').text('Dirección: ' + data.direccion);
-          if (data.departamento != null) {
-            $('#comDepartamento').text('Depto: ' + data.departamento);
+    else
+    {
+      if (cantidad == null) {
+        cantidad = 1;
+  
+      }
+  
+      $.ajax({
+        type: "POST",
+        url: '../TopuvaWeb/Vistas/promo1.php',
+        data: {
+          descripcion: descripcion,
+          precioVenta: precioVenta,
+          tamanoUnidad: tamanoUnidad,
+          codigoUnidad: codigoUnidad,
+          cantidad: cantidad,
+           stock: stock
+  
+        },
+        //contentType: "application/json; charset=utf-8",
+        //dataType: "json",
+        success: function (data) {
+          if (data) {
+  
+            $("#ContenedorPaginas").html(data);
+  
           }
-          $('#comComuna').text(data.comuna);
-          $('#comCiudad').text(data.ciudad);
-          $('#comRegion').text(data.region);
-          $('#comIdDespacho').val(data.idDespacho);
-          $('#botonCerrarDespacho').click();
-
-
-          localStorage.setItem('direccion', data.direccion);
-          localStorage.setItem('departamento', data.departamento);
-          localStorage.setItem('comuna', data.comuna);
-          localStorage.setItem('ciudad', data.ciudad);
-          localStorage.setItem('region', data.region);
-          localStorage.setItem('idDespacho', data.idDespacho);
-
-        } else {
-          oModal.MensajePersonalizado('Error', data.respuesta, Constante_exito);
-          $('#botonCerrarDespacho').click();
         }
+      });
+    }
+  
+    this.IncorporaDespacho = function () {
+  
+      let modificar = '';
+      debugger;
+      if ($('#comIdDespacho').val() != "") {
+  
+        modificar = 'M';
+      } else {
+        modificar = 'C';
+  
       }
-    });
+      let idDespacho = $('#comIdDespacho').val();
+      let nombre = $('#nombre').val();
+      let apellido = $('#apellido').val();
+      let direccion = $('#direccion').val();
+      let departamento = $('#departamento').val();
+      let ciudad = $('#ciudad').val();
+      let comuna = $('#comuna').val();
+      let region = $('#region').val();
+      let telefono = $('#telefono').val();
+      let email = $('#email').val();
+      let cliente = $('#email').val();
+      let tipoDespacho = $('#tipoDespacho').val();
+      $.ajax({
+        type: "POST",
+        url: '../TopuvaWeb/Negocio/despacho.php',
+        dataType: 'json',
+        data: {
+          modificar: modificar,
+          idDespacho: idDespacho,
+          nombre: nombre,
+          apellido: apellido,
+          direccion: direccion,
+          departamento: departamento,
+          ciudad: ciudad,
+          comuna: comuna,
+          region: region,
+          telefono: telefono,
+          email: email
+        },
+        success: function (data) {
+          if (data.bEsValido) {
+  
+  
+            oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
+  
+            $('#comDireccion').text('Dirección: ' + data.direccion);
+            if (data.departamento != null) {
+              $('#comDepartamento').text('Depto: ' + data.departamento);
+            }
+            $('#comComuna').text(data.comuna);
+            $('#comCiudad').text(data.ciudad);
+            $('#comRegion').text(data.region);
+            $('#comIdDespacho').val(data.idDespacho);
+            $('#botonCerrarDespacho').click();
+  
+  
+            localStorage.setItem('direccion', data.direccion);
+            localStorage.setItem('departamento', data.departamento);
+            localStorage.setItem('comuna', data.comuna);
+            localStorage.setItem('ciudad', data.ciudad);
+            localStorage.setItem('region', data.region);
+            localStorage.setItem('idDespacho', data.idDespacho);
+  
+          } else {
+            oModal.MensajePersonalizado('Error', data.respuesta, Constante_exito);
+            $('#botonCerrarDespacho').click();
+          }
+        }
+      });
+  
 
+    }
+    
+    
   }
 
   this.Comprar = function () {
@@ -534,6 +560,12 @@ debugger;
 
     $("#loader").show();
     let tipoPago = "";
+
+    $("#btnBorrarCarrito").attr('disabled', true);
+    $("#btnFinalizarPago").attr('disabled', true);
+
+
+    
     if ($('#rdTransferencia').is(':checked')) {
 
       tipoPago = "1";

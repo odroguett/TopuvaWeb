@@ -47,7 +47,7 @@ require_once(COMPARTIDA . "parametros.php");
            {
         ?>
             <?php 
-                           if ($value['stock'] ==0)
+                           if ($value['stock'] <=0)
                            {     
                            ?>
             <div class="col-6 col-md-3 mb-3">

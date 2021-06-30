@@ -113,7 +113,7 @@ require_once("../BD/catalogoBD.php");
            foreach($Listafilas as $filas => $value)
            {
              ?>
-            <div class="col-6 col-md-3 mb-3">
+            <div class="col-6 col-md-3 mb-3 ">
 
                <?php 
                            if ($value['stock'] <=0)

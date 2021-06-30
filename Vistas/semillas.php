@@ -118,6 +118,8 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     <input type="text" class="text-info codigo-precio-producto"
                                        value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
+                                       <input type="text" class="text-info stock-producto"
+                                       value="<?php echo $value['stock']; ?>" hidden >
                                     <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
 
 

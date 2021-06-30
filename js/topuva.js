@@ -66,81 +66,83 @@ debugger;
       });
     }
   
-    this.IncorporaDespacho = function () {
+   
+    
+    
+  }
+
+  this.IncorporaDespacho = function () {
   
-      let modificar = '';
-      debugger;
-      if ($('#comIdDespacho').val() != "") {
-  
-        modificar = 'M';
-      } else {
-        modificar = 'C';
-  
-      }
-      let idDespacho = $('#comIdDespacho').val();
-      let nombre = $('#nombre').val();
-      let apellido = $('#apellido').val();
-      let direccion = $('#direccion').val();
-      let departamento = $('#departamento').val();
-      let ciudad = $('#ciudad').val();
-      let comuna = $('#comuna').val();
-      let region = $('#region').val();
-      let telefono = $('#telefono').val();
-      let email = $('#email').val();
-      let cliente = $('#email').val();
-      let tipoDespacho = $('#tipoDespacho').val();
-      $.ajax({
-        type: "POST",
-        url: '../TopuvaWeb/Negocio/despacho.php',
-        dataType: 'json',
-        data: {
-          modificar: modificar,
-          idDespacho: idDespacho,
-          nombre: nombre,
-          apellido: apellido,
-          direccion: direccion,
-          departamento: departamento,
-          ciudad: ciudad,
-          comuna: comuna,
-          region: region,
-          telefono: telefono,
-          email: email
-        },
-        success: function (data) {
-          if (data.bEsValido) {
-  
-  
-            oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
-  
-            $('#comDireccion').text('Dirección: ' + data.direccion);
-            if (data.departamento != null) {
-              $('#comDepartamento').text('Depto: ' + data.departamento);
-            }
-            $('#comComuna').text(data.comuna);
-            $('#comCiudad').text(data.ciudad);
-            $('#comRegion').text(data.region);
-            $('#comIdDespacho').val(data.idDespacho);
-            $('#botonCerrarDespacho').click();
-  
-  
-            localStorage.setItem('direccion', data.direccion);
-            localStorage.setItem('departamento', data.departamento);
-            localStorage.setItem('comuna', data.comuna);
-            localStorage.setItem('ciudad', data.ciudad);
-            localStorage.setItem('region', data.region);
-            localStorage.setItem('idDespacho', data.idDespacho);
-  
-          } else {
-            oModal.MensajePersonalizado('Error', data.respuesta, Constante_exito);
-            $('#botonCerrarDespacho').click();
-          }
-        }
-      });
-  
+    let modificar = '';
+    debugger;
+    if ($('#comIdDespacho').val() != "") {
+
+      modificar = 'M';
+    } else {
+      modificar = 'C';
 
     }
-    
-    
+    let idDespacho = $('#comIdDespacho').val();
+    let nombre = $('#nombre').val();
+    let apellido = $('#apellido').val();
+    let direccion = $('#direccion').val();
+    let departamento = $('#departamento').val();
+    let ciudad = $('#ciudad').val();
+    let comuna = $('#comuna').val();
+    let region = $('#region').val();
+    let telefono = $('#telefono').val();
+    let email = $('#email').val();
+    let cliente = $('#email').val();
+    let tipoDespacho = $('#tipoDespacho').val();
+    $.ajax({
+      type: "POST",
+      url: '../TopuvaWeb/Negocio/despacho.php',
+      dataType: 'json',
+      data: {
+        modificar: modificar,
+        idDespacho: idDespacho,
+        nombre: nombre,
+        apellido: apellido,
+        direccion: direccion,
+        departamento: departamento,
+        ciudad: ciudad,
+        comuna: comuna,
+        region: region,
+        telefono: telefono,
+        email: email
+      },
+      success: function (data) {
+        if (data.bEsValido) {
+
+
+          oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
+
+          $('#comDireccion').text('Dirección: ' + data.direccion);
+          if (data.departamento != null) {
+            $('#comDepartamento').text('Depto: ' + data.departamento);
+          }
+          $('#comComuna').text(data.comuna);
+          $('#comCiudad').text(data.ciudad);
+          $('#comRegion').text(data.region);
+          $('#comIdDespacho').val(data.idDespacho);
+          $('#botonCerrarDespacho').click();
+
+
+          localStorage.setItem('direccion', data.direccion);
+          localStorage.setItem('departamento', data.departamento);
+          localStorage.setItem('comuna', data.comuna);
+          localStorage.setItem('ciudad', data.ciudad);
+          localStorage.setItem('region', data.region);
+          localStorage.setItem('idDespacho', data.idDespacho);
+
+        } else {
+          oModal.MensajePersonalizado('Error', data.respuesta, Constante_exito);
+          $('#botonCerrarDespacho').click();
+        }
+      }
+    });
+
+
   }
 
   this.Comprar = function () {
@@ -676,10 +678,10 @@ debugger;
 
   }
 
-
-
-
 }
+
+
+
 oCarrito = new Carrito_class();
 
 $(document).ready(function () {
@@ -994,7 +996,9 @@ $(document).ready(function () {
     // Get the field name
     fieldName = $(this).attr('field');
     // Get its current value
-    var currentVal = $(this).closest('.clase-cantidad').find('.cantidad').val()
+    var currentVal = $(this).closest('.clase-cantidad').find('.cantidad').val();
+    
+
     precio = $(this).closest('.clase-cantidad').find('.precio-total').val()
     precioTotal = oCarrito.quitarCaractererNoNumericos($(this).closest('.precio_total').find('.mostrar-precio').text());
     // If is not undefined
@@ -1017,7 +1021,7 @@ $(document).ready(function () {
 
   // Quantity JS
   $('.qtyplus').click(function (e) {
-
+debugger;
     e.preventDefault();
     e.stopImmediatePropagation();
 
@@ -1025,11 +1029,22 @@ $(document).ready(function () {
     // Get its current value
     //var currentVal = parseInt($('input[name='+fieldName+']').val());
     var currentVal = $(this).closest('.claseTexto').find('.cantidad').val();
+    var tope =$(this).closest('.claseTexto').find('.stock-producto').val();
     // If is not undefined
     if (!isNaN(currentVal)) {
-      // Increment
-      $(this).closest('.claseTexto').find('.cantidad').val(Number(currentVal) + 1);
-      //  $('.cantidad').val(Number(currentVal) + 1);
+       if(Number(currentVal) >= tope)
+       {
+        $(this).closest('.claseTexto').find('.cantidad').val(tope);
+        oModal.MensajePersonalizadoResponse('Error', "Stock maximo de productos", Constante_exito);
+       }
+       else
+       {
+        $(this).closest('.claseTexto').find('.cantidad').val(Number(currentVal) + 1);
+
+       }
+      
+    
+    
     } else {
       // Otherwise put a 0 there
       $(this).closest('.claseTexto').find('.cantidad').val(1);
@@ -1037,7 +1052,7 @@ $(document).ready(function () {
   });
   // This button will decrement the value till 0
   $(".qtyminus").click(function (e) {
-
+debugger;
     e.preventDefault();
     e.stopImmediatePropagation();
 
@@ -1045,6 +1060,7 @@ $(document).ready(function () {
     fieldName = $(this).attr('field');
     // Get its current value
     var currentVal = $(this).closest('.claseTexto').find('.cantidad').val();
+    var tope =$(this).closest('.claseTexto').find('.stock-producto').val()
     // If it isn't undefined or its greater than 0
     if (!isNaN(currentVal) && currentVal > 1) {
       // Decrement one

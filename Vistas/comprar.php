@@ -11,6 +11,8 @@ $direccion = $_POST["direccion"];
 $idDespacho = $_POST["idDespacho"];
 $totalProductos=0;
 $totalPago=0;
+$stock=0;
+$oCatalogo= new catalogoBD();
 
 foreach($arrayCarrito as $filas => $value)
 {
@@ -78,12 +80,21 @@ foreach($arrayCarrito as $filas => $value)
             </div>
             <?php foreach($arrayCarrito as $filas => $value)
                             { 
+                              if(isset($value['CodigoProducto']))
+                              {
+                                 $stock=$oCatalogo->RevisaStock( trim($value['CodigoProducto']));
+                                 
+                              }   
+
+
                               if(isset($value['Producto']))
                               {
                                ?>
             <div class="comprar">
                <input id="codigoProducto" type="text" class="text-info codigo-producto"
                   value="<?php echo trim($value['CodigoProducto']); ?>" hidden>
+
+                 
 
                <div class="form-inline precio_total">
 
@@ -107,6 +118,7 @@ foreach($arrayCarrito as $filas => $value)
                   </div>
                   <div class="col-md-1 clase-cantidad">
                      <input type="text" class="precio-total" value="<?php echo $value['Precio'] ; ?>" hidden>
+                     <input id="stockProducto" type="text" class="text-info stock-producto"  value="<?php echo trim($stock); ?>" hidden>
                      <span class="ml-auto" href="#">
                         <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
                            <input type='button' value='-' class='qtyminus qtyBajar btn btn-success btn-sm '

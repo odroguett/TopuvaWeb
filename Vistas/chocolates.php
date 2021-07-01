@@ -63,7 +63,7 @@ require_once(COMPARTIDA . "parametros.php");
                               value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
                               <input type="text" class="text-info stock-producto"
                               value="<?php echo $value['stock']; ?>" hidden>
-                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                           <img src="<?php echo $value['imagen']; ?>" class="img-fluid item-img w-100 mb-3">
 
 
                            <h6 class="textoProducto font-weight-light text-kumel-titulo">
@@ -124,7 +124,7 @@ require_once(COMPARTIDA . "parametros.php");
                                        value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
                                        <input type="text" class="text-info stock-producto"
                                        value="<?php echo $value['stock']; ?>" hidden >
-                                    <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                                       <img src="<?php echo $value['imagen']; ?>" class="img-fluid item-img w-100 mb-3">
 
 
                                     <h6 class="textoProducto text-kumel-titulo">

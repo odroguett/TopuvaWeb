@@ -31,7 +31,7 @@ debugger;
     //var cantidad = $('#cantidadProd').val();
     if(cantidad >= stock || stock <=0)
     {
-      oModal.NotificacionAlertify("No existe stock para productos seleccionados.","error");
+      oModal.NotificacionAlertify("Sin stock para productos seleccionado.","error");
     }
 
     else
@@ -114,7 +114,9 @@ debugger;
         if (data.bEsValido) {
 
 
-          oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
+          
+
+          oModal.NotificacionAlertify(data.respuesta,"success");
 
           $('#comDireccion').text('Dirección: ' + data.direccion);
           if (data.departamento != null) {
@@ -135,7 +137,9 @@ debugger;
           localStorage.setItem('idDespacho', data.idDespacho);
 
         } else {
-          oModal.MensajePersonalizado('Error', data.respuesta, Constante_exito);
+
+          oModal.NotificacionAlertify(data.respuesta,"error");
+          
           $('#botonCerrarDespacho').click();
         }
       }
@@ -452,7 +456,7 @@ debugger;
 
     } else {
 
-      oModal.MensajePersonalizado('Alerta', "Debe ingresar dirección antes de finalizar compra!!", Constante_informacion);
+      oModal.NotificacionAlertify("Debe ingresar dirección antes de finalizar compra!!","warning");
       $("#loader").hide();
     }
 
@@ -540,11 +544,15 @@ debugger;
               localStorage.removeItem('ciudad');
               localStorage.removeItem('region');
               localStorage.removeItem('idDespacho');
-              oModal.MensajePersonalizado('Exito', data.respuesta, Constante_exito);
+
+              oModal.NotificacionAlertify(data.respuesta,"success");
+              
               $("#loader").hide();
             } else {
               $("#loader").hide();
-              oModal.MensajePersonalizado('Error', data.respuesta, Constante_exito);
+              oModal.NotificacionAlertify(data.respuesta,"error");
+
+              
             }
           }
         });
@@ -599,7 +607,7 @@ debugger;
             localStorage.removeItem('ciudad');
             localStorage.removeItem('region');
             localStorage.removeItem('idDespacho');
-            oModal.MensajePersonalizado('Información', data.respuesta, Constante_informacion);
+            oModal.NotificacionAlertify(data.respuesta,"success");
             window.location.replace("/TopuvaWeb/Negocio/comprobantePagoPDF.php?idDespacho=" + idDespacho);
             $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
           } else {
@@ -877,7 +885,9 @@ $(document).ready(function () {
     if (subTotal != 0) {
       oCarrito.ContinuarPago();
     } else {
-      oModal.MensajePersonalizado('Advertencia', "Total de productos no puede ser cero.", Constante_informacion);
+
+      oModal.NotificacionAlertify("Total de productos no puede ser cero.","warning");
+      
 
     }
 
@@ -905,7 +915,8 @@ $(document).ready(function () {
 
       oModal.confirmacion("Confirmación", "¿Desea Eliminar datos para despacho?", oCarrito.EliminarDatosDespacho);
     } else {
-      oModal.MensajePersonalizado('Exito', "No existe información de despacho para eliminar", Constante_informacion);
+
+      oModal.NotificacionAlertify("No existe información de despacho para eliminar.","error");
 
     }
 
@@ -969,13 +980,24 @@ $(document).ready(function () {
     precio = $(this).closest('.clase-cantidad').find('.precio-total').val()
     // Get its current value
     //var currentVal = parseInt($('input[name='+fieldName+']').val());
-    var currentVal = $(this).closest('.clase-cantidad').find('.cantidad').val()
+    var currentVal = $(this).closest('.clase-cantidad').find('.cantidad').val();
+    var tope =$(this).closest('.clase-cantidad').find('.stock-producto').val();
     // If is not undefined
     if (!isNaN(currentVal)) {
       // Increment
-      $(this).closest('.clase-cantidad').find('.cantidad').val(Number(currentVal) + 1);
-      precio = precio * (Number(currentVal) + 1);
-      $(this).closest('.precio_total').find('.mostrar-precio').text('$ ' + precio);
+      if(Number(currentVal) >= tope)
+      {
+        $(this).closest('.clase-cantidad').find('.cantidad').val(tope);
+        oModal.NotificacionAlertify("Stock maximo de productos seleccionados.","warning")
+      }
+      else
+      {
+
+        $(this).closest('.clase-cantidad').find('.cantidad').val(Number(currentVal) + 1);
+        precio = precio * (Number(currentVal) + 1);
+        $(this).closest('.precio_total').find('.mostrar-precio').text('$ ' + precio);
+      }
+     
 
     } else {
 
@@ -1005,7 +1027,7 @@ $(document).ready(function () {
       // Increment
       // Increment
       $(this).closest('.clase-cantidad').find('.cantidad').val(Number(currentVal) - 1);
-
+      
 
       $(this).closest('.precio_total').find('.mostrar-precio').text('$ ' + (precioTotal - precio).toString());
       //  $('.cantidad').val(Number(currentVal) + 1);

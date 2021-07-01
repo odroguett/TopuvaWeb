@@ -85,7 +85,7 @@ function obtienePrecioProductos($sCategoria)
     p.descripcion,
     vp.precio_venta,
     vp.codigo_precio_producto,
-    vp.stock
+    vp.stock,vp.imagen
 from 
     unidades u, 
     productos p,
@@ -390,11 +390,15 @@ function RevisaStock($codigoProducto)
     try{
     
    
-  $sSql = 'select STOCK from  venta_productos 
+  $sSql = 'select stock from  venta_productos 
             WHERE CODIGO_PRECIO_PRODUCTO = :codigoProducto';
   $arrConsulta =array( ':codigoProducto' =>   $codigoProducto );
   $Array= $this->ejecutarConsultaParametros($sSql,$arrConsulta);
-  $dmStock= $Array["STOCK"];
+  foreach($Array as $filas => $value)
+  {
+    $dmStock= $value['stock'];
+  }
+
    return $dmStock;
   return true;
     }

@@ -24,12 +24,12 @@ function Modal_class() {
         }
         if(tipo=="error")
         {
-            alertify.error();(mensaje);
+            alertify.error(mensaje);
 
         }
         if(tipo=="success")
         {
-            alertify.console.success();(mensaje);
+            alertify.success(mensaje);
             
         }
         

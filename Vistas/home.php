@@ -82,8 +82,25 @@ require_once("../BD/catalogoBD.php");
                   <div class="osahan-slider-item bg-Kumel">
                      <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>
                      ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>')"
-                        class="text-dark bg-Kumel"><img src=" <?php echo $value['imagen']?>  "
-                           class="img-destacado  bg-Kumel" alt="Responsive image"></a>
+                        class="text-dark bg-Kumel">
+                        <div class="contenedor ">
+                           <figure>
+                           <img src=" <?php echo $value['imagen']?>  " class="" >
+                              <div class="capa">
+
+                                 <h3 class="">Alemendras Ricas</h3>
+                                 <p>
+                                    Ricas Almendras, sanitas...
+                                 </p>
+                              </div>
+
+                           </figure>
+
+                        </div>
+
+
+                      
+                     </a>
                   </div>
 
                   <?php 
@@ -199,45 +216,45 @@ require_once("../BD/catalogoBD.php");
                               hidden>
 
                            <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                              <h6 class="textoProducto text-kumel-titulo">
-                                 <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
-                              </h6>
-                             
-                              <div class="d-flex align-items-center precio">
-                           <h6 class="price m-0 text-kumel-bold">
-                              <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
+                           <h6 class="textoProducto text-kumel-titulo">
+                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                           </h6>
+
+                           <div class="d-flex align-items-center precio">
+                              <h6 class="price m-0 text-kumel-bold">
+                                 <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
 
 
-                           <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
-                              aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
+                              <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                                 aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
 
-                           <div class="collapse qty_show" id="collapseExample2">
-                              <div>
-                                 <span class="ml-auto" href="#">
-                                    <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                       <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
-                                          field='quantity' />
-                                       <input type='text' id="cantidadProd" name='quantity ' value='1'
-                                          class='qty form-control cantidad ' />
-                                       <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
-                                          field='quantity' />
-                                    </form>
+                              <div class="collapse qty_show" id="collapseExample2">
+                                 <div>
+                                    <span class="ml-auto" href="#">
+                                       <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
+                                          <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
+                                             field='quantity' />
+                                          <input type='text' id="cantidadProd" name='quantity ' value='1'
+                                             class='qty form-control cantidad ' />
+                                          <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
+                                             field='quantity' />
+                                       </form>
 
-                                 </span>
-                              </div>
-
-                           </div>
-
-                          
-                        </div>
-                        <div class="input-group-prepend">
-                                 <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i>
+                                    </span>
                                  </div>
 
                               </div>
+
+
+                           </div>
+                           <div class="input-group-prepend">
+                              <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i>
+                              </div>
+
+                           </div>
                         </div>
 
-                       
+
 
                      </a>
 

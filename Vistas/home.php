@@ -85,7 +85,7 @@ require_once("../BD/catalogoBD.php");
                         class="text-dark bg-Kumel">
                         <div class="contenedor ">
                            <figure>
-                           <img src=" <?php echo $value['imagen']?>  " class="" >
+                              <img src=" <?php echo $value['imagen']?>  " class="">
                               <div class="capa">
 
                                  <h3 class="">Alemendras Ricas</h3>
@@ -99,7 +99,7 @@ require_once("../BD/catalogoBD.php");
                         </div>
 
 
-                      
+
                      </a>
                   </div>
 
@@ -300,7 +300,24 @@ require_once("../BD/catalogoBD.php");
       <h5 style="text-align: left;" class="text-kumel-titulo font-weight-light ">Comunas de despacho</h5>
       <div class="col-lg-12  bg-light">
 
-         <img class="img-despacho" src="img/despacho.jpg">
+         <div class="contenedor ">
+            <figure>
+               <img src="img/despacho.jpg">
+
+               <div class="capa">
+
+                  <h3 class="">Comunas de despacho</h3>
+                  <p>
+                     Ñuñoa
+                     Providencia
+                     La Reina
+                  </p>
+               </div>
+
+            </figure>
+
+         </div>
+
 
       </div>
    </div>

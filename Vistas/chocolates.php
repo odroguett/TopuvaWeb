@@ -61,9 +61,23 @@ require_once(COMPARTIDA . "parametros.php");
 
                            <input type="text" class="text-info codigo-precio-producto"
                               value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                              <input type="text" class="text-info stock-producto"
-                              value="<?php echo $value['stock']; ?>" hidden>
-                           <img src="<?php echo $value['imagen']; ?>" class="img-fluid item-img w-100 mb-3">
+                           <input type="text" class="text-info stock-producto" value="<?php echo $value['stock']; ?>"
+                              hidden>
+                              <div class="contenedor">
+                                       <figure>
+                                       <img src="<?php echo $value['imagen']; ?>" >
+
+                                          <div class="capa">
+
+                                             <h3 class="">Chocolatito rico</h3>
+                                             <p>
+                                               Neucober de primera calidad
+                                             </p>
+                                          </div>
+
+                                       </figure>
+
+                                    </div>
 
 
                            <h6 class="textoProducto font-weight-light text-kumel-titulo">
@@ -122,9 +136,26 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     <input type="text" class="text-info codigo-precio-producto"
                                        value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                                       <input type="text" class="text-info stock-producto"
-                                       value="<?php echo $value['stock']; ?>" hidden >
-                                       <img src="<?php echo $value['imagen']; ?>" class="img-fluid item-img w-100 mb-3">
+                                    <input type="text" class="text-info stock-producto"
+                                       value="<?php echo $value['stock']; ?>" hidden>
+
+                                    <div class="contenedor">
+                                       <figure>
+                                       <img src="<?php echo $value['imagen']; ?>" >
+
+                                          <div class="capa">
+
+                                             <h3 class="">Chocolatito rico</h3>
+                                             <p>
+                                               Neucober de primera calidad
+                                             </p>
+                                          </div>
+
+                                       </figure>
+
+                                    </div>
+
+                                  
 
 
                                     <h6 class="textoProducto text-kumel-titulo">

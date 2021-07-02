@@ -5,40 +5,42 @@ require_once(COMPARTIDA . "parametros.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" type="image/png" href="img/logo.png">
-      <title>Frutos Secos</title>
-      <!-- Slick Slider -->
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
-      <!-- Icofont Icon-->
-      <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
-      <!-- Bootstrap core CSS -->
-      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom styles for this template -->
-      <link href="css/style.css" rel="stylesheet">
-      <!-- Sidebar CSS -->
-      <link href="vendor/sidebar/demo.css" rel="stylesheet">
-   </head>
-   <body class="fixed-bottom-padding">
-      <!-- body -->
-      <section class="py-4 osahan-main-body">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" type="image/png" href="img/logo.png">
+   <title>Frutos Secos</title>
+   <!-- Slick Slider -->
+   <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
+   <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+   <!-- Icofont Icon-->
+   <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
+   <!-- Bootstrap core CSS -->
+   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="css/style.css" rel="stylesheet">
+   <!-- Sidebar CSS -->
+   <link href="vendor/sidebar/demo.css" rel="stylesheet">
+</head>
+
+<body class="fixed-bottom-padding">
+   <!-- body -->
+   <section class="py-4 osahan-main-body">
       <div class="title d-flex align-items-center py-3">
-   
-</div>
-<!-- pick today -->
-<div class="d-flex align-items-center mb-3">
-<h5 style="text-align: left;" class="text-kumel-titulo">Jugos Naturales</h5>
-</div>
-<div class="pick_today">
 
-   <div class="row">
+      </div>
+      <!-- pick today -->
+      <div class="d-flex align-items-center mb-3">
+         <h5 style="text-align: left;" class="text-kumel-titulo">Jugos Naturales</h5>
+      </div>
+      <div class="pick_today">
 
-   <?php 
+         <div class="row">
+
+            <?php 
            $oCatalogo= new catalogoBD();
            $Listafilas=$oCatalogo->obtienePrecioProductos('JU');
            foreach($Listafilas as $filas => $value)
@@ -59,7 +61,26 @@ require_once(COMPARTIDA . "parametros.php");
 
                            <input type="text" class="text-info codigo-precio-producto"
                               value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                           <div class="contenedor-imagen">
+                              <figure>
+                                 <img src="<?php echo $value['imagen']; ?>">
+
+                                 <div class="capa">
+
+                                    <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                    <p>
+                                       <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                       <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                       <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                       <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                    </p>
+
+                                 </div>
+
+                              </figure>
+
+                           </div>
+
 
 
                            <h6 class="textoProducto text-kumel-titulo">
@@ -118,9 +139,28 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     <input type="text" class="text-info codigo-precio-producto"
                                        value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                                       <input type="text" class="text-info stock-producto"
-                                       value="<?php echo $value['stock']; ?>" hidden >
-                                    <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                                    <input type="text" class="text-info stock-producto"
+                                       value="<?php echo $value['stock']; ?>" hidden>
+                                    <div class="contenedor-imagen">
+                                       <figure>
+                                          <img src="<?php echo $value['imagen']; ?>">
+
+                                          <div class="capa">
+
+                                             <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                             <p>
+                                                <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                                <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                                <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                                <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                             </p>
+
+                                          </div>
+
+                                       </figure>
+
+                                    </div>
+
 
 
                                     <h6 class="textoProducto text-kumel-titulo">
@@ -178,19 +218,19 @@ require_once(COMPARTIDA . "parametros.php");
                }
    
       ?>
-      </div>
-
-   
-	
-</div>
+               </div>
 
 
-      </section>
-  
-     
-     
- 
-   </body>
+
+            </div>
+
+
+   </section>
+
+
+
+
+</body>
+
 </html>
 <?php include("../includes/footer.php")  ?>
-

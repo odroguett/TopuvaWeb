@@ -148,7 +148,26 @@ require_once("../BD/catalogoBD.php");
 
                            <input type="text" class="text-info codigo-precio-producto"
                               value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                              <div class="contenedor-imagen">
+                              <figure>
+                                 <img src="<?php echo $value['imagen']; ?>">
+
+                                 <div class="capa">
+
+                                    <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                    <p>
+                                       <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                       <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                       <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                       <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                    </p>
+
+                                 </div>
+
+                              </figure>
+
+                           </div>
+
 
 
                            <h6 class="textoProducto font-weight-light text-kumel-titulo">
@@ -215,7 +234,26 @@ require_once("../BD/catalogoBD.php");
                            <input type="text" class="text-info stock-producto" value="<?php echo $value['stock']; ?>"
                               hidden>
 
-                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                              <div class="contenedor-imagen">
+                              <figure>
+                                 <img src="<?php echo $value['imagen']; ?>">
+
+                                 <div class="capa">
+
+                                    <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                    <p>
+                                       <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                       <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                       <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                       <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                    </p>
+
+                                 </div>
+
+                              </figure>
+
+                           </div>
+
                            <h6 class="textoProducto text-kumel-titulo">
                               <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
                            </h6>
@@ -300,7 +338,7 @@ require_once("../BD/catalogoBD.php");
       <h5 style="text-align: left;" class="text-kumel-titulo font-weight-light ">Comunas de despacho</h5>
       <div class="col-lg-12  bg-light">
 
-         <div class="contenedor ">
+         <div class="contenedor" style="max-width: 100%;">
             <figure>
                <img src="img/despacho.jpg">
 

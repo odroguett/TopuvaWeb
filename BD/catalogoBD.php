@@ -53,7 +53,12 @@ function obtieneProductosDestacados()
     vp.precio_venta,
     vp.imagen,
     vp.codigo_precio_producto,
-    vp.stock
+    vp.stock,
+    vp.titulo,
+    vp.parrafo1,
+    vp.parrafo2,
+    vp.parrafo3,
+    vp.parrafo4
 from 
     unidades u, 
     productos p,
@@ -85,7 +90,11 @@ function obtienePrecioProductos($sCategoria)
     p.descripcion,
     vp.precio_venta,
     vp.codigo_precio_producto,
-    vp.stock,vp.imagen
+    vp.stock,vp.imagen, vp.titulo,
+    vp.parrafo1,
+    vp.parrafo2,
+    vp.parrafo3,
+    vp.parrafo4
 from 
     unidades u, 
     productos p,
@@ -639,7 +648,8 @@ function obtieneTopVentas()
 $sSql ='select  sum(cantidad) as cantidad_producto,
                 vp.precio_venta, dv.codigo_precio_producto,
                 vp.stock,vp.imagen,p.descripcion,
-                u.codigo_unidad,u.tamano as tamano_unidad,u.descripcion_unidad
+                u.codigo_unidad,u.tamano as tamano_unidad,u.descripcion_unidad,
+                vp.titulo,vp.parrafo1,vp.parrafo2,vp.parrafo3,vp.parrafo4
         from 
                 ventas v inner join detalle_ventas dv
                 on v.id_detalle=dv.id_Detalle

@@ -61,7 +61,26 @@ require_once(COMPARTIDA . "parametros.php");
 
                            <input type="text" class="text-info codigo-precio-producto"
                               value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                           <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                           <div class="contenedor-imagen">
+                              <figure>
+                                 <img src="<?php echo $value['imagen']; ?>">
+
+                                 <div class="capa">
+
+                                    <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                    <p>
+                                       <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                       <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                       <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                       <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                    </p>
+
+                                 </div>
+
+                              </figure>
+
+                           </div>
+
 
 
                            <h6 class="textoProducto text-kumel-titulo">
@@ -120,9 +139,28 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     <input type="text" class="text-info codigo-precio-producto"
                                        value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                                       <input type="text" class="text-info stock-producto"
-                                       value="<?php echo $value['stock']; ?>" hidden >
-                                    <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
+                                    <input type="text" class="text-info stock-producto"
+                                       value="<?php echo $value['stock']; ?>" hidden>
+                                    <div class="contenedor-imagen">
+                                       <figure>
+                                          <img src="<?php echo $value['imagen']; ?>">
+
+                                          <div class="capa">
+
+                                             <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                             <p>
+                                                <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                                <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                                <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                                <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                             </p>
+
+                                          </div>
+
+                                       </figure>
+
+                                    </div>
+
 
 
                                     <h6 class="textoProducto text-kumel-titulo">

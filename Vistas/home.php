@@ -148,7 +148,7 @@ require_once("../BD/catalogoBD.php");
 
                            <input type="text" class="text-info codigo-precio-producto"
                               value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                              <div class="contenedor-imagen">
+                           <div class="contenedor-imagen">
                               <figure>
                                  <img src="<?php echo $value['imagen']; ?>">
 
@@ -234,7 +234,7 @@ require_once("../BD/catalogoBD.php");
                            <input type="text" class="text-info stock-producto" value="<?php echo $value['stock']; ?>"
                               hidden>
 
-                              <div class="contenedor-imagen">
+                           <div class="contenedor-imagen">
                               <figure>
                                  <img src="<?php echo $value['imagen']; ?>">
 
@@ -335,7 +335,7 @@ require_once("../BD/catalogoBD.php");
 
    <div class="container" style="max-width: 70%;">
 
-      <h5 style="text-align: left;" class="text-kumel-titulo font-weight-light ">Comunas de despacho</h5>
+      <h5 style="text-align: left;" class="text-kumel-titulo font-weight-light ">DELIVERY</h5>
       <div class="col-lg-12  bg-light">
 
          <div class="contenedor" style="max-width: 100%;">
@@ -344,11 +344,20 @@ require_once("../BD/catalogoBD.php");
 
                <div class="capa">
 
-                  <h3 class="">Comunas de despacho</h3>
-                  <p>
-                     Ñuñoa
-                     Providencia
-                     La Reina
+                  <p class="h5 text-kumel-titulo">
+                     Entregas a domicilio RM: Ñuñoa, La Reina, Providencia,Las Condes.
+                  </p>
+                  <p class="h5 text-kumel-titulo">
+                     Envio a domicilio 4.000 CLP RM.
+                  </p>
+                  <p class="h5 text-kumel-titulo">
+                     Por compras superiores a 35 mil CLP despacho gratuito en RM.
+                  </p>
+                  <p class="h5 text-kumel-titulo">
+                     Entregas en Metro Plaza Egaña y Rojas Magallanes (L4) sin costo, coordinar por Whatsapps.
+                  </p>
+                  <p class="h5 text-kumel-titulo">
+                     Otras comunas y todo Chile envio por pagar, coordinar por Whatsapps.
                   </p>
                </div>
 
@@ -369,16 +378,45 @@ require_once("../BD/catalogoBD.php");
       <br />
       <div class="row">
 
+         <div class="form-inline">
+            <div class="col-lg-5">
+               <img src="img/tienda.jpg">
 
-         <div class="col-lg-12 p-4 bg-light rounded shadow-sm">
-            <h5 style="text-align: left;" class="text-kumel-titulo  font-weight-light">Nosotros</h5>
-            <div id="terms_conditions">
-               <p class="text-muted">
-               </p>
             </div>
 
+            <div class="col-lg-7">
+               <h5 style="text-align: left;" class="text-kumel-titulo">Nuestra tienda</h5>
+               <div id="terms_conditions">
+                  <p class="text-kumel-titulo h6 text-kumel-titulo">Inspirados en lo natural, el bienestar y el buen gusto, nace
+                     Kummel,
+                     para
+                     satisfacer </p>
+                  <p class="text-kumel-titulo h6"> las necesidades y los paladares de nuestros clientes. Para ello,
+                     contamos con productos naturales</p>
+                  <p class="text-kumel-titulo h6">y elaborados gourmet de alta calidad, provenientes de nuestro sur
+                     de
+                     Chile y diversas </p>
+                  <p class="text-kumel-titulo h6">lugares del mundo. </p>
+                  <p class="text-kumel-titulo h6">Somos un emprendimiento familiar, dedicado a la venta al por menor
+                     de
+                     productos naturales y</p>
+                  <p class="text-kumel-titulo h6">gourmet que busca ir creciendo acorde de las necesidades de
+                     nuestros
+                     clientes.</p>
+               </div>
+
+
+            </div>
+
+
+
+
          </div>
+
+
+
       </div>
+      <br />
 
    </div>
    </div>

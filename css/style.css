@@ -1445,17 +1445,17 @@ label {
 }
 
 .bg-kumel {
-	background-color: #422505;
+	background-color: #341404;
 
 }
 
 .bg-kumel-1 {
-	background-color: #fbdb9b;
+	background-color: #f8e4bc;
 
 }
 
 .text-kumel-titulo {
-	color: #141418 !important;
+	color: #341404 !important;
 	font-weight: 100;
 }
 
@@ -1467,7 +1467,7 @@ label {
 
 
 .text-kumel-texto {
-	color: #fbdb9b !important;
+	color: #e2c59e !important;
 	font-weight: 100;
 }
 
@@ -1678,4 +1678,22 @@ label {
 	width: 100%;
 	max-width: 220px;
 	margin: auto
+}
+
+
+.contenedor-tienda{
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+.contenedor-tienda .texto-encima{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

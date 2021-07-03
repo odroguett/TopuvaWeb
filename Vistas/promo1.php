@@ -9,6 +9,7 @@ $tamanoUnidad =$_POST["tamanoUnidad"];
 $sCodigoUnidad =$_POST["codigoUnidad"];
 $cantidad =$_POST["cantidad"];
 $stock=$_POST["stock"];
+$codigoProducto =$_POST["codigoProducto"];
 
 
 $Listafilas=$oCatalogo->obtieneDisponibleProductos($sDescripcion);
@@ -67,6 +68,9 @@ foreach($Listafilas as $filas => $value)
                </div>
             </div>
             <div class="col-lg-6 claseTexto">
+
+            <input type="text" class="text-info codigo-precio-producto"
+                              value="<?php echo $codigoProducto; ?>" hidden>
 
                <div class="p-4 bg-light rounded shadow-sm ">
 
@@ -201,6 +205,8 @@ foreach($Listafilas as $filas => $value)
 
 
                      <div class="p-3 claseTexto">
+                     <input type="text" class="text-info codigo-precio-producto"
+                              value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
                         <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
                         <h6 class="textoProducto text-kumel-titulo">
                            <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
@@ -247,6 +253,8 @@ foreach($Listafilas as $filas => $value)
 
 
                      <div class="p-3 claseTexto">
+                     <input type="text" class="text-info codigo-precio-producto"
+                              value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
                         <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
                         <h6 class="textoProducto text-kumel-titulo">
                            <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>

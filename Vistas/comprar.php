@@ -208,14 +208,12 @@ foreach($arrayCarrito as $filas => $value)
                            <div class="p-3 bg-light rounded  ">
                               <div class="row form-group">
                                  <div class="col-md-6">
-                                    <a href="#" id="btnAgregarDireccion" data-toggle="modal" data-target="#exampleModal"
-                                       class=" text-primary">Agregar/Modificar</a>
+                                    <button type="button" id="btnAgregarDireccion" style="border: none;"  class="btn btn-kumel-1">Agregar/Modificar</button>
                                     </span>
                                  </div>
 
                                  <div class="col-md-6">
-                                    <a href="#" id="btnEliminarDespacho" data-toggle="modal" data-target="#exampleModal"
-                                       class="text-primary rounded ">Eliminar</a></span>
+                                 <button type="button"  id="btnEliminarDespacho" style="border: none;" class=" btn  btn-kumel-1">Eliminar</button></span>
                                  </div>
                               </div>
                               <div class="col-lg-12">

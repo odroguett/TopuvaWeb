@@ -76,21 +76,22 @@ $parametros = Parametros::getInstance();
             <div class="col-md-7 bg-ligth">
                <div class="bg-ligth form-inline">
                   <img class="img-fluid logo-img  " src="img/logo.png">
-                  <div class="col-md-3 bg-ligth ">
-                     <div class="bg-ligth">
-                        <h5 class="text-kumel-titulo text-kumel-titulo-fuente ">Productos naturales</h5>
+                  <div class="col-md-4 bg-ligth ">
+                     <div class="bg-ligth" style="margin-top: 30px;">
+                        <h5 class="text-kumel-titulo">Productos naturales y gourmet</h5>
                      </div>
                   </div>
-                  
+
                </div>
             </div>
             <div class="col-md-4">
                <div class="form-inline ">
-               <ul class="list-unstyled form-inline mb-0 border-right border-left">
+                  <ul class="list-unstyled form-inline mb-0 border-right border-left">
                      <li class="nav-item active">
-                        <a class="nav-link text-kumel-bold pl-0" href="/TopuvaWeb/index.php"> <i class="icofont-circled-left"></i>
-                        Home
-                     </a>
+                        <a class="nav-link text-kumel-bold pl-0" href="/TopuvaWeb/index.php"> <i
+                              class="icofont-circled-left"></i>
+                           Home
+                        </a>
                      </li>
                   </ul>
                   <div class=" border-right ">
@@ -103,17 +104,29 @@ $parametros = Parametros::getInstance();
                      <div id="btnBuscarProductos" class="btn btn-light rounded-right"><i class="icofont-search"></i>
                      </div>
                   </div>
+                 
+                  <div class="col-md1">
+                     <a href="#" id="carrito"
+                        class="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
+                        <i class="icofont-shopping-cart"></i>
+                     </a>
+                  </div>
+                  <div class="Contenedor-Carrito">
+                     <div class="col-md1">
+                        <label class="text-kumel-bold" style="margin-bottom: 35px;">1</label>
+                     </div>
+                  </div>
 
-                  <a href="#" id="carrito"
-                     class="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
-                     <i class="icofont-shopping-cart"></i>
-                  </a>
+
+
                </div>
 
             </div>
 
          </div>
+
       </div>
+   </div>
    </div>
    <div class="col-lg-12">
       <hr></span>
@@ -168,24 +181,24 @@ $parametros = Parametros::getInstance();
 
 
 
-  
-      
-      <div class="col-lg-12">
-         <hr></span>
-         <div class="container" style="max-width: 100%;">
-
-            <div class="row">
-               <div class="col-lg-12">
-                  <!-- home page -->
-                  <div class="osahan-home-page">
-                     <!-- body -->
-                     <div class="osahan-body" id="ContenedorPaginas">
-                        <!-- categories -->
-                     </div>
 
 
+   <div class="col-lg-12">
+      <hr></span>
+      <div class="container" style="max-width: 100%;">
+
+         <div class="row">
+            <div class="col-lg-12">
+               <!-- home page -->
+               <div class="osahan-home-page">
+                  <!-- body -->
+                  <div class="osahan-body" id="ContenedorPaginas">
+                     <!-- categories -->
                   </div>
-                  <!-- <section class="footer-top py-4">
+
+
+               </div>
+               <!-- <section class="footer-top py-4">
                   <div class="container">
                      <section class="footer-top py-4">
                         <div class="row">
@@ -207,14 +220,14 @@ $parametros = Parametros::getInstance();
 
 
 
-                  </section>
+               </section>
 
-               </div>
             </div>
          </div>
       </div>
    </div>
-  
+   </div>
+
 
 
    <!-- footer -->

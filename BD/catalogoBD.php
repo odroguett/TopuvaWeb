@@ -181,7 +181,8 @@ function obtieneProductosRelacionados($sProducto)
     u.tamano as tamano_unidad,
     p.descripcion,
     vp.precio_venta,
-    vp.stock
+    vp.stock,
+    vp.codigo_precio_producto
     from unidades u, 
     productos p,
     venta_productos vp,

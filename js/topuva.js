@@ -818,8 +818,12 @@ $(document).ready(function () {
 
   });
 
+  
+  
+
   $("#verMas").click(function (e) {
 
+    
     e.preventDefault();
     e.stopImmediatePropagation();
     $("#ContenedorPaginas").load('../TopuvaWeb/Vistas/verMas.php');

@@ -324,41 +324,74 @@ require_once("../BD/catalogoBD.php");
 
    </div>
 
-   <div class="container bg-kumel-2 " style="max-width: 150%;">
-      <div class="col-lg-12">
-      <h5 style="text-align: left; " class="text-kumel-titulo  ">DELIVERY</h5>
-      <div class="col-lg-12  bg-kumel-2">
 
-         <div class="contenedor-delivery " >
-            <figure>
-               <img src="img/despacho.jpg">
+   <div class="container " style="max-width: 100%;">
 
-               <div class="capa  bg-kumel-2">
 
-                  <p class="h5 text-kumel-titulo">
-                     Entregas a domicilio RM: Ñuñoa, La Reina, Providencia,Las Condes.
-                  </p>
-                  <p class="h5 text-kumel-titulo">
-                     Envio a domicilio 4.000 CLP RM.
-                  </p>
-                  <p class="h5 text-kumel-titulo">
-                     Por compras superiores a 35 mil CLP despacho gratuito en RM.
-                  </p>
-                  <p class="h5 text-kumel-titulo">
-                     Entregas en Metro Plaza Egaña y Rojas Magallanes (L4) sin costo, coordinar por Whatsapps.
-                  </p>
-                  <p class="h5 text-kumel-titulo">
-                     Otras comunas y todo Chile envio por pagar, coordinar por Whatsapps.
-                  </p>
-               </div>
+      <div class="row bg-kumel-2 ">
 
-            </figure>
+
+         <div class="form-inline bg-kumel-2">
+            <div class="col-lg-6">
+               <img class="img-nuestra-tienda" style="max-width: 100%;" src="img/despacho.jpg">
+
+            </div>
+
+            <div class="col-lg-5 " style="margin-bottom: 3%;">
+               <img class="img-fluid logo-img  " src="img/logo.png">
+               <h4 style="text-align: center;" class="text-kumel-titulo">Despacho</h4>
+
+               <p style="text-align: justify;" class="h5 text-kumel-titulo">
+                Entregas a domicilio RM: Ñuñoa, La Reina, Providencia,Las Condes.
+               <p style="text-align: justify;" class="h5 text-kumel-titulo">  Envio a domicilio: 4.000 CLP RM. </p>
+               <p class="h5 text-kumel-titulo">
+                   Por compras superiores a 35 mil CLP despacho gratuito en RM.
+               </p>
+               <p class="h5 text-kumel-titulo">
+                  Entregas en Metro Plaza Egaña y Rojas Magallanes (L4) sin costo, coordinar por Whatsapps.
+               </p>
+               <p class="h5 text-kumel-titulo">
+                  Otras comunas y todo Chile envio por pagar, coordinar por Whatsapps.
+               </p>
+
+               <br>
+               <p style="text-align: justify;" class="text-kumel-titulo h5 text-kumel-titulo">
+                  Cualquier duda o consulta no dudes en contactarnos por los medios diponibles,
+                  estaremos gustosos en atenderte.
+                </p>
+
+            </div>
+
+
+            <!-- <div class="col-lg-6" style="margin-bottom: 7%;">
+               <img class="img-fluid logo-img  " src="img/logo.png">
+               <h4 style="text-align: center;" class="text-kumel-titulo">Despacho</h4>
+               <p class="h5 text-kumel-titulo">
+                  Entregas a domicilio RM: Ñuñoa, La Reina, Providencia,Las Condes.
+               </p>
+               <p class="h5 text-kumel-titulo">
+                  Envio a domicilio: 4.000 CLP RM.
+               </p>
+               <p class="h5 text-kumel-titulo">
+                  Por compras superiores a 35 mil CLP despacho gratuito en RM.
+               </p>
+               <p class="h5 text-kumel-titulo">
+                  Entregas en Metro Plaza Egaña y Rojas Magallanes (L4) sin costo, coordinar por Whatsapps.
+               </p>
+               <p class="h5 text-kumel-titulo">
+                  Otras comunas y todo Chile envio por pagar, coordinar por Whatsapps.
+               </p>
+
+            </div> -->
+
+
+
+
+
 
          </div>
-
-
       </div>
-      </div>
+
 
    </div>
 
@@ -366,45 +399,49 @@ require_once("../BD/catalogoBD.php");
       <hr></span>
 
    </div>
+
+
+
+
    <div class="container" style="max-width: 100%;">
 
 
-      <div class="row ">
-         <div class="col-lg-12  ">
-
-            <div class="form-inline bg-kumel-2">
-               <div class="col-lg-5">
-                  <img class="img-nuestra-tienda" style="max-width: 100%;" src="img/tienda.jpg">
-
-               </div>
-
-               <div class="col-lg-5 " style="margin-bottom: 7%;">
-                  <img class="img-fluid logo-img  " src="img/logo.png">
-                  <h4 style="text-align: center;" class="text-kumel-titulo">Nuestra tienda</h4>
-
-                  <p style="text-align: justify;" class="text-kumel-titulo h5 text-kumel-titulo">
-                     Inspirados en lo natural, el bienestar y el buen gusto, nace Kummel, para satisfacer
-                     las necesidades y los paladares de nuestros clientes. Para ello,contamos con productos naturales
-                     y elaborados gourmet de alta calidad, provenientes de nuestro sur de Chile y diversas
-                     lugares del mundo. </p>
-                  <p style="text-align: justify;" class="text-kumel-titulo h5 text-kumel-titulo">
-                     Somos un emprendimiento familiar, dedicado a la venta al por menor
-                     de productos naturales y gourmet que busca ir creciendo acorde de las necesidades de nuestros
-                     clientes. </p>
-
-               </div>
+      <div class="row bg-kumel-2 ">
 
 
-
-
-
+         <div class="form-inline bg-kumel-2">
+            <div class="col-lg-6">
+               <img class="img-nuestra-tienda" style="max-width: 100%;" src="img/tienda.jpg">
 
             </div>
+
+            <div class="col-lg-5 " style="margin-bottom: 7%;">
+               <img class="img-fluid logo-img  " src="img/logo.png">
+               <h4 style="text-align: center;" class="text-kumel-titulo">Nuestra tienda</h4>
+
+               <p style="text-align: justify;" class="text-kumel-titulo h5 text-kumel-titulo">
+                  Inspirados en lo natural, el bienestar y el buen gusto, nace Kummel, para satisfacer
+                  las necesidades y los paladares de nuestros clientes. Para ello,contamos con productos naturales
+                  y elaborados gourmet de alta calidad, provenientes de nuestro sur de Chile y diversas
+                  lugares del mundo. </p>
+               <p style="text-align: justify;" class="text-kumel-titulo h5 text-kumel-titulo">
+                  Somos un emprendimiento familiar, dedicado a la venta al por menor
+                  de productos naturales y gourmet que busca ir creciendo acorde de las necesidades de nuestros
+                  clientes. </p>
+
+            </div>
+
+
+
+
+
+
          </div>
-
-
       </div>
-      <br />
+
+
+   </div>
+   <br />
 
    </div>
    </div>

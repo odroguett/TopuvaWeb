@@ -34,6 +34,7 @@ if(isset($sPatron))
                  <th class='text-white'>Codigo</th>
                  <th class='text-ligth'>Tamano</th>
                  <th class='text-ligth'>codigo_unidad</th>
+                 <th class='text-ligth'>stock</th>
               </tr>
             </thead><br>
        <tbody>";
@@ -49,6 +50,7 @@ if(isset($sPatron))
         <td>".$value['codigo_precio_producto']."</td>	
         <td>".$value['tamano']."</td>	
         <td>".$value['codigo_unidad']."</td>	
+        <td>".$value['stock']."</td>	
 		</tr>";
         
         }
@@ -83,7 +85,8 @@ include("../includes/footer.php");
         //hide the fourth column
         {'visible' : false,"width": "0px" },
         {'visible' : false,"width": "0px" },
-        {'visible' : false,"width": "0px" }
+        {'visible' : false,"width": "0px" },
+        {'visible' : false,"width": "0px" },
     ],
     "responsive": true,
     "lengthChange": true,
@@ -103,7 +106,7 @@ var table = $('#tablaBuscar').DataTable();
 
 $('#tablaBuscar tbody').on('click', 'tr', function () {
         var data = table.row( this ).data();
-        oCarrito.LinkProducto(data[0], data[2],data[4],data[5],1,"");
+        oCarrito.LinkProducto(data[0], data[2],data[4],data[5],data[6],"");
         $("#botonCerrarDespacho").click();
                         
     } );

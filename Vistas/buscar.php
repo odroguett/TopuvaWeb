@@ -28,6 +28,7 @@ if(isset($sPatron))
             <thead>
               <tr>
                 
+                 <th class='bg-kumel text-kumel-texto'>Imagen</th>
                  <th class='bg-kumel text-kumel-texto'>Producto</th>
                  <th class='bg-kumel text-kumel-texto'>Unidad</th>
                  <th class='bg-kumel text-kumel-texto'>precio</th>
@@ -43,7 +44,7 @@ if(isset($sPatron))
         foreach($Listafilas as $filas => $value)
         {
         echo "<tr>
-        
+        <td class='text-kumel-titulo'> <img id='imagen-producto' src=" .$value['IMAGEN'] . "  height='70' width='70'> </td>
 		<td class='text-kumel-titulo'>".$value['descripcion']."</td>	
         <td class='text-kumel-titulo'> ".$value['tamano']. " " . $value['codigo_unidad']. "</td>
         <td class='text-kumel-tituloh'> " . $value['precio_venta'] . "</td>
@@ -82,6 +83,7 @@ include("../includes/footer.php");
         null,
         null,
         null,
+        null,
         //hide the fourth column
         {'visible' : false,"width": "0px" },
         {'visible' : false,"width": "0px" },
@@ -106,7 +108,8 @@ var table = $('#tablaBuscar').DataTable();
 
 $('#tablaBuscar tbody').on('click', 'tr', function () {
         var data = table.row( this ).data();
-        oCarrito.LinkProducto(data[0], data[2],data[4],data[5],data[6],"");
+        var imagen = $(data[0]).attr("src");
+        oCarrito.LinkProducto(imagen, data[1],data[3],data[5],data[6] , data[7],data[4]);
         $("#botonCerrarDespacho").click();
                         
     } );

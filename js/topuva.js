@@ -7,7 +7,7 @@ function Carrito_class() {
     vCarrito.Cantidad = null;
   }
 
-  this.LinkProducto = function (descripcion, precioVenta, tamanoUnidad, codigoUnidad,stock,codigoProducto) {
+  this.LinkProducto = function (imagen,descripcion, precioVenta, tamanoUnidad, codigoUnidad,stock,codigoProducto) {
 debugger;
 
    var recorre =  document.querySelectorAll('.claseTexto')
@@ -48,8 +48,9 @@ debugger;
           tamanoUnidad: tamanoUnidad,
           codigoUnidad: codigoUnidad,
           cantidad: cantidad,
-           stock: stock,
-           codigoProducto: codigoProducto
+          stock: stock,
+          codigoProducto: codigoProducto,
+          imagen:imagen
   
         },
         //contentType: "application/json; charset=utf-8",

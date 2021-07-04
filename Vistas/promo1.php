@@ -10,6 +10,7 @@ $sCodigoUnidad =$_POST["codigoUnidad"];
 $cantidad =$_POST["cantidad"];
 $stock=$_POST["stock"];
 $codigoProducto =$_POST["codigoProducto"];
+$imagen =$_POST["imagen"];
 
 
 $Listafilas=$oCatalogo->obtieneDisponibleProductos($sDescripcion);
@@ -60,7 +61,7 @@ foreach($Listafilas as $filas => $value)
             <div class="col-lg-6">
 
                <div class="osahan-slider-item">
-                  <img src="img/recommend/r1.jpg" class="img-fluid mx-auto shadow-sm rounded" alt="Responsive image">
+                  <img src= "<?php echo $imagen ?>" class="img-fluid mx-auto shadow-sm rounded" alt="Responsive image">
                </div>
                </br>
                <div class="row">

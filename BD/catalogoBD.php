@@ -182,7 +182,13 @@ function obtieneProductosRelacionados($sProducto)
     p.descripcion,
     vp.precio_venta,
     vp.stock,
-    vp.codigo_precio_producto
+    vp.codigo_precio_producto,
+    vp.titulo,
+    vp.parrafo1,
+    vp.parrafo2,
+    vp.parrafo3,
+    vp.parrafo4,
+    vp.imagen
     from unidades u, 
     productos p,
     venta_productos vp,

@@ -80,8 +80,7 @@ require_once("../BD/catalogoBD.php");
                           {
    ?>
                   <div class="osahan-slider-item bg-Kumel">
-                     <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>
-                     ','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>')"
+                  <a onclick="oCarrito.LinkProducto( '<?php echo $value['imagen'] ?>','<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>','<?php echo $value['codigo_precio_producto'] ?>')"
                         class="text-dark bg-Kumel">
                         <div class="contenedor ">
                            <figure>
@@ -141,7 +140,7 @@ require_once("../BD/catalogoBD.php");
                <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm">
                   <div class="list-card-image">
 
-                  <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>','<?php echo $value['codigo_precio_producto'] ?>')"
+                  <a onclick="oCarrito.LinkProducto( '<?php echo $value['imagen'] ?>','<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>','<?php echo $value['codigo_precio_producto'] ?>')"
                         href="#" class="text-dark">
 
                         <div class="p-3 claseTexto" disabled>
@@ -230,7 +229,7 @@ require_once("../BD/catalogoBD.php");
 
                <div class="list-card bg-light  h-100 rounded overflow-hidden position-relative shadow-sm ">
                   <div class="list-card-image">
-                  <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>','<?php echo $value['codigo_precio_producto'] ?>')"
+                  <a onclick="oCarrito.LinkProducto( '<?php echo $value['imagen'] ?>','<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>','<?php echo $value['codigo_precio_producto'] ?>')"
                         href="#" class="text-dark">
 
                         <div class="p-3 claseTexto">

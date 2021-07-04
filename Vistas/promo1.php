@@ -61,7 +61,8 @@ foreach($Listafilas as $filas => $value)
             <div class="col-lg-6">
 
                <div class="osahan-slider-item">
-                  <img src= "<?php echo $imagen ?>" class="img-fluid mx-auto shadow-sm rounded" alt="Responsive image">
+                  <img id="imagenProducto" src="<?php echo $imagen ?>" class="img-fluid mx-auto shadow-sm rounded "
+                     alt="Responsive image">
                </div>
                </br>
                <div class="row">
@@ -70,8 +71,8 @@ foreach($Listafilas as $filas => $value)
             </div>
             <div class="col-lg-6 claseTexto">
 
-            <input type="text" class="text-info codigo-precio-producto"
-                              value="<?php echo $codigoProducto; ?>" hidden>
+               <input type="text" class="text-info codigo-precio-producto" value="<?php echo $codigoProducto; ?>"
+                  hidden>
 
                <div class="p-4 bg-light rounded shadow-sm ">
 
@@ -142,8 +143,8 @@ foreach($Listafilas as $filas => $value)
                {
                      ?>
                         <div class="col-9  align-items-right">
-                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel-1 rounded  btn-block  "
-                              > Agregar al
+                           <button type="button" id="btnAgregarCarro" class="btn btn-kumel-1 rounded  btn-block  ">
+                              Agregar al
                               Carro</button>
                         </div>
                         <?php 
@@ -206,37 +207,70 @@ foreach($Listafilas as $filas => $value)
 
 
                      <div class="p-3 claseTexto">
-                     <input type="text" class="text-info codigo-precio-producto"
-                              value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                        <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                        <h6 class="textoProducto text-kumel-titulo">
-                           <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
-                        </h6>
-                        <div class="d-flex align-items-center precio">
-                           <h6 class="price m-0 text-kumel-bold">
-                              <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')      ?></h6>
-                           <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
-                              aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
+                        <input type="text" class="text-info codigo-precio-producto"
+                           value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
+                        <div class="contenedor-imagen">
+                           <figure>
+                              <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">
 
-                           <div class="collapse qty_show" id="collapseExample2">
-                              <div>
-                                 <span class="ml-auto" href="#">
+                              <div class="capa">
+
+                                 <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                 <p>
+                                    <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                    <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                    <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                    <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                 </p>
+
+                              </div>
+
+                           </figure>
+
+                        </div>
+                        <div class="col-lg-12" style="text-align: center;">
+                           <h6 class="textoProducto text-kumel-titulo">
+                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                           </h6>
+
+                        </div>
+
+                        <div class="col-lg-12">
+                           <div class=" form-inline precio">
+                              <div class="col-lg-3">
+
+                                 <span class="ml-auto" href="#" hidden>
                                     <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
                                        <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
-                                          field='quantity' disabled />
-                                       <input type='text' name='quantity ' value='1' class='qty form-control cantidad '
-                                          disabled />
+                                          field='quantity' />
+                                       <input type='text' name='quantity ' value='1'
+                                          class='qty form-control cantidad' />
                                        <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
-                                          field='quantity' disabled />
+                                          field='quantity' />
                                     </form>
 
                                  </span>
+
+                              </div>
+
+                              <div class="col-lg-4" hidden>
+                                 <div class="input-group-prepend">
+                                    <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-lg-5" hidden>
+                                 <h6 class="text-kumel-texto-1">
+                                    <?php echo  'Disponible:'. ' ' . $value['stock']  ?> </h6>
                               </div>
 
                            </div>
                         </div>
-                        <div class="input-group-prepend" hidden>
-                           <div class=" btn btn-icon btn-light btn-valor" hidden><i class="icofont-shopping-cart"></i>
+                        <div class="row">
+                           <div class="col-md-12 " style="text-align: center;">
+                              <h6 class="txtStock font-weight-light text-danger">
+                                 <?php echo 'Producto no disponible'    ?> </h6>
                            </div>
                         </div>
                      </div>
@@ -254,37 +288,69 @@ foreach($Listafilas as $filas => $value)
 
 
                      <div class="p-3 claseTexto">
-                     <input type="text" class="text-info codigo-precio-producto"
-                              value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
-                        <img src="img/listing/v2.jpg" class="img-fluid item-img w-100 mb-3">
-                        <h6 class="textoProducto text-kumel-titulo">
-                           <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
-                        </h6>
-                        <div class="d-flex align-items-center precio">
-                           <h6 class="price m-0 text-kumel-bold">
-                              <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')   ?></h6>
-                           <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
-                              aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
+                        <input type="text" class="text-info codigo-precio-producto"
+                           value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
+                        <div class="contenedor-imagen">
+                           <figure>
+                              <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">
 
-                           <div class="collapse qty_show" id="collapseExample2">
-                              <div>
+                              <div class="capa">
+
+                                 <h3 class=""><?php echo $value['titulo']; ?></h3>
+                                 <p>
+                                    <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
+                                    <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
+                                    <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
+                                    <?php if(isset($value['parrafo4'])){echo $value['parrafo4']; }  ?>
+                                 </p>
+
+                              </div>
+
+                           </figure>
+
+                        </div>
+                        <div class="col-lg-12" style="text-align: center;">
+                           <h6 class="textoProducto text-kumel-titulo">
+                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                           </h6>
+
+                        </div>
+
+                        <div class="col-lg-12 price" style="text-align: center;">
+                           <h6 class=" text-kumel-bold" style="margin-bottom: 4%;">
+                              <?php echo  ' CLP '  . number_format($value['precio_venta'],0,',','.')    ?>
+                           </h6>
+                        </div>
+                        <div class="col-lg-12">
+                           <div class=" form-inline precio">
+                              <div class="col-lg-3">
+
                                  <span class="ml-auto" href="#">
                                     <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
                                        <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
                                           field='quantity' />
                                        <input type='text' name='quantity ' value='1'
-                                          class='qty form-control cantidad ' />
+                                          class='qty form-control cantidad' />
                                        <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
                                           field='quantity' />
                                     </form>
 
                                  </span>
+
                               </div>
 
-                           </div>
-                        </div>
-                        <div class="input-group-prepend">
-                           <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i>
+                              <div class="col-lg-4">
+                                 <div class="input-group-prepend">
+                                    <div class=" btn btn-icon btn-light btn-valor"><i class="icofont-shopping-cart"></i>
+                                    </div>
+                                 </div>
+                              </div>
+
+                              <div class="col-lg-5">
+                                 <h6 class="text-kumel-texto-1">
+                                    <?php echo  'Disponible:'. ' ' . $value['stock']  ?> </h6>
+                              </div>
+
                            </div>
                         </div>
                      </div>

@@ -736,7 +736,7 @@ $(document).ready(function () {
     e.preventDefault();
     e.stopPropagation();
     debugger;
-    $("#numCarrito").removeClass("animate__animated animate__shakeY");
+    
     var preVar = $(this).closest('.claseTexto').find('.price').text()
     var cantidad = $(this).closest('.claseTexto').find('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text();
@@ -754,8 +754,9 @@ $(document).ready(function () {
     var preVar = $(this).closest('.claseTexto').find('.price').text()
     var cantidad = $('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
-    var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val()
-    oCarrito.AgregarSeleccion(preVar, cantidad, texto, codigoProducto);
+    var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val();
+    var imagenProducto =  $("#imagenProducto").attr("src");  
+    oCarrito.AgregarSeleccion(preVar, cantidad, texto, codigoProducto,imagenProducto);
 
   });
 

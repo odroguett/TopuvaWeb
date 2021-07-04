@@ -17,7 +17,7 @@ if(isset($sPatron))
     if(isset($Listafilas))
     {  echo    
          "
-        <div class='modal-header bg-light'>
+        <div class='modal-header bg-kumel-2'>
             <h6 class='modal-title text-kumel-titulo' id='exampleModalLabel'>Resultados de busqueda</h6>
             <button type='button' id='botonCerrarDespacho' class='close' data-dismiss='modal' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
@@ -28,10 +28,10 @@ if(isset($sPatron))
             <thead>
               <tr>
                 
-                 <th class='bg-kumel text-kumel-texto'>Imagen</th>
-                 <th class='bg-kumel text-kumel-texto'>Producto</th>
-                 <th class='bg-kumel text-kumel-texto'>Unidad</th>
-                 <th class='bg-kumel text-kumel-texto'>precio</th>
+                 <th class='bg-kumel-2 text-kumel-titulo'>Imagen</th>
+                 <th class='bg-kumel-2 text-kumel-titulo'>Producto</th>
+                 <th class='bg-kumel-2 text-kumel-titulo'>Unidad</th>
+                 <th class='bg-kumel-2 text-kumel-titulo'>precio</th>
                  <th class='text-white'>Codigo</th>
                  <th class='text-ligth'>Tamano</th>
                  <th class='text-ligth'>codigo_unidad</th>

@@ -23,6 +23,7 @@ $parametros = Parametros::getInstance();
    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
    <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
    <link rel="stylesheet" type="text/css" href="css/alertify/alertify.css" />
+   <link rel="stylesheet" type="text/css" href="css/animate.css" />
    <!-- Icofont Icon-->
    <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
    <!-- Bootstrap core CSS -->
@@ -81,7 +82,7 @@ $parametros = Parametros::getInstance();
                         <h5 class="text-kumel-titulo">Productos naturales y gourmet</h5>
                      </div>
                   </div>
-
+                  
                </div>
             </div>
             <div class="col-md-4">
@@ -113,7 +114,7 @@ $parametros = Parametros::getInstance();
                   </div>
                   <div class="Contenedor-Carrito">
                      <div class="col-md1">
-                        <label id="numCarrito" class="text-kumel-bold numberCircle" style="margin-bottom: 30px; margin-left: -4px;" hidden>0</label>
+                        <label id="numCarrito" class="text-kumel-bold numberCircle animate__animated animate__shakeY " style="margin-bottom: 30px; margin-left: -4px;" hidden>0</label>
                      </div>
                   </div>
 

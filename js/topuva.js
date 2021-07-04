@@ -295,20 +295,6 @@ debugger;
     }
 
 
-
-    // if(!isNaN(Number(localStorage.getItem('numeroCarrito'))))
-    // {
-
-    //     cantidadTotalProductos = Number(localStorage.getItem('numeroCarrito')) + Number(cantidad);
-    
-    // }
-    // else
-
-    // {
-    //   cantidadTotalProductos =  Number(cantidad);
-
-    // }
-    
     modalContentAux.innerHTML = modalContentAux.innerHTML + contenido;
     localStorage.clear('numeroCarrito')
     //Esto es para obtener la cantidad de productos
@@ -329,13 +315,15 @@ debugger;
 
     $("#numCarrito").text(cantidadTotalProductos);
     $("#numCarrito").removeAttr('hidden',true);
+    $("#numCarrito").addClass("animate__animated animate__shakeY");
 
+   
     $('.modal-body').html(modalContentAux);
     $('#myModal2').modal('show');
 
     $('.totalizador').text(total);
 
-
+    
   }
 
   this.EliminarProducto = function (event) {
@@ -380,7 +368,7 @@ debugger;
     localStorage.setItem('Carrito', modalContentAux.innerHTML);
     localStorage.setItem('numeroCarrito', Number(cantidadTotalProductos));
     $("#numCarrito").text(cantidadTotalProductos);
-    
+    $("#numCarrito").addClass('animate__animated animate__shakeY');
 
     total = total - (Number(oCarrito.quitarCaractererNoNumericos(precio.innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(cantidadProducto.innerHTML)));
     $('.totalizador').text(total);
@@ -744,6 +732,7 @@ $(document).ready(function () {
     e.preventDefault();
     e.stopPropagation();
     debugger;
+    $("#numCarrito").removeClass("animate__animated animate__shakeY");
     var preVar = $(this).closest('.claseTexto').find('.price').text()
     var cantidad = $(this).closest('.claseTexto').find('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
@@ -1148,4 +1137,5 @@ debugger;
     }
   });
 
+  
 });

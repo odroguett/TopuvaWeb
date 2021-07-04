@@ -90,16 +90,37 @@ require_once(COMPARTIDA . "parametros.php");
   
                              </div>
   
-                             <div class=" precio">
-                                <div class="col-lg-12" style="text-align: center;">
-                                   <h6 class=" text-kumel-bold" style="margin-bottom: 4%;">
-                                      <?php echo  ' CLP '  . number_format($value['precio_venta'],0,',','.')    ?>
-                                   </h6>
+                             <div class="col-lg-12">
+                                <div class=" form-inline precio">
+                                   <div class="col-lg-3">
+  
+                                      <span class="ml-auto" href="#" hidden>
+                                         <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
+                                            <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
+                                               field='quantity' />
+                                            <input type='text' name='quantity ' value='1'
+                                               class='qty form-control cantidad' />
+                                            <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
+                                               field='quantity' />
+                                         </form>
+  
+                                      </span>
+  
+                                   </div>
+  
+                                   <div class="col-lg-4" hidden>
+                                      <div class="input-group-prepend">
+                                         <div class=" btn btn-icon btn-light btn-valor"><i
+                                               class="icofont-shopping-cart"></i></div>
+                                      </div>
+                                   </div>
+  
+                                   <div class="col-lg-5" hidden>
+                                      <h6 class="text-kumel-texto-1">
+                                         <?php echo  'Disponible:'. ' ' . $value['stock']  ?> </h6>
+                                   </div>
+  
                                 </div>
-                             </div>
-                             <div class="input-group-prepend " hidden>
-                                <div class=" btn btn-icon btn-light btn-valor" hidden><i class="icofont-shopping-cart"
-                                      hidden></i></div>
                              </div>
                              <div class="row">
                                 <div class="col-md-12 " style="text-align: center;">
@@ -130,7 +151,7 @@ require_once(COMPARTIDA . "parametros.php");
   
                                       <div class="contenedor-imagen">
                                          <figure>
-                                           <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">   
+                                            <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">
   
                                             <div class="capa">
   
@@ -171,8 +192,8 @@ require_once(COMPARTIDA . "parametros.php");
                                                      action='#'>
                                                      <input type='button' value='-'
                                                         class='qtyminus btn btn-success btn-sm ' field='quantity' />
-                                                     <input type='text' id="cantidadProd" name='quantity ' value='1'
-                                                        class='qty form-control cantidad ' />
+                                                     <input type='text' name='quantity ' value='1'
+                                                        class='qty form-control cantidad' />
                                                      <input type='button' value='+'
                                                         class='qtyplus btn btn-success btn-sm ' field='quantity' />
                                                   </form>

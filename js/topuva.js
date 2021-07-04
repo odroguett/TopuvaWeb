@@ -11,11 +11,12 @@ function Carrito_class() {
 debugger;
 
    var recorre =  document.querySelectorAll('.claseTexto')
+   
    var cantidad=1;
    var encontrado =false;
    recorre.forEach(item => {
     var textoProducto = item.querySelector('.textoProducto').innerHTML;
-    var cantidadProducto = item.querySelector('.cantidad').value;
+    var cantidadProducto = item.querySelector('.qty').value;
     if(textoProducto.trim() == (descripcion + ' ' + tamanoUnidad  +  codigoUnidad).trim() && encontrado==false)
     {
 

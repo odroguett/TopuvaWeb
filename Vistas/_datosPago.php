@@ -47,9 +47,9 @@ else
 
 
 
-<div class="modal-header bg-kumel">
-    <h5 class="modal-title text-kumel-texto" id="exampleModalLabel">Finalizar Pedido</h5>
-    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+<div class="modal-header bg-kumel-2">
+    <h5 class="modal-title text-kumel-titulo" id="exampleModalLabel">Finalizar Pedido</h5>
+    <button type="button" class="close text-kumel-titulo" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
@@ -63,11 +63,12 @@ else
 
 
             <div class="col-md-12 text-right">
-            <button type="button" id="btnBorrarCarrito" class="text-primary border-0 btn-white" style="background-color:transparent"  >Borrar Carrito</button>
+                <button type="button" id="btnBorrarCarrito" class=" btn  btn-kumel-1"
+                    style="border:none" >Borrar Carrito</button>
 
-                
+
             </div>
-
+            <br/>
 
             <hr />
             <div class="col-lg-12">
@@ -149,8 +150,8 @@ else
                             <div class="form-check form-check-inline class-transferencia ">
                                 <input class="form-check-input" id="rdEntrega" type="radio" name="rdEntrega"
                                     value="option2">
-                                <label class="form-check-label h7  font-weight-light text-right"
-                                    for="inlineRadio2"> Pago a momento de entrega</label>
+                                <label class="form-check-label h7  font-weight-light text-right" for="inlineRadio2">
+                                    Pago a momento de entrega</label>
                             </div>
 
 

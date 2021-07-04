@@ -228,17 +228,13 @@ debugger;
   this.AgregarSeleccion = function (precio, cantidad, texto, codigoProducto) {
 
 
-    // debugger;
+    debugger;
     var total = 0;
     var modalContent = document.createElement('div');
     var modalContentAux = document.createElement('div');
     modalContent.innerHTML = localStorage.getItem('Carrito');
-
-
-
-
+    var cantidadTotalProductos=0;
     var recorre = modalContent.querySelectorAll('.container_modal');
-
     contenido = '<div class="container container_modal bg-light"> ' +
       ' <h6 class="codigoProducto font-weight-light text-dark" hidden>  ' + codigoProducto + ' </h6> ' +
       ' <div class="col-12 "> ' +
@@ -284,8 +280,9 @@ debugger;
       } else {
         modalContentAux.innerHTML = modalContentAux.innerHTML + '</hr><div class="container container_modal bg-light "> ' + item.innerHTML;
         total = total + (Number(oCarrito.quitarCaractererNoNumericos(precioTotal.innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(cantidadTotal.innerHTML)));
+        
       }
-
+      
 
     });
 
@@ -293,12 +290,45 @@ debugger;
       total = (Number(oCarrito.quitarCaractererNoNumericos(precio)) * cantidad);
     } else {
       total = total + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * cantidad);
+      
 
     }
-    modalContentAux.innerHTML = modalContentAux.innerHTML + contenido;
 
-    //localStorage.contenido = modalContentAux.innerHTML;
+
+
+    // if(!isNaN(Number(localStorage.getItem('numeroCarrito'))))
+    // {
+
+    //     cantidadTotalProductos = Number(localStorage.getItem('numeroCarrito')) + Number(cantidad);
+    
+    // }
+    // else
+
+    // {
+    //   cantidadTotalProductos =  Number(cantidad);
+
+    // }
+    
+    modalContentAux.innerHTML = modalContentAux.innerHTML + contenido;
+    localStorage.clear('numeroCarrito')
+    //Esto es para obtener la cantidad de productos
+    var recorreCantidad = modalContentAux.querySelectorAll('.container_modal');
+    
+    recorreCantidad.forEach(item => {
+      
+      var cantidadTotal = item.querySelector('.cantidadProducto'); 
+      cantidadTotalProductos = cantidadTotalProductos + Number(oCarrito.quitarCaractererNoNumericos(cantidadTotal.innerHTML));
+     
+
+    });
+
+    
+
     localStorage.setItem('Carrito', modalContentAux.innerHTML);
+    localStorage.setItem('numeroCarrito', cantidadTotalProductos);
+
+    $("#numCarrito").text(cantidadTotalProductos);
+    $("#numCarrito").removeAttr('hidden',true);
 
     $('.modal-body').html(modalContentAux);
     $('#myModal2').modal('show');
@@ -310,6 +340,7 @@ debugger;
 
   this.EliminarProducto = function (event) {
 
+    debugger;
     var modalContent = document.createElement('div');
     var total = $('.totalizador').text();
     var valorProducto = document.createElement('div');
@@ -318,8 +349,12 @@ debugger;
     var precio = valorProducto.querySelector('.price_modal');
     var cantidadProducto = valorProducto.querySelector('.cantidadProducto');
     var texto = valorProducto.querySelector('.textoProducto')
-    //modalContent.innerHTML = localStorage.contenido;
+    cantidadTotalProductos=0;
+    if(!isNaN(localStorage.getItem('numeroCarrito')))
+    {
 
+      cantidadTotalProductos=localStorage.getItem('numeroCarrito');
+    }
     modalContent.innerHTML = localStorage.getItem('Carrito');
     var recorre = modalContent.querySelectorAll('.container_modal')
     recorre.forEach(item => {
@@ -333,9 +368,19 @@ debugger;
       }
 
     });
+    cantidadTotalProductos =cantidadTotalProductos - Number(oCarrito.quitarCaractererNoNumericos(cantidadProducto.innerHTML));
+    
+    if(cantidadTotalProductos ==0)
+    {
 
-    //localStorage.contenido = modalContentAux.innerHTML;
+      $("#numCarrito").attr('hidden',true) ;
+    }
+    
+    $("#numCarrito").text(cantidadTotalProductos);
     localStorage.setItem('Carrito', modalContentAux.innerHTML);
+    localStorage.setItem('numeroCarrito', Number(cantidadTotalProductos));
+    $("#numCarrito").text(cantidadTotalProductos);
+    
 
     total = total - (Number(oCarrito.quitarCaractererNoNumericos(precio.innerHTML)) * Number(oCarrito.quitarCaractererNoNumericos(cantidadProducto.innerHTML)));
     $('.totalizador').text(total);
@@ -703,6 +748,10 @@ $(document).ready(function () {
     var cantidad = $(this).closest('.claseTexto').find('.cantidad').val();
     var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
     var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val()
+
+
+
+
     oCarrito.AgregarSeleccion(preVar, cantidad, texto, codigoProducto);
 
   });

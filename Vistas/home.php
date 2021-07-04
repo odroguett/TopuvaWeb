@@ -342,23 +342,23 @@ require_once("../BD/catalogoBD.php");
                <h4 style="text-align: center;" class="text-kumel-titulo">Despacho</h4>
 
                <p style="text-align: justify;" class="h5 text-kumel-titulo">
-                Entregas a domicilio RM: Ñuñoa, La Reina, Providencia,Las Condes.
-               <p style="text-align: justify;" class="h5 text-kumel-titulo">  Envio a domicilio: 4.000 CLP RM. </p>
-               <p class="h5 text-kumel-titulo">
-                   Por compras superiores a 35 mil CLP despacho gratuito en RM.
-               </p>
-               <p class="h5 text-kumel-titulo">
-                  Entregas en Metro Plaza Egaña y Rojas Magallanes (L4) sin costo, coordinar por Whatsapps.
-               </p>
-               <p class="h5 text-kumel-titulo">
-                  Otras comunas y todo Chile envio por pagar, coordinar por Whatsapps.
-               </p>
+                  Entregas a domicilio RM: Ñuñoa, La Reina, Providencia,Las Condes.
+                  <p style="text-align: justify;" class="h5 text-kumel-titulo"> Envio a domicilio: 4.000 CLP RM. </p>
+                  <p class="h5 text-kumel-titulo">
+                     Por compras superiores a 35 mil CLP despacho gratuito en RM.
+                  </p>
+                  <p class="h5 text-kumel-titulo">
+                     Entregas en Metro Plaza Egaña y Rojas Magallanes (L4) sin costo, coordinar por Whatsapps.
+                  </p>
+                  <p class="h5 text-kumel-titulo">
+                     Otras comunas y todo Chile envio por pagar, coordinar por Whatsapps.
+                  </p>
 
-               <br>
-               <p style="text-align: justify;" class="text-kumel-titulo h5 text-kumel-titulo">
-                  Cualquier duda o consulta no dudes en contactarnos por los medios diponibles,
-                  estaremos gustosos en atenderte.
-                </p>
+                  <br>
+                  <p style="text-align: justify;" class="text-kumel-titulo h5 text-kumel-titulo">
+                     Cualquier duda o consulta no dudes en contactarnos por los medios diponibles,
+                     estaremos gustosos en atenderte.
+                  </p>
 
             </div>
 
@@ -441,7 +441,11 @@ require_once("../BD/catalogoBD.php");
 
 
    </div>
-   <br />
+   <div class="col-lg-12">
+      <hr></span>
+
+   </div>
+
 
    </div>
    </div>

@@ -148,7 +148,7 @@ foreach($arrayCarrito as $filas => $value)
                             }
                            ?>
 
-            <div class="rounded shadow bg-info d-flex align-items-center p-3 text-white">
+            <div class="rounded shadow bg-info d-flex align-items-center p-3 ">
 
                <div class="more">
 

@@ -1461,6 +1461,12 @@ label {
 }
 
 
+.text-kumel-titulo {
+	color: #341404 !important;
+	font-weight: 100;
+	
+}
+
 .text-kumel-parrafo {
 	color: #341404 !important;
 	font-weight: 100;
@@ -1792,4 +1798,19 @@ label {
 	width: 100%;
 	max-width: 220px;
 	margin: auto
+}
+
+
+.numberCircle {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 6px;
+
+    background: #ffffff;
+    border: 1px solid #000000;
+    color: #020202;
+    text-align: center;
+
+    font: 15px Arial, sans-serif;
 }

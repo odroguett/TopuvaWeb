@@ -86,14 +86,14 @@ $parametros = Parametros::getInstance();
             </div>
             <div class="col-md-4">
                <div class="form-inline ">
-                  <ul class="list-unstyled form-inline mb-0 border-right border-left">
+                  <!--    <ul class="list-unstyled form-inline mb-0 border-right border-left">
                      <li class="nav-item active">
-                        <a class="nav-link text-kumel-bold pl-0" href="/TopuvaWeb/index.php"> <i
+                        <a  id="btnHome" class="nav-link text-kumel-bold pl-0" > <i
                               class="icofont-circled-left"></i>
                            Home
                         </a>
                      </li>
-                  </ul>
+                  </ul> -->
                   <div class=" border-right ">
                      <a href="#" class="btn btn-icon btn-light"> <i class="icofont-facebook"></i></a>
                      <a href="#" class="btn btn-icon btn-light "><i class="icofont-instagram"></i></a>
@@ -104,7 +104,7 @@ $parametros = Parametros::getInstance();
                      <div id="btnBuscarProductos" class="btn btn-light rounded-right"><i class="icofont-search"></i>
                      </div>
                   </div>
-                 
+
                   <div class="col-md1">
                      <a href="#" id="carrito"
                         class="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
@@ -113,7 +113,7 @@ $parametros = Parametros::getInstance();
                   </div>
                   <div class="Contenedor-Carrito">
                      <div class="col-md1">
-                        <label class="text-kumel-bold" style="margin-bottom: 35px;">1</label>
+                        <label id="numCarrito" class="text-kumel-bold numberCircle" style="margin-bottom: 30px; margin-left: -4px;" hidden>0</label>
                      </div>
                   </div>
 
@@ -142,7 +142,7 @@ $parametros = Parametros::getInstance();
             <div class="container menu-bar d-flex align-items-center">
                <ul class="list-unstyled form-inline mb-0">
                   <li class="nav-item active">
-                     <a class="nav-link font-weight-light text-kumel-titulo h5 " href="/TopuvaWeb/index.php">Home <span
+                     <a id="btnHome" class="nav-link font-weight-light text-kumel-titulo h5 " href="">Home <span
                            class="sr-only border border-dark">(current)</span></a>
                   </li>
 
@@ -198,56 +198,40 @@ $parametros = Parametros::getInstance();
 
 
                </div>
-               <!-- <section class="footer-top py-4">
-                  <div class="container">
-                     <section class="footer-top py-4">
-                        <div class="row">
-                           <div class=" col-lg-12 p-4 bg-light rounded shadow-sm">
-                              <div class="row">
-                                 <div class=" col-lg-6">
-                                    <div class="input-group">
-                                       <input type="text" placeholder="Email" class="form-control" name="">
-                                       <span class="input-group-append">
-                                          <button type="submit" class="btn  btn-info"> Suscribete</button>
-                                       </span>
-                                    </div>
-                                 </div>
-
-
-                              </div>
-                           </div>
-                     </section>-->
-
-
-
-               </section>
 
             </div>
          </div>
       </div>
    </div>
+   
    </div>
 
-
+   
 
    <!-- footer -->
-   <footer class="section-footer border bg-kumel">
-      <br />
-      <div class="form-inline">
+   <footer class="section-footer border bg-kumel" style="max-width: 97%; margin-left:1.5%">
 
-         <div class="col-md-1 offset-md-1"></div>
-         <div class="row  " style="height: 200px">
+      <div class="container">
+
+         <br />
+         <div class="form-inline">
+
+            <div class="col-md-1 offset-md-1"></div>
+            <div class="row" style="height: 200px">
 
 
-            <div class=" col-lg-6">
-               <h5 style="text-align: left;" class="text-kumel-texto">Contactanos</h5>
-               <ul>
-                  <li class="text-kumel-texto ">topuva@gmail.com</li>
-                  <li class="text-kumel-texto">+569999999</li>
-               </ul>
+               <div class=" col-lg-6">
+                  <h5 style="text-align: left;" class="text-kumel-texto">Contactanos</h5>
+                  <ul>
+                     <li class="text-kumel-texto ">topuva@gmail.com</li>
+                     <li class="text-kumel-texto">+569999999</li>
+                  </ul>
+               </div>
             </div>
          </div>
+
       </div>
+
 
 
 
@@ -362,6 +346,19 @@ $parametros = Parametros::getInstance();
 <script src="js/modalMensaje.js"></script>
 <script>
    $(document).ready(function () {
+
+      $("#loader").show();
+      $('#numCarrito').text(Number(localStorage.getItem('numeroCarrito')));
+
+      if($('#numCarrito').text()>0)
+      {
+         $('#numCarrito').removeAttr('hidden',true);
+      }
+      else
+      {
+         $('#numCarrito').attr('hidden',true);
+      }
       $("#ContenedorPaginas").load('/TopuvaWeb/Vistas/home.php');
+      $("#loader").hide();
    });
 </script>

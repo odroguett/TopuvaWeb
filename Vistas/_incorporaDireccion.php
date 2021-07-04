@@ -59,73 +59,98 @@ if($idDespacho !="")
     <!-- Sidebar CSS -->
     <link href="vendor/sidebar/demo.css" rel="stylesheet">
 </head>
-<div class="modal-header bg-kumel">
-    <h5 class="modal-title text-kumel-texto" id="exampleModalLabel">Datos del Pedido</h5>
-    <button type="button" id="botonCerrarDespacho" class="close text-white" data-dismiss="modal" aria-label="Close">
+<div class="modal-header bg-kumel-2">
+    <h5 class="modal-title text-kumel-titulo" id="exampleModalLabel">Datos del Pedido</h5>
+    <button type="button" id="botonCerrarDespacho" class="close text-kumel-titulo" data-dismiss="modal"
+        aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body">
+<div class="modal-body ">
+    <div class="form-inline">
+        <div class="col-md-3">
+            <img class="img-fluid logo-img " src="img/logo.png">
 
+        </div>
+
+        <div class="col-md-9">
+            <p class="text-kumel-titulo" style="margin-top: 5%;"> Por favor completa los datos correctamente. </p>
+        </div>
+
+
+
+    </div>
 
 
     <body class="fixed-bottom-padding">
         <div class="row">
             <div class="col-md-6">
-                <label id="idError" type="text" class="text-danger" hidden ></label>
+                <label id="idError" type="text" class="text-danger" hidden></label>
             </div>
         </div>
         <!-- body -->
         <section class="py-4 osahan-main-body">
+
             <div class="title d-flex align-items-center py-3">
                 <form action="" method="" class="">
+
+
                     <div class="row form-group">
                         <div class="col-md-6">
-                            <input placeholder="Nombre" id="nombre" type="text" class="form-control input-personalizado" required value="<?php  echo $sNombre ?>" > </inpuit> </span>
-                            
+                            <input placeholder="Nombre" id="nombre" type="text" class="form-control input-personalizado"
+                                required value="<?php  echo $sNombre ?>"> </inpuit> </span>
+
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Apellidos" id="apellido" type="text" class="form-control input-personalizado" required value="<?php  echo $sApellido ?>">
+                            <input placeholder="Apellidos" id="apellido" type="text"
+                                class="form-control input-personalizado" required value="<?php  echo $sApellido ?>">
                         </div>
 
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Dirección" id="direccion" type="text" class="form-control input-personalizado" required value="<?php  echo $sDireccion ?>">
+                            <input placeholder="Dirección" id="direccion" type="text"
+                                class="form-control input-personalizado" required value="<?php  echo $sDireccion ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Departamento" id="departamento" type="text" class="form-control input-personalizado" value="<?php  echo $sDepartamento ?>">
+                            <input placeholder="Departamento" id="departamento" type="text"
+                                class="form-control input-personalizado" value="<?php  echo $sDepartamento ?>">
                         </div>
                     </div>
                     <div class="row form-group">
 
                         <div class="col-md-6">
-                            <input placeholder="Ciudad" id="ciudad" type="text" class="form-control input-personalizado" required value="<?php  echo $sCiudad ?>">
+                            <input placeholder="Ciudad" id="ciudad" type="text" class="form-control input-personalizado"
+                                required value="<?php  echo $sCiudad ?>">
                         </div>
                         <div class="col-md-6">
-                            <input placeholder="Comuna" id="comuna" type="text" class="form-control input-personalizado" required value="<?php  echo $sComuna ?>">
+                            <input placeholder="Comuna" id="comuna" type="text" class="form-control input-personalizado"
+                                required value="<?php  echo $sComuna ?>">
                         </div>
                     </div>
 
 
                     <div class="row form-group">
                         <div class="col-md-12 ">
-                            <input placeholder="Region" id="region" type="text" class="form-control input-personalizado" value="<?php  echo $sRegion ?>">
+                            <input placeholder="Region" id="region" type="text" class="form-control input-personalizado"
+                                value="<?php  echo $sRegion ?>">
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Teléfono" id="telefono" type="text" class="form-control input-personalizado" required value="<?php  echo $sTelefono ?>">
+                            <input placeholder="Teléfono" id="telefono" type="text"
+                                class="form-control input-personalizado" required value="<?php  echo $sTelefono ?>">
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            <input placeholder="Email" id="email" type="email" class="form-control input-personalizado" required value="<?php  echo $sEmail ?>">
+                            <input placeholder="Email" id="email" type="email" class="form-control input-personalizado"
+                                required value="<?php  echo $sEmail ?>">
                         </div>
 
                     </div>

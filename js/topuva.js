@@ -1,7 +1,4 @@
 var contenido = null;
-
-
-
 function Carrito_class() {
 
   this.LimpiaCarrito = function () {
@@ -308,18 +305,11 @@ debugger;
 
     });
 
-    
-
     localStorage.setItem('Carrito', modalContentAux.innerHTML);
     localStorage.setItem('numeroCarrito', cantidadTotalProductos);
-
     $("#numCarrito").text(cantidadTotalProductos);
     $("#numCarrito").removeAttr('hidden',true);
-    animateCSS('#numCarrito', 'shakeX');
-
-    //$("#numCarrito").addClass("animate__animated animate__shakeY");
-   
-   
+    animateCSS('#numCarrito', 'heartBeat');
     $('.modal-body').html(modalContentAux);
     $('#myModal2').modal('show');
 

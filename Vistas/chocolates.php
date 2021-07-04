@@ -85,15 +85,22 @@ require_once(COMPARTIDA . "parametros.php");
 
 
 
-                           <h6 class="textoProducto font-weight-light text-kumel-titulo">
-                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
-                           </h6>
-                           <div class="d-flex align-items-center precio">
-                              <h6 class="price m-0 text-kumel-bold">
-                                 <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
+                           <div class="col-lg-12" style="text-align: center;">
+                              <h6 class="textoProducto text-kumel-titulo">
+                                 <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                              </h6>
+
+                           </div>
+
+                           <div class=" precio">
+                              <div class="col-lg-12" style="text-align: center;">
+                                 <h6 class=" text-kumel-bold" style="margin-bottom: 4%;">
+                                    <?php echo  ' CLP '  . number_format($value['precio_venta'],0,',','.')    ?>
+                                 </h6>
+                              </div>
 
 
-                              <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                              <!-- <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
                                  aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
 
                               <div class="collapse qty_show" id="collapseExample2">
@@ -111,14 +118,14 @@ require_once(COMPARTIDA . "parametros.php");
                                     </span>
                                  </div>
 
-                              </div>
+                              </div> -->
                            </div>
                            <div class="input-group-prepend " hidden>
                               <div class=" btn btn-icon btn-light btn-valor" hidden><i class="icofont-shopping-cart"
                                     hidden></i></div>
                            </div>
                            <div class="row">
-                              <div class="col-md-12 ">
+                              <div class="col-md-12 " style="text-align: center;">
                                  <h6 class="txtStock font-weight-light text-danger">
                                     <?php echo 'Producto no disponible'    ?> </h6>
                               </div>
@@ -150,8 +157,8 @@ require_once(COMPARTIDA . "parametros.php");
 
                                           <div class="capa">
 
-                                             <h3 class=""><?php echo $value['titulo']; ?></h3>
-                                             <p>
+                                             <h3 class="text-kumel-texto_bold"><?php echo $value['titulo']; ?></h3>
+                                             <p class="text-kumel-texto">
                                                 <?php if(isset($value['parrafo1'])){echo $value['parrafo1']; }  ?>
                                                 <?php if(isset($value['parrafo2'])){echo $value['parrafo2']; }   ?>
                                                 <?php if(isset($value['parrafo3'])){echo $value['parrafo3']; }  ?>
@@ -166,21 +173,22 @@ require_once(COMPARTIDA . "parametros.php");
 
 
 
+                                    <div class="col-lg-12" style="text-align: center;">
+                                       <h6 class="textoProducto text-kumel-titulo">
+                                          <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                                       </h6>
 
-                                    <h6 class="textoProducto text-kumel-titulo">
-                                       <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
-                                    </h6>
-                                    <div class="d-flex align-items-center precio">
-                                       <h6 class="price m-0 text-kumel-bold">
-                                          <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
+                                    </div>
 
+                                    <div class="col-lg-12 price" style="text-align: center;">
+                                       <h6 class=" text-kumel-bold" style="margin-bottom: 4%;">
+                                          <?php echo  ' CLP '  . number_format($value['precio_venta'],0,',','.')    ?>
+                                       </h6>
+                                    </div>
+                                    <div class="col-lg-12">
+                                       <div class=" form-inline precio">
+                                          <div class="col-lg-3">
 
-                                       <a data-toggle="collapse" href="#collapseExample2" role="button"
-                                          aria-expanded="false" aria-controls="collapseExample2"
-                                          class="btn btn-success btn-sm ml-auto">+</a>
-
-                                       <div class="collapse qty_show" id="collapseExample2">
-                                          <div>
                                              <span class="ml-auto" href="#">
                                                 <form id='myform' class="cart-items-number d-flex" method='POST'
                                                    action='#'>
@@ -193,47 +201,37 @@ require_once(COMPARTIDA . "parametros.php");
                                                 </form>
 
                                              </span>
+
+                                          </div>
+
+                                          <div class="col-lg-4">
+                                             <div class="input-group-prepend">
+                                                <div class=" btn btn-icon btn-light btn-valor"><i
+                                                      class="icofont-shopping-cart"></i></div>
+                                             </div>
+                                          </div>
+
+                                          <div class="col-lg-5">
+                                             <h6 class="text-kumel-texto-1">
+                                                <?php echo  'Disponible:'. ' ' . $value['stock']  ?> </h6>
                                           </div>
 
                                        </div>
                                     </div>
-                                    <div class="input-group-prepend">
-                                       <div class=" btn btn-icon btn-light btn-valor"><i
-                                             class="icofont-shopping-cart"></i></div>
-                                    </div>
-                              </a>
-                              <?php 
+                                    <?php 
                            }    
                               ?>
-
-
-
-
+                                 </div>
                            </div>
-
-
-
-
                         </div>
                      </div>
-                  </div>
-
-                  <?php 
+                     <?php 
                }
    
       ?>
+                  </div>
                </div>
-
-
-
-            </div>
-
-
    </section>
-
-
-
-
 </body>
 
 </html>

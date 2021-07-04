@@ -222,7 +222,7 @@ debugger;
 
   }
 
-  this.AgregarSeleccion = function (precio, cantidad, texto, codigoProducto) {
+  this.AgregarSeleccion = function (precio, cantidad, texto, codigoProducto,urImagen) {
 
 
     debugger;
@@ -233,37 +233,34 @@ debugger;
     var cantidadTotalProductos=0;
     var recorre = modalContent.querySelectorAll('.container_modal');
     contenido = '<div class="container container_modal bg-light"> ' +
-      ' <h6 class="codigoProducto font-weight-light text-dark" hidden>  ' + codigoProducto + ' </h6> ' +
-      ' <div class="col-12 "> ' +
-      ' <div class="row"> ' +
-      ' <div class="col-6"> ' +
-      ' <div class="row"> ' +
-      ' <h6 class="textoProducto font-weight-light text-kumel-bold">  ' + texto + ' </h6> ' +
-      ' </div> ' +
-      ' <div class="row"> ' +
-      ' <h6 class="price_modal m-0 font-weight-light text-kumel-texto-1"> Precio: ' + precio + '</h6> ' +
-      ' </div> ' +
-      ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-kumel-texto-1"> Cantidad: ' + cantidad + ' </h6> ' +
-      ' </div> ' +
-      ' <div class="row"> ' +
-      ' <h6 class=" cantidadProducto m-0 font-weight-light text-kumel-texto-1">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
-      ' </div> ' +
-      ' </div> ' +
-      ' <div class="col-6"> ' +
-      ' <div class="row"> ' +
+      '<br>' +
+    ' <h6 class="codigoProducto font-weight-light text-dark" hidden>  ' + codigoProducto + ' </h6> ' +
+    ' <div class="col-lg-12 "> ' +
+       ' <div class="form-inline"> ' +
+         ' <div class="col-lg-7 "> ' +
+         ' <h6 class="textoProducto font-weight-light text-kumel-bold">  ' + texto + ' </h6> ' +
+              
+         ' </div> ' +
+         
+         ' <div class="col-lg-5 "> ' +
+         '<img src= ' + urImagen + ' class="img-fluid">' +
+         ' </div> ' +
+    ' </div> ' +
+    ' </div> ' +
+      ' <div class="col-lg-12 "> ' +
+            ' <div class="form-inline"> ' +
+                ' <div class="col-lg-10 "> ' +
+                      ' <h6 class="price_modal m-0 font-weight-light text-kumel-texto-1"> Precio: ' + precio + '</h6> ' +
+                      ' <h6 class=" cantidadProducto m-0 font-weight-light text-kumel-texto-1"> Cantidad: ' + cantidad + ' </h6> ' +
+                      ' <h6 class=" cantidadProducto m-0 font-weight-light text-kumel-texto-1">  SubTotal: ' + (Number(oCarrito.quitarCaractererNoNumericos(precio)) * Number(oCarrito.quitarCaractererNoNumericos(cantidad))) + ' </h6> ' +
+                  ' </div> ' +
+                  ' <div class="col-lg-2 "> ' +
+                      '  <button "type="button" class="btn btn-danger btn-eliminar" id="eliminarProducto"  onclick= "oCarrito.EliminarProducto(this)">X</button> ' +
+                ' </div> ' +
 
-      ' <br> ' +
-      ' <br> ' +
-
-      '  <button "type="button" class="btn btn-danger btn-eliminar" id="eliminarProducto"  onclick= "oCarrito.EliminarProducto(this)">X</button> ' +
-      ' </div> ' +
-      ' </div> ' +
-
-      ' </div> ' +
-      ' </div> ' +
-
-      ' </div> ';
+              ' </div> ' +
+          ' </div> ' +
+    ' </div> ';
 
     recorre.forEach(item => {
       var precioTotal = item.querySelector('.price_modal');
@@ -740,13 +737,10 @@ $(document).ready(function () {
     $("#numCarrito").removeClass("animate__animated animate__shakeY");
     var preVar = $(this).closest('.claseTexto').find('.price').text()
     var cantidad = $(this).closest('.claseTexto').find('.cantidad').val();
-    var texto = $(this).closest('.claseTexto').find('.textoProducto').text()
-    var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val()
-
-
-
-
-    oCarrito.AgregarSeleccion(preVar, cantidad, texto, codigoProducto);
+    var texto = $(this).closest('.claseTexto').find('.textoProducto').text();
+    var codigoProducto = $(this).closest('.claseTexto').find('.codigo-precio-producto').val();
+    var imagenProducto =  $(this).closest('.claseTexto').find('.imagen-producto').attr("src");  
+    oCarrito.AgregarSeleccion(preVar, cantidad, texto, codigoProducto, imagenProducto);
 
   });
 

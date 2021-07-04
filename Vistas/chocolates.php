@@ -47,7 +47,7 @@ require_once(COMPARTIDA . "parametros.php");
            {
         ?>
             <?php 
-                           if ($value['stock'] ==0)
+                           if ($value['stock'] <=0)
                            {     
                            ?>
             <div class="col-6 col-md-3 mb-3">
@@ -65,7 +65,7 @@ require_once(COMPARTIDA . "parametros.php");
                               hidden>
                            <div class="contenedor-imagen">
                               <figure>
-                                 <img src="<?php echo $value['imagen']; ?>">
+                                 <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">
 
                                  <div class="capa">
 
@@ -98,27 +98,6 @@ require_once(COMPARTIDA . "parametros.php");
                                     <?php echo  ' CLP '  . number_format($value['precio_venta'],0,',','.')    ?>
                                  </h6>
                               </div>
-
-
-                              <!-- <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
-                                 aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
-
-                              <div class="collapse qty_show" id="collapseExample2">
-                                 <div>
-                                    <span class="ml-auto" href="#" disabled>
-                                       <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                          <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
-                                             field='quantity' disabled />
-                                          <input type='text' id="cantidadProd" name='quantity ' value='1'
-                                             class='qty form-control cantidad ' />
-                                          <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
-                                             field='quantity' disabled />
-                                       </form>
-
-                                    </span>
-                                 </div>
-
-                              </div> -->
                            </div>
                            <div class="input-group-prepend " hidden>
                               <div class=" btn btn-icon btn-light btn-valor" hidden><i class="icofont-shopping-cart"
@@ -153,7 +132,7 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     <div class="contenedor-imagen">
                                        <figure>
-                                          <img src="<?php echo $value['imagen']; ?>">
+                                         <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">   
 
                                           <div class="capa">
 

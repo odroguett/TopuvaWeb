@@ -54,16 +54,18 @@ require_once(COMPARTIDA . "parametros.php");
                <div class="list-card bg-light h-100 rounded overflow-hidden position-relative shadow-sm">
                   <div class="list-card-image">
 
-                  <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>','<?php echo $value['codigo_precio_producto'] ?>')"
+                     <a onclick="oCarrito.LinkProducto('<?php echo $value['descripcion']  ?>','<?php echo $value['precio_venta'] ?>','<?php echo $value['tamano_unidad'] ?>','<?php echo $value['codigo_unidad'] ?>','<?php echo $value['stock'] ?>','<?php echo $value['codigo_precio_producto'] ?>')"
                         href="#" class="text-dark">
 
                         <div class="p-3 claseTexto" disabled>
 
                            <input type="text" class="text-info codigo-precio-producto"
                               value="<?php echo $value['codigo_precio_producto']; ?>" hidden>
+                           <input type="text" class="text-info stock-producto" value="<?php echo $value['stock']; ?>"
+                              hidden>
                            <div class="contenedor-imagen">
                               <figure>
-                                 <img src="<?php echo $value['imagen']; ?>">
+                                 <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">
 
                                  <div class="capa">
 
@@ -83,32 +85,18 @@ require_once(COMPARTIDA . "parametros.php");
 
 
 
-                           <h6 class="textoProducto text-kumel-titulo">
-                              <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
-                           </h6>
-                           <div class="d-flex align-items-center precio">
-                              <h6 class="price m-0 text-kumel-bold">
-                                 <?php echo  ' $'  . number_format($value['precio_venta'],0,',','.')    ?></h6>
+                           <div class="col-lg-12" style="text-align: center;">
+                              <h6 class="textoProducto text-kumel-titulo">
+                                 <?php echo $value['descripcion'] . ' ' . $value['tamano_unidad']  .  $value['codigo_unidad']    ?>
+                              </h6>
 
+                           </div>
 
-                              <a data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
-                                 aria-controls="collapseExample2" class="btn btn-success btn-sm ml-auto">+</a>
-
-                              <div class="collapse qty_show" id="collapseExample2">
-                                 <div>
-                                    <span class="ml-auto" href="#" disabled>
-                                       <form id='myform' class="cart-items-number d-flex" method='POST' action='#'>
-                                          <input type='button' value='-' class='qtyminus btn btn-success btn-sm '
-                                             field='quantity' disabled />
-                                          <input type='text' id="cantidadProd" name='quantity ' value='1'
-                                             class='qty form-control cantidad ' />
-                                          <input type='button' value='+' class='qtyplus btn btn-success btn-sm '
-                                             field='quantity' disabled />
-                                       </form>
-
-                                    </span>
-                                 </div>
-
+                           <div class=" precio">
+                              <div class="col-lg-12" style="text-align: center;">
+                                 <h6 class=" text-kumel-bold" style="margin-bottom: 4%;">
+                                    <?php echo  ' CLP '  . number_format($value['precio_venta'],0,',','.')    ?>
+                                 </h6>
                               </div>
                            </div>
                            <div class="input-group-prepend " hidden>
@@ -116,7 +104,7 @@ require_once(COMPARTIDA . "parametros.php");
                                     hidden></i></div>
                            </div>
                            <div class="row">
-                              <div class="col-md-12 ">
+                              <div class="col-md-12 " style="text-align: center;">
                                  <h6 class="txtStock font-weight-light text-danger">
                                     <?php echo 'Producto no disponible'    ?> </h6>
                               </div>
@@ -144,7 +132,7 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     <div class="contenedor-imagen">
                                        <figure>
-                                          <img src="<?php echo $value['imagen']; ?>">
+                                         <img class="imagen-producto" src="<?php echo $value['imagen']; ?>">   
 
                                           <div class="capa">
 

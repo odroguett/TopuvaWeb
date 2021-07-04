@@ -114,7 +114,7 @@ $parametros = Parametros::getInstance();
                   </div>
                   <div class="Contenedor-Carrito">
                      <div class="col-md1">
-                        <label id="numCarrito" class="text-kumel-bold numberCircle animate__animated animate__shakeY " style="margin-bottom: 30px; margin-left: -4px;" hidden>0</label>
+                        <label id="numCarrito" class="text-kumel-bold numberCircle  " style="margin-bottom: 30px; margin-left: -4px;" hidden>0</label>
                      </div>
                   </div>
 

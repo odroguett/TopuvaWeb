@@ -315,8 +315,10 @@ debugger;
 
     $("#numCarrito").text(cantidadTotalProductos);
     $("#numCarrito").removeAttr('hidden',true);
-    $("#numCarrito").addClass("animate__animated animate__shakeY");
+    animateCSS('#numCarrito', 'shakeX');
 
+    //$("#numCarrito").addClass("animate__animated animate__shakeY");
+   
    
     $('.modal-body').html(modalContentAux);
     $('#myModal2').modal('show');
@@ -714,10 +716,23 @@ debugger;
 
     }
 
-    
-
-
   }
+
+
+  ///Función para mover animaciones de ANIMATE.CSS
+  const animateCSS = (element, animation, prefix = 'animate__') =>
+  new Promise((resolve, reject) => {
+    const animationName = `${prefix}${animation}`;
+    const node = document.querySelector(element);
+    node.classList.add(`${prefix}animated`, animationName);
+    function handleAnimationEnd(event) {
+      event.stopPropagation();
+      node.classList.remove(`${prefix}animated`, animationName);
+      resolve('Animation ended');
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd, {once: true});
+  });
 
 }
 

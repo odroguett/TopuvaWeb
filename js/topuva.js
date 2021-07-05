@@ -308,7 +308,7 @@ debugger;
     localStorage.setItem('numeroCarrito', cantidadTotalProductos);
     $("#numCarrito").text(cantidadTotalProductos);
     $("#numCarrito").removeAttr('hidden',true);
-    animateCSS('#numCarrito', 'heartBeat');
+    animateCSS('#numCarrito', 'shakeY');
     $('.modal-body').html(modalContentAux);
     $('#myModal2').modal('show');
 

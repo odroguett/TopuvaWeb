@@ -15,7 +15,7 @@ $parametros = Parametros::getInstance();
    <meta name="description" content="">
    <meta name="author" content="">
    <!--<link rel="icon" type="image/png" href="img/logo.png"> -->
-   <title>TOPUVA - Tostaduria Puerto Varas</title>
+   <title>Kummel-Productos naturales y gourmet</title>
    <!-- Slick Slider -->
 
 

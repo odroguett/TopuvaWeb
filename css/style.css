@@ -1644,8 +1644,10 @@ label {
 
 .contenedor-imagen figure {
 	position: relative;
-	height: 320px;
-	width: 380px;
+	height: 35vh;
+	width: 35vh;
+
+	
 	overflow: hidden;
 	border-radius: 10px;
 	box-shadow: 0px 15px 25px rgba(56, 52, 46, 0.5);

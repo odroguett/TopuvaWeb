@@ -68,7 +68,7 @@ $parametros = Parametros::getInstance();
    </style>
 </head>
 
-<body class="fixed-bottom-padding bg-light">
+<body class="fixed-bottom-padding ">
    <br>
    <div class="row">
       <div class=" col-lg-12 ">

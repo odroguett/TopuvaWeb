@@ -198,8 +198,7 @@ require_once(COMPARTIDA . "parametros.php");
 
 
 
-                           
-                              <div class="col-lg-12 col-sm-12 col-md-12" style="margin-left: 8%;">
+                           <div class="col-lg-10 col-sm-12 col-md-12" style="margin-left: 8%;">
                               <div class="form-inline">
                                  <div class="col-lg-4 col-sm-4 col-md-4">
 
@@ -215,15 +214,15 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     </span>
                                  </div>
-                                 <div class="col-lg-4 col-sm-4 col-md-4">
+                                 <div class="col-lg-3 col-sm-4 col-md-4">
                                     <div class="input-group-prepend">
                                        <div class=" btn btn-icon btn-light btn-valor"><i
                                              class="icofont-shopping-cart"></i>
                                        </div>
                                     </div>
                                  </div>
-                                
-                                 <div class="col-sm-4 col-lg-4 col-md-5 ">
+
+                                 <div class="col-sm-4 col-lg-3 col-md-5 ">
                                     <h7 class="text-kumel-texto-1">
                                        <?php echo  'Stock:'. ' ' . $value['stock']  ?> </h6>
                                  </div>
@@ -232,7 +231,6 @@ require_once(COMPARTIDA . "parametros.php");
 
 
                            </div>
-
 
 
 

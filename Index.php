@@ -71,13 +71,13 @@ $parametros = Parametros::getInstance();
 <body class="fixed-bottom-padding ">
    <br>
    <div class="row">
-      <div class=" col-lg-12 ">
+      <div class=" col-sm-12 col-md-12 col-lg-12 ">
          <div class="form-inline ">
 
-            <div class="col-md-7 bg-ligth">
+            <div class="col-sm-5 col-md-5 col-lg-7 bg-ligth">
                <div class="bg-ligth form-inline">
                   <img class="img-fluid logo-img  " src="img/logo.png">
-                  <div class="col-md-4 bg-ligth ">
+                  <div class="col-sm-4 col-md-4 col-lg-4  bg-ligth ">
                      <div class="bg-ligth" style="margin-top: 30px;">
                         <h5 class="text-kumel-titulo">Productos naturales y gourmet</h5>
                      </div>
@@ -85,7 +85,7 @@ $parametros = Parametros::getInstance();
                   
                </div>
             </div>
-            <div class="col-md-4">
+            <div class= "col-sm-7 col-md-7 col-lg-4">
                <div class="form-inline ">
                   <!--    <ul class="list-unstyled form-inline mb-0 border-right border-left">
                      <li class="nav-item active">
@@ -106,14 +106,14 @@ $parametros = Parametros::getInstance();
                      </div>
                   </div>
 
-                  <div class="col-md1">
+                  <div class="col-md-1">
                      <a href="#" id="carrito"
                         class="ml-2 text-dark bg-light rounded-pill p-2 icofont-size border shadow-sm">
                         <i class="icofont-shopping-cart"></i>
                      </a>
                   </div>
                   <div class="Contenedor-Carrito">
-                     <div class="col-md1">
+                     <div class="col-md-1">
                         <label id="numCarrito" class="text-kumel-bold numberCircle  " style="margin-bottom: 30px; margin-left: -4px;" hidden>0</label>
                      </div>
                   </div>

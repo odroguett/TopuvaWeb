@@ -5,26 +5,28 @@ require_once(COMPARTIDA . "parametros.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="description" content="">
-      <meta name="author" content="">
-      <link rel="icon" type="image/png" href="img/logo.png">
-      <title>Frutos Secos</title>
-      <!-- Slick Slider -->
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css"/>
-      <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css"/>
-      <!-- Icofont Icon-->
-      <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
-      <!-- Bootstrap core CSS -->
-      <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom styles for this template -->
-      <link href="css/style.css" rel="stylesheet">
-      <!-- Sidebar CSS -->
-      <link href="vendor/sidebar/demo.css" rel="stylesheet">
-   </head>
-   <body class="fixed-bottom-padding">
+
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="icon" type="image/png" href="img/logo.png">
+   <title>Frutos Secos</title>
+   <!-- Slick Slider -->
+   <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
+   <link rel="stylesheet" type="text/css" href="vendor/slick/slick-theme.min.css" />
+   <!-- Icofont Icon-->
+   <link href="vendor/icons/icofont.min.css" rel="stylesheet" type="text/css">
+   <!-- Bootstrap core CSS -->
+   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="css/style.css" rel="stylesheet">
+   <!-- Sidebar CSS -->
+   <link href="vendor/sidebar/demo.css" rel="stylesheet">
+</head>
+
+<body class="fixed-bottom-padding">
    <!-- body -->
    <section class="py-4 osahan-main-body">
 
@@ -196,8 +198,8 @@ require_once(COMPARTIDA . "parametros.php");
 
 
 
-                           
-                              <div class="col-lg-12 col-sm-12 col-md-12" style="margin-left: 8%;">
+
+                           <div class="col-lg-10 col-sm-12 col-md-12" style="margin-left: 8%;">
                               <div class="form-inline">
                                  <div class="col-lg-4 col-sm-4 col-md-4">
 
@@ -213,15 +215,15 @@ require_once(COMPARTIDA . "parametros.php");
 
                                     </span>
                                  </div>
-                                 <div class="col-lg-4 col-sm-4 col-md-4">
+                                 <div class="col-lg-3 col-sm-4 col-md-4">
                                     <div class="input-group-prepend">
                                        <div class=" btn btn-icon btn-light btn-valor"><i
                                              class="icofont-shopping-cart"></i>
                                        </div>
                                     </div>
                                  </div>
-                                
-                                 <div class="col-sm-4 col-lg-4 col-md-5 ">
+
+                                 <div class="col-sm-4 col-lg-3 col-md-5 ">
                                     <h7 class="text-kumel-texto-1">
                                        <?php echo  'Stock:'. ' ' . $value['stock']  ?> </h6>
                                  </div>
@@ -230,6 +232,7 @@ require_once(COMPARTIDA . "parametros.php");
 
 
                            </div>
+
 
 
 
@@ -258,6 +261,6 @@ require_once(COMPARTIDA . "parametros.php");
       </div>
    </section>
 </body>
+
 </html>
 <?php include("../includes/footer.php")  ?>
-
